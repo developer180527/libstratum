@@ -14,10 +14,15 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
+
+# A reference tool that isn't installed makes every comparison against it count as "skipped", so the
+# run would report agreement on nothing and still exit 0. Check up front instead.
+REQUIRED_TOOLS = ("llvm-dwarfdump", "llvm-pdbutil", "pahole")
 
 ROOT = Path(__file__).resolve().parent.parent
 GOLDEN = ROOT / "golden"
@@ -194,6 +199,11 @@ KNOWN_PAHOLE_LIMITS = {
 # ------------------------------------------------------------------------------------------ driver
 
 def main() -> int:
+    if missing := [t for t in REQUIRED_TOOLS if shutil.which(t) is None]:
+        print(f"missing reference tools: {', '.join(missing)}", file=sys.stderr)
+        print("run inside the fixtures image (fixtures/README.md), which pins all three", file=sys.stderr)
+        return 2
+
     stats = defaultdict(lambda: {"agree": 0, "disagree": 0, "skipped": 0})
     problems = []
     skipped = []

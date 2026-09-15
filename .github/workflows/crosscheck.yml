@@ -1,0 +1,29 @@
+# Cross-checks the committed layout goldens against independent reference tools
+# (llvm-dwarfdump, llvm-pdbutil, pahole) — docs/06-testing.md §3.
+#
+# Not part of `ci`: this builds the fixture toolchain image, which takes minutes, while its inputs
+# (fixtures/bin, fixtures/golden) change only when a maintainer commits new builds. So it runs
+# nightly, on demand, and on any pull request that touches the fixtures or this workflow.
+name: crosscheck
+
+on:
+  schedule:
+    # 03:00 UTC daily.
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - fixtures/**
+      - .github/workflows/crosscheck.yml
+
+jobs:
+  crosscheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # The same image the fixtures are built with, so the reference tools are the pinned ones
+      # recorded in fixtures/build/TOOLCHAINS.md.
+      - run: docker build -t libstratum-fixtures -f fixtures/build/Dockerfile.linux fixtures/build
+      # PDBs and dSYMs are committed, so the Linux image checks all four platforms' goldens.
+      # crosscheck.py exits 2 if a reference tool is missing, 1 on any disagreement.
+      - run: docker run --rm -v "$PWD":/work -w /work libstratum-fixtures python3 fixtures/crosscheck/crosscheck.py

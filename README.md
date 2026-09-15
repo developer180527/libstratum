@@ -10,8 +10,10 @@ answers from the compiler's and linker's own output instead of guesses.
 - **Extensible:** container formats and debug-info formats are plugins that translate into one neutral model
 - **Honest:** answers carry evidence and diagnostics; ambiguity (inlining, folding, elimination) is explicit
 
-> Status: **M2 in progress.** ELF, Mach-O and PE binaries open with identity, sections and symbols; struct
-> layouts come from DWARF and PDB on every Tier 1 platform. See [docs/07-roadmap.md](docs/07-roadmap.md).
+> Status: **M2 complete; M3 next.** ELF, Mach-O and PE binaries open with identity, sections and symbols;
+> struct layouts come from DWARF and PDB on every Tier 1 platform, cross-checked against `llvm-dwarfdump`,
+> `llvm-pdbutil` and `pahole`. Next: symbols, sizes and memory regions. See
+> [docs/07-roadmap.md](docs/07-roadmap.md).
 
 ## Workspace
 

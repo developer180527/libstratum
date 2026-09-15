@@ -284,7 +284,7 @@ impl Session {
                 format: container_format(image.format_id()),
                 arch: image.arch(),
                 id: image.binary_id(),
-                // TODO(M1): content hash over image bytes (docs/02 §8).
+                // TODO(M5): content hash over image bytes, as the cache key (docs/02 §8).
                 content_hash: String::new(),
             },
             sections,
