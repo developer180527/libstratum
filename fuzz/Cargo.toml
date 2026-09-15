@@ -1,0 +1,21 @@
+# Fuzz targets (docs/06 §3). Outside the workspace; needs nightly and cargo-fuzz:
+#   cargo +nightly fuzz run open_any -- -max_total_time=60
+[package]
+name = "libstratum-fuzz"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+libstratum = { path = "../crates/libstratum" }
+
+[[bin]]
+name = "open_any"
+path = "fuzz_targets/open_any.rs"
+test = false
+doc = false
+bench = false

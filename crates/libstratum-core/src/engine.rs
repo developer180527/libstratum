@@ -1,6 +1,7 @@
 //! Engine (plugin registry) and Session (one opened binary).
 
 use std::panic::{AssertUnwindSafe, catch_unwind};
+use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 use libstratum_model::{
@@ -9,7 +10,7 @@ use libstratum_model::{
 };
 
 use crate::error::{OpenError, SpiError};
-use crate::host::{ByteSource, HostServices, InMemorySource};
+use crate::host::{ByteSource, DebugOpenContext, HostServices, InMemorySource};
 use crate::spi::{
     ArtifactProvider, BinaryFormat, DebugInfoBackend, DebugReader, Demangler, Image, LanguageSupport, MapFileParser,
     OpenOptions, ProbeResult,
@@ -18,11 +19,17 @@ use crate::spi::{
 /// Bytes inspected by [`BinaryFormat::probe`].
 const PROBE_LEN: usize = 4096;
 
-/// Input to [`Engine::open`]. Path-based opening lives in the `libstratum` facade.
+/// Input to [`Engine::open`]. Reading files lives in the `libstratum` facade; the core only
+/// records the path so the host locator can find companion files next to the binary.
 #[derive(Debug, Clone)]
 pub enum Input {
     Bytes(Vec<u8>),
     Source(Arc<dyn ByteSource>),
+    /// Bytes of a file together with the path they were read from.
+    File {
+        source: Arc<dyn ByteSource>,
+        path: PathBuf,
+    },
 }
 
 /// Registers plugins explicitly and statically (docs/02 §4.7).
@@ -104,17 +111,23 @@ impl Engine {
     /// Opens a binary: probe → open → locate debug info → identity check.
     /// Missing or mismatched debug info produces diagnostics, not errors.
     pub fn open(&self, input: Input, options: &OpenOptions) -> Result<Session, OpenError> {
-        let source: Arc<dyn ByteSource> = match input {
-            Input::Bytes(bytes) => Arc::new(InMemorySource(bytes)),
-            Input::Source(source) => source,
+        let (source, path): (Arc<dyn ByteSource>, Option<PathBuf>) = match input {
+            Input::Bytes(bytes) => (Arc::new(InMemorySource(bytes)), None),
+            Input::Source(source) => (source, None),
+            Input::File { source, path } => (source, Some(path)),
         };
 
         // No panic may escape the public API (docs/02 §6).
-        catch_unwind(AssertUnwindSafe(|| self.open_inner(source, options)))
+        catch_unwind(AssertUnwindSafe(|| self.open_inner(source, path.as_deref(), options)))
             .unwrap_or_else(|_| Err(OpenError::Internal("panic while opening input".into())))
     }
 
-    fn open_inner(&self, source: Arc<dyn ByteSource>, options: &OpenOptions) -> Result<Session, OpenError> {
+    fn open_inner(
+        &self,
+        source: Arc<dyn ByteSource>,
+        path: Option<&Path>,
+        options: &OpenOptions,
+    ) -> Result<Session, OpenError> {
         let bytes = source.bytes().map_err(OpenError::Read)?;
         let header = &bytes[..bytes.len().min(PROBE_LEN)];
 
@@ -125,19 +138,25 @@ impl Engine {
             format.open(source.clone(), options).map_err(|source| OpenError::Format { format: format.id(), source })?;
 
         let mut diagnostics = Vec::new();
-        let debug = self.open_debug_info(image.as_ref(), &mut diagnostics);
+        let context = DebugOpenContext { host: &self.plugins.host, image_path: path };
+        let debug = self.open_debug_info(image.as_ref(), &context, &mut diagnostics);
 
         Ok(Session { inner: Arc::new(SessionInner { image, debug, diagnostics }) })
     }
 
-    fn open_debug_info(&self, image: &dyn Image, diagnostics: &mut Vec<Diagnostic>) -> Vec<Box<dyn DebugReader>> {
+    fn open_debug_info(
+        &self,
+        image: &dyn Image,
+        context: &DebugOpenContext<'_>,
+        diagnostics: &mut Vec<Diagnostic>,
+    ) -> Vec<Box<dyn DebugReader>> {
         let mut readers = Vec::new();
         let locations = image.debug_locations();
         for location in &locations {
             let Some(backend) = self.plugins.debug_backends.iter().find(|b| b.accepts(location)) else {
                 continue;
             };
-            match backend.open(location, image, &self.plugins.host) {
+            match backend.open(location, image, context) {
                 Ok(reader) => {
                     if identities_conflict(&image.binary_id(), &reader.binary_id()) {
                         diagnostics.push(diag(

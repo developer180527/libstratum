@@ -21,6 +21,8 @@ use object::{Endianness, Object, ObjectSection};
 const ELF_MAGIC: &[u8; 4] = b"\x7fELF";
 const EI_CLASS: usize = 4;
 const ELFCLASS64: u8 = 2;
+/// zlib's theoretical maximum is ~1032:1; debug sections typically compress 5–10:1.
+const MAX_COMPRESSION_RATIO: u64 = 1100;
 
 #[derive(Debug, Clone, Copy, Default)]
 pub struct Elf;
@@ -119,10 +121,15 @@ fn parse<H: FileHeader<Endian = Endianness>>(data: &[u8], source: Arc<dyn ByteSo
         let nobits = sh_type == elf::SHT_NOBITS;
 
         let load = if alloc && !nobits && size > 0 {
+            // Checked arithmetic: header values are untrusted (found by fuzzing).
+            let end = addr.checked_add(size);
             load_segments
                 .iter()
-                .find(|(vaddr, memsz, _)| addr >= *vaddr && addr + size <= vaddr + memsz)
-                .map(|(vaddr, _, paddr)| AddrRange { start: paddr + (addr - vaddr), size })
+                .find(|(vaddr, memsz, _)| {
+                    addr >= *vaddr && end.zip(vaddr.checked_add(*memsz)).is_some_and(|(end, seg_end)| end <= seg_end)
+                })
+                .and_then(|(vaddr, _, paddr)| paddr.checked_add(addr - vaddr))
+                .map(|start| AddrRange { start, size })
         } else {
             None
         };
@@ -303,7 +310,16 @@ impl Image for ElfImage {
         let data = self.source.bytes()?;
         let file = object::File::parse(data).map_err(malformed)?;
         let section = file.section_by_index(object::SectionIndex(id.0 as usize)).map_err(malformed)?;
-        section.uncompressed_data().map_err(malformed)
+        let compressed = section.compressed_data().map_err(malformed)?;
+        // A tiny section may declare a huge uncompressed size, and decompression allocates it up front
+        // (a decompression bomb, found by fuzzing). Reject ratios no real data reaches.
+        if compressed.format != object::CompressionFormat::None {
+            let max = (compressed.data.len() as u64).saturating_mul(MAX_COMPRESSION_RATIO).saturating_add(4096);
+            if compressed.uncompressed_size > max {
+                return Err(SpiError::LimitExceeded("compressed section declares an implausible uncompressed size"));
+            }
+        }
+        compressed.decompress().map_err(malformed)
     }
 
     fn debug_locations(&self) -> Vec<DebugLocation> {

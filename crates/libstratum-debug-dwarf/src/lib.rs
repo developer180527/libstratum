@@ -2,7 +2,7 @@
 //! `gimli` types stay inside this crate (ADR-0018).
 
 use libstratum_core::SpiError;
-use libstratum_core::host::HostServices;
+use libstratum_core::host::DebugOpenContext;
 use libstratum_core::ir::DebugLocation;
 use libstratum_core::spi::{DebugInfoBackend, DebugReader, Image};
 
@@ -22,7 +22,7 @@ impl DebugInfoBackend for Dwarf {
         &self,
         _location: &DebugLocation,
         _image: &dyn Image,
-        _host: &HostServices,
+        _context: &DebugOpenContext<'_>,
     ) -> Result<Box<dyn DebugReader>, SpiError> {
         // M2: unit index and raw type layouts. M4: lines, inline trees, tombstones.
         Err(SpiError::Unimplemented("DWARF reader (M2)"))

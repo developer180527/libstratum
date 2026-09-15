@@ -2,7 +2,7 @@
 //! The core never chooses file locations, reads env vars, or opens network connections.
 
 use std::fmt::Debug;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 use crate::error::SpiError;
@@ -65,5 +65,23 @@ pub struct HostServices {
 impl Default for HostServices {
     fn default() -> Self {
         Self { locator: Arc::new(NullLocator), cache: None }
+    }
+}
+
+/// Context handed to debug-info backends when they open a location.
+#[derive(Debug, Clone, Copy)]
+pub struct DebugOpenContext<'a> {
+    pub host: &'a HostServices,
+    /// Path of the primary binary when it was opened from a file. Companion files
+    /// (dSYM, `.o`, `.dwo`, PDB) are usually found relative to it.
+    pub image_path: Option<&'a Path>,
+}
+
+impl DebugOpenContext<'_> {
+    /// Asks the host locator for the bytes of `location`.
+    pub fn locate(&self, location: &DebugLocation) -> Result<Option<Arc<dyn ByteSource>>, SpiError> {
+        self.host
+            .locator
+            .locate(&LocateRequest { image_path: self.image_path.map(Path::to_path_buf), location: location.clone() })
     }
 }

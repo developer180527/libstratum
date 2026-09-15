@@ -1,7 +1,7 @@
 use std::fmt::Debug;
 
 use crate::error::SpiError;
-use crate::host::HostServices;
+use crate::host::DebugOpenContext;
 use crate::ir::{
     AddrRange, BinaryId, DebugLocation, DiscardEvidence, FunctionInfo, InlineTree, LineTable, NameQuery, RawLayout,
     Symbol, UnitId, UnitInfo,
@@ -20,7 +20,7 @@ pub trait DebugInfoBackend: Send + Sync + Debug + 'static {
         &self,
         location: &DebugLocation,
         image: &dyn Image,
-        host: &HostServices,
+        context: &DebugOpenContext<'_>,
     ) -> Result<Box<dyn DebugReader>, SpiError>;
 }
 

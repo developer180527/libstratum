@@ -17,6 +17,9 @@ pe = ["dep:libstratum-format-pe"]
 dwarf = ["dep:libstratum-debug-dwarf"]
 pdb = ["dep:libstratum-debug-pdb"]
 cpp = ["dep:libstratum-lang-cpp", "dep:libstratum-demangle"]
+# Memory-map input files instead of reading them. Faster for very large binaries, but a file
+# rewritten while mapped (e.g. by a rebuild) can crash the host process with SIGBUS (ADR-0021).
+mmap = ["dep:memmap2"]
 
 [dependencies]
 libstratum-core.workspace = true
@@ -28,6 +31,9 @@ libstratum-debug-dwarf = { workspace = true, optional = true }
 libstratum-debug-pdb = { workspace = true, optional = true }
 libstratum-lang-cpp = { workspace = true, optional = true }
 libstratum-demangle = { workspace = true, optional = true }
+# Archive member extraction for Mach-O debug-map objects (`lib.a(member.o)`).
+object.workspace = true
+memmap2 = { workspace = true, optional = true }
 
 [lints]
 workspace = true

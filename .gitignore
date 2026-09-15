@@ -30,3 +30,10 @@ __pycache__/
 /fixtures/bin/**/*.ilk
 /fixtures/bin/**/*.exp
 /fixtures/bin/**/*.lib
+
+# Fuzzing
+/fuzz/target
+/fuzz/corpus
+/fuzz/artifacts
+/fuzz/coverage
+/fuzz/Cargo.lock

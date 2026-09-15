@@ -33,8 +33,11 @@
 **Progress (2026-09-16):** ELF, Mach-O (thin + universal) and PE plugins parse sections, segments, symbols, identity and
 debug locations ✅ · shared conformance suite (`libstratum-core` feature `conformance`) ✅ · all 272 fixtures pass it,
 plus Thumb, flash/RAM, dSYM-UUID, universal-slice and RSDS-vs-PDB identity tests ✅ · public-API end-to-end test ✅.
-Remaining: filesystem locator + memory-mapped source in the facade, `cargo fuzz` targets, content hash (moving to M5 with
-the cache), ARM64X view selection (Tier 2).
+Also done: `FsLocator` (dSYM by UUID next to the binary, debug-map objects incl. `lib.a(member.o)`, PDB via recorded
+path / next to the image / SymSrv-layout stores, `.dwo`/`.dwp`, debuglink with CRC check, build-id trees, prefix maps;
+Windows paths resolve on any host) ✅ · `Input::File` + `DebugOpenContext` so backends locate companions ✅ ·
+`FileSource` default and opt-in `MmapSource` (ADR-0021) ✅ · `fuzz/` with an `open_any` target seeded from fixtures ✅.
+**M1 complete.** Moved: content hash → M5 (cache); ARM64X view selection → Tier 2.
 
 Findings while implementing (encoded in the plugins, checked by tests):
 - GNU ld attaches linker-script symbols defined outside any output section (e.g. `__stack_top`) to an arbitrary
@@ -45,6 +48,11 @@ Findings while implementing (encoded in the plugins, checked by tests):
 - `DebugLocation::Dsym` carries the image UUID instead of a path: the image doesn't know where it lives, so the host
   locator finds the bundle and checks the UUID.
 - The executable's RSDS age matches the PDB's DBI-stream age (verified against pdb2 on all 64 Windows fixtures).
+- Fuzzing (`fuzz/open_any`, seeded with one fixture per format) found two ELF bugs within minutes: an arithmetic
+  overflow in the load-address computation for hostile section headers, and a **decompression bomb** (an 8.8 KB file
+  declaring a gigabyte-sized compressed debug section; 4.7 GB resident). Fixed with checked arithmetic and a 1100:1
+  compression-ratio cap; both inputs live in `fuzz/regressions/` and run in the normal test suite. A following
+  5-minute run: 5.18 M executions, no findings.
 - `libstratum-core`: SPI traits, neutral IR (three address spaces, memory regions, hybrid-image-ready), diagnostics, `Engine`/`Session`, host services, `capabilities()`
 - `libstratum-format-pe`: PE32+, RSDS debug directory, ARM64X detection
 - `libstratum-format-elf`: hosted + bare metal; Thumb normalization, mapping symbols, `PT_LOAD` LMA/VMA

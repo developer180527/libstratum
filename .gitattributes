@@ -1,2 +1,3 @@
 # Fixture outputs are exact toolchain artifacts: never normalize line endings (Windows maps use CRLF).
 fixtures/bin/** -text -diff
+fuzz/regressions/** -text -diff

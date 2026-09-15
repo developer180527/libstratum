@@ -340,8 +340,9 @@ impl Image for MachOImage {
             self.sections.iter().find(|s| s.id == id).ok_or(SpiError::Malformed(format!("no section {id:?}")))?;
         let Some(file) = section.extent.file else { return Ok(Cow::Borrowed(&[])) };
         let bytes = self.source.bytes()?;
-        let start = (self.base + file.start) as usize;
-        let end = start.checked_add(file.size as usize).ok_or(SpiError::Malformed("section range overflow".into()))?;
+        let overflow = || SpiError::Malformed("section range overflow".into());
+        let start = usize::try_from(self.base.checked_add(file.start).ok_or_else(overflow)?).map_err(|_| overflow())?;
+        let end = start.checked_add(usize::try_from(file.size).map_err(|_| overflow())?).ok_or_else(overflow)?;
         bytes
             .get(start..end)
             .map(Cow::Borrowed)

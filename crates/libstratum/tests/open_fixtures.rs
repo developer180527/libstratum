@@ -41,3 +41,32 @@ fn embedded_sections_report_flash_and_ram_addresses() {
     assert_eq!(bss.load_address, None, ".bss occupies RAM only");
     assert_eq!(bss.size.load, 0);
 }
+
+/// Inputs that crashed the fuzzer (fuzz/regressions) must now open or fail cleanly. The engine turns
+/// panics inside `open` into `OpenError::Internal`, so that variant counts as a regression too.
+#[test]
+fn fuzz_regressions_do_not_panic() {
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../fuzz/regressions");
+    let engine = libstratum::default_engine();
+    let mut count = 0;
+    for entry in std::fs::read_dir(dir).unwrap() {
+        let path = entry.unwrap().path();
+        let bytes = std::fs::read(&path).unwrap();
+        match engine.open(libstratum::Input::Bytes(bytes), &libstratum::OpenOptions::default()) {
+            Ok(session) => {
+                let image = session.image();
+                let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                    for section in image.sections() {
+                        let _ = image.section_data(section.id);
+                    }
+                    let _ = session.info();
+                }));
+                assert!(result.is_ok(), "{}: panic after open", path.display());
+            }
+            Err(libstratum::OpenError::Internal(message)) => panic!("{}: {message}", path.display()),
+            Err(_) => {}
+        }
+        count += 1;
+    }
+    assert!(count > 0);
+}

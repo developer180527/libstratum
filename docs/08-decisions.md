@@ -116,6 +116,12 @@ To change an accepted decision, add a new ADR that supersedes it. Don't edit his
 4. Later: MCP, FFI, server/LSP, GUI, engine IDE.
 **Consequences:** Refines ADR-0017: frontends stay out until backend v0.1 has survived real code; the CLI is explicitly next.
 
+## ADR-0021: Input files are read into memory by default; memory mapping is opt-in
+**Status:** Accepted
+**Context:** Memory-mapping binaries avoids copying multi-GB debug files, but a mapped file that another process truncates or rewrites (a rebuild while an IDE or agent holds a session) makes reads fault with SIGBUS and crashes the *host* process. For an embeddable library that runs inside editors, that failure mode is unacceptable as a default. Mapping also requires `unsafe`, which the workspace denies.
+**Decision:** `libstratum::open_path` reads the file into memory (`FileSource`). `MmapSource` and `open_path_mmap` exist behind the `mmap` feature, with the `unsafe` block isolated and documented. Hosts that control their files (CI, batch tools) can opt in. The core only sees `ByteSource`, so the choice never reaches plugins.
+**Consequences:** Higher peak memory for very large inputs by default; revisit with benchmarks in M5 (e.g. map only debug companions that the host marks immutable).
+
 ---
 
 ## Open questions

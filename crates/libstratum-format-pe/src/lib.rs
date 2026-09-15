@@ -48,7 +48,7 @@ impl BinaryFormat for Pe {
         let data = source.bytes()?;
         let offset = pe_header_offset(data).ok_or_else(|| SpiError::Malformed("missing PE signature".into()))?;
         let magic = data
-            .get(offset + OPTIONAL_MAGIC_OFFSET..offset + OPTIONAL_MAGIC_OFFSET + 2)
+            .get(offset.saturating_add(OPTIONAL_MAGIC_OFFSET)..offset.saturating_add(OPTIONAL_MAGIC_OFFSET + 2))
             .map(|b| u16::from_le_bytes([b[0], b[1]]))
             .ok_or_else(|| SpiError::Malformed("truncated PE optional header".into()))?;
         let image = match magic {
@@ -102,7 +102,9 @@ fn parse<H: ImageNtHeaders>(data: &[u8], source: Arc<dyn ByteSource>) -> Result<
         };
         let flags = header.characteristics.get(LE);
         let file_extent = (raw_size > 0 && raw_ptr > 0).then_some(AddrRange { start: raw_ptr, size: raw_size });
-        let va = image_base + rva;
+        let va = image_base
+            .checked_add(rva)
+            .ok_or_else(|| SpiError::Malformed(format!("section {name} address overflows (base {image_base:#x})")))?;
         sections.push(Section {
             id: SectionId(section.index().0 as u32),
             segment: None,
@@ -208,7 +210,10 @@ impl Image for PeImage {
         let Some(file) = section.extent.file else { return Ok(Cow::Borrowed(&[])) };
         let bytes = self.source.bytes()?;
         let start = usize::try_from(file.start).map_err(|_| SpiError::Malformed("section offset".into()))?;
-        let end = start.checked_add(file.size as usize).ok_or(SpiError::Malformed("section range overflow".into()))?;
+        let end = usize::try_from(file.size)
+            .ok()
+            .and_then(|size| start.checked_add(size))
+            .ok_or(SpiError::Malformed("section range overflow".into()))?;
         bytes
             .get(start..end)
             .map(Cow::Borrowed)

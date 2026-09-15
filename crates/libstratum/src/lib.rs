@@ -10,15 +10,26 @@
 //! ```
 
 use std::path::Path;
+use std::sync::Arc;
+
+mod locator;
+mod source;
 
 pub use libstratum_core::spi::OpenOptions;
-pub use libstratum_core::{CancelToken, Engine, EngineBuilder, Input, OpenError, QueryError, Session, host, ir, spi};
+pub use libstratum_core::{
+    CancelToken, Engine, EngineBuilder, Input, OpenError, QueryError, Session, SpiError, host, ir, spi,
+};
 pub use libstratum_model as model;
+pub use locator::FsLocator;
+pub use source::FileSource;
+#[cfg(feature = "mmap")]
+pub use source::MmapSource;
 
-/// Builder pre-populated with every plugin enabled by Cargo features.
+/// Builder pre-populated with every plugin enabled by Cargo features and a filesystem locator
+/// that looks next to the binary. Replace the host services to add search paths or symbol stores.
 pub fn default_builder() -> EngineBuilder {
-    #[allow(unused_mut)]
-    let mut builder = Engine::builder();
+    let mut builder =
+        Engine::builder().host(host::HostServices { locator: Arc::new(FsLocator::default()), cache: None });
     #[cfg(feature = "elf")]
     {
         builder = builder.format(libstratum_format_elf::Elf);
@@ -54,12 +65,20 @@ pub fn default_engine() -> Engine {
     default_builder().build()
 }
 
-/// Reads a binary from disk and opens it.
+/// Reads a binary from disk into memory and opens it. The path is kept so companion files
+/// (dSYM, `.o`, PDB, `.dwo`) can be located next to it.
 pub fn open_path(engine: &Engine, path: impl AsRef<Path>) -> Result<Session, OpenError> {
-    // TODO(M1): memory-map instead of reading, and install a filesystem locator
-    // for dSYM / .o / .dwo / PDB companions relative to `path`.
-    let bytes = std::fs::read(path).map_err(|e| OpenError::Read(libstratum_core::SpiError::Io(e.to_string())))?;
-    engine.open(Input::Bytes(bytes), &OpenOptions::default())
+    let path = path.as_ref();
+    let source = FileSource::read(path).map_err(OpenError::Read)?;
+    engine.open(Input::File { source: Arc::new(source), path: path.to_path_buf() }, &OpenOptions::default())
+}
+
+/// Like [`open_path`], but memory-maps the file (feature `mmap`; see ADR-0021 for the hazard).
+#[cfg(feature = "mmap")]
+pub fn open_path_mmap(engine: &Engine, path: impl AsRef<Path>) -> Result<Session, OpenError> {
+    let path = path.as_ref();
+    let source = MmapSource::open(path).map_err(OpenError::Read)?;
+    engine.open(Input::File { source: Arc::new(source), path: path.to_path_buf() }, &OpenOptions::default())
 }
 
 #[cfg(test)]

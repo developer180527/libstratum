@@ -23,6 +23,7 @@ jobs:
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets -- -D warnings
       - run: cargo test --workspace
+      - run: cargo test -p libstratum --features mmap
       - run: python3 scripts/check_dependency_rules.py
 
   msrv:
