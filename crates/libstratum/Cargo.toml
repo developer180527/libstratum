@@ -1,0 +1,33 @@
+[package]
+name = "libstratum"
+description = "Low-level observability for native binaries: what did this source become? (facade crate)"
+readme = "../../README.md"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[features]
+default = ["elf", "macho", "pe", "dwarf", "pdb", "cpp"]
+elf = ["dep:libstratum-format-elf"]
+macho = ["dep:libstratum-format-macho"]
+pe = ["dep:libstratum-format-pe"]
+dwarf = ["dep:libstratum-debug-dwarf"]
+pdb = ["dep:libstratum-debug-pdb"]
+cpp = ["dep:libstratum-lang-cpp", "dep:libstratum-demangle"]
+
+[dependencies]
+libstratum-core.workspace = true
+libstratum-model.workspace = true
+libstratum-format-elf = { workspace = true, optional = true }
+libstratum-format-macho = { workspace = true, optional = true }
+libstratum-format-pe = { workspace = true, optional = true }
+libstratum-debug-dwarf = { workspace = true, optional = true }
+libstratum-debug-pdb = { workspace = true, optional = true }
+libstratum-lang-cpp = { workspace = true, optional = true }
+libstratum-demangle = { workspace = true, optional = true }
+
+[lints]
+workspace = true

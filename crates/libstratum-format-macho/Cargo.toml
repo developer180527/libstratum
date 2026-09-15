@@ -1,0 +1,16 @@
+[package]
+name = "libstratum-format-macho"
+description = "Mach-O container plugin for libstratum (thin and universal)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+libstratum-core.workspace = true
+object.workspace = true
+
+[lints]
+workspace = true

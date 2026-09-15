@@ -1,0 +1,5 @@
+/target
+**/*.rs.bk
+.DS_Store
+# fixture build scratch (committed outputs live in fixtures/bin)
+/fixtures/build/out/

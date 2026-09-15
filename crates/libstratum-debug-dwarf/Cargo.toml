@@ -1,0 +1,16 @@
+[package]
+name = "libstratum-debug-dwarf"
+description = "DWARF debug-info backend for libstratum"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+libstratum-core.workspace = true
+gimli.workspace = true
+
+[lints]
+workspace = true

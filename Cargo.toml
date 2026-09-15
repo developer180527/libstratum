@@ -1,0 +1,40 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.0.0"
+edition = "2024"
+# MSRV tracks gimli (docs/08-decisions.md Q2).
+rust-version = "1.88"
+license = "MIT"
+repository = "https://github.com/OWNER/libstratum"
+publish = false
+
+[workspace.dependencies]
+# internal
+libstratum-model = { path = "crates/libstratum-model" }
+libstratum-core = { path = "crates/libstratum-core" }
+libstratum-arch = { path = "crates/libstratum-arch" }
+libstratum-demangle = { path = "crates/libstratum-demangle" }
+libstratum-lang-cpp = { path = "crates/libstratum-lang-cpp" }
+libstratum-format-elf = { path = "crates/libstratum-format-elf" }
+libstratum-format-macho = { path = "crates/libstratum-format-macho" }
+libstratum-format-pe = { path = "crates/libstratum-format-pe" }
+libstratum-debug-dwarf = { path = "crates/libstratum-debug-dwarf" }
+libstratum-debug-pdb = { path = "crates/libstratum-debug-pdb" }
+
+# external (ADR-0001). PDB reader is pending the M0 spike (Q14).
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "2.0"
+object = { version = "0.40", default-features = false, features = ["read", "std", "compression"] }
+gimli = { version = "0.34", default-features = false, features = ["read", "std"] }
+cpp_demangle = "0.5"
+msvc-demangler = "0.11"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+missing_debug_implementations = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }

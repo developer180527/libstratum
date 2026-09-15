@@ -1,0 +1,16 @@
+[package]
+name = "libstratum-debug-pdb"
+description = "PDB (CodeView) debug-info backend for libstratum"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+libstratum-core.workspace = true
+# PDB reader (ms-pdb or pdb2) chosen by the M0 spike: docs/08-decisions.md Q14.
+
+[lints]
+workspace = true

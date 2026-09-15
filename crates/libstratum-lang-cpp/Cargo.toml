@@ -1,0 +1,15 @@
+[package]
+name = "libstratum-lang-cpp"
+description = "C and C++ language support for libstratum"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+libstratum-core.workspace = true
+
+[lints]
+workspace = true
