@@ -38,6 +38,11 @@ pub trait Image: Send + Sync + Debug {
     fn endian(&self) -> Endian;
     /// Pointer size in bytes (4 or 8).
     fn address_size(&self) -> u8;
+    /// Preferred load base. IR addresses are absolute (base included); PE/PDB data is
+    /// relative to this base (RVA), so debug backends convert with it. 0 where not applicable.
+    fn image_base(&self) -> u64 {
+        0
+    }
     fn binary_id(&self) -> BinaryId;
     fn segments(&self) -> &[Segment];
     fn sections(&self) -> &[Section];

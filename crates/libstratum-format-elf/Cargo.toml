@@ -13,5 +13,8 @@ libstratum-core.workspace = true
 libstratum-arch.workspace = true
 object.workspace = true
 
+[dev-dependencies]
+libstratum-core = { workspace = true, features = ["conformance"] }
+
 [lints]
 workspace = true

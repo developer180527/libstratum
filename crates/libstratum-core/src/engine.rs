@@ -8,7 +8,7 @@ use libstratum_model::{
     LensCapability, MissingInput, SectionInfo, SectionKey, Severity, Size,
 };
 
-use crate::error::OpenError;
+use crate::error::{OpenError, SpiError};
 use crate::host::{ByteSource, HostServices, InMemorySource};
 use crate::spi::{
     ArtifactProvider, BinaryFormat, DebugInfoBackend, DebugReader, Demangler, Image, LanguageSupport, MapFileParser,
@@ -132,11 +132,12 @@ impl Engine {
 
     fn open_debug_info(&self, image: &dyn Image, diagnostics: &mut Vec<Diagnostic>) -> Vec<Box<dyn DebugReader>> {
         let mut readers = Vec::new();
-        for location in image.debug_locations() {
-            let Some(backend) = self.plugins.debug_backends.iter().find(|b| b.accepts(&location)) else {
+        let locations = image.debug_locations();
+        for location in &locations {
+            let Some(backend) = self.plugins.debug_backends.iter().find(|b| b.accepts(location)) else {
                 continue;
             };
-            match backend.open(&location, image, &self.plugins.host) {
+            match backend.open(location, image, &self.plugins.host) {
                 Ok(reader) => {
                     if identities_conflict(&image.binary_id(), &reader.binary_id()) {
                         diagnostics.push(diag(
@@ -149,6 +150,12 @@ impl Engine {
                         readers.push(reader);
                     }
                 }
+                Err(SpiError::Unimplemented(what)) => diagnostics.push(diag(
+                    Severity::Info,
+                    DiagCode::Unimplemented,
+                    format!("{}: {what} is not implemented yet", backend.id()),
+                    Some(format!("{location:?}")),
+                )),
                 Err(err) => diagnostics.push(diag(
                     Severity::Warning,
                     DiagCode::DebugInfoParseError,
@@ -157,8 +164,20 @@ impl Engine {
                 )),
             }
         }
-        if readers.is_empty() {
-            diagnostics.push(diag(Severity::Warning, DiagCode::NoDebugInfo, "no usable debug info found".into(), None));
+        if locations.is_empty() {
+            diagnostics.push(diag(
+                Severity::Warning,
+                DiagCode::NoDebugInfo,
+                "the image references no debug info".into(),
+                None,
+            ));
+        } else if readers.is_empty() {
+            diagnostics.push(diag(
+                Severity::Warning,
+                DiagCode::NoDebugInfo,
+                format!("{} debug info location(s) found, none could be read", locations.len()),
+                None,
+            ));
         }
         readers
     }
@@ -255,7 +274,6 @@ mod tests {
     use std::borrow::Cow;
 
     use super::*;
-    use crate::error::SpiError;
     use crate::ir::{Arch, DebugLocation, Endian, Section, SectionId, Segment, Symbol};
 
     #[derive(Debug)]

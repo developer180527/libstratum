@@ -179,6 +179,7 @@ dependencies = [
 name = "libstratum-format-macho"
 version = "0.0.0"
 dependencies = [
+ "libstratum-arch",
  "libstratum-core",
  "object",
 ]
@@ -189,6 +190,7 @@ version = "0.0.0"
 dependencies = [
  "libstratum-core",
  "object",
+ "pdb2",
 ]
 
 [[package]]

@@ -29,6 +29,22 @@
 **Exit:** CI green on three host OSes; fixtures committed; spike report merged.
 
 ## M1: Containers and IR (no debug info)
+
+**Progress (2026-09-16):** ELF, Mach-O (thin + universal) and PE plugins parse sections, segments, symbols, identity and
+debug locations ✅ · shared conformance suite (`libstratum-core` feature `conformance`) ✅ · all 272 fixtures pass it,
+plus Thumb, flash/RAM, dSYM-UUID, universal-slice and RSDS-vs-PDB identity tests ✅ · public-API end-to-end test ✅.
+Remaining: filesystem locator + memory-mapped source in the facade, `cargo fuzz` targets, content hash (moving to M5 with
+the cache), ARM64X view selection (Tier 2).
+
+Findings while implementing (encoded in the plugins, checked by tests):
+- GNU ld attaches linker-script symbols defined outside any output section (e.g. `__stack_top`) to an arbitrary
+  section; labels whose address lies outside their section are treated as absolute.
+- Mach-O `__mh_execute_header` claims section 1 but points at the Mach header; same rule.
+- Linked PE images have no COFF symbols; symbols come from the PDB backend. IR addresses are absolute VAs, so
+  `Image::image_base()` was added for RVA-based debug formats (default 0).
+- `DebugLocation::Dsym` carries the image UUID instead of a path: the image doesn't know where it lives, so the host
+  locator finds the bundle and checks the UUID.
+- The executable's RSDS age matches the PDB's DBI-stream age (verified against pdb2 on all 64 Windows fixtures).
 - `libstratum-core`: SPI traits, neutral IR (three address spaces, memory regions, hybrid-image-ready), diagnostics, `Engine`/`Session`, host services, `capabilities()`
 - `libstratum-format-pe`: PE32+, RSDS debug directory, ARM64X detection
 - `libstratum-format-elf`: hosted + bare metal; Thumb normalization, mapping symbols, `PT_LOAD` LMA/VMA

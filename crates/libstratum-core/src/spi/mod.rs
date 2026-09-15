@@ -2,6 +2,8 @@
 //! Breaking them is a major version bump of `libstratum-core`.
 
 mod artifact;
+#[cfg(feature = "conformance")]
+pub mod conformance;
 mod debug;
 mod demangle;
 mod format;

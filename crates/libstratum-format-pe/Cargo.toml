@@ -12,5 +12,10 @@ publish.workspace = true
 libstratum-core.workspace = true
 object.workspace = true
 
+[dev-dependencies]
+libstratum-core = { workspace = true, features = ["conformance"] }
+# Cross-checks the RSDS identity against the PDB file in tests only.
+pdb2.workspace = true
+
 [lints]
 workspace = true

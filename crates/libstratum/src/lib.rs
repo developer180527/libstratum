@@ -73,7 +73,7 @@ mod tests {
     }
 
     #[test]
-    fn probes_route_to_unimplemented_plugins_for_now() {
+    fn truncated_elf_is_a_format_error() {
         let engine = default_engine();
         let err = engine.open(Input::Bytes(b"\x7fELF\x02\x01\x01\x00".to_vec()), &OpenOptions::default()).unwrap_err();
         assert!(matches!(err, OpenError::Format { format: "elf", .. }), "{err:?}");

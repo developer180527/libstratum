@@ -12,8 +12,8 @@ pub const SCHEMA_VERSION: u32 = 1;
 /// A size measured in every address space (ADR-0010, ADR-0016).
 ///
 /// `vm`: bytes occupied at run time. `file`: bytes on disk.
-/// `load`: bytes occupied at the load address (flash on MCUs); equals `vm`
-/// for hosted targets where load and run addresses coincide.
+/// `load`: initialized bytes stored at the load address (flash on MCUs); zero-initialized
+/// memory such as `.bss` has a `vm` size but no `load` size.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct Size {
     pub vm: u64,

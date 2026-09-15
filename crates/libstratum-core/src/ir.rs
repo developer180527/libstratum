@@ -140,8 +140,9 @@ pub struct MemoryRegion {
 pub enum DebugLocation {
     /// Debug sections inside the image itself (ELF `.debug_*`, PE with DWARF).
     Embedded,
-    /// Mach-O `.dSYM` bundle companion file.
-    Dsym { path: PathBuf },
+    /// Mach-O `.dSYM` bundle for the image's `LC_UUID`. The host locator finds the bundle
+    /// (next to the binary, explicit path, or a symbol store) and must check the UUID.
+    Dsym { uuid: [u8; 16] },
     /// Mach-O debug-map object (stabs `N_OSO`), possibly `lib.a(member.o)`.
     MachOObject { path: PathBuf, mtime: u64 },
     /// Split DWARF unit (`-gsplit-dwarf`).

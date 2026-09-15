@@ -9,6 +9,10 @@ repository.workspace = true
 publish.workspace = true
 
 # Rule (docs/02 §2, ADR-0018): no container or debug-info parser crates here.
+[features]
+# Shared plugin conformance checks, used by plugin integration tests.
+conformance = []
+
 [dependencies]
 libstratum-model.workspace = true
 thiserror.workspace = true
