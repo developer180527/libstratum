@@ -42,6 +42,9 @@ fn main() {
                 for h in &layout.holes {
                     println!("  hole @{} bits, {} bits", h.offset_bits, h.size_bits);
                 }
+                for note in &layout.notes {
+                    println!("  note: {note}");
+                }
                 if let Some(s) = &layout.suggestion {
                     println!("  suggestion: {:?} -> {} bytes (saves {})", s.order, s.new_size_bytes, s.saved_bytes);
                 }

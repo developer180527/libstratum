@@ -81,11 +81,19 @@ struct TypeEntry {
 pub struct DwarfReader {
     dwarf: gimli::Dwarf<R>,
     units: Vec<gimli::Unit<R>>,
+    /// Type units by signature: `DW_FORM_ref_sig8` references resolve through this.
+    signatures: HashMap<u64, (usize, UnitOffset)>,
     address_size: u8,
     endian: Endian,
     binary_id: BinaryId,
-    /// Qualified name → definitions. Built on the first type query.
-    type_index: OnceLock<Result<HashMap<String, Vec<TypeEntry>>, String>>,
+    /// Qualified name → definitions (and names seen only as declarations). Built on the first type query.
+    type_index: OnceLock<Result<TypeIndex, String>>,
+}
+
+#[derive(Debug, Default)]
+struct TypeIndex {
+    definitions: HashMap<String, Vec<TypeEntry>>,
+    declarations: std::collections::HashSet<String>,
 }
 
 impl std::fmt::Debug for DwarfReader {
@@ -116,9 +124,26 @@ impl DwarfReader {
         while let Some(header) = headers.next().map_err(gimli_err)? {
             units.push(dwarf.unit(header).map_err(gimli_err)?);
         }
+        // DWARF 4 type units live in `.debug_types` (DWARF 5 puts them in `.debug_info`, above).
+        let mut type_headers = dwarf.type_units();
+        while let Some(header) = type_headers.next().map_err(gimli_err)? {
+            units.push(dwarf.unit(header).map_err(gimli_err)?);
+        }
+        let signatures = units
+            .iter()
+            .enumerate()
+            .filter_map(|(i, unit)| match unit.header.type_() {
+                gimli::UnitType::Type { type_signature, type_offset }
+                | gimli::UnitType::SplitType { type_signature, type_offset } => {
+                    Some((type_signature.0, (i, type_offset)))
+                }
+                _ => None,
+            })
+            .collect();
         Ok(Self {
             dwarf,
             units,
+            signatures,
             address_size: image.address_size(),
             endian: image.endian(),
             binary_id,
@@ -137,8 +162,8 @@ impl DwarfReader {
     }
 
     /// Walks every unit once, recording complete named aggregates under their qualified names.
-    fn build_index(&self) -> Result<HashMap<String, Vec<TypeEntry>>, SpiError> {
-        let mut index: HashMap<String, Vec<TypeEntry>> = HashMap::new();
+    fn build_index(&self) -> Result<TypeIndex, SpiError> {
+        let mut index = TypeIndex::default();
         for unit in 0..self.units.len() {
             let unit_ref = self.unit_ref(unit);
             let mut cursor = unit_ref.entries();
@@ -160,14 +185,28 @@ impl DwarfReader {
                 if !scoping {
                     continue;
                 }
-                let name = self.name_of(unit, entry);
+                // Type-unit scopes can be nameless declaration stubs that only carry DW_AT_signature
+                // (Clang emits `Outer` this way around `Inner`); the name lives in the referenced unit.
+                let name = self.name_of(unit, entry).or_else(|| {
+                    let signature = entry.attr_value(constants::DW_AT_signature)?;
+                    let (target_unit, target) = self.resolve_once(unit, &signature)?;
+                    self.name_of(target_unit, &target)
+                });
                 if tag != constants::DW_TAG_namespace
                     && let Some(name) = &name
-                    && !flag(entry, constants::DW_AT_declaration)
                 {
                     let mut qualified: Vec<&str> = scopes.iter().filter_map(|(_, n)| n.as_deref()).collect();
                     qualified.push(name);
-                    index.entry(qualified.join("::")).or_default().push(TypeEntry { unit, offset: entry.offset() });
+                    let qualified = qualified.join("::");
+                    if flag(entry, constants::DW_AT_declaration) {
+                        index.declarations.insert(qualified);
+                    } else {
+                        index
+                            .definitions
+                            .entry(qualified)
+                            .or_default()
+                            .push(TypeEntry { unit, offset: entry.offset() });
+                    }
                 }
                 if entry.has_children() {
                     scopes.push((
@@ -300,21 +339,43 @@ impl DwarfReader {
         let program = unit_ref.line_program.as_ref()?;
         let header = program.header();
         let file = header.file(file_index)?;
+        let name = unit_ref.attr_string(file.path_name()).ok()?.to_string_lossy().ok()?.into_owned();
+        let is_absolute = name.starts_with('/') || name.as_bytes().get(1) == Some(&b':');
         let mut path = String::new();
-        if let Some(dir) = file.directory(header)
+        if !is_absolute
+            && let Some(dir) = file.directory(header)
             && let Ok(dir) = unit_ref.attr_string(dir)
         {
             path.push_str(&dir.to_string_lossy().ok()?);
             path.push('/');
         }
-        path.push_str(&unit_ref.attr_string(file.path_name()).ok()?.to_string_lossy().ok()?);
-        Some(SourceLoc { file: path, line: line as u32, column: None })
+        path.push_str(&name);
+        Some(SourceLoc { file: libstratum_core::ir::normalize_source_path(&path), line: line as u32, column: None })
     }
 
-    /// Follows a `DW_AT_type` reference to the referenced DIE in the same unit.
+    /// Follows a type reference to its DIE: same-unit, cross-unit, or type-unit signature. A
+    /// declaration stub carrying `DW_AT_signature` is followed to the definition in its type unit.
     fn resolve(&self, unit: usize, value: &AttributeValue<R>) -> Option<(usize, gimli::DebuggingInformationEntry<R>)> {
+        let (unit, die) = self.resolve_once(unit, value)?;
+        if flag(&die, constants::DW_AT_declaration)
+            && let Some(signature @ AttributeValue::DebugTypesRef(_)) = die.attr_value(constants::DW_AT_signature)
+        {
+            return self.resolve_once(unit, &signature).or(Some((unit, die)));
+        }
+        Some((unit, die))
+    }
+
+    fn resolve_once(
+        &self,
+        unit: usize,
+        value: &AttributeValue<R>,
+    ) -> Option<(usize, gimli::DebuggingInformationEntry<R>)> {
         match value {
             AttributeValue::UnitRef(offset) => self.unit_ref(unit).entry(*offset).ok().map(|e| (unit, e)),
+            AttributeValue::DebugTypesRef(signature) => {
+                let (unit, offset) = *self.signatures.get(&signature.0)?;
+                self.unit_ref(unit).entry(offset).ok().map(|e| (unit, e))
+            }
             AttributeValue::DebugInfoRef(offset) => {
                 // Cross-unit reference (e.g. GCC LTO): find the unit containing the offset.
                 self.units.iter().enumerate().find_map(|(i, u)| {
@@ -537,10 +598,23 @@ impl DebugReader for DwarfReader {
         let index = self.type_index.get_or_init(|| self.build_index().map_err(|e| e.to_string()));
         let index = index.as_ref().map_err(|e| SpiError::Malformed(e.clone()))?;
         let mut out = Vec::new();
-        for (name, entries) in index.iter().filter(|(name, _)| matches(name)) {
+        for (name, entries) in index.definitions.iter().filter(|(name, _)| matches(name)) {
             for entry in entries {
                 out.push(self.layout(name, entry)?);
             }
+        }
+        // Names that exist only as declarations: the definition is elsewhere or was omitted.
+        for name in index.declarations.iter().filter(|n| matches(n) && !index.definitions.contains_key(*n)) {
+            out.push(RawLayout {
+                name: name.clone(),
+                kind: AggregateKind::Struct,
+                byte_size: 0,
+                alignment: None,
+                decl: None,
+                is_declaration: true,
+                has_virtual_bases: false,
+                entries: Vec::new(),
+            });
         }
         Ok(out)
     }

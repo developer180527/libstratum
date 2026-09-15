@@ -9,7 +9,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/inheritance.cpp",
+          "line": 28
+        },
         "evidence": [],
         "holes": [],
         "kind": "struct",
@@ -53,7 +57,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/inheritance.cpp",
+          "line": 45
+        },
         "evidence": [],
         "holes": [],
         "kind": "struct",
@@ -107,7 +115,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/inheritance.cpp",
+          "line": 17
+        },
         "evidence": [],
         "holes": [
           {
@@ -164,7 +176,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/inheritance.cpp",
+          "line": 21
+        },
         "evidence": [],
         "holes": [
           {
@@ -221,7 +237,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/inheritance.cpp",
+          "line": 37
+        },
         "evidence": [],
         "holes": [],
         "kind": "struct",
@@ -267,7 +287,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/inheritance.cpp",
+          "line": 5
+        },
         "evidence": [],
         "holes": [],
         "kind": "struct",

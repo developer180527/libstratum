@@ -92,6 +92,31 @@ pub fn compute(raw: &RawLayout, cacheline_bytes: u64) -> TypeLayout {
     } else {
         size_bits.saturating_sub(cursor)
     };
+    // Non-empty fields sharing storage in a struct: an anonymous union whose members the debug format
+    // lists directly (MSVC/clang-cl PDBs don't record the union at all).
+    if kind != AggregateKind::Union {
+        let mut overlapping = Vec::new();
+        for (i, a) in members.iter().enumerate() {
+            let overlaps = members.iter().enumerate().any(|(j, b)| {
+                i != j
+                    && a.kind == MemberKind::Field
+                    && b.kind == MemberKind::Field
+                    && a.size_bits > 8
+                    && b.size_bits > 8
+                    && a.offset_bits.is_some()
+                    && a.offset_bits == b.offset_bits
+            });
+            if overlaps {
+                overlapping.push(display_name(a));
+            }
+        }
+        if !overlapping.is_empty() {
+            notes.push(format!(
+                "members {} share storage (an anonymous union flattened by the debug format)",
+                overlapping.join(", ")
+            ));
+        }
+    }
     let padding_bits = holes.iter().map(|h| h.size_bits).sum::<u64>() + tail_padding_bits;
 
     let fields_only = members.iter().all(|m| m.kind == MemberKind::Field);

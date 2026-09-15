@@ -63,6 +63,7 @@ type Parser = pdb2::PDB<'static, Cursor<Arc<[u8]>>>;
 
 /// A class or union definition found in the TPI stream.
 struct Candidate {
+    index: Option<TypeIndex>,
     name: String,
     kind: AggregateKind,
     size: u64,
@@ -126,7 +127,7 @@ impl TypeContext<'_, '_> {
             Some(TypeData::Array(a)) => {
                 let elem = self.size(a.element_type, depth + 1).unwrap_or(0);
                 let bytes = u64::from(a.dimensions.last().copied().unwrap_or(0));
-                let count = if elem > 0 { bytes / elem } else { 0 };
+                let count = bytes.checked_div(elem).unwrap_or(0);
                 format!("{}[{count}]", self.name(a.element_type, depth + 1))
             }
             Some(TypeData::Procedure(_)) | Some(TypeData::MemberFunction(_)) => "fn(...)".into(),
@@ -265,6 +266,50 @@ fn primitive_name(kind: PrimitiveKind) -> &'static str {
     }
 }
 
+impl PdbReader {
+    /// `LF_UDT_SRC_LINE` / `LF_UDT_MOD_SRC_LINE` records: where each type was defined.
+    fn declaration_lines(
+        &self,
+        pdb: &mut Parser,
+    ) -> Result<HashMap<TypeIndex, libstratum_core::ir::SourceLoc>, SpiError> {
+        let ids = pdb.id_information().map_err(pdb_err)?;
+        let strings = pdb.string_table().ok();
+        let mut finder = ids.finder();
+        let mut iter = ids.iter();
+        let mut sources = Vec::new();
+        while let Some(item) = iter.next().map_err(pdb_err)? {
+            finder.update(&iter);
+            if let Ok(pdb2::IdData::UserDefinedTypeSource(source)) = item.parse() {
+                sources.push(source);
+            }
+        }
+        let mut out = HashMap::new();
+        for source in sources {
+            let file = match source.source_file {
+                pdb2::UserDefinedTypeSourceFileRef::Local(id) => match finder.find(id).and_then(|i| i.parse()) {
+                    Ok(pdb2::IdData::String(s)) => s.name.to_string().into_owned(),
+                    _ => continue,
+                },
+                pdb2::UserDefinedTypeSourceFileRef::Remote(_, reference) => {
+                    match strings.as_ref().and_then(|t| reference.to_string_lossy(t).ok()) {
+                        Some(name) => name.into_owned(),
+                        None => continue,
+                    }
+                }
+            };
+            out.insert(
+                source.udt,
+                libstratum_core::ir::SourceLoc {
+                    file: libstratum_core::ir::normalize_source_path(&file),
+                    line: source.line,
+                    column: None,
+                },
+            );
+        }
+        Ok(out)
+    }
+}
+
 impl DebugReader for PdbReader {
     fn binary_id(&self) -> BinaryId {
         self.identity().unwrap_or(BinaryId::None)
@@ -298,11 +343,13 @@ impl DebugReader for PdbReader {
         let mut finder = info.finder();
         let mut iter = info.iter();
         let mut candidates = Vec::new();
+        let mut forward_names = std::collections::HashSet::new();
         let mut definitions: HashMap<String, (u64, Option<TypeIndex>)> = HashMap::new();
         while let Some(item) = iter.next().map_err(pdb_err)? {
             finder.update(&iter);
             let candidate = match item.parse() {
                 Ok(TypeData::Class(c)) if !c.properties.forward_reference() => Candidate {
+                    index: Some(item.index()),
                     name: c.name.to_string().into_owned(),
                     kind: if matches!(c.kind, pdb2::ClassKind::Class) {
                         AggregateKind::Class
@@ -313,17 +360,27 @@ impl DebugReader for PdbReader {
                     fields: c.fields,
                 },
                 Ok(TypeData::Union(u)) if !u.properties.forward_reference() => Candidate {
+                    index: Some(item.index()),
                     name: u.name.to_string().into_owned(),
                     kind: AggregateKind::Union,
                     size: u.size,
                     fields: Some(u.fields),
                 },
+                Ok(TypeData::Class(c)) => {
+                    forward_names.insert(c.name.to_string().into_owned());
+                    continue;
+                }
+                Ok(TypeData::Union(u)) => {
+                    forward_names.insert(u.name.to_string().into_owned());
+                    continue;
+                }
                 _ => continue,
             };
             definitions.entry(candidate.name.clone()).or_insert((candidate.size, candidate.fields));
             candidates.push(candidate);
         }
 
+        let decls = self.declaration_lines(&mut pdb).unwrap_or_default();
         let context = TypeContext { finder: &finder, definitions: &definitions, address_size: self.address_size };
         let mut out = Vec::new();
         for candidate in candidates.iter().filter(|c| matches(&c.name)) {
@@ -384,10 +441,22 @@ impl DebugReader for PdbReader {
                 kind: candidate.kind,
                 byte_size: candidate.size,
                 alignment: None,
-                decl: None,
+                decl: candidate.index.and_then(|i| decls.get(&i).cloned()),
                 is_declaration: false,
                 has_virtual_bases,
                 entries,
+            });
+        }
+        for name in forward_names.iter().filter(|n| matches(n) && !definitions.contains_key(*n)) {
+            out.push(RawLayout {
+                name: name.clone(),
+                kind: AggregateKind::Struct,
+                byte_size: 0,
+                alignment: None,
+                decl: None,
+                is_declaration: true,
+                has_virtual_bases: false,
+                entries: Vec::new(),
             });
         }
         Ok(out)

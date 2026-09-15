@@ -4,7 +4,7 @@
 [groups.layout]
 # M2 abstraction proof: every layout fixture must exist on all Tier 1 platforms.
 opts = ["O0", "O2"]
-toolchains = ["apple-clang", "linux-clang", "linux-gcc", "arm-none-eabi-gcc", "arm-llvm", "riscv-gcc", "msvc", "clang-cl"]
+toolchains = ["apple-clang", "linux-clang", "linux-gcc", "arm-none-eabi-gcc", "arm-llvm", "riscv-gcc", "msvc", "clang-cl", "linux-clang-types5", "linux-clang-types4"]
 
 [[fixtures]]
 name = "padding"
@@ -45,3 +45,8 @@ sources = ["layout/c_types.c"]
 name = "odr_conflict"
 group = "layout"
 sources = ["layout/odr_conflict/a.cpp", "layout/odr_conflict/b.cpp"]
+
+[[fixtures]]
+name = "opaque"
+group = "layout"
+sources = ["layout/opaque.c"]

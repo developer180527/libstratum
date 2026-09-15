@@ -1,0 +1,45 @@
+{
+  "fixture": "bitfields",
+  "toolchain": "linux-clang-types5",
+  "arch": "x86_64",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "clang --version": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld --version": "Debian LLD 19.1.7 (compatible with GNU linkers)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=x86_64-linux-gnu",
+        "-std=c++17",
+        "-g",
+        "-gdwarf-5",
+        "-fdebug-types-section",
+        "-O2",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/bitfields.cpp",
+        "-o",
+        "fixtures/bin/linux-clang-types5/x86_64/O2/bitfields/bitfields.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=x86_64-linux-gnu",
+        "-fuse-ld=lld",
+        "fixtures/bin/linux-clang-types5/x86_64/O2/bitfields/bitfields.o",
+        "-o",
+        "fixtures/bin/linux-clang-types5/x86_64/O2/bitfields/bitfields",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-clang-types5/x86_64/O2/bitfields/bitfields.map"
+      ]
+    }
+  ]
+}

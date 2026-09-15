@@ -9,7 +9,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/bitfields.cpp",
+          "line": 5
+        },
         "evidence": [],
         "holes": [
           {
@@ -110,7 +114,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/bitfields.cpp",
+          "line": 16
+        },
         "evidence": [],
         "holes": [],
         "kind": "struct",

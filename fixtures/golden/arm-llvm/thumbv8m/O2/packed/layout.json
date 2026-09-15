@@ -11,7 +11,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/packed.cpp",
+          "file": "layout/packed.cpp",
           "line": 12
         },
         "evidence": [],
@@ -72,7 +72,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/packed.cpp",
+          "file": "layout/packed.cpp",
           "line": 4
         },
         "evidence": [],

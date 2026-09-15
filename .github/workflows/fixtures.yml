@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        toolchain: [linux-clang, linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc]
+        toolchain: [linux-clang, linux-clang-types5, linux-clang-types4, linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc]
     steps:
       - uses: actions/checkout@v7
       - run: docker build -t libstratum-fixtures -f fixtures/build/Dockerfile.linux fixtures/build

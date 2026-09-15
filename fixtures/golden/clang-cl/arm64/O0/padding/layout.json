@@ -11,7 +11,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/padding.cpp",
+          "line": 19
+        },
         "evidence": [
           {
             "Computed": {
@@ -82,7 +86,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/padding.cpp",
+          "line": 26
+        },
         "evidence": [
           {
             "Computed": {
@@ -123,7 +131,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/padding.cpp",
+          "line": 4
+        },
         "evidence": [
           {
             "Computed": {
@@ -207,7 +219,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/padding.cpp",
+          "line": 12
+        },
         "evidence": [
           {
             "Computed": {

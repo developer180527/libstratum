@@ -357,7 +357,7 @@ impl Session {
         }
         let not_found_reason = if matches.is_empty() {
             Some(if raws.iter().any(|r| r.is_declaration) {
-                "only declarations were found (the definition may live in a unit without debug info)".into()
+                "only declarations were found: the definition is in code built without debug info, or the compiler omitted it (Clang on Linux emits some class definitions only where their vtable is; -fstandalone-debug emits them everywhere)".into()
             } else {
                 "no type with this name; types used only by optimized-out code may not be emitted".into()
             })

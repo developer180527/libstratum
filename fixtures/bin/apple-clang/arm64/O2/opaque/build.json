@@ -1,0 +1,55 @@
+{
+  "fixture": "opaque",
+  "toolchain": "apple-clang",
+  "arch": "arm64",
+  "opt": "O2",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "LTO support using: LLVM version 21.0.0 (static support for 30, runtime is 30)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/opaque.c",
+        "-o",
+        "fixtures/bin/apple-clang/arm64/O2/opaque/opaque.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/arm64/O2/opaque",
+      "argv": [
+        "clang",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "opaque.o",
+        "-o",
+        "opaque",
+        "-Wl,-map,opaque.map",
+        "-Wl,-oso_prefix,."
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/arm64/O2/opaque",
+      "argv": [
+        "dsymutil",
+        "opaque",
+        "-o",
+        "opaque.dSYM"
+      ]
+    }
+  ]
+}

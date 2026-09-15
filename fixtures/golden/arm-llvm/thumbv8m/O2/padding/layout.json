@@ -13,7 +13,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/padding.cpp",
+          "file": "layout/padding.cpp",
           "line": 19
         },
         "evidence": [
@@ -88,7 +88,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/padding.cpp",
+          "file": "layout/padding.cpp",
           "line": 26
         },
         "evidence": [
@@ -133,7 +133,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/padding.cpp",
+          "file": "layout/padding.cpp",
           "line": 4
         },
         "evidence": [
@@ -221,7 +221,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/padding.cpp",
+          "file": "layout/padding.cpp",
           "line": 12
         },
         "evidence": [

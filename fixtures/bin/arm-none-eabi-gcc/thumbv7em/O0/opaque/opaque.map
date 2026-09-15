@@ -1,0 +1,158 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text.memset   0x00000000       0x42 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text.memcpy   0x00000000       0x4a /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text.__cxa_pure_virtual
+                0x00000000        0x6 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text.__aeabi_atexit
+                0x00000000       0x1a /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text.__cxa_atexit
+                0x00000000       0x1a /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .bss.__dso_handle
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text._ZdlPv   0x00000000       0x14 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text._ZdlPvj  0x00000000       0x16 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_info    0x00000000      0x1e8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_abbrev  0x00000000      0x11f /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_aranges
+                0x00000000       0x50 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_rnglists
+                0x00000000       0x37 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_line    0x00000000      0x122 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_str     0x00000000      0x193 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .comment       0x00000000       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .debug_frame   0x00000000      0x118 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .ARM.attributes
+                0x00000000       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00100000         xr
+RAM              0x20000000         0x00030000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/support.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/libgcc.a
+                0x20030000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000        0x8
+ *(.isr_vector)
+ .isr_vector    0x08000000        0x8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+                0x08000000                vector_table
+
+.text           0x08000008       0x32
+ *(.text .text.*)
+ .text.main     0x08000008       0x28 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+                0x08000008                main
+ .text.reset_handler
+                0x08000030        0xa /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+                0x08000030                reset_handler
+
+.glue_7         0x0800003c        0x0
+ .glue_7        0x0800003c        0x0 linker stubs
+
+.glue_7t        0x0800003c        0x0
+ .glue_7t       0x0800003c        0x0 linker stubs
+
+.vfp11_veneer   0x0800003c        0x0
+ .vfp11_veneer  0x0800003c        0x0 linker stubs
+
+.v4_bx          0x0800003c        0x0
+ .v4_bx         0x0800003c        0x0 linker stubs
+
+.iplt           0x0800003c        0x0
+ .iplt          0x0800003c        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+
+.rodata
+ *(.rodata .rodata.*)
+
+.note.gnu.build-id
+                0x0800003c       0x24
+ .note.gnu.build-id
+                0x0800003c       0x24 linker stubs
+
+.rel.dyn        0x08000060        0x0
+ .rel.iplt      0x08000060        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+
+.ARM.exidx
+ *(.ARM.exidx*)
+
+.data
+ *(.data .data.*)
+
+.igot.plt       0x20000000        0x0 load address 0x08000060
+ .igot.plt      0x20000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+
+.bss            0x20000000        0x8 load address 0x08000060
+ *(.bss .bss.* COMMON)
+ .bss.g_opaque  0x20000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+                0x20000000                g_opaque
+ .bss.g_defined
+                0x20000004        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+                0x20000004                g_defined
+
+.noinit
+ *(.noinit .noinit.*)
+OUTPUT(/work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x11d
+ .debug_info    0x00000000       0x86 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .debug_info    0x00000086       0x97 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.debug_abbrev   0x00000000      0x12a
+ .debug_abbrev  0x00000000       0x83 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .debug_abbrev  0x00000083       0xa7 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .debug_aranges
+                0x00000020       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.debug_rnglists
+                0x00000000       0x26
+ .debug_rnglists
+                0x00000000       0x13 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .debug_rnglists
+                0x00000013       0x13 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.debug_line     0x00000000       0xa6
+ .debug_line    0x00000000       0x57 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .debug_line    0x00000057       0x4f /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.debug_str      0x00000000      0x145
+ .debug_str     0x00000000      0x145 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+                                 0xf0 (size before relaxing)
+ .debug_str     0x00000145      0x113 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.ARM.attributes
+                0x00000000       0x34
+ .ARM.attributes
+                0x00000000       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .ARM.attributes
+                0x00000034       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o
+
+.debug_frame    0x00000000       0x5c
+ .debug_frame   0x00000000       0x30 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/opaque.o
+ .debug_frame   0x00000030       0x2c /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/opaque/vectors.o

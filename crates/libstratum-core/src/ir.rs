@@ -8,6 +8,26 @@ use std::path::PathBuf;
 
 pub use libstratum_model::{Arch, BinaryId, SourceLoc};
 
+/// Lexically normalizes a recorded source path so the same file compares equal across toolchains
+/// and hosts: `\` becomes `/`, `.` segments are dropped and `dir/..` pairs collapse. Absolute
+/// prefixes (`/`, `C:`) are kept; nothing touches the filesystem.
+pub fn normalize_source_path(path: &str) -> String {
+    let unified = path.replace('\\', "/");
+    let absolute = unified.starts_with('/');
+    let mut parts: Vec<&str> = Vec::new();
+    for part in unified.split('/') {
+        match part {
+            "" | "." => {}
+            ".." if parts.last().is_some_and(|p| *p != ".." && !p.ends_with(':')) => {
+                parts.pop();
+            }
+            _ => parts.push(part),
+        }
+    }
+    let joined = parts.join("/");
+    if absolute { format!("/{joined}") } else { joined }
+}
+
 // ---------------------------------------------------------------------------
 // Image
 // ---------------------------------------------------------------------------
@@ -339,4 +359,21 @@ pub struct MapSymbol {
     pub address: Option<u64>,
     pub size: u64,
     pub input_file: Option<u32>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::normalize_source_path;
+
+    #[test]
+    fn source_paths_normalize_across_toolchains() {
+        assert_eq!(normalize_source_path("./layout/padding.cpp"), "layout/padding.cpp");
+        assert_eq!(
+            normalize_source_path("layout/odr_conflict/../odr_conflict/config.h"),
+            "layout/odr_conflict/config.h"
+        );
+        assert_eq!(normalize_source_path(r"D:\a\repo\src\.\x.cpp"), "D:/a/repo/src/x.cpp");
+        assert_eq!(normalize_source_path("/usr/include/../include/stdio.h"), "/usr/include/stdio.h");
+        assert_eq!(normalize_source_path("../shared/x.h"), "../shared/x.h");
+    }
 }

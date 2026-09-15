@@ -11,7 +11,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/anonymous.cpp",
+          "file": "layout/anonymous.cpp",
           "line": 32
         },
         "evidence": [
@@ -81,7 +81,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/anonymous.cpp",
+          "file": "layout/anonymous.cpp",
           "line": 39
         },
         "evidence": [
@@ -135,7 +135,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/anonymous.cpp",
+          "file": "layout/anonymous.cpp",
           "line": 9
         },
         "evidence": [
@@ -194,7 +194,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/anonymous.cpp",
+          "file": "layout/anonymous.cpp",
           "line": 22
         },
         "evidence": [
@@ -248,7 +248,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/anonymous.cpp",
+          "file": "layout/anonymous.cpp",
           "line": 23
         },
         "evidence": [

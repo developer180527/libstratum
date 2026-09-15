@@ -12,8 +12,15 @@ golden/     expected libstratum-model JSON for each bin/ entry
 Binaries change only when someone deliberately re-runs the build scripts, so golden diffs show real
 toolchain differences, never incidental CI noise.
 
-Status (M0): `layout/` fixtures built for all 8 toolchains: apple-clang, linux-clang, linux-gcc, arm-none-eabi-gcc,
-arm-llvm, riscv-gcc, msvc and clang-cl (272 builds; versions in [build/TOOLCHAINS.md](build/TOOLCHAINS.md)).
+Status: `layout/` fixtures built for 10 toolchains (apple-clang, linux-clang, linux-clang-types5, linux-clang-types4,
+linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc, msvc, clang-cl): 334 builds, versions in
+[build/TOOLCHAINS.md](build/TOOLCHAINS.md). Windows builds of `opaque` are pending the fixtures workflow.
+
+Cross-check goldens against reference tools (inside the Docker image):
+
+```bash
+docker run --rm -v "$PWD":/work -w /work libstratum-fixtures python3 fixtures/crosscheck/crosscheck.py
+```
 
 ```bash
 python3 fixtures/build/build.py --list

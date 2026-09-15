@@ -11,7 +11,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/c_types.c",
+          "file": "layout/c_types.c",
           "line": 17
         },
         "evidence": [
@@ -78,7 +78,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/c_types.c",
+          "file": "layout/c_types.c",
           "line": 11
         },
         "evidence": [
@@ -140,7 +140,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/c_types.c",
+          "file": "layout/c_types.c",
           "line": 5
         },
         "evidence": [

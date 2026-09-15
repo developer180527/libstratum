@@ -11,7 +11,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/inheritance.cpp",
+          "file": "layout/inheritance.cpp",
           "line": 28
         },
         "evidence": [],
@@ -59,7 +59,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/inheritance.cpp",
+          "file": "layout/inheritance.cpp",
           "line": 45
         },
         "evidence": [],
@@ -117,7 +117,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/inheritance.cpp",
+          "file": "layout/inheritance.cpp",
           "line": 17
         },
         "evidence": [],
@@ -178,7 +178,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/inheritance.cpp",
+          "file": "layout/inheritance.cpp",
           "line": 21
         },
         "evidence": [],
@@ -239,7 +239,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/inheritance.cpp",
+          "file": "layout/inheritance.cpp",
           "line": 37
         },
         "evidence": [],
@@ -297,7 +297,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/inheritance.cpp",
+          "file": "layout/inheritance.cpp",
           "line": 5
         },
         "evidence": [],

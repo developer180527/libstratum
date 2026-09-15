@@ -1,0 +1,169 @@
+             VMA              LMA     Size Align Out     In      Symbol
+             2a8              2a8       1c     1 .interp
+             2a8              2a8       1c     1         <internal>:(.interp)
+             2c4              2c4       20     4 .note.ABI-tag
+             2c4              2c4       20     4         /lib/x86_64-linux-gnu/Scrt1.o:(.note.ABI-tag)
+             2c4              2c4       20     1                 __abi_tag
+             2e4              2e4       24     4 .note.gnu.build-id
+             2e4              2e4       24     4         <internal>:(.note.gnu.build-id)
+             308              308       f0     8 .dynsym
+             308              308       f0     8         <internal>:(.dynsym)
+             3f8              3f8       14     2 .gnu.version
+             3f8              3f8       14     2         <internal>:(.gnu.version)
+             40c              40c       60     4 .gnu.version_r
+             40c              40c       60     4         <internal>:(.gnu.version_r)
+             470              470       1c     8 .gnu.hash
+             470              470       1c     8         <internal>:(.gnu.hash)
+             48c              48c      148     1 .dynstr
+             48c              48c      148     1         <internal>:(.dynstr)
+             5d8              5d8      330     8 .rela.dyn
+             5d8              5d8      330     8         <internal>:(.rela.dyn)
+             908              908       30     8 .rela.plt
+             908              908       30     8         <internal>:(.rela.plt)
+             938              938       3a     4 .rodata
+             938              938        4     4         <internal>:(.rodata.cst4)
+             93c              93c        9     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.rodata._ZTS7Derived)
+             93c              93c        9     1                 typeinfo name for Derived
+             945              945        e     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.rodata._ZTS11Polymorphic)
+             945              945        e     1                 typeinfo name for Polymorphic
+             953              953        7     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.rodata._ZTS5VLeft)
+             953              953        7     1                 typeinfo name for VLeft
+             95a              95a        7     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.rodata._ZTS5VBase)
+             95a              95a        7     1                 typeinfo name for VBase
+             961              961        8     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.rodata._ZTS6VRight)
+             961              961        8     1                 typeinfo name for VRight
+             969              969        9     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.rodata._ZTS7Diamond)
+             969              969        9     1                 typeinfo name for Diamond
+             974              974       34     4 .eh_frame_hdr
+             974              974       34     4         <internal>:(.eh_frame_hdr)
+             9a8              9a8       a0     8 .eh_frame
+             9a8              9a8       2c     1         /lib/x86_64-linux-gnu/Scrt1.o:(.eh_frame+0x0)
+             9d4              9d4       70     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.eh_frame+0x0)
+            1a50             1a50      156    16 .text
+            1a50             1a50       22    16         /lib/x86_64-linux-gnu/Scrt1.o:(.text)
+            1a50             1a50       22     1                 _start
+            1a72             1a72        0     1         /lib/x86_64-linux-gnu/crti.o:(.text)
+            1a80             1a80       b9    16         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.text)
+            1a80             1a80        0     1                 deregister_tm_clones
+            1ab0             1ab0        0     1                 register_tm_clones
+            1af0             1af0        0     1                 __do_global_dtors_aux
+            1b30             1b30        0     1                 frame_dummy
+            1b3c             1b3c        0     4         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.text)
+            1b40             1b40        1    16         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.text._ZN11PolymorphicD2Ev)
+            1b40             1b40        1     1                 Polymorphic::~Polymorphic()
+            1b50             1b50       35    16         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.text.main)
+            1b50             1b50       35     1                 main
+            1b90             1b90        a    16         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.text._ZN7DerivedD0Ev)
+            1b90             1b90        a     1                 Derived::~Derived()
+            1ba0             1ba0        6    16         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.text._ZNK7Derived2idEv)
+            1ba0             1ba0        6     1                 Derived::id() const
+            1ba6             1ba6        0     1         /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:(.text)
+            1ba6             1ba6        0     1         /lib/x86_64-linux-gnu/crtn.o:(.text)
+            1ba8             1ba8       17     4 .init
+            1ba8             1ba8       12     4         /lib/x86_64-linux-gnu/crti.o:(.init)
+            1ba8             1ba8        0     1                 _init
+            1bba             1bba        5     1         /lib/x86_64-linux-gnu/crtn.o:(.init)
+            1bc0             1bc0        9     4 .fini
+            1bc0             1bc0        4     4         /lib/x86_64-linux-gnu/crti.o:(.fini)
+            1bc0             1bc0        0     1                 _fini
+            1bc4             1bc4        5     1         /lib/x86_64-linux-gnu/crtn.o:(.fini)
+            1bd0             1bd0       30    16 .plt
+            1bd0             1bd0       30    16         <internal>:(.plt)
+            2c00             2c00        8     8 .fini_array
+            2c00             2c00        8     8         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.fini_array)
+            2c00             2c00        0     1                 __do_global_dtors_aux_fini_array_entry
+            2c08             2c08        8     8 .init_array
+            2c08             2c08        8     8         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.init_array)
+            2c08             2c08        0     1                 __frame_dummy_init_array_entry
+            2c10             2c10      118     8 .data.rel.ro
+            2c10             2c10       28     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTV7Derived)
+            2c10             2c10       28     1                 vtable for Derived
+            2c38             2c38       10     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTI11Polymorphic)
+            2c38             2c38       10     1                 typeinfo for Polymorphic
+            2c48             2c48       18     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTI7Derived)
+            2c48             2c48       18     1                 typeinfo for Derived
+            2c60             2c60       30     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTV7Diamond)
+            2c60             2c60       30     1                 vtable for Diamond
+            2c90             2c90       10     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTI5VBase)
+            2c90             2c90       10     1                 typeinfo for VBase
+            2ca0             2ca0       28     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTI5VLeft)
+            2ca0             2ca0       28     1                 typeinfo for VLeft
+            2cc8             2cc8       28     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTI6VRight)
+            2cc8             2cc8       28     1                 typeinfo for VRight
+            2cf0             2cf0       38     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.rel.ro._ZTI7Diamond)
+            2cf0             2cf0       38     1                 typeinfo for Diamond
+            2d28             2d28      1d0     8 .dynamic
+            2d28             2d28      1d0     8         <internal>:(.dynamic)
+            2ef8             2ef8       28     8 .got
+            2ef8             2ef8       28     8         <internal>:(.got)
+            2f20             2f20       e0     1 .relro_padding
+            2f20             2f20        0     1         <internal>:(.relro_padding)
+            3f20             3f20       58     8 .data
+            3f20             3f20        4     1         /lib/x86_64-linux-gnu/Scrt1.o:(.data)
+            3f20             3f20        0     1                 data_start
+            3f20             3f20        0     1                 __data_start
+            3f24             3f24        0     1         /lib/x86_64-linux-gnu/crti.o:(.data)
+            3f24             3f24        0     1         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.data)
+            3f28             3f28        8     8         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.data.rel.local)
+            3f28             3f28        0     1                 __dso_handle
+            3f30             3f30       20     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.g_derived)
+            3f30             3f30       20     1                 g_derived
+            3f50             3f50       28     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.data.g_diamond)
+            3f50             3f50       28     1                 g_diamond
+            3f78             3f78        0     1         /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:(.data)
+            3f78             3f78        0     1         /lib/x86_64-linux-gnu/crtn.o:(.data)
+            3f78             3f78        0     8 .tm_clone_table
+            3f78             3f78        0     8         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.tm_clone_table)
+            3f78             3f78        0     1                 __TMC_LIST__
+            3f78             3f78        0     8         /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:(.tm_clone_table)
+            3f78             3f78        0     1                 __TMC_END__
+            3f78             3f78       28     8 .got.plt
+            3f78             3f78       28     8         <internal>:(.got.plt)
+            3fa0             3fa0       20     8 .bss
+            3fa0             3fa0        0     1         /lib/x86_64-linux-gnu/Scrt1.o:(.bss)
+            3fa0             3fa0        0     1         /lib/x86_64-linux-gnu/crti.o:(.bss)
+            3fa0             3fa0        1     1         /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:(.bss)
+            3fa0             3fa0        1     1                 completed.0
+            3fa4             3fa4        4     4         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.bss.g_with_empty_base)
+            3fa4             3fa4        4     1                 g_with_empty_base
+            3fa8             3fa8       18     8         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.bss.g_multiple)
+            3fa8             3fa8       18     1                 g_multiple
+            3fc0             3fc0        0     1         /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:(.bss)
+            3fc0             3fc0        0     1         /lib/x86_64-linux-gnu/crtn.o:(.bss)
+               0                0       5d     1 .comment
+               0                0       5d     1         <internal>:(.comment)
+               0                0      4f4     1 .debug_info
+               0                0       47     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+              47               47       2a     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+              71               71       56     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+              c7               c7       38     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+              ff               ff       38     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             137              137       6c     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             1a3              1a3       94     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             237              237       5a     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             291              291       6a     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             2fb              2fb       38     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             333              333       6a     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+             39d              39d      157     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_info)
+               0                0       18     1 .debug_loclists
+               0                0       18     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_loclists)
+               0                0      1bf     1 .debug_abbrev
+               0                0      1bf     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_abbrev)
+               0                0       1d     1 .debug_rnglists
+               0                0       1d     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_rnglists)
+               0                0       c8     1 .debug_str_offsets
+               0                0       c8     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_str_offsets)
+               0                0      1c7     1 .debug_str
+               0                0      1c7     1         <internal>:(.debug_str)
+               0                0       50     1 .debug_addr
+               0                0       50     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_addr)
+               0                0       aa     1 .debug_line
+               0                0       aa     1         /work/fixtures/bin/linux-clang-types5/x86_64/O2/inheritance/inheritance.o:(.debug_line)
+               0                0       21     1 .debug_line_str
+               0                0       21     1         <internal>:(.debug_line_str)
+               0                0      528     8 .symtab
+               0                0      528     8         <internal>:(.symtab)
+               0                0      1b4     1 .shstrtab
+               0                0      1b4     1         <internal>:(.shstrtab)
+               0                0      364     1 .strtab
+               0                0      364     1         <internal>:(.strtab)

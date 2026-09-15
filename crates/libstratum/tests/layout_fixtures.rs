@@ -13,6 +13,8 @@ fn fixtures() -> PathBuf {
 const TOOLCHAINS: &[(&str, &[&str], u64, &str)] = &[
     ("apple-clang", &["arm64", "x86_64"], 8, ""),
     ("linux-clang", &["x86_64", "aarch64"], 8, ""),
+    ("linux-clang-types5", &["x86_64"], 8, ""),
+    ("linux-clang-types4", &["x86_64"], 8, ""),
     ("linux-gcc", &["x86_64", "aarch64"], 8, ""),
     ("arm-none-eabi-gcc", &["thumbv6m", "thumbv7em", "thumbv8m"], 4, ""),
     ("arm-llvm", &["thumbv6m", "thumbv7em", "thumbv8m"], 4, ""),
@@ -92,7 +94,11 @@ fn fixture_types_have_expected_layouts_on_every_toolchain() {
                 let ebo = one(&s, "inheritance", "WithEmptyBase");
                 assert_eq!((ebo.size_bytes, ebo.padding_bits), (4, 0), "empty base optimization");
                 let diamond = one(&s, "inheritance", "Diamond");
-                assert!(!diamond.notes.is_empty(), "virtual bases are reported as a limitation");
+                assert!(
+                    !diamond.notes.is_empty(),
+                    "{}: virtual bases are reported as a limitation",
+                    label("inheritance", "Diamond")
+                );
                 assert_eq!(diamond.members.iter().filter(|m| m.kind == MemberKind::Base).count(), 2);
 
                 let s = open("anonymous");
@@ -125,14 +131,42 @@ fn fixture_types_have_expected_layouts_on_every_toolchain() {
                 let config = s.struct_layout("Config").unwrap();
                 let mut sizes: Vec<u64> = config.matches.iter().map(|m| m.size_bytes).collect();
                 sizes.sort();
-                assert_eq!(sizes, vec![16, 32], "{}", label("odr_conflict", "Config"));
-                assert!(config.diagnostics.iter().any(|d| d.code == DiagCode::OdrConflict));
+                if toolchain.starts_with("linux-clang-types") {
+                    // Type-unit signatures hash the type's name, so the linker deduplicates the two
+                    // conflicting definitions: only one survives in the binary (M2 finding).
+                    assert_eq!(sizes.len(), 1, "{}", label("odr_conflict", "Config"));
+                } else {
+                    assert_eq!(sizes, vec![16, 32], "{}", label("odr_conflict", "Config"));
+                    assert!(config.diagnostics.iter().any(|d| d.code == DiagCode::OdrConflict));
+                }
+
+                // Declared but never defined: reported as a declaration, not as "no such type".
+                // Windows builds of `opaque` come from the fixtures workflow (pending until it runs).
+                let opaque_dir = fixtures().join(toolchain).join(arch).join(opt).join("opaque");
+                if opaque_dir.is_dir() {
+                    let s = open("opaque");
+                    let opaque = s.struct_layout("Opaque").unwrap();
+                    assert!(opaque.matches.is_empty(), "{}", label("opaque", "Opaque"));
+                    assert!(
+                        opaque.not_found_reason.as_deref().is_some_and(|r| r.contains("declarations")),
+                        "{}: {:?}",
+                        label("opaque", "Opaque"),
+                        opaque.not_found_reason
+                    );
+                    assert_eq!(one(&s, "opaque", "Defined").size_bytes, 4);
+                } else {
+                    assert!(
+                        matches!(*toolchain, "msvc" | "clang-cl"),
+                        "{}: opaque fixture missing",
+                        label("opaque", "")
+                    );
+                }
 
                 checked += 1;
             }
         }
     }
-    assert_eq!(checked, 34);
+    assert_eq!(checked, 38);
 }
 
 #[test]

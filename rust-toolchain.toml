@@ -1,0 +1,5 @@
+# Pinned so CI and local builds run the same rustc and clippy (new lints can't break CI by surprise).
+# Bump deliberately; the MSRV (1.88, workspace Cargo.toml) is checked separately in CI.
+[toolchain]
+channel = "1.98.0"
+components = ["rustfmt", "clippy"]

@@ -63,13 +63,14 @@ Findings while implementing (encoded in the plugins, checked by tests):
 
 ## M2: Debug-info backends + layout lens (the abstraction proof)
 
-**Progress (2026-09-16):** DWARF backend (ELF embedded, dSYM, debug-map objects as fallback, debuglink/build-id) ✅ ·
-PDB backend via `pdb2` (TPI classes/unions, bitfields, bases, virtual bases, vfptr; GUID/age identity) ✅ · core layout lens
-(holes, tail padding, packing, cache lines, reorder suggestions, ODR conflicts, deterministic order) ✅ · cross-toolchain
-C/C++ name normalization ✅ · `Session::struct_layout` + `examples/layout.rs` ✅ · **abstraction proof: one test asserts the
-same ABI facts on all 272 fixtures (DWARF + PDB, 8 toolchains)** ✅ · 272 committed goldens (`fixtures/golden`) ✅.
-Remaining: automated cross-checks against `llvm-dwarfdump`/`pahole`/`llvm-pdbutil`, type units (`DW_AT_signature`),
-declaration-only hints, source-path normalization in `decl`, regrouping PDB-flattened anonymous unions.
+**M2 complete (2026-09-16).** DWARF backend (ELF embedded, dSYM, debug-map objects as fallback, debuglink/build-id,
+**type units** in `.debug_info` and `.debug_types`) ✅ · PDB backend via `pdb2` (classes/unions, bitfields, bases, virtual
+bases, vfptr, `LF_UDT_SRC_LINE` declarations; GUID/age identity) ✅ · core layout lens (holes, tail padding, packing,
+cache lines, reorder suggestions, ODR conflicts, declaration-only reasons, overlap and virtual-base notes, deterministic
+order) ✅ · cross-toolchain name and source-path normalization ✅ · same ABI facts asserted on every fixture (38
+toolchain × arch × opt combinations) ✅ · 334 goldens ✅ · **reference cross-checks** (`fixtures/crosscheck`):
+`llvm-dwarfdump` 836/836, `llvm-pdbutil` 216/216, `pahole` 564/564 (+4 documented pahole type-unit limits) ✅.
+Pending data: Windows builds of the new `opaque` fixture (run the fixtures workflow, then raise the golden count to 342).
 
 Findings:
 - GCC spells integer types out in DWARF names (`SmallArray<short int, 3>`), MSVC uses `__int64`-style names and
@@ -80,7 +81,14 @@ Findings:
   so holes and padding aren't computed for them; a note says so instead of reporting phantom padding.
 - Base-class member sizes are full object sizes, but derived members can reuse a base's tail padding (Itanium `Diamond`:
   `d` at 28 inside `VRight`'s 16 bytes); overlap is expected, not an error.
-- PDB flattens anonymous unions into the enclosing struct's member list.
+- PDB flattens anonymous unions: MSVC and clang-cl don't emit the union type or a nested-type record at all, only
+  members sharing an offset. Regrouping would be a guess, so the lens notes the shared storage instead.
+- Type units: Clang emits enclosing scopes as nameless declaration stubs with only `DW_AT_signature` (the scope name
+  lives in the referenced unit), and base classes as signature stubs too; both must be followed.
+- Type-unit signatures hash the type *name*, so the linker deduplicates ODR-conflicting definitions: a binary built
+  with `-fdebug-types-section` contains only one `Config`. No tool can recover the other from that binary.
+- `pahole` exits non-zero after printing valid DWARF output when it also fails to load BTF, and drops empty members
+  referenced from type units.
 - `libstratum-debug-dwarf`: unit index, type index, raw layouts; ELF embedded, dSYM, OSO objects
 - `libstratum-debug-pdb`: PDB locator (RSDS path, search paths, symbol-store layout), GUID/age check, TPI raw layouts, module list
 - `libstratum-lang-cpp`, `libstratum-demangle` (Itanium + MSVC), cross-toolchain type-name normalization

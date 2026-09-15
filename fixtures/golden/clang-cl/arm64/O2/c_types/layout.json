@@ -9,7 +9,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/c_types.c",
+          "line": 17
+        },
         "evidence": [
           {
             "Computed": {
@@ -72,7 +76,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/c_types.c",
+          "line": 11
+        },
         "evidence": [
           {
             "Computed": {
@@ -130,7 +138,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/c_types.c",
+          "line": 5
+        },
         "evidence": [
           {
             "Computed": {

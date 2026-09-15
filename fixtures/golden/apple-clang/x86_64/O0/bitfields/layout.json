@@ -11,7 +11,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/bitfields.cpp",
+          "file": "layout/bitfields.cpp",
           "line": 5
         },
         "evidence": [],
@@ -108,7 +108,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/bitfields.cpp",
+          "file": "layout/bitfields.cpp",
           "line": 16
         },
         "evidence": [],

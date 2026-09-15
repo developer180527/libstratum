@@ -16,7 +16,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/odr_conflict/config.h",
+          "line": 5
+        },
         "evidence": [
           {
             "Computed": {
@@ -64,7 +68,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/odr_conflict/config.h",
+          "line": 5
+        },
         "evidence": [
           {
             "Computed": {

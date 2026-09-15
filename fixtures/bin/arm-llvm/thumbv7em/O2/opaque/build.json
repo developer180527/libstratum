@@ -1,0 +1,95 @@
+{
+  "fixture": "opaque",
+  "toolchain": "arm-llvm",
+  "arch": "thumbv7em",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "clang --version": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld --version": "Debian LLD 19.1.7 (compatible with GNU linkers)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "--target=thumbv7em-none-eabihf",
+        "-mcpu=cortex-m4",
+        "-mfpu=fpv4-sp-d16",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/opaque.c",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/opaque.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=thumbv7em-none-eabihf",
+        "-mcpu=cortex-m4",
+        "-mfpu=fpv4-sp-d16",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "../build/embedded/support.cpp",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/support.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "--target=thumbv7em-none-eabihf",
+        "-mcpu=cortex-m4",
+        "-mfpu=fpv4-sp-d16",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "../build/embedded/vectors.c",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/vectors.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "ld.lld",
+        "-T",
+        "fixtures/build/embedded/cortex-m.ld",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/opaque.o",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/support.o",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/vectors.o",
+        "/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/libgcc.a",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv7em/O2/opaque/opaque",
+        "--gc-sections",
+        "--build-id",
+        "-Map=fixtures/bin/arm-llvm/thumbv7em/O2/opaque/opaque.map"
+      ]
+    }
+  ]
+}

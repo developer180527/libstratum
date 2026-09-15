@@ -15,7 +15,7 @@ Image id `sha256:eadb7cad6b17c3fc2bf9c3ad52cccef1c74507523e24287e94e353ed55ece36
 
 | Toolchain | Tool | Version |
 |---|---|---|
-| linux-clang, arm-llvm | clang / ld.lld | Debian clang 19.1.7 (3+b1) / LLD 19.1.7 |
+| linux-clang, linux-clang-types5/4, arm-llvm | clang / ld.lld | Debian clang 19.1.7 (3+b1) / LLD 19.1.7 (types5/4: `-fdebug-types-section` with DWARF 5 / 4) |
 | linux-gcc | x86_64-linux-gnu-gcc, aarch64-linux-gnu-gcc | GCC 14.2.0 (Debian 14.2.0-19) |
 | arm-none-eabi-gcc | arm-none-eabi-gcc | 14.2.1 20241119 (15:14.2.rel1-1) |
 | riscv-gcc | riscv64-unknown-elf-gcc | 14.2.0 (14.2.0+19) |

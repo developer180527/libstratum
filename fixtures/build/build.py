@@ -128,6 +128,22 @@ class LinuxClang(Toolchain):
                  "-Wl,--build-id", f"-Wl,-Map,{out}.map"]]
 
 
+class LinuxClangTypeUnits(LinuxClang):
+    """Type definitions in type units (`-fdebug-types-section`): DWARF 5 in `.debug_info`,
+    DWARF 4 in `.debug_types`. Members reference types by signature (DW_FORM_ref_sig8)."""
+
+    def __init__(self, dwarf_version: int) -> None:
+        Toolchain.__init__(self, f"linux-clang-types{dwarf_version}", ["x86_64"], "linux",
+                           [["clang", "--version"], ["ld.lld", "--version"]])
+        self.dwarf_version = dwarf_version
+
+    def compile(self, src, obj, arch, opt):
+        cmd = super().compile(src, obj, arch, opt)
+        at = cmd.index("-g")
+        cmd[at:at + 1] = ["-g", f"-gdwarf-{self.dwarf_version}", "-fdebug-types-section"]
+        return cmd
+
+
 class LinuxGcc(Toolchain):
     PREFIX = {"x86_64": "x86_64-linux-gnu-", "aarch64": "aarch64-linux-gnu-"}
 
@@ -274,7 +290,8 @@ class ClangCl(Msvc):
 
 
 TOOLCHAINS: dict[str, Toolchain] = {t.name: t for t in [
-    AppleClang(), LinuxClang(), LinuxGcc(), ArmNoneEabiGcc(), ArmLlvm(), RiscvGcc(), Msvc(), ClangCl(),
+    AppleClang(), LinuxClang(), LinuxClangTypeUnits(5), LinuxClangTypeUnits(4), LinuxGcc(), ArmNoneEabiGcc(),
+    ArmLlvm(), RiscvGcc(), Msvc(), ClangCl(),
 ]}
 
 

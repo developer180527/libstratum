@@ -9,7 +9,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/anonymous.cpp",
+          "line": 32
+        },
         "evidence": [
           {
             "Computed": {
@@ -75,7 +79,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/anonymous.cpp",
+          "line": 39
+        },
         "evidence": [
           {
             "Computed": {
@@ -125,7 +133,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/anonymous.cpp",
+          "line": 9
+        },
         "evidence": [
           {
             "Computed": {
@@ -175,7 +187,9 @@
           }
         ],
         "name": "Variant",
-        "notes": [],
+        "notes": [
+          "members i, f, point share storage (an anonymous union flattened by the debug format)"
+        ],
         "packed": false,
         "padding_bits": 24,
         "size_bytes": 8,
@@ -196,7 +210,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/anonymous.cpp",
+          "line": 22
+        },
         "evidence": [
           {
             "Computed": {
@@ -246,7 +264,11 @@
           "cacheline_bytes": 64,
           "straddling": []
         },
-        "decl": null,
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/anonymous.cpp",
+          "line": 23
+        },
         "evidence": [
           {
             "Computed": {

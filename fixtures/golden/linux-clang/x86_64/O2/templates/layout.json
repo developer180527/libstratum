@@ -11,7 +11,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/templates.cpp",
+          "file": "layout/templates.cpp",
           "line": 4
         },
         "evidence": [
@@ -70,7 +70,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/templates.cpp",
+          "file": "layout/templates.cpp",
           "line": 4
         },
         "evidence": [
@@ -124,7 +124,7 @@
         },
         "decl": {
           "column": null,
-          "file": "./layout/templates.cpp",
+          "file": "layout/templates.cpp",
           "line": 10
         },
         "evidence": [

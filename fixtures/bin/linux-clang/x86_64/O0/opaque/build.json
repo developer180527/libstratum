@@ -1,0 +1,43 @@
+{
+  "fixture": "opaque",
+  "toolchain": "linux-clang",
+  "arch": "x86_64",
+  "opt": "O0",
+  "host": "Linux x86_64",
+  "tools": {
+    "clang --version": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld --version": "Debian LLD 19.1.7 (compatible with GNU linkers)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "--target=x86_64-linux-gnu",
+        "-std=c11",
+        "-g",
+        "-O0",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/opaque.c",
+        "-o",
+        "fixtures/bin/linux-clang/x86_64/O0/opaque/opaque.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "--target=x86_64-linux-gnu",
+        "-fuse-ld=lld",
+        "fixtures/bin/linux-clang/x86_64/O0/opaque/opaque.o",
+        "-o",
+        "fixtures/bin/linux-clang/x86_64/O0/opaque/opaque",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-clang/x86_64/O0/opaque/opaque.map"
+      ]
+    }
+  ]
+}
