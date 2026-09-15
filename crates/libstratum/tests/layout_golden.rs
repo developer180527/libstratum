@@ -27,13 +27,21 @@ fn layouts_match_goldens() {
     let mut mismatches = Vec::new();
     let mut compared = 0;
 
+    // Every level filters to directories: a stray file anywhere in the tree (an editor artifact, a
+    // `.DS_Store`, an `._` AppleDouble file from an archive unpacked on Linux) would otherwise make
+    // the walk panic in `read_dir` instead of being skipped. Missing binaries are still caught, by
+    // the `compared` count below.
+    let dirs = |path: PathBuf| {
+        let mut entries: Vec<PathBuf> =
+            std::fs::read_dir(path).unwrap().flatten().map(|e| e.path()).filter(|p| p.is_dir()).collect();
+        entries.sort();
+        entries
+    };
     let mut binaries: Vec<PathBuf> = Vec::new();
-    for toolchain in std::fs::read_dir(root().join("bin")).unwrap().flatten().filter(|e| e.path().is_dir()) {
-        for arch in std::fs::read_dir(toolchain.path()).unwrap().flatten() {
-            for opt in std::fs::read_dir(arch.path()).unwrap().flatten() {
-                for fixture in std::fs::read_dir(opt.path()).unwrap().flatten() {
-                    binaries.push(fixture.path());
-                }
+    for toolchain in dirs(root().join("bin")) {
+        for arch in dirs(toolchain) {
+            for opt in dirs(arch) {
+                binaries.extend(dirs(opt));
             }
         }
     }
