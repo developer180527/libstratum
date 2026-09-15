@@ -10,6 +10,9 @@ pub enum SpiError {
     Malformed(String),
     #[error("I/O error: {0}")]
     Io(String),
+    /// A companion file (dSYM, PDB, object file) could not be found.
+    #[error("not found: {0}")]
+    NotFound(String),
     #[error("limit exceeded: {0}")]
     LimitExceeded(&'static str),
 }

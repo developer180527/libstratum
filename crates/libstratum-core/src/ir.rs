@@ -135,6 +135,7 @@ pub struct MemoryRegion {
 
 /// Where debug info for an image may live. A container plugin lists candidates
 /// in priority order; a debug-info backend accepts the ones it understands.
+/// Fallback locations are only consulted when no primary location could be read.
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[non_exhaustive]
 pub enum DebugLocation {
@@ -155,6 +156,14 @@ pub enum DebugLocation {
     BuildId { id: Vec<u8> },
     /// PE CodeView `RSDS` record.
     Pdb { path: PathBuf, guid: [u8; 16], age: u32 },
+}
+
+impl DebugLocation {
+    /// Alternatives to the primary debug info rather than supplements to it: Mach-O debug-map
+    /// objects stand in for a missing dSYM, debuglink/build-id files for stripped debug sections.
+    pub fn is_fallback(&self) -> bool {
+        matches!(self, Self::MachOObject { .. } | Self::DebugLink { .. } | Self::BuildId { .. })
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -202,12 +211,6 @@ pub struct UnitInfo {
     pub ranges: Vec<AddrRange>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct NameQuery {
-    pub name: String,
-    pub exact: bool,
-}
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum AggregateKind {
     Struct,
@@ -227,17 +230,41 @@ pub struct RawLayout {
     pub alignment: Option<u64>,
     pub decl: Option<SourceLoc>,
     pub is_declaration: bool,
+    /// The type or one of its bases inherits virtually: virtual base subobjects occupy bytes that
+    /// no direct member describes, so tail padding can't be derived from the members.
+    pub has_virtual_bases: bool,
     pub entries: Vec<RawLayoutEntry>,
 }
 
-/// Offsets and sizes are in bits so bitfields are exact.
+/// Offsets and sizes are in bits so bitfields are exact. `align_bytes` is the member type's
+/// alignment when the backend can determine it (needed for reorder suggestions).
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[non_exhaustive]
 pub enum RawLayoutEntry {
-    Field { name: Option<String>, type_name: String, offset_bits: u64, size_bits: u64 },
-    Bitfield { name: Option<String>, type_name: String, offset_bits: u64, width_bits: u32 },
-    Base { type_name: String, offset_bits: Option<u64>, size_bits: u64, is_virtual: bool },
-    VtablePtr { offset_bits: u64, size_bits: u64 },
+    Field {
+        name: Option<String>,
+        type_name: String,
+        offset_bits: u64,
+        size_bits: u64,
+        align_bytes: Option<u64>,
+    },
+    Bitfield {
+        name: Option<String>,
+        type_name: String,
+        offset_bits: u64,
+        width_bits: u32,
+    },
+    /// `offset_bits` is `None` for virtual bases whose position depends on the most-derived type.
+    Base {
+        type_name: String,
+        offset_bits: Option<u64>,
+        size_bits: u64,
+        is_virtual: bool,
+    },
+    VtablePtr {
+        offset_bits: u64,
+        size_bits: u64,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

@@ -1,0 +1,174 @@
+{
+  "Pair<char,double>": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/templates.cpp",
+          "line": 4
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 56
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "first",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "second",
+            "offset_bits": 64,
+            "size_bits": 64,
+            "type_name": "double"
+          }
+        ],
+        "name": "Pair<char, double>",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 56,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Pair<char,double>"
+  },
+  "Pair<double,char>": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/templates.cpp",
+          "line": 4
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "first",
+            "offset_bits": 0,
+            "size_bits": 64,
+            "type_name": "double"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "second",
+            "offset_bits": 64,
+            "size_bits": 8,
+            "type_name": "char"
+          }
+        ],
+        "name": "Pair<double, char>",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 56,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 56
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Pair<double,char>"
+  },
+  "SmallArray<short,3>": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 2,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/templates.cpp",
+          "line": 10
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 8
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "size",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "unsigned char"
+          },
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "items",
+            "offset_bits": 16,
+            "size_bits": 48,
+            "type_name": "short int[3]"
+          }
+        ],
+        "name": "SmallArray<short int, 3>",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 8,
+        "size_bytes": 8,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "SmallArray<short,3>"
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "Aligned": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 4,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 120
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "c",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "aligned_int",
+            "offset_bits": 128,
+            "size_bits": 32,
+            "type_name": "int"
+          }
+        ],
+        "name": "Aligned",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 216,
+        "size_bytes": 32,
+        "suggestion": {
+          "caveats": [
+            "changes the type's ABI and any serialized representation",
+            "consider access locality: fields used together should stay close"
+          ],
+          "new_size_bytes": 8,
+          "order": [
+            "aligned_int",
+            "c"
+          ],
+          "saved_bytes": 24
+        },
+        "tail_padding_bits": 96
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Aligned"
+  },
+  "Holder": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "alloc",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "Allocator"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "data",
+            "offset_bits": 0,
+            "size_bits": 64,
+            "type_name": "int*"
+          }
+        ],
+        "name": "Holder",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 8,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Holder"
+  },
+  "Variant": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 4,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 24
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "kind",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "unsigned char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "i",
+            "offset_bits": 32,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "f",
+            "offset_bits": 32,
+            "size_bits": 32,
+            "type_name": "float"
+          },
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "point",
+            "offset_bits": 32,
+            "size_bits": 32,
+            "type_name": "Variant::<unnamed-tag>::<unnamed-type-point>"
+          }
+        ],
+        "name": "Variant",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 24,
+        "size_bytes": 8,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Variant"
+  },
+  "engine::Outer": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 4,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "first",
+            "offset_bits": 0,
+            "size_bits": 64,
+            "type_name": "engine::Outer::Inner"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "second",
+            "offset_bits": 64,
+            "size_bits": 64,
+            "type_name": "engine::Outer::Inner"
+          }
+        ],
+        "name": "engine::Outer",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "engine::Outer"
+  },
+  "engine::Outer::Inner": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 4,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 24
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "c",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "n",
+            "offset_bits": 32,
+            "size_bits": 32,
+            "type_name": "int"
+          }
+        ],
+        "name": "engine::Outer::Inner",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 24,
+        "size_bytes": 8,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "engine::Outer::Inner"
+  }
+}

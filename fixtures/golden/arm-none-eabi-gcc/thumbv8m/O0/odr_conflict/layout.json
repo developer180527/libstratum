@@ -1,0 +1,128 @@
+{
+  "Config": {
+    "diagnostics": [
+      {
+        "code": "odr-conflict",
+        "message": "2 different definitions of Config",
+        "severity": "Warning",
+        "subject": "Config"
+      }
+    ],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/odr_conflict/config.h",
+          "line": 5
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 32,
+            "size_bits": 32
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "id",
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "scale",
+            "offset_bits": 64,
+            "size_bits": 64,
+            "type_name": "double"
+          }
+        ],
+        "name": "Config",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 32,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      },
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/odr_conflict/config.h",
+          "line": 5
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 160,
+            "size_bits": 32
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "id",
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "name",
+            "offset_bits": 32,
+            "size_bits": 128,
+            "type_name": "char[16]"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "scale",
+            "offset_bits": 192,
+            "size_bits": 64,
+            "type_name": "double"
+          }
+        ],
+        "name": "Config",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 32,
+        "size_bytes": 32,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Config"
+  }
+}

@@ -62,6 +62,25 @@ Findings while implementing (encoded in the plugins, checked by tests):
 **Exit:** every Tier 1 fixture opens with correct identity, sections, and VM/file/load extents.
 
 ## M2: Debug-info backends + layout lens (the abstraction proof)
+
+**Progress (2026-09-16):** DWARF backend (ELF embedded, dSYM, debug-map objects as fallback, debuglink/build-id) ✅ ·
+PDB backend via `pdb2` (TPI classes/unions, bitfields, bases, virtual bases, vfptr; GUID/age identity) ✅ · core layout lens
+(holes, tail padding, packing, cache lines, reorder suggestions, ODR conflicts, deterministic order) ✅ · cross-toolchain
+C/C++ name normalization ✅ · `Session::struct_layout` + `examples/layout.rs` ✅ · **abstraction proof: one test asserts the
+same ABI facts on all 272 fixtures (DWARF + PDB, 8 toolchains)** ✅ · 272 committed goldens (`fixtures/golden`) ✅.
+Remaining: automated cross-checks against `llvm-dwarfdump`/`pahole`/`llvm-pdbutil`, type units (`DW_AT_signature`),
+declaration-only hints, source-path normalization in `decl`, regrouping PDB-flattened anonymous unions.
+
+Findings:
+- GCC spells integer types out in DWARF names (`SmallArray<short int, 3>`), MSVC uses `__int64`-style names and
+  `> >`: normalization canonicalizes keyword runs and punctuation spacing.
+- The same source has different layouts per ABI, and the lens shows it: `Flags` is 16 bytes on Itanium ABIs but 32 on
+  MSVC (bitfields with different underlying types start new storage units there).
+- Types with virtual bases hide bytes from their member lists (virtual base subobjects everywhere; MSVC's implicit vbptr),
+  so holes and padding aren't computed for them; a note says so instead of reporting phantom padding.
+- Base-class member sizes are full object sizes, but derived members can reuse a base's tail padding (Itanium `Diamond`:
+  `d` at 28 inside `VRight`'s 16 bytes); overlap is expected, not an error.
+- PDB flattens anonymous unions into the enclosing struct's member list.
 - `libstratum-debug-dwarf`: unit index, type index, raw layouts; ELF embedded, dSYM, OSO objects
 - `libstratum-debug-pdb`: PDB locator (RSDS path, search paths, symbol-store layout), GUID/age check, TPI raw layouts, module list
 - `libstratum-lang-cpp`, `libstratum-demangle` (Itanium + MSVC), cross-toolchain type-name normalization

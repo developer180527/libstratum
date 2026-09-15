@@ -10,6 +10,7 @@ pub mod engine;
 pub mod error;
 pub mod host;
 pub mod ir;
+pub mod layout;
 pub mod spi;
 
 pub use cancel::CancelToken;

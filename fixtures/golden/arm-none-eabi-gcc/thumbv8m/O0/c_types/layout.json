@@ -1,0 +1,193 @@
+{
+  "Message": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 2,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/c_types.c",
+          "line": 17
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "length",
+            "offset_bits": 0,
+            "size_bits": 16,
+            "type_name": "short unsigned int"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "color",
+            "offset_bits": 16,
+            "size_bits": 8,
+            "type_name": "Color"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "payload",
+            "offset_bits": 24,
+            "size_bits": 0,
+            "type_name": "char[]"
+          }
+        ],
+        "name": "Message",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 8,
+        "size_bytes": 4,
+        "suggestion": null,
+        "tail_padding_bits": 8
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Message"
+  },
+  "Number": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/c_types.c",
+          "line": 11
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "union",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "c",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "i",
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "d",
+            "offset_bits": 0,
+            "size_bits": 64,
+            "type_name": "double"
+          }
+        ],
+        "name": "Number",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 8,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Number"
+  },
+  "Point": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 4,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/c_types.c",
+          "line": 5
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 24
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "label",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "x",
+            "offset_bits": 32,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "y",
+            "offset_bits": 64,
+            "size_bits": 32,
+            "type_name": "int"
+          }
+        ],
+        "name": "Point",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 24,
+        "size_bytes": 12,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Point"
+  }
+}

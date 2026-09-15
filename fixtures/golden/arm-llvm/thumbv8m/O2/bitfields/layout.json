@@ -1,0 +1,163 @@
+{
+  "Flags": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "./layout/bitfields.cpp",
+          "line": 5
+        },
+        "evidence": [],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 24
+          },
+          {
+            "offset_bits": 42,
+            "size_bits": 22
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "a",
+            "offset_bits": 0,
+            "size_bits": 3,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "b",
+            "offset_bits": 3,
+            "size_bits": 5,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "c",
+            "offset_bits": 32,
+            "size_bits": 7,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "enabled",
+            "offset_bits": 39,
+            "size_bits": 1,
+            "type_name": "bool"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "mode",
+            "offset_bits": 40,
+            "size_bits": 2,
+            "type_name": "Mode"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "wide",
+            "offset_bits": 64,
+            "size_bits": 40,
+            "type_name": "unsigned long long"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "tail",
+            "offset_bits": 104,
+            "size_bits": 8,
+            "type_name": "unsigned char"
+          }
+        ],
+        "name": "Flags",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 62,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 16
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Flags"
+  },
+  "RegisterBits": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "./layout/bitfields.cpp",
+          "line": 16
+        },
+        "evidence": [],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "enable",
+            "offset_bits": 0,
+            "size_bits": 1,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "reserved0",
+            "offset_bits": 1,
+            "size_bits": 7,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "prescaler",
+            "offset_bits": 8,
+            "size_bits": 8,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "bitfield",
+            "name": "reserved1",
+            "offset_bits": 16,
+            "size_bits": 16,
+            "type_name": "unsigned int"
+          }
+        ],
+        "name": "RegisterBits",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 4,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "RegisterBits"
+  }
+}

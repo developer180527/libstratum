@@ -1,0 +1,266 @@
+{
+  "CacheStraddle": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [
+            64
+          ],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 544,
+            "size_bits": 32
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "header",
+            "offset_bits": 0,
+            "size_bits": 480,
+            "type_name": "char[60]"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "hot_a",
+            "offset_bits": 480,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "hot_b",
+            "offset_bits": 512,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "cold",
+            "offset_bits": 576,
+            "size_bits": 64,
+            "type_name": "double"
+          }
+        ],
+        "name": "CacheStraddle",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 32,
+        "size_bytes": 80,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "CacheStraddle"
+  },
+  "Empty": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 1,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [],
+        "name": "Empty",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 8,
+        "size_bytes": 1,
+        "suggestion": {
+          "caveats": [
+            "changes the type's ABI and any serialized representation",
+            "consider access locality: fields used together should stay close"
+          ],
+          "new_size_bytes": 0,
+          "order": [],
+          "saved_bytes": 1
+        },
+        "tail_padding_bits": 8
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Empty"
+  },
+  "Packet": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 56
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "tag",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "value",
+            "offset_bits": 64,
+            "size_bits": 64,
+            "type_name": "double"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "count",
+            "offset_bits": 128,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "flags",
+            "offset_bits": 160,
+            "size_bits": 16,
+            "type_name": "short"
+          }
+        ],
+        "name": "Packet",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 72,
+        "size_bytes": 24,
+        "suggestion": {
+          "caveats": [
+            "changes the type's ABI and any serialized representation",
+            "consider access locality: fields used together should stay close"
+          ],
+          "new_size_bytes": 16,
+          "order": [
+            "value",
+            "count",
+            "flags",
+            "tag"
+          ],
+          "saved_bytes": 8
+        },
+        "tail_padding_bits": 16
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Packet"
+  },
+  "PacketReordered": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 8,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": null,
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "value",
+            "offset_bits": 0,
+            "size_bits": 64,
+            "type_name": "double"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "count",
+            "offset_bits": 64,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "flags",
+            "offset_bits": 96,
+            "size_bits": 16,
+            "type_name": "short"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "tag",
+            "offset_bits": 112,
+            "size_bits": 8,
+            "type_name": "char"
+          }
+        ],
+        "name": "PacketReordered",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 8,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 8
+      }
+    ],
+    "not_found_reason": null,
+    "query": "PacketReordered"
+  }
+}

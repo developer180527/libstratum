@@ -186,3 +186,91 @@ pub enum MissingInput {
     ProvideMapFile,
     NotYetImplemented,
 }
+
+// ---------------------------------------------------------------------------------------------
+// Layout lens (docs/03-data-model.md#layout)
+// ---------------------------------------------------------------------------------------------
+
+/// Result of a `struct_layout` query. Several matches mean the name is ambiguous or the program
+/// contains conflicting definitions (an ODR violation, reported as a diagnostic).
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LayoutResult {
+    pub query: String,
+    pub matches: Vec<TypeLayout>,
+    pub not_found_reason: Option<String>,
+    pub diagnostics: Vec<Diagnostic>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum AggregateKind {
+    Struct,
+    Class,
+    Union,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct TypeLayout {
+    pub name: String,
+    pub kind: AggregateKind,
+    pub size_bytes: u64,
+    /// Explicit alignment from debug info, else computed from members when possible.
+    pub alignment_bytes: Option<u64>,
+    pub decl: Option<SourceLoc>,
+    pub members: Vec<LayoutMember>,
+    pub holes: Vec<Hole>,
+    pub tail_padding_bits: u64,
+    /// Sum of holes and tail padding, in bits.
+    pub padding_bits: u64,
+    /// Members are not placed at multiples of their alignment (`#pragma pack` or similar).
+    pub packed: bool,
+    pub cacheline: CachelineView,
+    pub suggestion: Option<ReorderSuggestion>,
+    /// Limits of what could be derived, stated instead of guessed.
+    pub notes: Vec<String>,
+    pub evidence: Vec<Evidence>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum MemberKind {
+    Field,
+    Bitfield,
+    Base,
+    VirtualBase,
+    VtablePtr,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LayoutMember {
+    pub kind: MemberKind,
+    pub name: Option<String>,
+    pub type_name: Option<String>,
+    /// `None` for virtual bases, whose position depends on the most-derived type.
+    pub offset_bits: Option<u64>,
+    pub size_bits: u64,
+    pub align_bytes: Option<u64>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Hole {
+    pub offset_bits: u64,
+    pub size_bits: u64,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct CachelineView {
+    pub cacheline_bytes: u64,
+    /// Offsets (bytes) of cache-line boundaries inside the type.
+    pub boundaries: Vec<u64>,
+    /// Members whose bytes span a boundary.
+    pub straddling: Vec<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ReorderSuggestion {
+    pub order: Vec<String>,
+    pub new_size_bytes: u64,
+    pub saved_bytes: u64,
+    pub caveats: Vec<String>,
+}

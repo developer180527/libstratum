@@ -7,6 +7,7 @@ use std::sync::Arc;
 
 use crate::error::SpiError;
 use crate::ir::DebugLocation;
+use crate::spi::{BinaryFormat, Image, OpenOptions, ProbeResult};
 
 /// A readable blob: memory map, in-memory buffer, or virtual file.
 pub trait ByteSource: Send + Sync + Debug {
@@ -75,6 +76,9 @@ pub struct DebugOpenContext<'a> {
     /// Path of the primary binary when it was opened from a file. Companion files
     /// (dSYM, `.o`, `.dwo`, PDB) are usually found relative to it.
     pub image_path: Option<&'a Path>,
+    /// The engine's registered container formats, so backends can open companion files
+    /// (a dSYM is a Mach-O, a `.dwo` an ELF) without depending on format plugins.
+    pub formats: &'a [Arc<dyn BinaryFormat>],
 }
 
 impl DebugOpenContext<'_> {
@@ -83,5 +87,17 @@ impl DebugOpenContext<'_> {
         self.host
             .locator
             .locate(&LocateRequest { image_path: self.image_path.map(Path::to_path_buf), location: location.clone() })
+    }
+
+    /// Opens companion bytes with the first registered format that recognizes them.
+    pub fn open_image(&self, source: Arc<dyn ByteSource>) -> Result<Box<dyn Image>, SpiError> {
+        let bytes = source.bytes()?;
+        let header = &bytes[..bytes.len().min(4096)];
+        let format = self
+            .formats
+            .iter()
+            .find(|f| f.probe(header) != ProbeResult::No)
+            .ok_or_else(|| SpiError::Malformed("companion file has no recognized container format".into()))?;
+        format.open(source.clone(), &OpenOptions::default())
     }
 }

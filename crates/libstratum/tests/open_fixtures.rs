@@ -2,7 +2,7 @@
 
 use std::path::{Path, PathBuf};
 
-use libstratum::model::{Arch, BinaryId, ContainerFormat, DiagCode};
+use libstratum::model::{Arch, BinaryId, ContainerFormat, Severity};
 
 fn fixture(rel: &str) -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR")).join("../../fixtures/bin").join(rel)
@@ -24,8 +24,9 @@ fn opens_elf_macho_and_pe_fixtures() {
         assert_eq!(info.identity.arch, arch, "{rel}");
         assert!(!matches!(info.identity.id, BinaryId::None), "{rel}: identity");
         assert!(info.sections.iter().any(|s| s.size.vm > 0), "{rel}: sections");
-        // Debug backends arrive in M2: locations are found, reading them is reported as unimplemented.
-        assert!(info.diagnostics.iter().any(|d| d.code == DiagCode::Unimplemented), "{rel}: {:?}", info.diagnostics);
+        // Debug info is located and read (embedded DWARF, dSYM, PDB) without warnings.
+        assert!(session.has_debug_info(), "{rel}: {:?}", info.diagnostics);
+        assert!(info.diagnostics.iter().all(|d| d.severity != Severity::Warning), "{rel}: {:?}", info.diagnostics);
     }
 }
 

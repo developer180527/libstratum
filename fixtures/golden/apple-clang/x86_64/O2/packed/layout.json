@@ -1,0 +1,119 @@
+{
+  "Pack2": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 2,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "./layout/packed.cpp",
+          "line": 12
+        },
+        "evidence": [],
+        "holes": [
+          {
+            "offset_bits": 8,
+            "size_bits": 8
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "a",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "b",
+            "offset_bits": 16,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "c",
+            "offset_bits": 48,
+            "size_bits": 8,
+            "type_name": "char"
+          }
+        ],
+        "name": "Pack2",
+        "notes": [],
+        "packed": true,
+        "padding_bits": 16,
+        "size_bytes": 8,
+        "suggestion": null,
+        "tail_padding_bits": 8
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Pack2"
+  },
+  "WireHeader": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 1,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "./layout/packed.cpp",
+          "line": 4
+        },
+        "evidence": [],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "version",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "unsigned char"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "length",
+            "offset_bits": 8,
+            "size_bits": 32,
+            "type_name": "unsigned int"
+          },
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "checksum",
+            "offset_bits": 40,
+            "size_bits": 16,
+            "type_name": "unsigned short"
+          }
+        ],
+        "name": "WireHeader",
+        "notes": [],
+        "packed": true,
+        "padding_bits": 0,
+        "size_bytes": 7,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "WireHeader"
+  }
+}

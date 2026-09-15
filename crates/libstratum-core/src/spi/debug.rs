@@ -3,8 +3,8 @@ use std::fmt::Debug;
 use crate::error::SpiError;
 use crate::host::DebugOpenContext;
 use crate::ir::{
-    AddrRange, BinaryId, DebugLocation, DiscardEvidence, FunctionInfo, InlineTree, LineTable, NameQuery, RawLayout,
-    Symbol, UnitId, UnitInfo,
+    AddrRange, BinaryId, DebugLocation, DiscardEvidence, FunctionInfo, InlineTree, LineTable, RawLayout, Symbol,
+    UnitId, UnitInfo,
 };
 use crate::spi::Image;
 
@@ -34,7 +34,9 @@ pub trait DebugReader: Send + Sync + Debug {
     fn unit_for_address(&self, address: u64) -> Result<Option<UnitId>, SpiError>;
 
     // Layout lens
-    fn find_types(&self, query: &NameQuery) -> Result<Vec<RawLayout>, SpiError>;
+    /// Complete (non-declaration) aggregate definitions whose fully qualified name satisfies `matches`.
+    /// Name normalization across toolchains is the core's job; backends report names as recorded.
+    fn find_types(&self, matches: &dyn Fn(&str) -> bool) -> Result<Vec<RawLayout>, SpiError>;
 
     // Correlation lens
     fn functions(&self, unit: UnitId) -> Result<Vec<FunctionInfo>, SpiError>;

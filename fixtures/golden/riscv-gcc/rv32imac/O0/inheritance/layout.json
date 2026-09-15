@@ -1,0 +1,336 @@
+{
+  "Derived": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/inheritance.cpp",
+          "line": 28
+        },
+        "evidence": [],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": null,
+            "kind": "base",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 128,
+            "type_name": "Polymorphic"
+          },
+          {
+            "align_bytes": 2,
+            "kind": "field",
+            "name": "extra",
+            "offset_bits": 128,
+            "size_bits": 16,
+            "type_name": "short int"
+          }
+        ],
+        "name": "Derived",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 48,
+        "size_bytes": 24,
+        "suggestion": null,
+        "tail_padding_bits": 48
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Derived"
+  },
+  "Diamond": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/inheritance.cpp",
+          "line": 45
+        },
+        "evidence": [],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": null,
+            "kind": "base",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 96,
+            "type_name": "VLeft"
+          },
+          {
+            "align_bytes": null,
+            "kind": "base",
+            "name": null,
+            "offset_bits": 64,
+            "size_bits": 96,
+            "type_name": "VRight"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "d",
+            "offset_bits": 128,
+            "size_bits": 32,
+            "type_name": "int"
+          }
+        ],
+        "name": "Diamond",
+        "notes": [
+          "has virtual bases: hidden subobjects and virtual-base pointers occupy bytes that no member describes, so holes and padding are not computed"
+        ],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 24,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Diamond"
+  },
+  "Multiple": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/inheritance.cpp",
+          "line": 17
+        },
+        "evidence": [],
+        "holes": [
+          {
+            "offset_bits": 32,
+            "size_bits": 32
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": null,
+            "kind": "base",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": "Left"
+          },
+          {
+            "align_bytes": null,
+            "kind": "base",
+            "name": null,
+            "offset_bits": 64,
+            "size_bits": 64,
+            "type_name": "Right"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "own",
+            "offset_bits": 128,
+            "size_bits": 8,
+            "type_name": "char"
+          }
+        ],
+        "name": "Multiple",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 88,
+        "size_bytes": 24,
+        "suggestion": null,
+        "tail_padding_bits": 56
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Multiple"
+  },
+  "Polymorphic": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/inheritance.cpp",
+          "line": 21
+        },
+        "evidence": [],
+        "holes": [
+          {
+            "offset_bits": 40,
+            "size_bits": 24
+          }
+        ],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 4,
+            "kind": "vtable-ptr",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": null
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "small",
+            "offset_bits": 32,
+            "size_bits": 8,
+            "type_name": "char"
+          },
+          {
+            "align_bytes": 8,
+            "kind": "field",
+            "name": "big",
+            "offset_bits": 64,
+            "size_bits": 64,
+            "type_name": "long long int"
+          }
+        ],
+        "name": "Polymorphic",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 24,
+        "size_bytes": 16,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Polymorphic"
+  },
+  "VLeft": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/inheritance.cpp",
+          "line": 37
+        },
+        "evidence": [],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 4,
+            "kind": "vtable-ptr",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": null
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "l",
+            "offset_bits": 32,
+            "size_bits": 32,
+            "type_name": "int"
+          },
+          {
+            "align_bytes": null,
+            "kind": "virtual-base",
+            "name": null,
+            "offset_bits": null,
+            "size_bits": 32,
+            "type_name": "VBase"
+          }
+        ],
+        "name": "VLeft",
+        "notes": [
+          "has virtual bases: hidden subobjects and virtual-base pointers occupy bytes that no member describes, so holes and padding are not computed"
+        ],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 12,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "VLeft"
+  },
+  "WithEmptyBase": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": null,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/inheritance.cpp",
+          "line": 5
+        },
+        "evidence": [],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": null,
+            "kind": "base",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "EmptyTag"
+          },
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "value",
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": "int"
+          }
+        ],
+        "name": "WithEmptyBase",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 4,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "WithEmptyBase"
+  }
+}

@@ -11,6 +11,7 @@ use libstratum_model::{
 
 use crate::error::{OpenError, SpiError};
 use crate::host::{ByteSource, DebugOpenContext, HostServices, InMemorySource};
+use crate::ir::DebugLocation;
 use crate::spi::{
     ArtifactProvider, BinaryFormat, DebugInfoBackend, DebugReader, Demangler, Image, LanguageSupport, MapFileParser,
     OpenOptions, ProbeResult,
@@ -138,10 +139,12 @@ impl Engine {
             format.open(source.clone(), options).map_err(|source| OpenError::Format { format: format.id(), source })?;
 
         let mut diagnostics = Vec::new();
-        let context = DebugOpenContext { host: &self.plugins.host, image_path: path };
+        let context = DebugOpenContext { host: &self.plugins.host, image_path: path, formats: &self.plugins.formats };
         let debug = self.open_debug_info(image.as_ref(), &context, &mut diagnostics);
 
-        Ok(Session { inner: Arc::new(SessionInner { image, debug, diagnostics }) })
+        Ok(Session {
+            inner: Arc::new(SessionInner { languages: self.plugins.languages.clone(), image, debug, diagnostics }),
+        })
     }
 
     fn open_debug_info(
@@ -152,36 +155,12 @@ impl Engine {
     ) -> Vec<Box<dyn DebugReader>> {
         let mut readers = Vec::new();
         let locations = image.debug_locations();
-        for location in &locations {
-            let Some(backend) = self.plugins.debug_backends.iter().find(|b| b.accepts(location)) else {
-                continue;
-            };
-            match backend.open(location, image, context) {
-                Ok(reader) => {
-                    if identities_conflict(&image.binary_id(), &reader.binary_id()) {
-                        diagnostics.push(diag(
-                            Severity::Error,
-                            DiagCode::DebugInfoMismatch,
-                            format!("{} debug info does not match the image", backend.id()),
-                            Some(format!("{location:?}")),
-                        ));
-                    } else {
-                        readers.push(reader);
-                    }
-                }
-                Err(SpiError::Unimplemented(what)) => diagnostics.push(diag(
-                    Severity::Info,
-                    DiagCode::Unimplemented,
-                    format!("{}: {what} is not implemented yet", backend.id()),
-                    Some(format!("{location:?}")),
-                )),
-                Err(err) => diagnostics.push(diag(
-                    Severity::Warning,
-                    DiagCode::DebugInfoParseError,
-                    format!("{}: {err}", backend.id()),
-                    Some(format!("{location:?}")),
-                )),
-            }
+        let (primary, fallback): (Vec<&DebugLocation>, Vec<&DebugLocation>) =
+            locations.iter().partition(|l| !l.is_fallback());
+        self.open_locations(&primary, image, context, &mut readers, diagnostics);
+        if readers.is_empty() {
+            // Fallbacks stand in for primary debug info that couldn't be read; never both.
+            self.open_locations(&fallback, image, context, &mut readers, diagnostics);
         }
         if locations.is_empty() {
             diagnostics.push(diag(
@@ -200,6 +179,53 @@ impl Engine {
         }
         readers
     }
+
+    fn open_locations(
+        &self,
+        locations: &[&DebugLocation],
+        image: &dyn Image,
+        context: &DebugOpenContext<'_>,
+        readers: &mut Vec<Box<dyn DebugReader>>,
+        diagnostics: &mut Vec<Diagnostic>,
+    ) {
+        for &location in locations {
+            let Some(backend) = self.plugins.debug_backends.iter().find(|b| b.accepts(location)) else {
+                continue;
+            };
+            match backend.open(location, image, context) {
+                Ok(reader) => {
+                    if identities_conflict(&image.binary_id(), &reader.binary_id()) {
+                        diagnostics.push(diag(
+                            Severity::Error,
+                            DiagCode::DebugInfoMismatch,
+                            format!("{} debug info does not match the image", backend.id()),
+                            Some(format!("{location:?}")),
+                        ));
+                    } else {
+                        readers.push(reader);
+                    }
+                }
+                Err(SpiError::NotFound(what)) => diagnostics.push(diag(
+                    Severity::Info,
+                    DiagCode::NoDebugInfo,
+                    format!("{}: {what}", backend.id()),
+                    Some(format!("{location:?}")),
+                )),
+                Err(SpiError::Unimplemented(what)) => diagnostics.push(diag(
+                    Severity::Info,
+                    DiagCode::Unimplemented,
+                    format!("{}: {what} is not implemented yet", backend.id()),
+                    Some(format!("{location:?}")),
+                )),
+                Err(err) => diagnostics.push(diag(
+                    Severity::Warning,
+                    DiagCode::DebugInfoParseError,
+                    format!("{}: {err}", backend.id()),
+                    Some(format!("{location:?}")),
+                )),
+            }
+        }
+    }
 }
 
 fn identities_conflict(image: &BinaryId, debug: &BinaryId) -> bool {
@@ -212,6 +238,7 @@ fn diag(severity: Severity, code: DiagCode, message: String, subject: Option<Str
 
 #[derive(Debug)]
 struct SessionInner {
+    languages: Vec<Arc<dyn LanguageSupport>>,
     image: Box<dyn Image>,
     debug: Vec<Box<dyn DebugReader>>,
     diagnostics: Vec<Diagnostic>,
@@ -263,6 +290,81 @@ impl Session {
             sections,
             diagnostics: self.inner.diagnostics.clone(),
         }
+    }
+
+    /// Memory layout of every complete definition of the named struct, class or union (docs/05 §2).
+    /// Matches the fully qualified name after language normalization; if nothing matches exactly,
+    /// a trailing `::name` component match is tried (`Inner` finds `engine::Outer::Inner`).
+    pub fn struct_layout(&self, name: &str) -> Result<libstratum_model::LayoutResult, crate::QueryError> {
+        use libstratum_model::LayoutResult;
+
+        let normalize = |n: &str| -> String {
+            self.inner.languages.first().map_or_else(|| n.split_whitespace().collect(), |l| l.normalize_type_name(n))
+        };
+        let wanted = normalize(name);
+        let mut diagnostics = Vec::new();
+        let mut raws = Vec::new();
+        if self.inner.debug.is_empty() {
+            return Ok(LayoutResult {
+                query: name.into(),
+                matches: Vec::new(),
+                not_found_reason: Some("no debug info could be read for this binary".into()),
+                diagnostics: self.inner.diagnostics.clone(),
+            });
+        }
+        for pass in 0..2 {
+            for reader in &self.inner.debug {
+                let found = reader.find_types(&|candidate: &str| {
+                    let c = normalize(candidate);
+                    if pass == 0 { c == wanted } else { c.ends_with(&format!("::{wanted}")) }
+                });
+                match found {
+                    Ok(found) => raws.extend(found),
+                    Err(err) => diagnostics.push(Diagnostic {
+                        severity: Severity::Warning,
+                        code: DiagCode::DebugInfoParseError,
+                        message: err.to_string(),
+                        subject: Some(name.into()),
+                    }),
+                }
+            }
+            if !raws.is_empty() {
+                break;
+            }
+        }
+
+        let mut matches: Vec<libstratum_model::TypeLayout> = Vec::new();
+        for raw in raws.iter().filter(|r| !r.is_declaration) {
+            let layout = crate::layout::compute(raw, crate::layout::DEFAULT_CACHELINE_BYTES);
+            if !matches.contains(&layout) {
+                matches.push(layout);
+            }
+        }
+        // Deterministic order regardless of backend index iteration order.
+        matches.sort_by(|a, b| {
+            a.name
+                .cmp(&b.name)
+                .then(a.size_bytes.cmp(&b.size_bytes))
+                .then_with(|| format!("{:?}", a.members).cmp(&format!("{:?}", b.members)))
+        });
+        if matches.len() > 1 && matches.iter().all(|m| m.name == matches[0].name) {
+            diagnostics.push(Diagnostic {
+                severity: Severity::Warning,
+                code: DiagCode::OdrConflict,
+                message: format!("{} different definitions of {}", matches.len(), matches[0].name),
+                subject: Some(matches[0].name.clone()),
+            });
+        }
+        let not_found_reason = if matches.is_empty() {
+            Some(if raws.iter().any(|r| r.is_declaration) {
+                "only declarations were found (the definition may live in a unit without debug info)".into()
+            } else {
+                "no type with this name; types used only by optimized-out code may not be emitted".into()
+            })
+        } else {
+            None
+        };
+        Ok(LayoutResult { query: name.into(), matches, not_found_reason, diagnostics })
     }
 
     /// Which lenses can answer for this binary (ADR-0014).

@@ -10,8 +10,8 @@ answers from the compiler's and linker's own output instead of guesses.
 - **Extensible:** container formats and debug-info formats are plugins that translate into one neutral model
 - **Honest:** answers carry evidence and diagnostics; ambiguity (inlining, folding, elimination) is explicit
 
-> Status: **scaffold**. The plugin interfaces and engine skeleton compile and are tested; format parsing
-> starts in milestone M1. See [docs/07-roadmap.md](docs/07-roadmap.md).
+> Status: **M2 in progress.** ELF, Mach-O and PE binaries open with identity, sections and symbols; struct
+> layouts come from DWARF and PDB on every Tier 1 platform. See [docs/07-roadmap.md](docs/07-roadmap.md).
 
 ## Workspace
 
@@ -45,6 +45,10 @@ python3 scripts/check_dependency_rules.py
 
 ```bash
 cargo run -p libstratum --example info -- path/to/binary
+```
+
+```bash
+cargo run -p libstratum --example layout -- path/to/binary TypeName
 ```
 
 Design documents live in [docs/](docs/README.md). Architecture decisions are recorded as ADRs in
