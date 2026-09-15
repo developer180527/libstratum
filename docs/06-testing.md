@@ -45,7 +45,7 @@ Compiler output changes between versions. If CI rebuilt fixtures, golden files w
 | Linker | default; gc-sections / dead_strip / `/OPT:REF`; ICF (`--icf=all`, `/OPT:ICF`, `-deduplicate`) |
 | Debug | DWARF 5 (+ a DWARF 4 subset), split DWARF, `-fstandalone-debug` vs default; PDB via `/Zi` and `/Z7` |
 
-Not every fixture runs every combination; `toolchains.toml` declares the set per fixture directory. **Every M2 layout fixture must exist on all four platforms**, since it's the abstraction proof.
+Not every fixture runs every combination; `fixtures.toml` declares the toolchain set per group. **Every M2 layout fixture must exist on all four platforms**, since it's the abstraction proof. Groups other than `layout` cover shapes that are specific to one platform's toolchain and have no cross-platform equivalent — `debugmap` (macOS: bitcode inputs, sentinel N_OSO entries) is the first.
 
 ## 3. Test layers
 

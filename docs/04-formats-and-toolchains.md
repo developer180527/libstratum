@@ -70,6 +70,7 @@ Legend: **✅ verified** locally (Apple clang 21.0.0 `clang-2100.1.1.101`, Apple
 1. Explicit `--dsym` path.
 2. `<binary>.dSYM/Contents/Resources/DWARF/<name>` next to the binary.
 3. Debug map: OSO objects. Archive members appear as `lib.a(member.o)`. The OSO mtime is checked against the object file's mtime and flagged `oso-object-stale` on mismatch.
+   - **`n_strx == 0` is the "no name" sentinel and must be skipped.** The Mach-O string table starts with `" \0"`, so offset 0 reads back as a single space, not an empty string — an `is_empty()` check does not catch it. ld emits such an N_OSO for a bitcode (`-flto=thin`) input, which has no object file to name; `nm` and `dsymutil -dump-debug-map` both drop them. A release binary linking ThinLTO archives can carry hundreds (a real one: 5 named objects, then 106 sentinels sharing one mtime), and each would otherwise become a phantom debug-map entry with its own "not found" diagnostic on every query. Fixture: `debugmap/thinlto` (`apple-clang-lto`).
 4. (❓ later) Spotlight/`DBGShellCommands`-style lookup. Not in v1.
 - Paths inside the OSO and `DW_AT_comp_dir` may be sandbox/temporary paths (Bazel, remote caching). Support **prefix remapping** in `FsLocator`. 📚
 - **Universal (fat) binaries:** `probe` returns `YesContainer`; `OpenOptions.arch` selects the slice. Default is the host arch if present, otherwise an error listing available slices.

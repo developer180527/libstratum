@@ -176,7 +176,11 @@ fn parse<H: MachHeader<Endian = Endianness>>(
         let flags = nlist.n_type();
         let Ok(name) = nlist.name(endian, strings) else { continue };
         if let Some(stab) = flags.stab() {
-            if stab == macho::N_OSO && !name.is_empty() {
+            // `n_strx == 0` is the string table's "no name" sentinel: offset 0 holds a single
+            // space, so the name reads as " " rather than empty. LTO links emit one such N_OSO per
+            // merged object; `nm` and `dsymutil` drop them, and so must we, or every query carries
+            // a phantom "object not found" diagnostic per entry (docs/04 §3).
+            if stab == macho::N_OSO && nlist.n_strx(endian) != 0 && !name.is_empty() {
                 debug_locations.push(DebugLocation::MachOObject {
                     path: PathBuf::from(String::from_utf8_lossy(name).into_owned()),
                     mtime: nlist.n_value(endian).into(),

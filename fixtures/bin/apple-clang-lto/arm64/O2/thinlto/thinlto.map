@@ -1,0 +1,19 @@
+# Path: thinlto
+# Arch: arm64
+# Object files:
+[  0] linker synthesized
+[  1] thinlto.o
+[  2] thinlto_b.o
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libc++.tbd
+[  4] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd
+[  5] 
+[  6] 
+# Sections:
+# Address	Size    	Segment	Section
+0x100000360	0x00000008	__TEXT	__text
+0x100000368	0x00000058	__TEXT	__unwind_info
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x100000360	0x00000008	[  1] _main
+0x100000368	0x00000058	[  0] compact unwind info

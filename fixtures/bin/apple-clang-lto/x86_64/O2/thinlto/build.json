@@ -1,0 +1,67 @@
+{
+  "fixture": "thinlto",
+  "toolchain": "apple-clang-lto",
+  "arch": "x86_64",
+  "opt": "O2",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "LTO support using: LLVM version 21.0.0 (static support for 30, runtime is 30)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "debugmap/thinlto.cpp",
+        "-o",
+        "fixtures/bin/apple-clang-lto/x86_64/O2/thinlto/thinlto.o",
+        "-flto=thin"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "debugmap/thinlto_b.cpp",
+        "-o",
+        "fixtures/bin/apple-clang-lto/x86_64/O2/thinlto/thinlto_b.o",
+        "-flto=thin"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang-lto/x86_64/O2/thinlto",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "thinlto.o",
+        "thinlto_b.o",
+        "-o",
+        "thinlto",
+        "-Wl,-map,thinlto.map",
+        "-Wl,-oso_prefix,."
+      ]
+    }
+  ]
+}

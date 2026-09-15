@@ -6,6 +6,12 @@
 opts = ["O0", "O2"]
 toolchains = ["apple-clang", "linux-clang", "linux-gcc", "arm-none-eabi-gcc", "arm-llvm", "riscv-gcc", "msvc", "clang-cl", "linux-clang-types5", "linux-clang-types4"]
 
+[groups.debugmap]
+# Mach-O debug-map shapes that the layout corpus can't express. macOS only: the debug map is
+# an Apple linker construct, so there is no equivalent to build on the other Tier 1 platforms.
+opts = ["O2"]
+toolchains = ["apple-clang-lto"]
+
 [[fixtures]]
 name = "padding"
 group = "layout"
@@ -50,3 +56,8 @@ sources = ["layout/odr_conflict/a.cpp", "layout/odr_conflict/b.cpp"]
 name = "opaque"
 group = "layout"
 sources = ["layout/opaque.c"]
+
+[[fixtures]]
+name = "thinlto"
+group = "debugmap"
+sources = ["debugmap/thinlto.cpp", "debugmap/thinlto_b.cpp"]

@@ -8,13 +8,17 @@ on:
 jobs:
   macos:
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [apple-clang, apple-clang-lto]
     steps:
       - uses: actions/checkout@v7
-      - run: python3 fixtures/build/build.py --toolchain apple-clang
+      - run: python3 fixtures/build/build.py --toolchain ${{ matrix.toolchain }}
       - uses: actions/upload-artifact@v7
         with:
-          name: fixtures-apple-clang
-          path: fixtures/bin/apple-clang
+          name: fixtures-${{ matrix.toolchain }}
+          path: fixtures/bin/${{ matrix.toolchain }}
 
   linux-and-embedded:
     runs-on: ubuntu-latest

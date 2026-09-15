@@ -108,6 +108,27 @@ class AppleClang(Toolchain):
         return {"ZERO_AR_DATE": "1"}
 
 
+class AppleClangThinLto(AppleClang):
+    """Bitcode inputs (`-flto=thin`) at an ordinary link. The linker has no object file to name in
+    the debug map, so the N_OSO stab carries the string table's "no name" sentinel (n_strx == 0,
+    which reads as a single space). `nm` and `dsymutil` drop those entries (docs/04 §3).
+
+    No dsymutil step: with no object files to collect from, it would emit an empty dSYM."""
+
+    def __init__(self) -> None:
+        Toolchain.__init__(self, "apple-clang-lto", ["arm64", "x86_64"], "darwin",
+                           [["clang", "--version"], ["ld", "-v"]])
+
+    def compile(self, src, obj, arch, opt):
+        return super().compile(src, obj, arch, opt) + ["-flto=thin"]
+
+    def link(self, objs, out, arch, opt, cpp):
+        driver = "clang++" if cpp else "clang"
+        name = out.name
+        return [[driver, "-arch", arch, "-isysroot", macos_sdk(), *(o.name for o in objs), "-o", name,
+                 f"-Wl,-map,{name}.map", "-Wl,-oso_prefix,."]]
+
+
 # ---------------------------------------------------------------------------- Linux (hosted)
 
 
@@ -290,8 +311,8 @@ class ClangCl(Msvc):
 
 
 TOOLCHAINS: dict[str, Toolchain] = {t.name: t for t in [
-    AppleClang(), LinuxClang(), LinuxClangTypeUnits(5), LinuxClangTypeUnits(4), LinuxGcc(), ArmNoneEabiGcc(),
-    ArmLlvm(), RiscvGcc(), Msvc(), ClangCl(),
+    AppleClang(), AppleClangThinLto(), LinuxClang(), LinuxClangTypeUnits(5), LinuxClangTypeUnits(4), LinuxGcc(),
+    ArmNoneEabiGcc(), ArmLlvm(), RiscvGcc(), Msvc(), ClangCl(),
 ]}
 
 

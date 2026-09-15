@@ -10,6 +10,20 @@ repeats the versions for that build. Rebuild only deliberately, and update this 
 | Apple ld (ld-prime) | `ld-1267` |
 | SDK | Xcode `MacOSX.sdk` (26.5), pinned via `-isysroot`, not the Command Line Tools SDK |
 
+## macOS host (apple-clang-lto), built 2026-09-16
+Bitcode inputs (`-flto=thin`) linked without a `-flto` flag, so the debug map gets the `n_strx == 0`
+sentinel N_OSO (docs/04 §3). No `dsymutil` step: there are no object files to collect from.
+
+| Tool | Version |
+|---|---|
+| Apple clang | 21.0.0 (`clang-2100.3.34.2`) |
+| Apple ld (ld-prime) | LTO support using LLVM 21.0.0 (`ld -v`) |
+| SDK | Xcode `MacOSX.sdk`, pinned via `-isysroot` |
+
+⚠️ This is a **newer Apple clang build** than the one above that produced the `apple-clang` fixtures
+(`clang-2100.1.1.101`). Harmless while the two groups test different things, but rebuilding `apple-clang`
+on this host would change its goldens — rebuild both together, or pin deliberately.
+
 ## Linux and embedded (Docker image `libstratum-fixtures`, built 2026-09-15)
 Image id `sha256:eadb7cad6b17c3fc2bf9c3ad52cccef1c74507523e24287e94e353ed55ece360`, base Debian 13.6 (trixie).
 

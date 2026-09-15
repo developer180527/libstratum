@@ -16,6 +16,10 @@ Status: `layout/` fixtures built for 10 toolchains (apple-clang, linux-clang, li
 linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc, msvc, clang-cl): 334 builds, versions in
 [build/TOOLCHAINS.md](build/TOOLCHAINS.md). Windows builds of `opaque` are pending the fixtures workflow.
 
+`debugmap/` covers Mach-O debug-map shapes the layout corpus can't express, on macOS only: `thinlto`
+(`apple-clang-lto`, 2 builds) links bitcode inputs, so ld writes an N_OSO with the `n_strx == 0` "no name"
+sentinel (docs/04 §3).
+
 Cross-check goldens against reference tools (inside the Docker image):
 
 ```bash

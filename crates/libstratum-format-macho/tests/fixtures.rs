@@ -84,6 +84,51 @@ fn robustness_on_truncated_fixtures() {
     check_robustness(&MachO, &bytes, &label);
 }
 
+/// Counts N_OSO stabs carrying the string table's "no name" sentinel, read straight from the
+/// symbol table so the fixture can't silently stop covering this case.
+fn sentinel_oso_count(bytes: &[u8]) -> usize {
+    use object::Endianness;
+    use object::read::macho::{MachOFile64, Nlist};
+
+    let file = MachOFile64::<Endianness>::parse(bytes).expect("Mach-O");
+    let endian = file.endian();
+    let symtab = file.macho_symbol_table();
+    symtab
+        .iter()
+        .filter(|nlist| nlist.n_type().stab() == Some(object::macho::N_OSO) && nlist.n_strx(endian) == 0)
+        .count()
+}
+
+/// A bitcode (`-flto=thin`) input has no object file for the debug map to name, so ld writes an
+/// N_OSO whose `n_strx` is 0. Offset 0 of the string table holds a single space, so the name reads
+/// back as `" "` and an `is_empty()` check does not catch it. `nm` and `dsymutil` drop these; so
+/// must we, or every query carries a phantom "object not found" diagnostic per entry (docs/04 §3).
+/// A real release binary linking ThinLTO archives carried 106 of them.
+#[test]
+fn thinlto_sentinel_is_not_a_debug_map_object() {
+    for arch in ["arm64", "x86_64"] {
+        let label = format!("apple-clang-lto/{arch}/O2/thinlto");
+        let path = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../fixtures/bin/apple-clang-lto")
+            .join(arch)
+            .join("O2/thinlto/thinlto");
+        let bytes = std::fs::read(&path).unwrap_or_else(|e| panic!("{label}: {e}"));
+
+        // Guard against a rebuild that stops producing the sentinel: without it the assertion
+        // below would pass while testing nothing.
+        assert_eq!(sentinel_oso_count(&bytes), 1, "{label}: fixture must contain an n_strx == 0 N_OSO");
+
+        let image = check_image(&MachO, &bytes, &label);
+        let objects: Vec<_> = image
+            .debug_locations()
+            .iter()
+            .filter(|l| matches!(l, DebugLocation::MachOObject { .. }))
+            .cloned()
+            .collect();
+        assert!(objects.is_empty(), "{label}: sentinel became a debug-map object: {objects:?}");
+    }
+}
+
 /// A synthetic universal binary made of the two thin fixture slices selects the requested arch.
 #[test]
 fn universal_binary_slice_selection() {
