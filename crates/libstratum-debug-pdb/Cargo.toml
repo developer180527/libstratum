@@ -10,7 +10,7 @@ publish.workspace = true
 
 [dependencies]
 libstratum-core.workspace = true
-# PDB reader (ms-pdb or pdb2) chosen by the M0 spike: docs/08-decisions.md Q14.
+pdb2.workspace = true
 
 [lints]
 workspace = true

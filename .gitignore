@@ -1,5 +1,7 @@
 # Rust
 /target
+/spikes/*/target
+/spikes/*/Cargo.lock
 **/*.rs.bk
 
 # OS / editors

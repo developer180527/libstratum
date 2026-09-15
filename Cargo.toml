@@ -1,6 +1,7 @@
 [workspace]
 resolver = "3"
 members = ["crates/*"]
+exclude = ["spikes"]
 
 [workspace.package]
 version = "0.0.0"
@@ -24,11 +25,12 @@ libstratum-format-pe = { path = "crates/libstratum-format-pe" }
 libstratum-debug-dwarf = { path = "crates/libstratum-debug-dwarf" }
 libstratum-debug-pdb = { path = "crates/libstratum-debug-pdb" }
 
-# external (ADR-0001). PDB reader is pending the M0 spike (Q14).
+# external (ADR-0001; PDB reader chosen in M0 spike S7, Q14)
 serde = { version = "1.0", features = ["derive"] }
 thiserror = "2.0"
 object = { version = "0.40", default-features = false, features = ["read", "std", "compression"] }
 gimli = { version = "0.34", default-features = false, features = ["read", "std"] }
+pdb2 = "0.10"
 cpp_demangle = "0.5"
 msvc-demangler = "0.11"
 

@@ -44,7 +44,7 @@ A PDB is an MSF container (a mini filesystem of streams) holding CodeView record
 
 **Inline chains on Windows:** `S_INLINESITE` records nest inside procedures. Their *binary annotations* are a compact state machine encoding code offsets and line deltas, while `DEBUG_S_INLINEELINES` gives each inlinee's source file and starting line 📚. This is semantically equivalent to DWARF `DW_TAG_inlined_subroutine` + `DW_AT_call_*`, with the same shape (a nested tree) and different encoding. It fits the debug IR (§4) directly.
 
-**Reader choice:** `ms-pdb` (Microsoft's `pdb-rs`, actively maintained, pure Rust, no Windows or DIA requirement) vs `pdb2` (maintained fork of the older `pdb` crate used by Sentry) 📚. Leaning `ms-pdb` (see Q14). **We must not depend on DIA** (the Windows-only COM API that SizeBench uses 📚): stratum has to analyze Windows binaries on Linux and macOS hosts too (CI, cross-builds, agents).
+**Reader choice: `pdb2`** ✅ (decided in [M0 spike S7](spikes/m0-report.md#s7-pdb-reader-choice-q14-)). Both `pdb2` and Microsoft's `ms-pdb` decoded every fixture PDB identically; `pdb2` wins on dependencies (4, pure Rust vs 44 including C zstd), maturity, and API level. **We must not depend on DIA** (the Windows-only COM API that SizeBench uses 📚): stratum has to analyze Windows binaries on Linux and macOS hosts too (CI, cross-builds, agents).
 
 ### 2.3 MSVC toolchain behaviors that affect correlation
 
@@ -158,7 +158,7 @@ The core derives everything else (holes, cache lines, reorder suggestions, prove
 | `libstratum-model` | Public types |
 | `libstratum-core` | SPI, neutral IR, correlation, lenses, cache, diagnostics |
 | `libstratum-format-elf` · `libstratum-format-macho` · `libstratum-format-pe` | Container plugins (+ their map parsers and locators) |
-| `libstratum-debug-dwarf` · `libstratum-debug-pdb` | Debug-info backends |
+| `libstratum-debug-dwarf` (gimli) · `libstratum-debug-pdb` (pdb2) | Debug-info backends |
 | `libstratum-lang-cpp` | C/C++ semantics |
 | `libstratum-demangle` | Itanium + MSVC schemes |
 | `libstratum-arch` | Arch facts: Thumb bit, mapping symbols, pointer size, ABI alignment tables for reorder suggestions |

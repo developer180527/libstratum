@@ -1,0 +1,13 @@
+# M0 spike S7 (Q14): compares ms-pdb and pdb2 on fixtures/bin PDBs.
+# Not part of the workspace or CI. Run:
+#   cargo run --release --manifest-path spikes/pdb-readers/Cargo.toml -- fixtures/bin
+[package]
+name = "pdb-readers-spike"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+ms-pdb = "=0.1.22"
+pdb2 = "=0.10.2"
+anyhow = "1"

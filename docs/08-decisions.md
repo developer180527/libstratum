@@ -134,6 +134,6 @@ To change an accepted decision, add a new ADR that supersedes it. Don't edit his
 | Q10 | Snapshot file format: JSON (+zstd) or a binary format? | M5 | JSON+zstd for v1; readable and diffable |
 | Q11 | ~~First users~~: resolved by ADR-0019 (all major platforms + embedded); dogfood on the game engine and one firmware project | — | Resolved |
 | Q12 | ~~MCP in Phase 2~~: deferred by ADR-0017 | — | Deferred |
-| Q14 | PDB reader: `ms-pdb` (Microsoft, pure Rust) vs `pdb2` (fork of Sentry's `pdb`)? Criteria: inline-site and C13 coverage, API stability, speed on multi-GB PDBs | M0 spike | `ms-pdb` |
+| Q14 | ~~PDB reader~~ **Resolved (M0 S7): `pdb2`.** Both crates decoded all 64 fixture PDBs identically; `pdb2` is pure Rust with 4 dependencies (ms-pdb: 44, including the C zstd library), more mature, and already maps section offsets to RVAs. `ms-pdb` stays a cross-check in `spikes/pdb-readers` | — | Resolved |
 | Q15 | Cross-building clang-cl fixtures on macOS/Linux (e.g. `xwin`): licensing and reproducibility OK? | M0 | Verify; MSVC fixtures on Windows CI regardless |
 | Q13 | Disassembler for the codegen and stack lenses: Capstone bindings (C dependency) or pure-Rust (`yaxpeax`)? | Lens 3 | Evaluate Thumb, RISC-V and arm64 coverage first |

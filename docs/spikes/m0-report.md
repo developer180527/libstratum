@@ -11,7 +11,7 @@ Host: macOS 27 arm64, Apple clang 21.0.0 (`clang-2100.1.1.101`), Apple ld `ld-12
 | S4 | Windows CodeView in COFF objects | ✅ partial; PDB needs a linker (Windows CI) |
 | S5 | Reuse `addr2line`? (Q1) | ✅ decided |
 | S6 | Fixture pipeline findings (dSYM, OSO paths, type loss) | ✅ done |
-| S7 | PDB reader choice (Q14), `/OPT:ICF` in PDBs | ⏳ fixtures ready (msvc, clang-cl on GitHub Actions); spike next |
+| S7 | PDB reader choice (Q14) | ✅ decided: `pdb2` |
 | S8 | lld ICF aliases and tombstones; GCC `-fipa-icf`; GCC LTO early debug | ✅ done (Debian server, Docker) |
 | S9 | `.data` LMA/VMA from `PT_LOAD`, embedded map `Memory Configuration` | ✅ done |
 | S10 | Linux and embedded fixture corpus | ✅ 176 builds, verified |
@@ -119,6 +119,40 @@ Every toolchain keeps all layout types at `-O2`, and both conflicting `Config` l
 3. C++ can't place a function pointer in a `void*` constant table; vector tables live in C (`vectors.c`).
 4. Debian's LLVM lacks bare-metal compiler-rt builtins; soft-float Cortex-M links need `libgcc` (`__aeabi_d2iz`).
 5. The server's Tailscale MagicDNS had no upstream resolvers; fixed by enabling global nameservers with "Override DNS servers" (environment note, not a stratum finding).
+
+## S7: PDB reader choice (Q14) ✅
+
+Program: [`spikes/pdb-readers`](../../spikes/pdb-readers/). For every one of the 64 fixture PDBs (msvc and clang-cl ×
+x64, arm64 × O0, O2), each crate independently extracts: the canonical layout of every fixture type (size, members
+with offsets, bitfield position:width, base classes, virtual bases, vtable pointers), module count, procedure and
+inline-site symbols, C13 line records, public symbols, and groups of publics sharing one address.
+
+**Correctness: equivalent.**
+- x64 (32 PDBs): identical results for everything.
+- arm64 (32 PDBs): identical layouts, modules, procs, inline sites, publics, and address groups. Line records differ by 4–8 per PDB, all of them **special line markers** in the arm64 CRT objects: `0xF00F00` (hidden code, "do not step into"). `ms-pdb` returns them raw; `pdb2` models them (`LineMarkerKind::{DoNotStepOnto, DoNotStepInto}` for `0xFEEFEE`/`0xF00F00`) and skips them in its line iterator. With markers excluded, the counts match.
+- Decoded layouts match the MSVC ABI: `Polymorphic` 24 B (vfptr@0), `Diamond` 48 B with virtual-base entries, `WithEmptyBase` 4 B (EBO), `Holder` 8 B (`[[msvc::no_unique_address]]` honored), `WireHeader` 7 B / `Pack2` 8 B, MSVC bitfield units (`Flags`: `c` in a new unit after `: 0`; `enabled`+`mode` sharing offset 8; size 32), both ODR `Config` layouts (16 and 32 B).
+
+**Comparison**
+
+| | `ms-pdb` 0.1.22 (Microsoft) | `pdb2` 0.10.2 (fork of Sentry's `pdb`) |
+|---|---|---|
+| Correct on 64 fixture PDBs | ✅ | ✅ |
+| Speed on the corpus | 0.07 s | 0.02 s |
+| Dependencies (unique, normal) | **44**, including **zstd-sys (C library)**, mandatory for the MSFZ/PDZ container | **4** (`fallible-iterator`, `scroll`, `uuid`), pure Rust |
+| API level | Low-level, raw records (block-relative line offsets, raw markers); `anyhow::Result` in signatures | Higher-level: `TypeFinder`, `AddressMap` → RVA, section offsets, typed line markers, own error type |
+| Maturity | v0.1 (pre-1.0, API churn expected); 64k downloads | Lineage used in production symbolication; 647k downloads; updated Aug 2026 |
+| Extra capabilities | Writing PDBs, MSFZ/PDZ compressed PDBs (Microsoft calls MSFZ experimental) | Read-only |
+
+**Decision: `pdb2`** for `libstratum-debug-pdb`.
+- Pure Rust with 4 dependencies. No C toolchain needed on any host, which matters for the future C ABI, cross-compiled embeddings, and possibly WebAssembly builds.
+- Correctness is identical on every fixture, and its API already does the section-offset → RVA work our backend needs.
+- It models special line markers explicitly, so the backend can report "compiler-generated code, no source line" without losing information.
+- `ms-pdb` stays the **cross-check oracle** in the spike program (not a dependency), and the option to revisit if we need PDZ/MSFZ input or PDB writing. The choice is invisible outside `libstratum-debug-pdb` (ADR-0018).
+
+**Follow-ups**
+- The layout fixtures contain no identical user functions, so the address groups seen here are CRT aliases (`_InterlockedAdd64` = `_InterlockedAdd64_Function` = `_InterlockedAddPointer`), not `/OPT:ICF` folds of our code. `/OPT:ICF` behavior on user code needs the `icf/` fixtures (M3).
+- PDB type records show an anonymous union's members directly in the enclosing struct (`Variant`: `i`, `f`, `point` all @4). The layout model must reconstruct the anonymous grouping from the nested `LF_UNION`, or report the flattened form.
+- Benchmark both crates on a large real PDB (e.g. the game engine's) during real-code validation; the fixture PDBs are too small to measure performance.
 
 ## S11: Windows fixtures via GitHub Actions ✅
 
