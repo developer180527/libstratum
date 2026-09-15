@@ -1,0 +1,65 @@
+{
+  "fixture": "odr_conflict",
+  "toolchain": "msvc",
+  "arch": "arm64",
+  "opt": "O0",
+  "host": "Windows AMD64",
+  "tools": {
+    "cl": "Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for ARM64",
+    "link": "Microsoft (R) Incremental Linker Version 14.51.36256.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "cl",
+        "/nologo",
+        "/std:c++17",
+        "/TP",
+        "/Zi",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/EHs-c-",
+        "/Fdfixtures/bin/msvc/arm64/O0/odr_conflict/a.compile.pdb",
+        "/c",
+        "layout/odr_conflict/a.cpp",
+        "/Fofixtures/bin/msvc/arm64/O0/odr_conflict/a.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "cl",
+        "/nologo",
+        "/std:c++17",
+        "/TP",
+        "/Zi",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/EHs-c-",
+        "/Fdfixtures/bin/msvc/arm64/O0/odr_conflict/b.compile.pdb",
+        "/c",
+        "layout/odr_conflict/b.cpp",
+        "/Fofixtures/bin/msvc/arm64/O0/odr_conflict/b.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/MAP:fixtures/bin/msvc/arm64/O0/odr_conflict/odr_conflict.map",
+        "/PDB:fixtures/bin/msvc/arm64/O0/odr_conflict/odr_conflict.pdb",
+        "/OUT:fixtures/bin/msvc/arm64/O0/odr_conflict/odr_conflict.exe",
+        "fixtures/bin/msvc/arm64/O0/odr_conflict/a.obj",
+        "fixtures/bin/msvc/arm64/O0/odr_conflict/b.obj"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "fixture": "anonymous",
+  "toolchain": "msvc",
+  "arch": "x64",
+  "opt": "O2",
+  "host": "Windows AMD64",
+  "tools": {
+    "cl": "Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for x64",
+    "link": "Microsoft (R) Incremental Linker Version 14.51.36256.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "cl",
+        "/nologo",
+        "/std:c++17",
+        "/TP",
+        "/Zi",
+        "/O2",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/EHs-c-",
+        "/Fdfixtures/bin/msvc/x64/O2/anonymous/anonymous.compile.pdb",
+        "/c",
+        "layout/anonymous.cpp",
+        "/Fofixtures/bin/msvc/x64/O2/anonymous/anonymous.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/OPT:REF",
+        "/OPT:ICF",
+        "/MAP:fixtures/bin/msvc/x64/O2/anonymous/anonymous.map",
+        "/PDB:fixtures/bin/msvc/x64/O2/anonymous/anonymous.pdb",
+        "/OUT:fixtures/bin/msvc/x64/O2/anonymous/anonymous.exe",
+        "fixtures/bin/msvc/x64/O2/anonymous/anonymous.obj"
+      ]
+    }
+  ]
+}

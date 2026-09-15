@@ -12,7 +12,7 @@
 
 ## M0: Foundations and verification spikes
 
-**Progress (2026-09-15):** workspace scaffold ✅ · CI workflow ✅ · fixture driver (`fixtures/build/build.py`, all 8 toolchains defined) ✅ · Docker image and fixtures workflow ✅ · `layout/` fixtures built for apple-clang ✅ · spikes S1–S6 ✅ · Linux/embedded fixtures (176 builds on the Debian server) and S8–S10 ✅ · MSVC/clang-cl fixtures and S7 ⏳ (Windows). Report: [spikes/m0-report.md](spikes/m0-report.md).
+**Progress (2026-09-15):** workspace scaffold ✅ · CI workflow ✅ · fixture driver (`fixtures/build/build.py`, all 8 toolchains defined) ✅ · Docker image and fixtures workflow ✅ · `layout/` fixtures built for apple-clang ✅ · spikes S1–S6 ✅ · Linux/embedded fixtures (176 builds on the Debian server) and S8–S10 ✅ · MSVC/clang-cl fixtures (64 builds via GitHub Actions) ✅ · PDB reader choice S7/Q14 ⏳. Report: [spikes/m0-report.md](spikes/m0-report.md).
 
 - Cargo workspace with all backend crates (empty, compiling); dependency-rule check in CI
 - **CI runners:** macOS (Apple Clang), Linux (Docker: Clang, GCC, arm-none-eabi, RISC-V toolchains), **Windows (MSVC, clang-cl)**

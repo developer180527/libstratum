@@ -1,0 +1,46 @@
+{
+  "fixture": "padding",
+  "toolchain": "clang-cl",
+  "arch": "x64",
+  "opt": "O2",
+  "host": "Windows AMD64",
+  "tools": {
+    "clang-cl --version": "clang version 20.1.8",
+    "lld-link --version": "LLD 20.1.8"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang-cl",
+        "/nologo",
+        "--target=x86_64-pc-windows-msvc",
+        "/std:c++17",
+        "/TP",
+        "/Z7",
+        "/O2",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/c",
+        "layout/padding.cpp",
+        "/Fofixtures/bin/clang-cl/x64/O2/padding/padding.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "lld-link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/OPT:REF",
+        "/OPT:ICF",
+        "/MAP:fixtures/bin/clang-cl/x64/O2/padding/padding.map",
+        "/PDB:fixtures/bin/clang-cl/x64/O2/padding/padding.pdb",
+        "/OUT:fixtures/bin/clang-cl/x64/O2/padding/padding.exe",
+        "fixtures/bin/clang-cl/x64/O2/padding/padding.obj"
+      ]
+    }
+  ]
+}

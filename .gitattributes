@@ -1,3 +1,2 @@
-fixtures/bin/** binary
-fixtures/bin/**/build.json text
-*.map text
+# Fixture outputs are exact toolchain artifacts: never normalize line endings (Windows maps use CRLF).
+fixtures/bin/** -text -diff

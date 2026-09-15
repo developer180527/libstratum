@@ -1,0 +1,45 @@
+{
+  "fixture": "padding",
+  "toolchain": "msvc",
+  "arch": "x64",
+  "opt": "O0",
+  "host": "Windows AMD64",
+  "tools": {
+    "cl": "Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for x64",
+    "link": "Microsoft (R) Incremental Linker Version 14.51.36256.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "cl",
+        "/nologo",
+        "/std:c++17",
+        "/TP",
+        "/Zi",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/EHs-c-",
+        "/Fdfixtures/bin/msvc/x64/O0/padding/padding.compile.pdb",
+        "/c",
+        "layout/padding.cpp",
+        "/Fofixtures/bin/msvc/x64/O0/padding/padding.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/MAP:fixtures/bin/msvc/x64/O0/padding/padding.map",
+        "/PDB:fixtures/bin/msvc/x64/O0/padding/padding.pdb",
+        "/OUT:fixtures/bin/msvc/x64/O0/padding/padding.exe",
+        "fixtures/bin/msvc/x64/O0/padding/padding.obj"
+      ]
+    }
+  ]
+}

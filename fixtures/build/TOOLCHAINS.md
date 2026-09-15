@@ -23,5 +23,14 @@ Image id `sha256:eadb7cad6b17c3fc2bf9c3ad52cccef1c74507523e24287e94e353ed55ece36
 
 arm-llvm links GCC's `libgcc` for the matching CPU (compiler-rt bare-metal builtins aren't packaged).
 
-## Windows (msvc, clang-cl)
-Not built yet. To be recorded after the Windows session (Visual Studio Build Tools version, MSVC toolset, clang-cl/lld-link version).
+## Windows (msvc, clang-cl): GitHub Actions `windows-latest`, built 2026-09-16
+Workflow run 35023865100 (`fixtures.yml`, commit `e375b67`); environment via `ilammy/msvc-dev-cmd` (x64, amd64_arm64).
+
+| Toolchain | Tool | Version |
+|---|---|---|
+| msvc | cl / link | 19.51.36256 / 14.51.36256.0 |
+| clang-cl | clang-cl / lld-link | clang 20.1.8 / LLD 20.1.8 (Visual Studio bundled) |
+
+Both link the CRT dynamically (`/MD`) with `/INCREMENTAL:NO`; O2 builds add `/OPT:REF /OPT:ICF`.
+Binaries' CodeView `RSDS` records keep the runner's absolute PDB path (`D:\a\libstratum\libstratum\fixtures\bin\...`),
+which doesn't exist elsewhere, a realistic case for the PDB locator (fall back to the PDB next to the image).

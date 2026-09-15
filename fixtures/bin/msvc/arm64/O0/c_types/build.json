@@ -1,0 +1,45 @@
+{
+  "fixture": "c_types",
+  "toolchain": "msvc",
+  "arch": "arm64",
+  "opt": "O0",
+  "host": "Windows AMD64",
+  "tools": {
+    "cl": "Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for ARM64",
+    "link": "Microsoft (R) Incremental Linker Version 14.51.36256.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "cl",
+        "/nologo",
+        "/std:c11",
+        "/TC",
+        "/Zi",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/EHs-c-",
+        "/Fdfixtures/bin/msvc/arm64/O0/c_types/c_types.compile.pdb",
+        "/c",
+        "layout/c_types.c",
+        "/Fofixtures/bin/msvc/arm64/O0/c_types/c_types.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/MAP:fixtures/bin/msvc/arm64/O0/c_types/c_types.map",
+        "/PDB:fixtures/bin/msvc/arm64/O0/c_types/c_types.pdb",
+        "/OUT:fixtures/bin/msvc/arm64/O0/c_types/c_types.exe",
+        "fixtures/bin/msvc/arm64/O0/c_types/c_types.obj"
+      ]
+    }
+  ]
+}

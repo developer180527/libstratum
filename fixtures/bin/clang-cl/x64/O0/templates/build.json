@@ -1,0 +1,44 @@
+{
+  "fixture": "templates",
+  "toolchain": "clang-cl",
+  "arch": "x64",
+  "opt": "O0",
+  "host": "Windows AMD64",
+  "tools": {
+    "clang-cl --version": "clang version 20.1.8",
+    "lld-link --version": "LLD 20.1.8"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang-cl",
+        "/nologo",
+        "--target=x86_64-pc-windows-msvc",
+        "/std:c++17",
+        "/TP",
+        "/Z7",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/c",
+        "layout/templates.cpp",
+        "/Fofixtures/bin/clang-cl/x64/O0/templates/templates.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "lld-link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/MAP:fixtures/bin/clang-cl/x64/O0/templates/templates.map",
+        "/PDB:fixtures/bin/clang-cl/x64/O0/templates/templates.pdb",
+        "/OUT:fixtures/bin/clang-cl/x64/O0/templates/templates.exe",
+        "fixtures/bin/clang-cl/x64/O0/templates/templates.obj"
+      ]
+    }
+  ]
+}

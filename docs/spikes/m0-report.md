@@ -11,7 +11,7 @@ Host: macOS 27 arm64, Apple clang 21.0.0 (`clang-2100.1.1.101`), Apple ld `ld-12
 | S4 | Windows CodeView in COFF objects | ✅ partial; PDB needs a linker (Windows CI) |
 | S5 | Reuse `addr2line`? (Q1) | ✅ decided |
 | S6 | Fixture pipeline findings (dSYM, OSO paths, type loss) | ✅ done |
-| S7 | PDB reader choice (Q14), `/OPT:ICF` in PDBs | ⏳ blocked: needs MSVC build (Windows runner) |
+| S7 | PDB reader choice (Q14), `/OPT:ICF` in PDBs | ⏳ fixtures ready (msvc, clang-cl on GitHub Actions); spike next |
 | S8 | lld ICF aliases and tombstones; GCC `-fipa-icf`; GCC LTO early debug | ✅ done (Debian server, Docker) |
 | S9 | `.data` LMA/VMA from `PT_LOAD`, embedded map `Memory Configuration` | ✅ done |
 | S10 | Linux and embedded fixture corpus | ✅ 176 builds, verified |
@@ -120,9 +120,15 @@ Every toolchain keeps all layout types at `-O2`, and both conflicting `Config` l
 4. Debian's LLVM lacks bare-metal compiler-rt builtins; soft-float Cortex-M links need `libgcc` (`__aeabi_d2iz`).
 5. The server's Tailscale MagicDNS had no upstream resolvers; fixed by enabling global nameservers with "Override DNS servers" (environment note, not a stratum finding).
 
+## S11: Windows fixtures via GitHub Actions ✅
+
+First run: every build succeeded, but MSVC's default static CRT (`/MT`) put the entire CRT into each PDB and map
+(3.6–5 MB PDBs, 10 MB of maps per 16 builds), and `/DEBUG` enabled incremental linking (29.6 MB of `.ilk`).
+With `/MD` and `/INCREMENTAL:NO`: 64 builds (msvc and clang-cl × x64, arm64 × O0, O2), about 35 MB of committed
+PDB + map + exe + build.json. Machine types verified (`x86-64`, `Aarch64`). The `RSDS` PDB path is the runner's absolute path.
+
 ## Blocked spikes: what's needed
 
 | Spike | Needs | How |
 |---|---|---|
-| S7 PDB reader, `/OPT:ICF` in PDB | MSVC-built PE+PDB fixtures | Run the `fixtures` workflow on GitHub (Windows runner), or a local Windows machine |
 | clang-cl cross-build on macOS (Q15) | `lld-link` + Windows SDK/CRT (e.g. `xwin`, which requires accepting Microsoft's license) | User decision |

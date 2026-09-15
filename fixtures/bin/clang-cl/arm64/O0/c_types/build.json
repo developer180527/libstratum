@@ -1,0 +1,43 @@
+{
+  "fixture": "c_types",
+  "toolchain": "clang-cl",
+  "arch": "arm64",
+  "opt": "O0",
+  "host": "Windows AMD64",
+  "tools": {
+    "clang-cl --version": "clang version 20.1.8",
+    "lld-link --version": "LLD 20.1.8"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang-cl",
+        "/nologo",
+        "--target=aarch64-pc-windows-msvc",
+        "/TC",
+        "/Z7",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/c",
+        "layout/c_types.c",
+        "/Fofixtures/bin/clang-cl/arm64/O0/c_types/c_types.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "lld-link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/MAP:fixtures/bin/clang-cl/arm64/O0/c_types/c_types.map",
+        "/PDB:fixtures/bin/clang-cl/arm64/O0/c_types/c_types.pdb",
+        "/OUT:fixtures/bin/clang-cl/arm64/O0/c_types/c_types.exe",
+        "fixtures/bin/clang-cl/arm64/O0/c_types/c_types.obj"
+      ]
+    }
+  ]
+}

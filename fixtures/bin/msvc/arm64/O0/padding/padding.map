@@ -1,0 +1,1233 @@
+ padding
+
+ Timestamp is 6aa9b3e6 (Tue Sep 15 21:08:54 2026)
+
+ Preferred load address is 0000000140000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 000025b0H .text                   CODE
+ 0001:000025b0 000015f4H .text$mn                CODE
+ 0001:00003ba4 00000064H .text$x                 CODE
+ 0002:00000000 00000188H .idata$5                DATA
+ 0002:00000188 00000028H .00cfg                  DATA
+ 0002:000001b0 00000008H .CRT$XCA                DATA
+ 0002:000001b8 00000008H .CRT$XCAA               DATA
+ 0002:000001c0 00000008H .CRT$XCZ                DATA
+ 0002:000001c8 00000008H .CRT$XIA                DATA
+ 0002:000001d0 00000008H .CRT$XIAA               DATA
+ 0002:000001d8 00000008H .CRT$XIAC               DATA
+ 0002:000001e0 00000008H .CRT$XIZ                DATA
+ 0002:000001e8 00000008H .CRT$XPA                DATA
+ 0002:000001f0 00000008H .CRT$XPZ                DATA
+ 0002:000001f8 00000008H .CRT$XTA                DATA
+ 0002:00000200 00000010H .CRT$XTZ                DATA
+ 0002:00000208 00000000H .gehcont$y              DATA
+ 0002:00000208 00000000H .gfids$y                DATA
+ 0002:00000210 00000270H .rdata                  DATA
+ 0002:00000480 00000080H .rdata$CastGuardVftablesA DATA
+ 0002:00000500 00000080H .rdata$CastGuardVftablesC DATA
+ 0002:00000580 00000300H .rdata$zzzdbg           DATA
+ 0002:00000880 00000008H .rtc$IAA                DATA
+ 0002:00000888 00000008H .rtc$IZZ                DATA
+ 0002:00000890 00000008H .rtc$TAA                DATA
+ 0002:00000898 00000008H .rtc$TZZ                DATA
+ 0002:000008a0 00000678H .xdata                  DATA
+ 0002:00000f18 00000000H .edata                  DATA
+ 0002:00000f18 0000008cH .idata$2                DATA
+ 0002:00000fa4 00000014H .idata$3                DATA
+ 0002:00000fb8 00000188H .idata$4                DATA
+ 0002:00001140 00000418H .idata$6                DATA
+ 0003:00000000 00000090H .data                   DATA
+ 0003:00000090 00000118H .bss                    DATA
+ 0004:00000000 00000640H .pdata                  DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       __AbsoluteZero             0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table   0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table_size 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_native_entrypoint 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata 0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata_count 0000000000000000     <absolute>
+ 0000:00000000       __dynamic_value_reloc_table 0000000000000000     <absolute>
+ 0000:00000000       __enclave_config           0000000000000000     <absolute>
+ 0000:00000000       __guard_check_icall_a64n_fptr 0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_table      0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_count         0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_table         0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_count          0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_table          0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_table      0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_delayload_iat 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_delayload_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat     0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __hybrid_image_info_bitfield 0000000000000000     <absolute>
+ 0000:00000000       __volatile_metadata        0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
+ 0000:00000100       __guard_flags              0000000000000100     <absolute>
+ 0000:00000000       __ImageBase                0000000140000000     <linker-defined>
+ 0001:00000000       _InterlockedAdd16          0000000140001000 f   MSVCRT:atomics.obj
+ 0001:00000000       _InterlockedAdd16_Function 0000000140001000 f   MSVCRT:atomics.obj
+ 0001:00000050       _InterlockedAdd16_acq      0000000140001050 f   MSVCRT:atomics.obj
+ 0001:00000050       _InterlockedAdd16_acq_Function 0000000140001050 f   MSVCRT:atomics.obj
+ 0001:000000a0       _InterlockedAdd16_rel      00000001400010a0 f   MSVCRT:atomics.obj
+ 0001:000000a0       _InterlockedAdd16_rel_Function 00000001400010a0 f   MSVCRT:atomics.obj
+ 0001:000000f0       _InterlockedAdd16_nf       00000001400010f0 f   MSVCRT:atomics.obj
+ 0001:000000f0       _InterlockedAdd16_nf_Function 00000001400010f0 f   MSVCRT:atomics.obj
+ 0001:00000140       _InterlockedAdd            0000000140001140 f   MSVCRT:atomics.obj
+ 0001:00000140       _InterlockedAdd_Function   0000000140001140 f   MSVCRT:atomics.obj
+ 0001:00000180       _InterlockedAdd_acq        0000000140001180 f   MSVCRT:atomics.obj
+ 0001:00000180       _InterlockedAdd_acq_Function 0000000140001180 f   MSVCRT:atomics.obj
+ 0001:000001c0       _InterlockedAdd_rel        00000001400011c0 f   MSVCRT:atomics.obj
+ 0001:000001c0       _InterlockedAdd_rel_Function 00000001400011c0 f   MSVCRT:atomics.obj
+ 0001:00000200       _InterlockedAdd_nf         0000000140001200 f   MSVCRT:atomics.obj
+ 0001:00000200       _InterlockedAdd_nf_Function 0000000140001200 f   MSVCRT:atomics.obj
+ 0001:00000240       _InterlockedAdd64          0000000140001240 f   MSVCRT:atomics.obj
+ 0001:00000240       _InterlockedAdd64_Function 0000000140001240 f   MSVCRT:atomics.obj
+ 0001:00000240       _InterlockedAddPointer     0000000140001240 f   MSVCRT:atomics.obj
+ 0001:00000280       _InterlockedAdd64_acq      0000000140001280 f   MSVCRT:atomics.obj
+ 0001:00000280       _InterlockedAdd64_acq_Function 0000000140001280 f   MSVCRT:atomics.obj
+ 0001:00000280       _InterlockedAddPointer_acq 0000000140001280 f   MSVCRT:atomics.obj
+ 0001:000002c0       _InterlockedAdd64_rel      00000001400012c0 f   MSVCRT:atomics.obj
+ 0001:000002c0       _InterlockedAdd64_rel_Function 00000001400012c0 f   MSVCRT:atomics.obj
+ 0001:000002c0       _InterlockedAddPointer_rel 00000001400012c0 f   MSVCRT:atomics.obj
+ 0001:00000300       _InterlockedAdd64_nf       0000000140001300 f   MSVCRT:atomics.obj
+ 0001:00000300       _InterlockedAdd64_nf_Function 0000000140001300 f   MSVCRT:atomics.obj
+ 0001:00000300       _InterlockedAddPointer_nf  0000000140001300 f   MSVCRT:atomics.obj
+ 0001:00000340       _InterlockedAnd8           0000000140001340 f   MSVCRT:atomics.obj
+ 0001:00000340       _InterlockedAnd8_Function  0000000140001340 f   MSVCRT:atomics.obj
+ 0001:00000380       _InterlockedAnd8_acq       0000000140001380 f   MSVCRT:atomics.obj
+ 0001:00000380       _InterlockedAnd8_acq_Function 0000000140001380 f   MSVCRT:atomics.obj
+ 0001:000003c0       _InterlockedAnd8_rel       00000001400013c0 f   MSVCRT:atomics.obj
+ 0001:000003c0       _InterlockedAnd8_rel_Function 00000001400013c0 f   MSVCRT:atomics.obj
+ 0001:00000400       _InterlockedAnd8_nf        0000000140001400 f   MSVCRT:atomics.obj
+ 0001:00000400       _InterlockedAnd8_nf_Function 0000000140001400 f   MSVCRT:atomics.obj
+ 0001:00000440       _InterlockedAnd16          0000000140001440 f   MSVCRT:atomics.obj
+ 0001:00000440       _InterlockedAnd16_Function 0000000140001440 f   MSVCRT:atomics.obj
+ 0001:00000480       _InterlockedAnd16_acq      0000000140001480 f   MSVCRT:atomics.obj
+ 0001:00000480       _InterlockedAnd16_acq_Function 0000000140001480 f   MSVCRT:atomics.obj
+ 0001:000004c0       _InterlockedAnd16_rel      00000001400014c0 f   MSVCRT:atomics.obj
+ 0001:000004c0       _InterlockedAnd16_rel_Function 00000001400014c0 f   MSVCRT:atomics.obj
+ 0001:00000500       _InterlockedAnd16_nf       0000000140001500 f   MSVCRT:atomics.obj
+ 0001:00000500       _InterlockedAnd16_nf_Function 0000000140001500 f   MSVCRT:atomics.obj
+ 0001:00000540       _InterlockedAnd            0000000140001540 f   MSVCRT:atomics.obj
+ 0001:00000540       _InterlockedAnd_Function   0000000140001540 f   MSVCRT:atomics.obj
+ 0001:00000580       _InterlockedAnd_acq        0000000140001580 f   MSVCRT:atomics.obj
+ 0001:00000580       _InterlockedAnd_acq_Function 0000000140001580 f   MSVCRT:atomics.obj
+ 0001:000005c0       _InterlockedAnd_rel        00000001400015c0 f   MSVCRT:atomics.obj
+ 0001:000005c0       _InterlockedAnd_rel_Function 00000001400015c0 f   MSVCRT:atomics.obj
+ 0001:00000600       _InterlockedAnd_nf         0000000140001600 f   MSVCRT:atomics.obj
+ 0001:00000600       _InterlockedAnd_nf_Function 0000000140001600 f   MSVCRT:atomics.obj
+ 0001:00000640       _InterlockedAnd64          0000000140001640 f   MSVCRT:atomics.obj
+ 0001:00000640       _InterlockedAnd64_Function 0000000140001640 f   MSVCRT:atomics.obj
+ 0001:00000640       _InterlockedAndPointer     0000000140001640 f   MSVCRT:atomics.obj
+ 0001:00000680       _InterlockedAnd64_acq      0000000140001680 f   MSVCRT:atomics.obj
+ 0001:00000680       _InterlockedAnd64_acq_Function 0000000140001680 f   MSVCRT:atomics.obj
+ 0001:00000680       _InterlockedAndPointer_acq 0000000140001680 f   MSVCRT:atomics.obj
+ 0001:000006c0       _InterlockedAnd64_rel      00000001400016c0 f   MSVCRT:atomics.obj
+ 0001:000006c0       _InterlockedAnd64_rel_Function 00000001400016c0 f   MSVCRT:atomics.obj
+ 0001:000006c0       _InterlockedAndPointer_rel 00000001400016c0 f   MSVCRT:atomics.obj
+ 0001:00000700       _InterlockedAnd64_nf       0000000140001700 f   MSVCRT:atomics.obj
+ 0001:00000700       _InterlockedAnd64_nf_Function 0000000140001700 f   MSVCRT:atomics.obj
+ 0001:00000700       _InterlockedAndPointer_nf  0000000140001700 f   MSVCRT:atomics.obj
+ 0001:00000740       _InterlockedCompareExchange8 0000000140001740 f   MSVCRT:atomics.obj
+ 0001:00000740       _InterlockedCompareExchange8_Function 0000000140001740 f   MSVCRT:atomics.obj
+ 0001:00000790       _InterlockedCompareExchange8_acq 0000000140001790 f   MSVCRT:atomics.obj
+ 0001:00000790       _InterlockedCompareExchange8_acq_Function 0000000140001790 f   MSVCRT:atomics.obj
+ 0001:000007e0       _InterlockedCompareExchange8_rel 00000001400017e0 f   MSVCRT:atomics.obj
+ 0001:000007e0       _InterlockedCompareExchange8_rel_Function 00000001400017e0 f   MSVCRT:atomics.obj
+ 0001:00000830       _InterlockedCompareExchange8_nf 0000000140001830 f   MSVCRT:atomics.obj
+ 0001:00000830       _InterlockedCompareExchange8_nf_Function 0000000140001830 f   MSVCRT:atomics.obj
+ 0001:00000880       _InterlockedCompareExchange16 0000000140001880 f   MSVCRT:atomics.obj
+ 0001:00000880       _InterlockedCompareExchange16_Function 0000000140001880 f   MSVCRT:atomics.obj
+ 0001:000008d0       _InterlockedCompareExchange16_acq 00000001400018d0 f   MSVCRT:atomics.obj
+ 0001:000008d0       _InterlockedCompareExchange16_acq_Function 00000001400018d0 f   MSVCRT:atomics.obj
+ 0001:00000920       _InterlockedCompareExchange16_rel 0000000140001920 f   MSVCRT:atomics.obj
+ 0001:00000920       _InterlockedCompareExchange16_rel_Function 0000000140001920 f   MSVCRT:atomics.obj
+ 0001:00000970       _InterlockedCompareExchange16_nf 0000000140001970 f   MSVCRT:atomics.obj
+ 0001:00000970       _InterlockedCompareExchange16_nf_Function 0000000140001970 f   MSVCRT:atomics.obj
+ 0001:000009c0       _InterlockedCompareExchange 00000001400019c0 f   MSVCRT:atomics.obj
+ 0001:000009c0       _InterlockedCompareExchange_Function 00000001400019c0 f   MSVCRT:atomics.obj
+ 0001:00000a00       _InterlockedCompareExchange_acq 0000000140001a00 f   MSVCRT:atomics.obj
+ 0001:00000a00       _InterlockedCompareExchange_acq_Function 0000000140001a00 f   MSVCRT:atomics.obj
+ 0001:00000a40       _InterlockedCompareExchange_rel 0000000140001a40 f   MSVCRT:atomics.obj
+ 0001:00000a40       _InterlockedCompareExchange_rel_Function 0000000140001a40 f   MSVCRT:atomics.obj
+ 0001:00000a80       _InterlockedCompareExchange_nf 0000000140001a80 f   MSVCRT:atomics.obj
+ 0001:00000a80       _InterlockedCompareExchange_nf_Function 0000000140001a80 f   MSVCRT:atomics.obj
+ 0001:00000ac0       _InterlockedCompareExchange64 0000000140001ac0 f   MSVCRT:atomics.obj
+ 0001:00000ac0       _InterlockedCompareExchange64_Function 0000000140001ac0 f   MSVCRT:atomics.obj
+ 0001:00000ac0       _InterlockedCompareExchangePointer 0000000140001ac0 f   MSVCRT:atomics.obj
+ 0001:00000b00       _InterlockedCompareExchange64_acq 0000000140001b00 f   MSVCRT:atomics.obj
+ 0001:00000b00       _InterlockedCompareExchange64_acq_Function 0000000140001b00 f   MSVCRT:atomics.obj
+ 0001:00000b00       _InterlockedCompareExchangePointer_acq 0000000140001b00 f   MSVCRT:atomics.obj
+ 0001:00000b40       _InterlockedCompareExchange64_rel 0000000140001b40 f   MSVCRT:atomics.obj
+ 0001:00000b40       _InterlockedCompareExchange64_rel_Function 0000000140001b40 f   MSVCRT:atomics.obj
+ 0001:00000b40       _InterlockedCompareExchangePointer_rel 0000000140001b40 f   MSVCRT:atomics.obj
+ 0001:00000b80       _InterlockedCompareExchange64_nf 0000000140001b80 f   MSVCRT:atomics.obj
+ 0001:00000b80       _InterlockedCompareExchange64_nf_Function 0000000140001b80 f   MSVCRT:atomics.obj
+ 0001:00000b80       _InterlockedCompareExchangePointer_nf 0000000140001b80 f   MSVCRT:atomics.obj
+ 0001:00000bc0       _InterlockedCompareExchange128 0000000140001bc0 f   MSVCRT:atomics.obj
+ 0001:00000bc0       _InterlockedCompareExchange128_Function 0000000140001bc0 f   MSVCRT:atomics.obj
+ 0001:00000c30       _InterlockedCompareExchange128_acq 0000000140001c30 f   MSVCRT:atomics.obj
+ 0001:00000c30       _InterlockedCompareExchange128_acq_Function 0000000140001c30 f   MSVCRT:atomics.obj
+ 0001:00000ca0       _InterlockedCompareExchange128_rel 0000000140001ca0 f   MSVCRT:atomics.obj
+ 0001:00000ca0       _InterlockedCompareExchange128_rel_Function 0000000140001ca0 f   MSVCRT:atomics.obj
+ 0001:00000d10       _InterlockedCompareExchange128_nf 0000000140001d10 f   MSVCRT:atomics.obj
+ 0001:00000d10       _InterlockedCompareExchange128_nf_Function 0000000140001d10 f   MSVCRT:atomics.obj
+ 0001:00000d80       _InterlockedDecrement16    0000000140001d80 f   MSVCRT:atomics.obj
+ 0001:00000d80       _InterlockedDecrement16_Function 0000000140001d80 f   MSVCRT:atomics.obj
+ 0001:00000d90       _InterlockedDecrement16_acq 0000000140001d90 f   MSVCRT:atomics.obj
+ 0001:00000d90       _InterlockedDecrement16_acq_Function 0000000140001d90 f   MSVCRT:atomics.obj
+ 0001:00000da0       _InterlockedDecrement16_rel 0000000140001da0 f   MSVCRT:atomics.obj
+ 0001:00000da0       _InterlockedDecrement16_rel_Function 0000000140001da0 f   MSVCRT:atomics.obj
+ 0001:00000db0       _InterlockedDecrement16_nf 0000000140001db0 f   MSVCRT:atomics.obj
+ 0001:00000db0       _InterlockedDecrement16_nf_Function 0000000140001db0 f   MSVCRT:atomics.obj
+ 0001:00000dc0       _InterlockedDecrement      0000000140001dc0 f   MSVCRT:atomics.obj
+ 0001:00000dc0       _InterlockedDecrement_Function 0000000140001dc0 f   MSVCRT:atomics.obj
+ 0001:00000dd0       _InterlockedDecrement_acq  0000000140001dd0 f   MSVCRT:atomics.obj
+ 0001:00000dd0       _InterlockedDecrement_acq_Function 0000000140001dd0 f   MSVCRT:atomics.obj
+ 0001:00000de0       _InterlockedDecrement_rel  0000000140001de0 f   MSVCRT:atomics.obj
+ 0001:00000de0       _InterlockedDecrement_rel_Function 0000000140001de0 f   MSVCRT:atomics.obj
+ 0001:00000df0       _InterlockedDecrement_nf   0000000140001df0 f   MSVCRT:atomics.obj
+ 0001:00000df0       _InterlockedDecrement_nf_Function 0000000140001df0 f   MSVCRT:atomics.obj
+ 0001:00000e00       _InterlockedDecrement64    0000000140001e00 f   MSVCRT:atomics.obj
+ 0001:00000e00       _InterlockedDecrement64_Function 0000000140001e00 f   MSVCRT:atomics.obj
+ 0001:00000e00       _InterlockedDecrementPointer 0000000140001e00 f   MSVCRT:atomics.obj
+ 0001:00000e10       _InterlockedDecrement64_acq 0000000140001e10 f   MSVCRT:atomics.obj
+ 0001:00000e10       _InterlockedDecrement64_acq_Function 0000000140001e10 f   MSVCRT:atomics.obj
+ 0001:00000e10       _InterlockedDecrementPointer_acq 0000000140001e10 f   MSVCRT:atomics.obj
+ 0001:00000e20       _InterlockedDecrement64_rel 0000000140001e20 f   MSVCRT:atomics.obj
+ 0001:00000e20       _InterlockedDecrement64_rel_Function 0000000140001e20 f   MSVCRT:atomics.obj
+ 0001:00000e20       _InterlockedDecrementPointer_rel 0000000140001e20 f   MSVCRT:atomics.obj
+ 0001:00000e30       _InterlockedDecrement64_nf 0000000140001e30 f   MSVCRT:atomics.obj
+ 0001:00000e30       _InterlockedDecrement64_nf_Function 0000000140001e30 f   MSVCRT:atomics.obj
+ 0001:00000e30       _InterlockedDecrementPointer_nf 0000000140001e30 f   MSVCRT:atomics.obj
+ 0001:00000e40       _InterlockedExchange8      0000000140001e40 f   MSVCRT:atomics.obj
+ 0001:00000e40       _InterlockedExchange8_Function 0000000140001e40 f   MSVCRT:atomics.obj
+ 0001:00000e80       _InterlockedExchange8_acq  0000000140001e80 f   MSVCRT:atomics.obj
+ 0001:00000e80       _InterlockedExchange8_acq_Function 0000000140001e80 f   MSVCRT:atomics.obj
+ 0001:00000ec0       _InterlockedExchange8_rel  0000000140001ec0 f   MSVCRT:atomics.obj
+ 0001:00000ec0       _InterlockedExchange8_rel_Function 0000000140001ec0 f   MSVCRT:atomics.obj
+ 0001:00000f00       _InterlockedExchange8_nf   0000000140001f00 f   MSVCRT:atomics.obj
+ 0001:00000f00       _InterlockedExchange8_nf_Function 0000000140001f00 f   MSVCRT:atomics.obj
+ 0001:00000f40       _InterlockedExchange16     0000000140001f40 f   MSVCRT:atomics.obj
+ 0001:00000f40       _InterlockedExchange16_Function 0000000140001f40 f   MSVCRT:atomics.obj
+ 0001:00000f80       _InterlockedExchange16_acq 0000000140001f80 f   MSVCRT:atomics.obj
+ 0001:00000f80       _InterlockedExchange16_acq_Function 0000000140001f80 f   MSVCRT:atomics.obj
+ 0001:00000fc0       _InterlockedExchange16_rel 0000000140001fc0 f   MSVCRT:atomics.obj
+ 0001:00000fc0       _InterlockedExchange16_rel_Function 0000000140001fc0 f   MSVCRT:atomics.obj
+ 0001:00001000       _InterlockedExchange16_nf  0000000140002000 f   MSVCRT:atomics.obj
+ 0001:00001000       _InterlockedExchange16_nf_Function 0000000140002000 f   MSVCRT:atomics.obj
+ 0001:00001040       _InterlockedExchange       0000000140002040 f   MSVCRT:atomics.obj
+ 0001:00001040       _InterlockedExchange_Function 0000000140002040 f   MSVCRT:atomics.obj
+ 0001:00001080       _InterlockedExchange_acq   0000000140002080 f   MSVCRT:atomics.obj
+ 0001:00001080       _InterlockedExchange_acq_Function 0000000140002080 f   MSVCRT:atomics.obj
+ 0001:000010c0       _InterlockedExchange_rel   00000001400020c0 f   MSVCRT:atomics.obj
+ 0001:000010c0       _InterlockedExchange_rel_Function 00000001400020c0 f   MSVCRT:atomics.obj
+ 0001:00001100       _InterlockedExchange_nf    0000000140002100 f   MSVCRT:atomics.obj
+ 0001:00001100       _InterlockedExchange_nf_Function 0000000140002100 f   MSVCRT:atomics.obj
+ 0001:00001140       _InterlockedExchange64     0000000140002140 f   MSVCRT:atomics.obj
+ 0001:00001140       _InterlockedExchange64_Function 0000000140002140 f   MSVCRT:atomics.obj
+ 0001:00001140       _InterlockedExchangePointer 0000000140002140 f   MSVCRT:atomics.obj
+ 0001:00001180       _InterlockedExchange64_acq 0000000140002180 f   MSVCRT:atomics.obj
+ 0001:00001180       _InterlockedExchange64_acq_Function 0000000140002180 f   MSVCRT:atomics.obj
+ 0001:00001180       _InterlockedExchangePointer_acq 0000000140002180 f   MSVCRT:atomics.obj
+ 0001:000011c0       _InterlockedExchange64_rel 00000001400021c0 f   MSVCRT:atomics.obj
+ 0001:000011c0       _InterlockedExchange64_rel_Function 00000001400021c0 f   MSVCRT:atomics.obj
+ 0001:000011c0       _InterlockedExchangePointer_rel 00000001400021c0 f   MSVCRT:atomics.obj
+ 0001:00001200       _InterlockedExchange64_nf  0000000140002200 f   MSVCRT:atomics.obj
+ 0001:00001200       _InterlockedExchange64_nf_Function 0000000140002200 f   MSVCRT:atomics.obj
+ 0001:00001200       _InterlockedExchangePointer_nf 0000000140002200 f   MSVCRT:atomics.obj
+ 0001:00001240       _InterlockedExchangeAdd8   0000000140002240 f   MSVCRT:atomics.obj
+ 0001:00001240       _InterlockedExchangeAdd8_Function 0000000140002240 f   MSVCRT:atomics.obj
+ 0001:00001280       _InterlockedExchangeAdd8_acq 0000000140002280 f   MSVCRT:atomics.obj
+ 0001:00001280       _InterlockedExchangeAdd8_acq_Function 0000000140002280 f   MSVCRT:atomics.obj
+ 0001:000012c0       _InterlockedExchangeAdd8_rel 00000001400022c0 f   MSVCRT:atomics.obj
+ 0001:000012c0       _InterlockedExchangeAdd8_rel_Function 00000001400022c0 f   MSVCRT:atomics.obj
+ 0001:00001300       _InterlockedExchangeAdd8_nf 0000000140002300 f   MSVCRT:atomics.obj
+ 0001:00001300       _InterlockedExchangeAdd8_nf_Function 0000000140002300 f   MSVCRT:atomics.obj
+ 0001:00001340       _InterlockedExchangeAdd16  0000000140002340 f   MSVCRT:atomics.obj
+ 0001:00001340       _InterlockedExchangeAdd16_Function 0000000140002340 f   MSVCRT:atomics.obj
+ 0001:00001380       _InterlockedExchangeAdd16_acq 0000000140002380 f   MSVCRT:atomics.obj
+ 0001:00001380       _InterlockedExchangeAdd16_acq_Function 0000000140002380 f   MSVCRT:atomics.obj
+ 0001:000013c0       _InterlockedExchangeAdd16_rel 00000001400023c0 f   MSVCRT:atomics.obj
+ 0001:000013c0       _InterlockedExchangeAdd16_rel_Function 00000001400023c0 f   MSVCRT:atomics.obj
+ 0001:00001400       _InterlockedExchangeAdd16_nf 0000000140002400 f   MSVCRT:atomics.obj
+ 0001:00001400       _InterlockedExchangeAdd16_nf_Function 0000000140002400 f   MSVCRT:atomics.obj
+ 0001:00001440       _InterlockedExchangeAdd    0000000140002440 f   MSVCRT:atomics.obj
+ 0001:00001440       _InterlockedExchangeAdd_Function 0000000140002440 f   MSVCRT:atomics.obj
+ 0001:00001480       _InterlockedExchangeAdd_acq 0000000140002480 f   MSVCRT:atomics.obj
+ 0001:00001480       _InterlockedExchangeAdd_acq_Function 0000000140002480 f   MSVCRT:atomics.obj
+ 0001:000014c0       _InterlockedExchangeAdd_rel 00000001400024c0 f   MSVCRT:atomics.obj
+ 0001:000014c0       _InterlockedExchangeAdd_rel_Function 00000001400024c0 f   MSVCRT:atomics.obj
+ 0001:00001500       _InterlockedExchangeAdd_nf 0000000140002500 f   MSVCRT:atomics.obj
+ 0001:00001500       _InterlockedExchangeAdd_nf_Function 0000000140002500 f   MSVCRT:atomics.obj
+ 0001:00001540       _InterlockedExchangeAdd64  0000000140002540 f   MSVCRT:atomics.obj
+ 0001:00001540       _InterlockedExchangeAdd64_Function 0000000140002540 f   MSVCRT:atomics.obj
+ 0001:00001540       _InterlockedExchangeAddPointer 0000000140002540 f   MSVCRT:atomics.obj
+ 0001:00001580       _InterlockedExchangeAdd64_acq 0000000140002580 f   MSVCRT:atomics.obj
+ 0001:00001580       _InterlockedExchangeAdd64_acq_Function 0000000140002580 f   MSVCRT:atomics.obj
+ 0001:00001580       _InterlockedExchangeAddPointer_acq 0000000140002580 f   MSVCRT:atomics.obj
+ 0001:000015c0       _InterlockedExchangeAdd64_rel 00000001400025c0 f   MSVCRT:atomics.obj
+ 0001:000015c0       _InterlockedExchangeAdd64_rel_Function 00000001400025c0 f   MSVCRT:atomics.obj
+ 0001:000015c0       _InterlockedExchangeAddPointer_rel 00000001400025c0 f   MSVCRT:atomics.obj
+ 0001:00001600       _InterlockedExchangeAdd64_nf 0000000140002600 f   MSVCRT:atomics.obj
+ 0001:00001600       _InterlockedExchangeAdd64_nf_Function 0000000140002600 f   MSVCRT:atomics.obj
+ 0001:00001600       _InterlockedExchangeAddPointer_nf 0000000140002600 f   MSVCRT:atomics.obj
+ 0001:00001640       _InterlockedIncrement16    0000000140002640 f   MSVCRT:atomics.obj
+ 0001:00001640       _InterlockedIncrement16_Function 0000000140002640 f   MSVCRT:atomics.obj
+ 0001:00001650       _InterlockedIncrement16_acq 0000000140002650 f   MSVCRT:atomics.obj
+ 0001:00001650       _InterlockedIncrement16_acq_Function 0000000140002650 f   MSVCRT:atomics.obj
+ 0001:00001660       _InterlockedIncrement16_rel 0000000140002660 f   MSVCRT:atomics.obj
+ 0001:00001660       _InterlockedIncrement16_rel_Function 0000000140002660 f   MSVCRT:atomics.obj
+ 0001:00001670       _InterlockedIncrement16_nf 0000000140002670 f   MSVCRT:atomics.obj
+ 0001:00001670       _InterlockedIncrement16_nf_Function 0000000140002670 f   MSVCRT:atomics.obj
+ 0001:00001680       _InterlockedIncrement      0000000140002680 f   MSVCRT:atomics.obj
+ 0001:00001680       _InterlockedIncrement_Function 0000000140002680 f   MSVCRT:atomics.obj
+ 0001:00001690       _InterlockedIncrement_acq  0000000140002690 f   MSVCRT:atomics.obj
+ 0001:00001690       _InterlockedIncrement_acq_Function 0000000140002690 f   MSVCRT:atomics.obj
+ 0001:000016a0       _InterlockedIncrement_rel  00000001400026a0 f   MSVCRT:atomics.obj
+ 0001:000016a0       _InterlockedIncrement_rel_Function 00000001400026a0 f   MSVCRT:atomics.obj
+ 0001:000016b0       _InterlockedIncrement_nf   00000001400026b0 f   MSVCRT:atomics.obj
+ 0001:000016b0       _InterlockedIncrement_nf_Function 00000001400026b0 f   MSVCRT:atomics.obj
+ 0001:000016c0       _InterlockedIncrement64    00000001400026c0 f   MSVCRT:atomics.obj
+ 0001:000016c0       _InterlockedIncrement64_Function 00000001400026c0 f   MSVCRT:atomics.obj
+ 0001:000016c0       _InterlockedIncrementPointer 00000001400026c0 f   MSVCRT:atomics.obj
+ 0001:000016d0       _InterlockedIncrement64_acq 00000001400026d0 f   MSVCRT:atomics.obj
+ 0001:000016d0       _InterlockedIncrement64_acq_Function 00000001400026d0 f   MSVCRT:atomics.obj
+ 0001:000016d0       _InterlockedIncrementPointer_acq 00000001400026d0 f   MSVCRT:atomics.obj
+ 0001:000016e0       _InterlockedIncrement64_rel 00000001400026e0 f   MSVCRT:atomics.obj
+ 0001:000016e0       _InterlockedIncrement64_rel_Function 00000001400026e0 f   MSVCRT:atomics.obj
+ 0001:000016e0       _InterlockedIncrementPointer_rel 00000001400026e0 f   MSVCRT:atomics.obj
+ 0001:000016f0       _InterlockedIncrement64_nf 00000001400026f0 f   MSVCRT:atomics.obj
+ 0001:000016f0       _InterlockedIncrement64_nf_Function 00000001400026f0 f   MSVCRT:atomics.obj
+ 0001:000016f0       _InterlockedIncrementPointer_nf 00000001400026f0 f   MSVCRT:atomics.obj
+ 0001:00001700       _InterlockedOr8            0000000140002700 f   MSVCRT:atomics.obj
+ 0001:00001700       _InterlockedOr8_Function   0000000140002700 f   MSVCRT:atomics.obj
+ 0001:00001740       _InterlockedOr8_acq        0000000140002740 f   MSVCRT:atomics.obj
+ 0001:00001740       _InterlockedOr8_acq_Function 0000000140002740 f   MSVCRT:atomics.obj
+ 0001:00001780       _InterlockedOr8_rel        0000000140002780 f   MSVCRT:atomics.obj
+ 0001:00001780       _InterlockedOr8_rel_Function 0000000140002780 f   MSVCRT:atomics.obj
+ 0001:000017c0       _InterlockedOr8_nf         00000001400027c0 f   MSVCRT:atomics.obj
+ 0001:000017c0       _InterlockedOr8_nf_Function 00000001400027c0 f   MSVCRT:atomics.obj
+ 0001:00001800       _InterlockedOr16           0000000140002800 f   MSVCRT:atomics.obj
+ 0001:00001800       _InterlockedOr16_Function  0000000140002800 f   MSVCRT:atomics.obj
+ 0001:00001840       _InterlockedOr16_acq       0000000140002840 f   MSVCRT:atomics.obj
+ 0001:00001840       _InterlockedOr16_acq_Function 0000000140002840 f   MSVCRT:atomics.obj
+ 0001:00001880       _InterlockedOr16_rel       0000000140002880 f   MSVCRT:atomics.obj
+ 0001:00001880       _InterlockedOr16_rel_Function 0000000140002880 f   MSVCRT:atomics.obj
+ 0001:000018c0       _InterlockedOr16_nf        00000001400028c0 f   MSVCRT:atomics.obj
+ 0001:000018c0       _InterlockedOr16_nf_Function 00000001400028c0 f   MSVCRT:atomics.obj
+ 0001:00001900       _InterlockedOr             0000000140002900 f   MSVCRT:atomics.obj
+ 0001:00001900       _InterlockedOr_Function    0000000140002900 f   MSVCRT:atomics.obj
+ 0001:00001940       _InterlockedOr_acq         0000000140002940 f   MSVCRT:atomics.obj
+ 0001:00001940       _InterlockedOr_acq_Function 0000000140002940 f   MSVCRT:atomics.obj
+ 0001:00001980       _InterlockedOr_rel         0000000140002980 f   MSVCRT:atomics.obj
+ 0001:00001980       _InterlockedOr_rel_Function 0000000140002980 f   MSVCRT:atomics.obj
+ 0001:000019c0       _InterlockedOr_nf          00000001400029c0 f   MSVCRT:atomics.obj
+ 0001:000019c0       _InterlockedOr_nf_Function 00000001400029c0 f   MSVCRT:atomics.obj
+ 0001:00001a00       _InterlockedOr64           0000000140002a00 f   MSVCRT:atomics.obj
+ 0001:00001a00       _InterlockedOr64_Function  0000000140002a00 f   MSVCRT:atomics.obj
+ 0001:00001a00       _InterlockedOrPointer      0000000140002a00 f   MSVCRT:atomics.obj
+ 0001:00001a40       _InterlockedOr64_acq       0000000140002a40 f   MSVCRT:atomics.obj
+ 0001:00001a40       _InterlockedOr64_acq_Function 0000000140002a40 f   MSVCRT:atomics.obj
+ 0001:00001a40       _InterlockedOrPointer_acq  0000000140002a40 f   MSVCRT:atomics.obj
+ 0001:00001a80       _InterlockedOr64_rel       0000000140002a80 f   MSVCRT:atomics.obj
+ 0001:00001a80       _InterlockedOr64_rel_Function 0000000140002a80 f   MSVCRT:atomics.obj
+ 0001:00001a80       _InterlockedOrPointer_rel  0000000140002a80 f   MSVCRT:atomics.obj
+ 0001:00001ac0       _InterlockedOr64_nf        0000000140002ac0 f   MSVCRT:atomics.obj
+ 0001:00001ac0       _InterlockedOr64_nf_Function 0000000140002ac0 f   MSVCRT:atomics.obj
+ 0001:00001ac0       _InterlockedOrPointer_nf   0000000140002ac0 f   MSVCRT:atomics.obj
+ 0001:00001b00       _InterlockedXor8           0000000140002b00 f   MSVCRT:atomics.obj
+ 0001:00001b00       _InterlockedXor8_Function  0000000140002b00 f   MSVCRT:atomics.obj
+ 0001:00001b40       _InterlockedXor8_acq       0000000140002b40 f   MSVCRT:atomics.obj
+ 0001:00001b40       _InterlockedXor8_acq_Function 0000000140002b40 f   MSVCRT:atomics.obj
+ 0001:00001b80       _InterlockedXor8_rel       0000000140002b80 f   MSVCRT:atomics.obj
+ 0001:00001b80       _InterlockedXor8_rel_Function 0000000140002b80 f   MSVCRT:atomics.obj
+ 0001:00001bc0       _InterlockedXor8_nf        0000000140002bc0 f   MSVCRT:atomics.obj
+ 0001:00001bc0       _InterlockedXor8_nf_Function 0000000140002bc0 f   MSVCRT:atomics.obj
+ 0001:00001c00       _InterlockedXor16          0000000140002c00 f   MSVCRT:atomics.obj
+ 0001:00001c00       _InterlockedXor16_Function 0000000140002c00 f   MSVCRT:atomics.obj
+ 0001:00001c40       _InterlockedXor16_acq      0000000140002c40 f   MSVCRT:atomics.obj
+ 0001:00001c40       _InterlockedXor16_acq_Function 0000000140002c40 f   MSVCRT:atomics.obj
+ 0001:00001c80       _InterlockedXor16_rel      0000000140002c80 f   MSVCRT:atomics.obj
+ 0001:00001c80       _InterlockedXor16_rel_Function 0000000140002c80 f   MSVCRT:atomics.obj
+ 0001:00001cc0       _InterlockedXor16_nf       0000000140002cc0 f   MSVCRT:atomics.obj
+ 0001:00001cc0       _InterlockedXor16_nf_Function 0000000140002cc0 f   MSVCRT:atomics.obj
+ 0001:00001d00       _InterlockedXor            0000000140002d00 f   MSVCRT:atomics.obj
+ 0001:00001d00       _InterlockedXor_Function   0000000140002d00 f   MSVCRT:atomics.obj
+ 0001:00001d40       _InterlockedXor_acq        0000000140002d40 f   MSVCRT:atomics.obj
+ 0001:00001d40       _InterlockedXor_acq_Function 0000000140002d40 f   MSVCRT:atomics.obj
+ 0001:00001d80       _InterlockedXor_rel        0000000140002d80 f   MSVCRT:atomics.obj
+ 0001:00001d80       _InterlockedXor_rel_Function 0000000140002d80 f   MSVCRT:atomics.obj
+ 0001:00001dc0       _InterlockedXor_nf         0000000140002dc0 f   MSVCRT:atomics.obj
+ 0001:00001dc0       _InterlockedXor_nf_Function 0000000140002dc0 f   MSVCRT:atomics.obj
+ 0001:00001e00       _InterlockedXor64          0000000140002e00 f   MSVCRT:atomics.obj
+ 0001:00001e00       _InterlockedXor64_Function 0000000140002e00 f   MSVCRT:atomics.obj
+ 0001:00001e00       _InterlockedXorPointer     0000000140002e00 f   MSVCRT:atomics.obj
+ 0001:00001e40       _InterlockedXor64_acq      0000000140002e40 f   MSVCRT:atomics.obj
+ 0001:00001e40       _InterlockedXor64_acq_Function 0000000140002e40 f   MSVCRT:atomics.obj
+ 0001:00001e40       _InterlockedXorPointer_acq 0000000140002e40 f   MSVCRT:atomics.obj
+ 0001:00001e80       _InterlockedXor64_rel      0000000140002e80 f   MSVCRT:atomics.obj
+ 0001:00001e80       _InterlockedXor64_rel_Function 0000000140002e80 f   MSVCRT:atomics.obj
+ 0001:00001e80       _InterlockedXorPointer_rel 0000000140002e80 f   MSVCRT:atomics.obj
+ 0001:00001ec0       _InterlockedXor64_nf       0000000140002ec0 f   MSVCRT:atomics.obj
+ 0001:00001ec0       _InterlockedXor64_nf_Function 0000000140002ec0 f   MSVCRT:atomics.obj
+ 0001:00001ec0       _InterlockedXorPointer_nf  0000000140002ec0 f   MSVCRT:atomics.obj
+ 0001:00001f00       _interlockedbittestandreset 0000000140002f00 f   MSVCRT:atomics.obj
+ 0001:00001f00       _interlockedbittestandreset_Function 0000000140002f00 f   MSVCRT:atomics.obj
+ 0001:00001f60       _interlockedbittestandreset_acq 0000000140002f60 f   MSVCRT:atomics.obj
+ 0001:00001f60       _interlockedbittestandreset_acq_Function 0000000140002f60 f   MSVCRT:atomics.obj
+ 0001:00001fc0       _interlockedbittestandreset_rel 0000000140002fc0 f   MSVCRT:atomics.obj
+ 0001:00001fc0       _interlockedbittestandreset_rel_Function 0000000140002fc0 f   MSVCRT:atomics.obj
+ 0001:00002020       _interlockedbittestandreset_nf 0000000140003020 f   MSVCRT:atomics.obj
+ 0001:00002020       _interlockedbittestandreset_nf_Function 0000000140003020 f   MSVCRT:atomics.obj
+ 0001:00002080       _interlockedbittestandreset64 0000000140003080 f   MSVCRT:atomics.obj
+ 0001:00002080       _interlockedbittestandreset64_Function 0000000140003080 f   MSVCRT:atomics.obj
+ 0001:00002080       _interlockedbittestandresetPointer 0000000140003080 f   MSVCRT:atomics.obj
+ 0001:000020e0       _interlockedbittestandreset64_acq 00000001400030e0 f   MSVCRT:atomics.obj
+ 0001:000020e0       _interlockedbittestandreset64_acq_Function 00000001400030e0 f   MSVCRT:atomics.obj
+ 0001:000020e0       _interlockedbittestandresetPointer_acq 00000001400030e0 f   MSVCRT:atomics.obj
+ 0001:00002140       _interlockedbittestandreset64_rel 0000000140003140 f   MSVCRT:atomics.obj
+ 0001:00002140       _interlockedbittestandreset64_rel_Function 0000000140003140 f   MSVCRT:atomics.obj
+ 0001:00002140       _interlockedbittestandresetPointer_rel 0000000140003140 f   MSVCRT:atomics.obj
+ 0001:000021a0       _interlockedbittestandreset64_nf 00000001400031a0 f   MSVCRT:atomics.obj
+ 0001:000021a0       _interlockedbittestandreset64_nf_Function 00000001400031a0 f   MSVCRT:atomics.obj
+ 0001:000021a0       _interlockedbittestandresetPointer_nf 00000001400031a0 f   MSVCRT:atomics.obj
+ 0001:00002200       _interlockedbittestandset  0000000140003200 f   MSVCRT:atomics.obj
+ 0001:00002200       _interlockedbittestandset_Function 0000000140003200 f   MSVCRT:atomics.obj
+ 0001:00002260       _interlockedbittestandset_acq 0000000140003260 f   MSVCRT:atomics.obj
+ 0001:00002260       _interlockedbittestandset_acq_Function 0000000140003260 f   MSVCRT:atomics.obj
+ 0001:000022c0       _interlockedbittestandset_rel 00000001400032c0 f   MSVCRT:atomics.obj
+ 0001:000022c0       _interlockedbittestandset_rel_Function 00000001400032c0 f   MSVCRT:atomics.obj
+ 0001:00002320       _interlockedbittestandset_nf 0000000140003320 f   MSVCRT:atomics.obj
+ 0001:00002320       _interlockedbittestandset_nf_Function 0000000140003320 f   MSVCRT:atomics.obj
+ 0001:00002380       _interlockedbittestandset64 0000000140003380 f   MSVCRT:atomics.obj
+ 0001:00002380       _interlockedbittestandset64_Function 0000000140003380 f   MSVCRT:atomics.obj
+ 0001:00002380       _interlockedbittestandsetPointer 0000000140003380 f   MSVCRT:atomics.obj
+ 0001:000023e0       _interlockedbittestandset64_acq 00000001400033e0 f   MSVCRT:atomics.obj
+ 0001:000023e0       _interlockedbittestandset64_acq_Function 00000001400033e0 f   MSVCRT:atomics.obj
+ 0001:000023e0       _interlockedbittestandsetPointer_acq 00000001400033e0 f   MSVCRT:atomics.obj
+ 0001:00002440       _interlockedbittestandset64_rel 0000000140003440 f   MSVCRT:atomics.obj
+ 0001:00002440       _interlockedbittestandset64_rel_Function 0000000140003440 f   MSVCRT:atomics.obj
+ 0001:00002440       _interlockedbittestandsetPointer_rel 0000000140003440 f   MSVCRT:atomics.obj
+ 0001:000024a0       _interlockedbittestandset64_nf 00000001400034a0 f   MSVCRT:atomics.obj
+ 0001:000024a0       _interlockedbittestandset64_nf_Function 00000001400034a0 f   MSVCRT:atomics.obj
+ 0001:000024a0       _interlockedbittestandsetPointer_nf 00000001400034a0 f   MSVCRT:atomics.obj
+ 0001:00002500       _InterlockedDetectSupportEH 0000000140003500 f   MSVCRT:atomics.obj
+ 0001:00002550       _InterlockedDetectSupport  0000000140003550 f   MSVCRT:atomics.obj
+ 0001:000025a0       _guard_dispatch_icall_nop  00000001400035a0 f   MSVCRT:guard_dispatch.obj
+ 0001:000025b0       main                       00000001400035b0 f   padding.obj
+ 0001:000028a0       ?configure_argv@__scrt_narrow_argv_policy@@SAHXZ 00000001400038a0 f i MSVCRT:exe_main.obj
+ 0001:000028c0       ?initialize_environment@__scrt_narrow_environment_policy@@SAHXZ 00000001400038c0 f i MSVCRT:exe_main.obj
+ 0001:00002910       ?set_app_type@__scrt_main_policy@@SAXXZ 0000000140003910 f i MSVCRT:exe_main.obj
+ 0001:00002918       ?set_commode@__scrt_file_policy@@SAXXZ 0000000140003918 f i MSVCRT:exe_main.obj
+ 0001:00002948       ?set_fmode@__scrt_file_policy@@SAXXZ 0000000140003948 f i MSVCRT:exe_main.obj
+ 0001:00002968       mainCRTStartup             0000000140003968 f   MSVCRT:exe_main.obj
+ 0001:00002a28       NtCurrentTeb               0000000140003a28 f i MSVCRT:utility.obj
+ 0001:00002a30       __scrt_acquire_startup_lock 0000000140003a30 f   MSVCRT:utility.obj
+ 0001:00002ab8       __scrt_dllmain_after_initialize_c 0000000140003ab8 f   MSVCRT:utility.obj
+ 0001:00002b10       __scrt_dllmain_before_initialize_c 0000000140003b10 f   MSVCRT:utility.obj
+ 0001:00002ba8       __scrt_dllmain_crt_thread_attach 0000000140003ba8 f   MSVCRT:utility.obj
+ 0001:00002be8       __scrt_dllmain_crt_thread_detach 0000000140003be8 f   MSVCRT:utility.obj
+ 0001:00002c10       __scrt_dllmain_exception_filter 0000000140003c10 f   MSVCRT:utility.obj
+ 0001:00002c98       __scrt_dllmain_uninitialize_c 0000000140003c98 f   MSVCRT:utility.obj
+ 0001:00002ce0       __scrt_dllmain_uninitialize_critical 0000000140003ce0 f   MSVCRT:utility.obj
+ 0001:00002d08       __scrt_initialize_crt      0000000140003d08 f   MSVCRT:utility.obj
+ 0001:00002d60       __scrt_initialize_onexit_tables 0000000140003d60 f   MSVCRT:utility.obj
+ 0001:00002e18       __scrt_is_nonwritable_in_current_image 0000000140003e18 f   MSVCRT:utility.obj
+ 0001:00002ee8       __scrt_release_startup_lock 0000000140003ee8 f   MSVCRT:utility.obj
+ 0001:00002f30       __scrt_uninitialize_crt    0000000140003f30 f   MSVCRT:utility.obj
+ 0001:00002f78       _onexit                    0000000140003f78 f   MSVCRT:utility.obj
+ 0001:00002fc8       at_quick_exit              0000000140003fc8 f   MSVCRT:utility.obj
+ 0001:00002fe8       atexit                     0000000140003fe8 f   MSVCRT:utility.obj
+ 0001:000030e0       __security_init_cookie     00000001400040e0 f   MSVCRT:gs_support.obj
+ 0001:000031c8       _matherr                   00000001400041c8 f   MSVCRT:matherr.obj
+ 0001:000031d0       _get_startup_argv_mode     00000001400041d0 f   MSVCRT:argv_mode.obj
+ 0001:000031d8       _get_startup_commit_mode   00000001400041d8 f   MSVCRT:commit_mode.obj
+ 0001:000031e0       _get_startup_file_mode     00000001400041e0 f   MSVCRT:file_mode.obj
+ 0001:000031e8       _get_startup_new_mode      00000001400041e8 f   MSVCRT:new_mode.obj
+ 0001:000031f0       _get_startup_thread_locale_mode 00000001400041f0 f   MSVCRT:thread_locale.obj
+ 0001:000031f8       ?__scrt_initialize_type_info@@YAXXZ 00000001400041f8 f   MSVCRT:tncleanup.obj
+ 0001:00003210       ?__scrt_uninitialize_type_info@@YAXXZ 0000000140004210 f   MSVCRT:tncleanup.obj
+ 0001:00003220       _should_initialize_environment 0000000140004220 f   MSVCRT:env_mode.obj
+ 0001:00003228       _initialize_invalid_parameter_handler 0000000140004228 f   MSVCRT:invalid_parameter_handler.obj
+ 0001:00003230       _initialize_denormal_control 0000000140004230 f   MSVCRT:denormal_control.obj
+ 0001:00003238       __local_stdio_printf_options 0000000140004238 f i MSVCRT:default_local_stdio_options.obj
+ 0001:00003248       __local_stdio_scanf_options 0000000140004248 f i MSVCRT:default_local_stdio_options.obj
+ 0001:00003258       __scrt_initialize_default_local_stdio_options 0000000140004258 f   MSVCRT:default_local_stdio_options.obj
+ 0001:00003298       __scrt_is_user_matherr_present 0000000140004298 f   MSVCRT:matherr_detection.obj
+ 0001:000032b0       __scrt_get_dyn_tls_init_callback 00000001400042b0 f   MSVCRT:dyn_tls_init.obj
+ 0001:000032c0       __scrt_get_dyn_tls_dtor_callback 00000001400042c0 f   MSVCRT:dyn_tls_dtor.obj
+ 0001:000032d0       __scrt_fastfail            00000001400042d0 f   MSVCRT:utility_desktop.obj
+ 0001:000032d8       __scrt_get_show_window_mode 00000001400042d8 f   MSVCRT:utility_desktop.obj
+ 0001:00003328       __scrt_initialize_mta      0000000140004328 f   MSVCRT:utility_desktop.obj
+ 0001:00003330       __scrt_initialize_winrt    0000000140004330 f   MSVCRT:utility_desktop.obj
+ 0001:00003338       __scrt_is_managed_app      0000000140004338 f   MSVCRT:utility_desktop.obj
+ 0001:000033c0       __scrt_set_unhandled_exception_filter 00000001400043c0 f   MSVCRT:utility_desktop.obj
+ 0001:000033d8       __scrt_exe_initialize_mta  00000001400043d8 f   MSVCRT:utility_desktop.obj
+ 0001:000033d8       __scrt_stub_for_initialize_mta 00000001400043d8 f   MSVCRT:utility_desktop.obj
+ 0001:000033e0       __scrt_unhandled_exception_filter 00000001400043e0 f   MSVCRT:utility_desktop.obj
+ 0001:00003470       _RTC_Initialize            0000000140004470 f   MSVCRT:initsect.obj
+ 0001:000034d8       _RTC_Terminate             00000001400044d8 f   MSVCRT:initsect.obj
+ 0001:00003540       _guard_check_icall_nop     0000000140004540 f i MSVCRT:guard_support.obj
+ 0001:00003548       ReadNoFence64              0000000140004548 f i MSVCRT:guard_support.obj
+ 0001:00003550       ReadPointerNoFence         0000000140004550 f i MSVCRT:guard_support.obj
+ 0001:00003558       __castguard_check_failure_debugbreak 0000000140004558 f i MSVCRT:guard_support.obj
+ 0001:00003588       __castguard_check_failure_fastfail 0000000140004588 f i MSVCRT:guard_support.obj
+ 0001:000035c0       __castguard_check_failure_nop 00000001400045c0 f i MSVCRT:guard_support.obj
+ 0001:000035c8       __castguard_check_failure_os_handled 00000001400045c8 f i MSVCRT:guard_support.obj
+ 0001:00003620       __castguard_check_failure_user_handled 0000000140004620 f i MSVCRT:guard_support.obj
+ 0001:000036e8       __castguard_set_user_handler 00000001400046e8 f i MSVCRT:guard_support.obj
+ 0001:000036f8       __castguard_slow_path_check_debugbreak 00000001400046f8 f i MSVCRT:guard_support.obj
+ 0001:00003740       __castguard_slow_path_check_fastfail 0000000140004740 f i MSVCRT:guard_support.obj
+ 0001:00003788       __castguard_slow_path_check_nop 0000000140004788 f i MSVCRT:guard_support.obj
+ 0001:00003790       __castguard_slow_path_check_os_handled 0000000140004790 f i MSVCRT:guard_support.obj
+ 0001:000037e0       __castguard_slow_path_check_user_handled 00000001400047e0 f i MSVCRT:guard_support.obj
+ 0001:00003878       _guard_icall_checks_enforced 0000000140004878 f i MSVCRT:guard_support.obj
+ 0001:00003898       __isa_available_init       0000000140004898 f   MSVCRT:cpu_disp.obj
+ 0001:00003968       __scrt_is_ucrt_dll_in_use  0000000140004968 f   MSVCRT:ucrt_detection.obj
+ 0001:0000397c       QueryPerformanceCounter    000000014000497c f   kernel32:KERNEL32.dll
+ 0001:00003988       GetCurrentProcessId        0000000140004988 f   kernel32:KERNEL32.dll
+ 0001:00003994       GetCurrentThreadId         0000000140004994 f   kernel32:KERNEL32.dll
+ 0001:000039a0       GetSystemTimeAsFileTime    00000001400049a0 f   kernel32:KERNEL32.dll
+ 0001:000039ac       InitializeSListHead        00000001400049ac f   kernel32:KERNEL32.dll
+ 0001:000039b8       SetUnhandledExceptionFilter 00000001400049b8 f   kernel32:KERNEL32.dll
+ 0001:000039c4       GetStartupInfoW            00000001400049c4 f   kernel32:KERNEL32.dll
+ 0001:000039d0       GetModuleHandleW           00000001400049d0 f   kernel32:KERNEL32.dll
+ 0001:000039dc       FreeLibrary                00000001400049dc f   kernel32:KERNEL32.dll
+ 0001:000039e8       GetProcAddress             00000001400049e8 f   kernel32:KERNEL32.dll
+ 0001:000039f4       LoadLibraryExW             00000001400049f4 f   kernel32:KERNEL32.dll
+ 0001:00003a00       __C_specific_handler       0000000140004a00 f   vcruntime:VCRUNTIME140.dll
+ 0001:00003a0c       __std_type_info_destroy_list 0000000140004a0c f   vcruntime:VCRUNTIME140.dll
+ 0001:00003a18       __current_exception        0000000140004a18 f   vcruntime:VCRUNTIME140.dll
+ 0001:00003a24       __current_exception_context 0000000140004a24 f   vcruntime:VCRUNTIME140.dll
+ 0001:00003a30       _seh_filter_exe            0000000140004a30 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a3c       _set_app_type              0000000140004a3c f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a48       __setusermatherr           0000000140004a48 f   ucrt:api-ms-win-crt-math-l1-1-0.dll
+ 0001:00003a54       _configure_narrow_argv     0000000140004a54 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a60       _initialize_narrow_environment 0000000140004a60 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a6c       _get_initial_narrow_environment 0000000140004a6c f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a78       _initterm                  0000000140004a78 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a84       _initterm_e                0000000140004a84 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a90       exit                       0000000140004a90 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003a9c       _exit                      0000000140004a9c f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003aa8       _set_fmode                 0000000140004aa8 f   ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0001:00003ab4       __p___argc                 0000000140004ab4 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003ac0       __p___argv                 0000000140004ac0 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003acc       _cexit                     0000000140004acc f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003ad8       _c_exit                    0000000140004ad8 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003ae4       _register_thread_local_exe_atexit_callback 0000000140004ae4 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003af0       _configthreadlocale        0000000140004af0 f   ucrt:api-ms-win-crt-locale-l1-1-0.dll
+ 0001:00003afc       _set_new_mode              0000000140004afc f   ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0001:00003b08       __p__commode               0000000140004b08 f   ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0001:00003b14       _seh_filter_dll            0000000140004b14 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b20       _initialize_onexit_table   0000000140004b20 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b2c       _register_onexit_function  0000000140004b2c f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b38       _execute_onexit_table      0000000140004b38 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b44       _crt_atexit                0000000140004b44 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b50       _crt_at_quick_exit         0000000140004b50 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b5c       terminate                  0000000140004b5c f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00003b68       __acrt_initialize          0000000140004b68 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b68       __scrt_stub_for_acrt_initialize 0000000140004b68 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b68       __vcrt_initialize          0000000140004b68 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b70       __acrt_thread_attach       0000000140004b70 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b70       __scrt_stub_for_acrt_thread_attach 0000000140004b70 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b70       __vcrt_thread_attach       0000000140004b70 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b78       __acrt_thread_detach       0000000140004b78 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b78       __scrt_stub_for_acrt_thread_detach 0000000140004b78 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b78       __vcrt_thread_detach       0000000140004b78 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b80       __acrt_uninitialize        0000000140004b80 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b80       __scrt_stub_for_acrt_uninitialize 0000000140004b80 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b80       __vcrt_uninitialize        0000000140004b80 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b88       __acrt_uninitialize_critical 0000000140004b88 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b88       __scrt_stub_for_acrt_uninitialize_critical 0000000140004b88 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b88       __vcrt_uninitialize_critical 0000000140004b88 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b90       __scrt_stub_for_is_c_termination_complete 0000000140004b90 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b90       _is_c_termination_complete 0000000140004b90 f   MSVCRT:ucrt_stubs.obj
+ 0001:00003b98       memcpy                     0000000140004b98 f   vcruntime:VCRUNTIME140.dll
+ 0002:00000000       __imp_QueryPerformanceCounter 0000000140005000     kernel32:KERNEL32.dll
+ 0002:00000008       __imp_GetCurrentProcessId  0000000140005008     kernel32:KERNEL32.dll
+ 0002:00000010       __imp_GetCurrentThreadId   0000000140005010     kernel32:KERNEL32.dll
+ 0002:00000018       __imp_GetSystemTimeAsFileTime 0000000140005018     kernel32:KERNEL32.dll
+ 0002:00000020       __imp_InitializeSListHead  0000000140005020     kernel32:KERNEL32.dll
+ 0002:00000028       __imp_SetUnhandledExceptionFilter 0000000140005028     kernel32:KERNEL32.dll
+ 0002:00000030       __imp_GetStartupInfoW      0000000140005030     kernel32:KERNEL32.dll
+ 0002:00000038       __imp_GetModuleHandleW     0000000140005038     kernel32:KERNEL32.dll
+ 0002:00000040       __imp_FreeLibrary          0000000140005040     kernel32:KERNEL32.dll
+ 0002:00000048       __imp_GetProcAddress       0000000140005048     kernel32:KERNEL32.dll
+ 0002:00000050       __imp_LoadLibraryExW       0000000140005050     kernel32:KERNEL32.dll
+ 0002:00000058       \177KERNEL32_NULL_THUNK_DATA 0000000140005058     kernel32:KERNEL32.dll
+ 0002:00000060       __imp___C_specific_handler 0000000140005060     vcruntime:VCRUNTIME140.dll
+ 0002:00000068       __imp___std_type_info_destroy_list 0000000140005068     vcruntime:VCRUNTIME140.dll
+ 0002:00000070       __imp___current_exception  0000000140005070     vcruntime:VCRUNTIME140.dll
+ 0002:00000078       __imp___current_exception_context 0000000140005078     vcruntime:VCRUNTIME140.dll
+ 0002:00000080       __imp_memcpy               0000000140005080     vcruntime:VCRUNTIME140.dll
+ 0002:00000088       \177VCRUNTIME140_NULL_THUNK_DATA 0000000140005088     vcruntime:VCRUNTIME140.dll
+ 0002:00000090       __imp__set_new_mode        0000000140005090     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:00000098       \177api-ms-win-crt-heap-l1-1-0_NULL_THUNK_DATA 0000000140005098     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:000000a0       __imp__configthreadlocale  00000001400050a0     ucrt:api-ms-win-crt-locale-l1-1-0.dll
+ 0002:000000a8       \177api-ms-win-crt-locale-l1-1-0_NULL_THUNK_DATA 00000001400050a8     ucrt:api-ms-win-crt-locale-l1-1-0.dll
+ 0002:000000b0       __imp___setusermatherr     00000001400050b0     ucrt:api-ms-win-crt-math-l1-1-0.dll
+ 0002:000000b8       \177api-ms-win-crt-math-l1-1-0_NULL_THUNK_DATA 00000001400050b8     ucrt:api-ms-win-crt-math-l1-1-0.dll
+ 0002:000000c0       __imp__initterm            00000001400050c0     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000c8       __imp_exit                 00000001400050c8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000d0       __imp__exit                00000001400050d0     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000d8       __imp__get_initial_narrow_environment 00000001400050d8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000e0       __imp___p___argc           00000001400050e0     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000e8       __imp___p___argv           00000001400050e8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000f0       __imp__initialize_narrow_environment 00000001400050f0     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000f8       __imp__c_exit              00000001400050f8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000100       __imp__register_thread_local_exe_atexit_callback 0000000140005100     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000108       __imp__seh_filter_exe      0000000140005108     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000110       __imp__configure_narrow_argv 0000000140005110     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000118       __imp__set_app_type        0000000140005118     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000120       __imp__seh_filter_dll      0000000140005120     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000128       __imp__initialize_onexit_table 0000000140005128     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000130       __imp__register_onexit_function 0000000140005130     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000138       __imp__execute_onexit_table 0000000140005138     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000140       __imp__crt_atexit          0000000140005140     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000148       __imp__crt_at_quick_exit   0000000140005148     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000150       __imp_terminate            0000000140005150     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000158       __imp__cexit               0000000140005158     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000160       __imp__initterm_e          0000000140005160     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000168       \177api-ms-win-crt-runtime-l1-1-0_NULL_THUNK_DATA 0000000140005168     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000170       __imp__set_fmode           0000000140005170     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000178       __imp___p__commode         0000000140005178     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000180       \177api-ms-win-crt-stdio-l1-1-0_NULL_THUNK_DATA 0000000140005180     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000188       __guard_check_icall_fptr   0000000140005188     MSVCRT:guard_support.obj
+ 0002:00000190       __guard_xfg_check_icall_fptr 0000000140005190     MSVCRT:guard_support.obj
+ 0002:00000198       __guard_dispatch_icall_fptr 0000000140005198     MSVCRT:guard_support.obj
+ 0002:000001a0       __castguard_check_failure_os_handled_fptr 00000001400051a0     MSVCRT:guard_support.obj
+ 0002:000001a8       __guard_memcpy_fptr        00000001400051a8     vcruntime:softmemtag.obj
+ 0002:000001b0       __xc_a                     00000001400051b0     MSVCRT:initializers.obj
+ 0002:000001c0       __xc_z                     00000001400051c0     MSVCRT:initializers.obj
+ 0002:000001c8       __xi_a                     00000001400051c8     MSVCRT:initializers.obj
+ 0002:000001e0       __xi_z                     00000001400051e0     MSVCRT:initializers.obj
+ 0002:000001e8       __xp_a                     00000001400051e8     MSVCRT:initializers.obj
+ 0002:000001f0       __xp_z                     00000001400051f0     MSVCRT:initializers.obj
+ 0002:000001f8       __xt_a                     00000001400051f8     MSVCRT:initializers.obj
+ 0002:00000200       __xt_z                     0000000140005200     MSVCRT:initializers.obj
+ 0002:00000210       ??_C@_1EE@PKDKDPKJ@?$AAa?$AAp?$AAi?$AA?9?$AAm?$AAs?$AA?9?$AAw?$AAi?$AAn?$AA?9?$AAc?$AAo?$AAr?$AAe@ 0000000140005210     MSVCRT:cpu_disp.obj
+ 0002:00000258       ??_C@_0BJ@DIBIJBHA@GetEnabledXStateFeatures@ 0000000140005258     MSVCRT:cpu_disp.obj
+ 0002:00000278       ??_C@_0BE@KINNKFDA@LocateXStateFeature@ 0000000140005278     MSVCRT:cpu_disp.obj
+ 0002:00000290       _load_config_used          0000000140005290     MSVCRT:loadcfg.obj
+ 0002:00000480       __CastGuardVftablesStart   0000000140005480     MSVCRT:guard_support.obj
+ 0002:00000500       __CastGuardVftablesEnd     0000000140005500     MSVCRT:guard_support.obj
+ 0002:00000880       __rtc_iaa                  0000000140005880     MSVCRT:initsect.obj
+ 0002:00000888       __rtc_izz                  0000000140005888     MSVCRT:initsect.obj
+ 0002:00000890       __rtc_taa                  0000000140005890     MSVCRT:initsect.obj
+ 0002:00000898       __rtc_tzz                  0000000140005898     MSVCRT:initsect.obj
+ 0002:00000f18       __IMPORT_DESCRIPTOR_KERNEL32 0000000140005f18     kernel32:KERNEL32.dll
+ 0002:00000f2c       __IMPORT_DESCRIPTOR_VCRUNTIME140 0000000140005f2c     vcruntime:VCRUNTIME140.dll
+ 0002:00000f40       __IMPORT_DESCRIPTOR_api-ms-win-crt-runtime-l1-1-0 0000000140005f40     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000f54       __IMPORT_DESCRIPTOR_api-ms-win-crt-math-l1-1-0 0000000140005f54     ucrt:api-ms-win-crt-math-l1-1-0.dll
+ 0002:00000f68       __IMPORT_DESCRIPTOR_api-ms-win-crt-stdio-l1-1-0 0000000140005f68     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000f7c       __IMPORT_DESCRIPTOR_api-ms-win-crt-locale-l1-1-0 0000000140005f7c     ucrt:api-ms-win-crt-locale-l1-1-0.dll
+ 0002:00000f90       __IMPORT_DESCRIPTOR_api-ms-win-crt-heap-l1-1-0 0000000140005f90     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:00000fa4       __NULL_IMPORT_DESCRIPTOR   0000000140005fa4     kernel32:KERNEL32.dll
+ 0003:00000000       __scrt_native_dllmain_reason 0000000140007000     MSVCRT:utility.obj
+ 0003:00000004       __scrt_default_matherr     0000000140007004     MSVCRT:matherr.obj
+ 0003:00000008       _AtomicsV81Support         0000000140007008     MSVCRT:atomics.obj
+ 0003:00000040       __security_cookie          0000000140007040     MSVCRT:gs_cookie.obj
+ 0003:00000080       __security_cookie_complement 0000000140007080     MSVCRT:gs_cookie.obj
+ 0003:00000088       __scrt_ucrt_dll_is_in_use  0000000140007088     MSVCRT:ucrt_stubs.obj
+ 0003:00000090       ?g_packet@@3UPacket@@A     0000000140007090     padding.obj
+ 0003:000000a8       ?g_packet_reordered@@3UPacketReordered@@A 00000001400070a8     padding.obj
+ 0003:000000b8       ?g_empty@@3UEmpty@@A       00000001400070b8     padding.obj
+ 0003:000000c0       ?g_cache_straddle@@3UCacheStraddle@@A 00000001400070c0     padding.obj
+ 0003:00000110       __scrt_current_native_startup_state 0000000140007110     MSVCRT:utility.obj
+ 0003:00000118       __scrt_native_startup_lock 0000000140007118     MSVCRT:utility.obj
+ 0003:00000160       ?__type_info_root_node@@3U__type_info_node@@A 0000000140007160     MSVCRT:tncleanup.obj
+ 0003:00000170       ?_OptionsStorage@?1??__local_stdio_printf_options@@9@4_KA 0000000140007170     MSVCRT:default_local_stdio_options.obj
+ 0003:00000178       ?_OptionsStorage@?1??__local_stdio_scanf_options@@9@4_KA 0000000140007178     MSVCRT:default_local_stdio_options.obj
+ 0003:00000180       __castguard_check_failure_user_handled_fptr 0000000140007180     MSVCRT:guard_support.obj
+ 0003:00000188       __locateXStateFeature      0000000140007188     MSVCRT:cpu_disp.obj
+ 0003:00000190       __arm64_xstate_features    0000000140007190     MSVCRT:cpu_disp.obj
+ 0003:00000198       __dyn_tls_dtor_callback    0000000140007198     <common>
+ 0003:000001a0       __dyn_tls_init_callback    00000001400071a0     <common>
+
+ entry point at        0001:00002968
+
+ Static symbols
+
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     kernel32:KERNEL32.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-locale-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-math-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:ffffb000       __guard_ehcont_?__scrt_common_main_seh@@YAHXZ 0000000140000000     MSVCRT:exe_main.obj
+ 0002:ffffb000       __guard_fids_?pre_c_initialization@@YAHXZ 0000000140000000     MSVCRT:exe_main.obj
+ 0002:ffffb000       __guard_fids__             0000000140000000     MSVCRT:exe_main.obj
+ 0002:ffffb000       __guard_fids__             0000000140000000     MSVCRT:guard_support.obj
+ 0002:ffffb000       __guard_fids__             0000000140000000     MSVCRT:guard_support.obj
+ 0002:ffffb000       __guard_fids__guard_icall_checks_enforced 0000000140000000     MSVCRT:guard_support.obj
+ 0002:ffffb000       __guard_ehcont___scrt_is_nonwritable_in_current_image 0000000140000000     MSVCRT:utility.obj
+ 0002:ffffb000       __guard_fids___scrt_set_unhandled_exception_filter 0000000140000000     MSVCRT:utility_desktop.obj
+ 0002:ffffb000       __guard_fids__             0000000140000000     vcruntime:softmemtag.obj
+ 0000:ffff6000       .debug$S                   0000000140000000     vcruntime:VCRUNTIME140.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     vcruntime:VCRUNTIME140.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     vcruntime:VCRUNTIME140.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     vcruntime:VCRUNTIME140.dll
+ 0000:ffff6000       .debug$S                   0000000140000000     vcruntime:VCRUNTIME140.dll
+ 0002:ffffb004       __guard_fids__             0000000140000004     MSVCRT:exe_main.obj
+ 0002:ffffb008       __guard_fids__             0000000140000008     MSVCRT:exe_main.obj
+ 0001:000025e0       ?pre_c_initialization@@YAHXZ 00000001400035e0 f   MSVCRT:exe_main.obj
+ 0001:00002698       ?post_pgo_initialization@@YAHXZ 0000000140003698 f   MSVCRT:exe_main.obj
+ 0001:000026b8       ?pre_cpp_initialization@@YAXXZ 00000001400036b8 f   MSVCRT:exe_main.obj
+ 0001:000026e0       ?__scrt_common_main@@YAHXZ 00000001400036e0 f   MSVCRT:exe_main.obj
+ 0001:00002700       ?__scrt_common_main_seh@@YAHXZ 0000000140003700 f   MSVCRT:exe_main.obj
+ 0001:000028c8       ?invoke_main@@YAHXZ        00000001400038c8 f   MSVCRT:exe_main.obj
+ 0001:00002988       ?find_pe_section@@YAPEAU_IMAGE_SECTION_HEADER@@QEAE_K@Z 0000000140003988 f   MSVCRT:utility.obj
+ 0001:000029e0       ?is_potentially_valid_image_base@@YA_NQEAX@Z 00000001400039e0 f   MSVCRT:utility.obj
+ 0001:00003040       __get_entropy              0000000140004040 f   MSVCRT:gs_support.obj
+ 0001:000031b8       $LN11                      00000001400041b8     MSVCRT:gs_support.obj
+ 0001:000031c0       $LN12                      00000001400041c0     MSVCRT:gs_support.obj
+ 0001:00003608       __castguard_check_failure_os_handled_wrapper 0000000140004608 f   MSVCRT:guard_support.obj
+ 0001:00003680       __castguard_check_failure_user_handled_wrapper 0000000140004680 f   MSVCRT:guard_support.obj
+ 0001:000036b8       __castguard_compat_check   00000001400046b8 f   MSVCRT:guard_support.obj
+ 0001:00003858       __castguard_slow_path_compat_check 0000000140004858 f   MSVCRT:guard_support.obj
+ 0001:00003ba4       ?filt$0@?0??__scrt_common_main_seh@@YAHXZ@4HA 0000000140004ba4 f   MSVCRT:exe_main.obj
+ 0001:00003bd4       __scrt_is_nonwritable_in_current_image$filt$0 0000000140004bd4 f   MSVCRT:utility.obj
+ 0002:000001b8       ?pre_cpp_initializer@@3P6AXXZEA 00000001400051b8     MSVCRT:exe_main.obj
+ 0002:000001d0       ?pre_c_initializer@@3P6AHXZEA 00000001400051d0     MSVCRT:exe_main.obj
+ 0002:000001d8       ?post_pgo_initializer@@3P6AHXZEA 00000001400051d8     MSVCRT:exe_main.obj
+ 0002:000008a0       $unwind$?pre_c_initialization@@YAHXZ 00000001400058a0     MSVCRT:exe_main.obj
+ 0002:000008b0       $unwind$?__scrt_common_main_seh@@YAHXZ 00000001400058b0     MSVCRT:exe_main.obj
+ 0002:000008e8       $unwind$?filt$0@?0??__scrt_common_main_seh@@YAHXZ@4HA 00000001400058e8     MSVCRT:exe_main.obj
+ 0002:000008f4       $unwind$__scrt_is_nonwritable_in_current_image 00000001400058f4     MSVCRT:utility.obj
+ 0002:00000914       $unwind$__scrt_is_nonwritable_in_current_image$filt$0 0000000140005914     MSVCRT:utility.obj
+ 0002:00000920       $unwind$__scrt_acquire_startup_lock 0000000140005920     MSVCRT:utility.obj
+ 0002:0000092c       $unwind$0$__scrt_acquire_startup_lock 000000014000592c     MSVCRT:utility.obj
+ 0002:0000093c       $unwind$1$__scrt_acquire_startup_lock 000000014000593c     MSVCRT:utility.obj
+ 0002:00000948       $unwind$2$__scrt_acquire_startup_lock 0000000140005948     MSVCRT:utility.obj
+ 0002:00000958       $unwind$3$__scrt_acquire_startup_lock 0000000140005958     MSVCRT:utility.obj
+ 0002:00000964       $unwind$__scrt_initialize_crt 0000000140005964     MSVCRT:utility.obj
+ 0002:00000974       $unwind$__scrt_initialize_onexit_tables 0000000140005974     MSVCRT:utility.obj
+ 0002:00000988       $unwind$__scrt_dllmain_before_initialize_c 0000000140005988     MSVCRT:utility.obj
+ 0002:0000099c       $unwind$__scrt_dllmain_after_initialize_c 000000014000599c     MSVCRT:utility.obj
+ 0002:000009b0       $unwind$__scrt_dllmain_uninitialize_c 00000001400059b0     MSVCRT:utility.obj
+ 0002:000009c0       $unwind$__scrt_dllmain_crt_thread_attach 00000001400059c0     MSVCRT:utility.obj
+ 0002:000009d0       $unwind$__scrt_is_managed_app 00000001400059d0     MSVCRT:utility_desktop.obj
+ 0002:000009e0       $unwind$__scrt_unhandled_exception_filter 00000001400059e0     MSVCRT:utility_desktop.obj
+ 0002:000009f0       $unwind$0$_RTC_Initialize  00000001400059f0     MSVCRT:initsect.obj
+ 0002:00000a00       $unwind$0$_RTC_Terminate   0000000140005a00     MSVCRT:initsect.obj
+ 0002:00000a10       $unwind$__isa_available_init 0000000140005a10     MSVCRT:cpu_disp.obj
+ 0002:00000a1c       $unwind$0$__isa_available_init 0000000140005a1c     MSVCRT:cpu_disp.obj
+ 0002:00000a2c       $unwind$1$__isa_available_init 0000000140005a2c     MSVCRT:cpu_disp.obj
+ 0002:00000a38       _InterlockedAdd16_xdata    0000000140005a38     MSVCRT:atomics.obj
+ 0002:00000a3c       _InterlockedAdd16_xdata_prolog 0000000140005a3c     MSVCRT:atomics.obj
+ 0002:00000a40       _InterlockedAdd16_acq_xdata 0000000140005a40     MSVCRT:atomics.obj
+ 0002:00000a40       _InterlockedAdd16_xdata_end 0000000140005a40     MSVCRT:atomics.obj
+ 0002:00000a44       _InterlockedAdd16_acq_xdata_prolog 0000000140005a44     MSVCRT:atomics.obj
+ 0002:00000a48       _InterlockedAdd16_acq_xdata_end 0000000140005a48     MSVCRT:atomics.obj
+ 0002:00000a48       _InterlockedAdd16_rel_xdata 0000000140005a48     MSVCRT:atomics.obj
+ 0002:00000a4c       _InterlockedAdd16_rel_xdata_prolog 0000000140005a4c     MSVCRT:atomics.obj
+ 0002:00000a50       _InterlockedAdd16_nf_xdata 0000000140005a50     MSVCRT:atomics.obj
+ 0002:00000a50       _InterlockedAdd16_rel_xdata_end 0000000140005a50     MSVCRT:atomics.obj
+ 0002:00000a54       _InterlockedAdd16_nf_xdata_prolog 0000000140005a54     MSVCRT:atomics.obj
+ 0002:00000a58       _InterlockedAdd16_nf_xdata_end 0000000140005a58     MSVCRT:atomics.obj
+ 0002:00000a58       _InterlockedAdd_xdata      0000000140005a58     MSVCRT:atomics.obj
+ 0002:00000a5c       _InterlockedAdd_xdata_prolog 0000000140005a5c     MSVCRT:atomics.obj
+ 0002:00000a60       _InterlockedAdd_acq_xdata  0000000140005a60     MSVCRT:atomics.obj
+ 0002:00000a60       _InterlockedAdd_xdata_end  0000000140005a60     MSVCRT:atomics.obj
+ 0002:00000a64       _InterlockedAdd_acq_xdata_prolog 0000000140005a64     MSVCRT:atomics.obj
+ 0002:00000a68       _InterlockedAdd_acq_xdata_end 0000000140005a68     MSVCRT:atomics.obj
+ 0002:00000a68       _InterlockedAdd_rel_xdata  0000000140005a68     MSVCRT:atomics.obj
+ 0002:00000a6c       _InterlockedAdd_rel_xdata_prolog 0000000140005a6c     MSVCRT:atomics.obj
+ 0002:00000a70       _InterlockedAdd_nf_xdata   0000000140005a70     MSVCRT:atomics.obj
+ 0002:00000a70       _InterlockedAdd_rel_xdata_end 0000000140005a70     MSVCRT:atomics.obj
+ 0002:00000a74       _InterlockedAdd_nf_xdata_prolog 0000000140005a74     MSVCRT:atomics.obj
+ 0002:00000a78       _InterlockedAdd64_xdata    0000000140005a78     MSVCRT:atomics.obj
+ 0002:00000a78       _InterlockedAdd_nf_xdata_end 0000000140005a78     MSVCRT:atomics.obj
+ 0002:00000a7c       _InterlockedAdd64_xdata_prolog 0000000140005a7c     MSVCRT:atomics.obj
+ 0002:00000a80       _InterlockedAdd64_acq_xdata 0000000140005a80     MSVCRT:atomics.obj
+ 0002:00000a80       _InterlockedAdd64_xdata_end 0000000140005a80     MSVCRT:atomics.obj
+ 0002:00000a84       _InterlockedAdd64_acq_xdata_prolog 0000000140005a84     MSVCRT:atomics.obj
+ 0002:00000a88       _InterlockedAdd64_acq_xdata_end 0000000140005a88     MSVCRT:atomics.obj
+ 0002:00000a88       _InterlockedAdd64_rel_xdata 0000000140005a88     MSVCRT:atomics.obj
+ 0002:00000a8c       _InterlockedAdd64_rel_xdata_prolog 0000000140005a8c     MSVCRT:atomics.obj
+ 0002:00000a90       _InterlockedAdd64_nf_xdata 0000000140005a90     MSVCRT:atomics.obj
+ 0002:00000a90       _InterlockedAdd64_rel_xdata_end 0000000140005a90     MSVCRT:atomics.obj
+ 0002:00000a94       _InterlockedAdd64_nf_xdata_prolog 0000000140005a94     MSVCRT:atomics.obj
+ 0002:00000a98       _InterlockedAdd64_nf_xdata_end 0000000140005a98     MSVCRT:atomics.obj
+ 0002:00000a98       _InterlockedAnd8_xdata     0000000140005a98     MSVCRT:atomics.obj
+ 0002:00000a9c       _InterlockedAnd8_xdata_prolog 0000000140005a9c     MSVCRT:atomics.obj
+ 0002:00000aa0       _InterlockedAnd8_acq_xdata 0000000140005aa0     MSVCRT:atomics.obj
+ 0002:00000aa0       _InterlockedAnd8_xdata_end 0000000140005aa0     MSVCRT:atomics.obj
+ 0002:00000aa4       _InterlockedAnd8_acq_xdata_prolog 0000000140005aa4     MSVCRT:atomics.obj
+ 0002:00000aa8       _InterlockedAnd8_acq_xdata_end 0000000140005aa8     MSVCRT:atomics.obj
+ 0002:00000aa8       _InterlockedAnd8_rel_xdata 0000000140005aa8     MSVCRT:atomics.obj
+ 0002:00000aac       _InterlockedAnd8_rel_xdata_prolog 0000000140005aac     MSVCRT:atomics.obj
+ 0002:00000ab0       _InterlockedAnd8_nf_xdata  0000000140005ab0     MSVCRT:atomics.obj
+ 0002:00000ab0       _InterlockedAnd8_rel_xdata_end 0000000140005ab0     MSVCRT:atomics.obj
+ 0002:00000ab4       _InterlockedAnd8_nf_xdata_prolog 0000000140005ab4     MSVCRT:atomics.obj
+ 0002:00000ab8       _InterlockedAnd16_xdata    0000000140005ab8     MSVCRT:atomics.obj
+ 0002:00000ab8       _InterlockedAnd8_nf_xdata_end 0000000140005ab8     MSVCRT:atomics.obj
+ 0002:00000abc       _InterlockedAnd16_xdata_prolog 0000000140005abc     MSVCRT:atomics.obj
+ 0002:00000ac0       _InterlockedAnd16_acq_xdata 0000000140005ac0     MSVCRT:atomics.obj
+ 0002:00000ac0       _InterlockedAnd16_xdata_end 0000000140005ac0     MSVCRT:atomics.obj
+ 0002:00000ac4       _InterlockedAnd16_acq_xdata_prolog 0000000140005ac4     MSVCRT:atomics.obj
+ 0002:00000ac8       _InterlockedAnd16_acq_xdata_end 0000000140005ac8     MSVCRT:atomics.obj
+ 0002:00000ac8       _InterlockedAnd16_rel_xdata 0000000140005ac8     MSVCRT:atomics.obj
+ 0002:00000acc       _InterlockedAnd16_rel_xdata_prolog 0000000140005acc     MSVCRT:atomics.obj
+ 0002:00000ad0       _InterlockedAnd16_nf_xdata 0000000140005ad0     MSVCRT:atomics.obj
+ 0002:00000ad0       _InterlockedAnd16_rel_xdata_end 0000000140005ad0     MSVCRT:atomics.obj
+ 0002:00000ad4       _InterlockedAnd16_nf_xdata_prolog 0000000140005ad4     MSVCRT:atomics.obj
+ 0002:00000ad8       _InterlockedAnd16_nf_xdata_end 0000000140005ad8     MSVCRT:atomics.obj
+ 0002:00000ad8       _InterlockedAnd_xdata      0000000140005ad8     MSVCRT:atomics.obj
+ 0002:00000adc       _InterlockedAnd_xdata_prolog 0000000140005adc     MSVCRT:atomics.obj
+ 0002:00000ae0       _InterlockedAnd_acq_xdata  0000000140005ae0     MSVCRT:atomics.obj
+ 0002:00000ae0       _InterlockedAnd_xdata_end  0000000140005ae0     MSVCRT:atomics.obj
+ 0002:00000ae4       _InterlockedAnd_acq_xdata_prolog 0000000140005ae4     MSVCRT:atomics.obj
+ 0002:00000ae8       _InterlockedAnd_acq_xdata_end 0000000140005ae8     MSVCRT:atomics.obj
+ 0002:00000ae8       _InterlockedAnd_rel_xdata  0000000140005ae8     MSVCRT:atomics.obj
+ 0002:00000aec       _InterlockedAnd_rel_xdata_prolog 0000000140005aec     MSVCRT:atomics.obj
+ 0002:00000af0       _InterlockedAnd_nf_xdata   0000000140005af0     MSVCRT:atomics.obj
+ 0002:00000af0       _InterlockedAnd_rel_xdata_end 0000000140005af0     MSVCRT:atomics.obj
+ 0002:00000af4       _InterlockedAnd_nf_xdata_prolog 0000000140005af4     MSVCRT:atomics.obj
+ 0002:00000af8       _InterlockedAnd64_xdata    0000000140005af8     MSVCRT:atomics.obj
+ 0002:00000af8       _InterlockedAnd_nf_xdata_end 0000000140005af8     MSVCRT:atomics.obj
+ 0002:00000afc       _InterlockedAnd64_xdata_prolog 0000000140005afc     MSVCRT:atomics.obj
+ 0002:00000b00       _InterlockedAnd64_acq_xdata 0000000140005b00     MSVCRT:atomics.obj
+ 0002:00000b00       _InterlockedAnd64_xdata_end 0000000140005b00     MSVCRT:atomics.obj
+ 0002:00000b04       _InterlockedAnd64_acq_xdata_prolog 0000000140005b04     MSVCRT:atomics.obj
+ 0002:00000b08       _InterlockedAnd64_acq_xdata_end 0000000140005b08     MSVCRT:atomics.obj
+ 0002:00000b08       _InterlockedAnd64_rel_xdata 0000000140005b08     MSVCRT:atomics.obj
+ 0002:00000b0c       _InterlockedAnd64_rel_xdata_prolog 0000000140005b0c     MSVCRT:atomics.obj
+ 0002:00000b10       _InterlockedAnd64_nf_xdata 0000000140005b10     MSVCRT:atomics.obj
+ 0002:00000b10       _InterlockedAnd64_rel_xdata_end 0000000140005b10     MSVCRT:atomics.obj
+ 0002:00000b14       _InterlockedAnd64_nf_xdata_prolog 0000000140005b14     MSVCRT:atomics.obj
+ 0002:00000b18       _InterlockedAnd64_nf_xdata_end 0000000140005b18     MSVCRT:atomics.obj
+ 0002:00000b18       _InterlockedCompareExchange8_xdata 0000000140005b18     MSVCRT:atomics.obj
+ 0002:00000b1c       _InterlockedCompareExchange8_xdata_prolog 0000000140005b1c     MSVCRT:atomics.obj
+ 0002:00000b20       _InterlockedCompareExchange8_acq_xdata 0000000140005b20     MSVCRT:atomics.obj
+ 0002:00000b20       _InterlockedCompareExchange8_xdata_end 0000000140005b20     MSVCRT:atomics.obj
+ 0002:00000b24       _InterlockedCompareExchange8_acq_xdata_prolog 0000000140005b24     MSVCRT:atomics.obj
+ 0002:00000b28       _InterlockedCompareExchange8_acq_xdata_end 0000000140005b28     MSVCRT:atomics.obj
+ 0002:00000b28       _InterlockedCompareExchange8_rel_xdata 0000000140005b28     MSVCRT:atomics.obj
+ 0002:00000b2c       _InterlockedCompareExchange8_rel_xdata_prolog 0000000140005b2c     MSVCRT:atomics.obj
+ 0002:00000b30       _InterlockedCompareExchange8_nf_xdata 0000000140005b30     MSVCRT:atomics.obj
+ 0002:00000b30       _InterlockedCompareExchange8_rel_xdata_end 0000000140005b30     MSVCRT:atomics.obj
+ 0002:00000b34       _InterlockedCompareExchange8_nf_xdata_prolog 0000000140005b34     MSVCRT:atomics.obj
+ 0002:00000b38       _InterlockedCompareExchange16_xdata 0000000140005b38     MSVCRT:atomics.obj
+ 0002:00000b38       _InterlockedCompareExchange8_nf_xdata_end 0000000140005b38     MSVCRT:atomics.obj
+ 0002:00000b3c       _InterlockedCompareExchange16_xdata_prolog 0000000140005b3c     MSVCRT:atomics.obj
+ 0002:00000b40       _InterlockedCompareExchange16_acq_xdata 0000000140005b40     MSVCRT:atomics.obj
+ 0002:00000b40       _InterlockedCompareExchange16_xdata_end 0000000140005b40     MSVCRT:atomics.obj
+ 0002:00000b44       _InterlockedCompareExchange16_acq_xdata_prolog 0000000140005b44     MSVCRT:atomics.obj
+ 0002:00000b48       _InterlockedCompareExchange16_acq_xdata_end 0000000140005b48     MSVCRT:atomics.obj
+ 0002:00000b48       _InterlockedCompareExchange16_rel_xdata 0000000140005b48     MSVCRT:atomics.obj
+ 0002:00000b4c       _InterlockedCompareExchange16_rel_xdata_prolog 0000000140005b4c     MSVCRT:atomics.obj
+ 0002:00000b50       _InterlockedCompareExchange16_nf_xdata 0000000140005b50     MSVCRT:atomics.obj
+ 0002:00000b50       _InterlockedCompareExchange16_rel_xdata_end 0000000140005b50     MSVCRT:atomics.obj
+ 0002:00000b54       _InterlockedCompareExchange16_nf_xdata_prolog 0000000140005b54     MSVCRT:atomics.obj
+ 0002:00000b58       _InterlockedCompareExchange16_nf_xdata_end 0000000140005b58     MSVCRT:atomics.obj
+ 0002:00000b58       _InterlockedCompareExchange_xdata 0000000140005b58     MSVCRT:atomics.obj
+ 0002:00000b5c       _InterlockedCompareExchange_xdata_prolog 0000000140005b5c     MSVCRT:atomics.obj
+ 0002:00000b60       _InterlockedCompareExchange_acq_xdata 0000000140005b60     MSVCRT:atomics.obj
+ 0002:00000b60       _InterlockedCompareExchange_xdata_end 0000000140005b60     MSVCRT:atomics.obj
+ 0002:00000b64       _InterlockedCompareExchange_acq_xdata_prolog 0000000140005b64     MSVCRT:atomics.obj
+ 0002:00000b68       _InterlockedCompareExchange_acq_xdata_end 0000000140005b68     MSVCRT:atomics.obj
+ 0002:00000b68       _InterlockedCompareExchange_rel_xdata 0000000140005b68     MSVCRT:atomics.obj
+ 0002:00000b6c       _InterlockedCompareExchange_rel_xdata_prolog 0000000140005b6c     MSVCRT:atomics.obj
+ 0002:00000b70       _InterlockedCompareExchange_nf_xdata 0000000140005b70     MSVCRT:atomics.obj
+ 0002:00000b70       _InterlockedCompareExchange_rel_xdata_end 0000000140005b70     MSVCRT:atomics.obj
+ 0002:00000b74       _InterlockedCompareExchange_nf_xdata_prolog 0000000140005b74     MSVCRT:atomics.obj
+ 0002:00000b78       _InterlockedCompareExchange64_xdata 0000000140005b78     MSVCRT:atomics.obj
+ 0002:00000b78       _InterlockedCompareExchange_nf_xdata_end 0000000140005b78     MSVCRT:atomics.obj
+ 0002:00000b7c       _InterlockedCompareExchange64_xdata_prolog 0000000140005b7c     MSVCRT:atomics.obj
+ 0002:00000b80       _InterlockedCompareExchange64_acq_xdata 0000000140005b80     MSVCRT:atomics.obj
+ 0002:00000b80       _InterlockedCompareExchange64_xdata_end 0000000140005b80     MSVCRT:atomics.obj
+ 0002:00000b84       _InterlockedCompareExchange64_acq_xdata_prolog 0000000140005b84     MSVCRT:atomics.obj
+ 0002:00000b88       _InterlockedCompareExchange64_acq_xdata_end 0000000140005b88     MSVCRT:atomics.obj
+ 0002:00000b88       _InterlockedCompareExchange64_rel_xdata 0000000140005b88     MSVCRT:atomics.obj
+ 0002:00000b8c       _InterlockedCompareExchange64_rel_xdata_prolog 0000000140005b8c     MSVCRT:atomics.obj
+ 0002:00000b90       _InterlockedCompareExchange64_nf_xdata 0000000140005b90     MSVCRT:atomics.obj
+ 0002:00000b90       _InterlockedCompareExchange64_rel_xdata_end 0000000140005b90     MSVCRT:atomics.obj
+ 0002:00000b94       _InterlockedCompareExchange64_nf_xdata_prolog 0000000140005b94     MSVCRT:atomics.obj
+ 0002:00000b98       _InterlockedCompareExchange128_xdata 0000000140005b98     MSVCRT:atomics.obj
+ 0002:00000b98       _InterlockedCompareExchange64_nf_xdata_end 0000000140005b98     MSVCRT:atomics.obj
+ 0002:00000b9c       _InterlockedCompareExchange128_xdata_prolog 0000000140005b9c     MSVCRT:atomics.obj
+ 0002:00000ba0       _InterlockedCompareExchange128_acq_xdata 0000000140005ba0     MSVCRT:atomics.obj
+ 0002:00000ba0       _InterlockedCompareExchange128_xdata_end 0000000140005ba0     MSVCRT:atomics.obj
+ 0002:00000ba4       _InterlockedCompareExchange128_acq_xdata_prolog 0000000140005ba4     MSVCRT:atomics.obj
+ 0002:00000ba8       _InterlockedCompareExchange128_acq_xdata_end 0000000140005ba8     MSVCRT:atomics.obj
+ 0002:00000ba8       _InterlockedCompareExchange128_rel_xdata 0000000140005ba8     MSVCRT:atomics.obj
+ 0002:00000bac       _InterlockedCompareExchange128_rel_xdata_prolog 0000000140005bac     MSVCRT:atomics.obj
+ 0002:00000bb0       _InterlockedCompareExchange128_nf_xdata 0000000140005bb0     MSVCRT:atomics.obj
+ 0002:00000bb0       _InterlockedCompareExchange128_rel_xdata_end 0000000140005bb0     MSVCRT:atomics.obj
+ 0002:00000bb4       _InterlockedCompareExchange128_nf_xdata_prolog 0000000140005bb4     MSVCRT:atomics.obj
+ 0002:00000bb8       _InterlockedCompareExchange128_nf_xdata_end 0000000140005bb8     MSVCRT:atomics.obj
+ 0002:00000bb8       _InterlockedDecrement16_xdata 0000000140005bb8     MSVCRT:atomics.obj
+ 0002:00000bbc       _InterlockedDecrement16_xdata_prolog 0000000140005bbc     MSVCRT:atomics.obj
+ 0002:00000bc0       _InterlockedDecrement16_acq_xdata 0000000140005bc0     MSVCRT:atomics.obj
+ 0002:00000bc0       _InterlockedDecrement16_xdata_end 0000000140005bc0     MSVCRT:atomics.obj
+ 0002:00000bc4       _InterlockedDecrement16_acq_xdata_prolog 0000000140005bc4     MSVCRT:atomics.obj
+ 0002:00000bc8       _InterlockedDecrement16_acq_xdata_end 0000000140005bc8     MSVCRT:atomics.obj
+ 0002:00000bc8       _InterlockedDecrement16_rel_xdata 0000000140005bc8     MSVCRT:atomics.obj
+ 0002:00000bcc       _InterlockedDecrement16_rel_xdata_prolog 0000000140005bcc     MSVCRT:atomics.obj
+ 0002:00000bd0       _InterlockedDecrement16_nf_xdata 0000000140005bd0     MSVCRT:atomics.obj
+ 0002:00000bd0       _InterlockedDecrement16_rel_xdata_end 0000000140005bd0     MSVCRT:atomics.obj
+ 0002:00000bd4       _InterlockedDecrement16_nf_xdata_prolog 0000000140005bd4     MSVCRT:atomics.obj
+ 0002:00000bd8       _InterlockedDecrement16_nf_xdata_end 0000000140005bd8     MSVCRT:atomics.obj
+ 0002:00000bd8       _InterlockedDecrement_xdata 0000000140005bd8     MSVCRT:atomics.obj
+ 0002:00000bdc       _InterlockedDecrement_xdata_prolog 0000000140005bdc     MSVCRT:atomics.obj
+ 0002:00000be0       _InterlockedDecrement_acq_xdata 0000000140005be0     MSVCRT:atomics.obj
+ 0002:00000be0       _InterlockedDecrement_xdata_end 0000000140005be0     MSVCRT:atomics.obj
+ 0002:00000be4       _InterlockedDecrement_acq_xdata_prolog 0000000140005be4     MSVCRT:atomics.obj
+ 0002:00000be8       _InterlockedDecrement_acq_xdata_end 0000000140005be8     MSVCRT:atomics.obj
+ 0002:00000be8       _InterlockedDecrement_rel_xdata 0000000140005be8     MSVCRT:atomics.obj
+ 0002:00000bec       _InterlockedDecrement_rel_xdata_prolog 0000000140005bec     MSVCRT:atomics.obj
+ 0002:00000bf0       _InterlockedDecrement_nf_xdata 0000000140005bf0     MSVCRT:atomics.obj
+ 0002:00000bf0       _InterlockedDecrement_rel_xdata_end 0000000140005bf0     MSVCRT:atomics.obj
+ 0002:00000bf4       _InterlockedDecrement_nf_xdata_prolog 0000000140005bf4     MSVCRT:atomics.obj
+ 0002:00000bf8       _InterlockedDecrement64_xdata 0000000140005bf8     MSVCRT:atomics.obj
+ 0002:00000bf8       _InterlockedDecrement_nf_xdata_end 0000000140005bf8     MSVCRT:atomics.obj
+ 0002:00000bfc       _InterlockedDecrement64_xdata_prolog 0000000140005bfc     MSVCRT:atomics.obj
+ 0002:00000c00       _InterlockedDecrement64_acq_xdata 0000000140005c00     MSVCRT:atomics.obj
+ 0002:00000c00       _InterlockedDecrement64_xdata_end 0000000140005c00     MSVCRT:atomics.obj
+ 0002:00000c04       _InterlockedDecrement64_acq_xdata_prolog 0000000140005c04     MSVCRT:atomics.obj
+ 0002:00000c08       _InterlockedDecrement64_acq_xdata_end 0000000140005c08     MSVCRT:atomics.obj
+ 0002:00000c08       _InterlockedDecrement64_rel_xdata 0000000140005c08     MSVCRT:atomics.obj
+ 0002:00000c0c       _InterlockedDecrement64_rel_xdata_prolog 0000000140005c0c     MSVCRT:atomics.obj
+ 0002:00000c10       _InterlockedDecrement64_nf_xdata 0000000140005c10     MSVCRT:atomics.obj
+ 0002:00000c10       _InterlockedDecrement64_rel_xdata_end 0000000140005c10     MSVCRT:atomics.obj
+ 0002:00000c14       _InterlockedDecrement64_nf_xdata_prolog 0000000140005c14     MSVCRT:atomics.obj
+ 0002:00000c18       _InterlockedDecrement64_nf_xdata_end 0000000140005c18     MSVCRT:atomics.obj
+ 0002:00000c18       _InterlockedExchange8_xdata 0000000140005c18     MSVCRT:atomics.obj
+ 0002:00000c1c       _InterlockedExchange8_xdata_prolog 0000000140005c1c     MSVCRT:atomics.obj
+ 0002:00000c20       _InterlockedExchange8_acq_xdata 0000000140005c20     MSVCRT:atomics.obj
+ 0002:00000c20       _InterlockedExchange8_xdata_end 0000000140005c20     MSVCRT:atomics.obj
+ 0002:00000c24       _InterlockedExchange8_acq_xdata_prolog 0000000140005c24     MSVCRT:atomics.obj
+ 0002:00000c28       _InterlockedExchange8_acq_xdata_end 0000000140005c28     MSVCRT:atomics.obj
+ 0002:00000c28       _InterlockedExchange8_rel_xdata 0000000140005c28     MSVCRT:atomics.obj
+ 0002:00000c2c       _InterlockedExchange8_rel_xdata_prolog 0000000140005c2c     MSVCRT:atomics.obj
+ 0002:00000c30       _InterlockedExchange8_nf_xdata 0000000140005c30     MSVCRT:atomics.obj
+ 0002:00000c30       _InterlockedExchange8_rel_xdata_end 0000000140005c30     MSVCRT:atomics.obj
+ 0002:00000c34       _InterlockedExchange8_nf_xdata_prolog 0000000140005c34     MSVCRT:atomics.obj
+ 0002:00000c38       _InterlockedExchange16_xdata 0000000140005c38     MSVCRT:atomics.obj
+ 0002:00000c38       _InterlockedExchange8_nf_xdata_end 0000000140005c38     MSVCRT:atomics.obj
+ 0002:00000c3c       _InterlockedExchange16_xdata_prolog 0000000140005c3c     MSVCRT:atomics.obj
+ 0002:00000c40       _InterlockedExchange16_acq_xdata 0000000140005c40     MSVCRT:atomics.obj
+ 0002:00000c40       _InterlockedExchange16_xdata_end 0000000140005c40     MSVCRT:atomics.obj
+ 0002:00000c44       _InterlockedExchange16_acq_xdata_prolog 0000000140005c44     MSVCRT:atomics.obj
+ 0002:00000c48       _InterlockedExchange16_acq_xdata_end 0000000140005c48     MSVCRT:atomics.obj
+ 0002:00000c48       _InterlockedExchange16_rel_xdata 0000000140005c48     MSVCRT:atomics.obj
+ 0002:00000c4c       _InterlockedExchange16_rel_xdata_prolog 0000000140005c4c     MSVCRT:atomics.obj
+ 0002:00000c50       _InterlockedExchange16_nf_xdata 0000000140005c50     MSVCRT:atomics.obj
+ 0002:00000c50       _InterlockedExchange16_rel_xdata_end 0000000140005c50     MSVCRT:atomics.obj
+ 0002:00000c54       _InterlockedExchange16_nf_xdata_prolog 0000000140005c54     MSVCRT:atomics.obj
+ 0002:00000c58       _InterlockedExchange16_nf_xdata_end 0000000140005c58     MSVCRT:atomics.obj
+ 0002:00000c58       _InterlockedExchange_xdata 0000000140005c58     MSVCRT:atomics.obj
+ 0002:00000c5c       _InterlockedExchange_xdata_prolog 0000000140005c5c     MSVCRT:atomics.obj
+ 0002:00000c60       _InterlockedExchange_acq_xdata 0000000140005c60     MSVCRT:atomics.obj
+ 0002:00000c60       _InterlockedExchange_xdata_end 0000000140005c60     MSVCRT:atomics.obj
+ 0002:00000c64       _InterlockedExchange_acq_xdata_prolog 0000000140005c64     MSVCRT:atomics.obj
+ 0002:00000c68       _InterlockedExchange_acq_xdata_end 0000000140005c68     MSVCRT:atomics.obj
+ 0002:00000c68       _InterlockedExchange_rel_xdata 0000000140005c68     MSVCRT:atomics.obj
+ 0002:00000c6c       _InterlockedExchange_rel_xdata_prolog 0000000140005c6c     MSVCRT:atomics.obj
+ 0002:00000c70       _InterlockedExchange_nf_xdata 0000000140005c70     MSVCRT:atomics.obj
+ 0002:00000c70       _InterlockedExchange_rel_xdata_end 0000000140005c70     MSVCRT:atomics.obj
+ 0002:00000c74       _InterlockedExchange_nf_xdata_prolog 0000000140005c74     MSVCRT:atomics.obj
+ 0002:00000c78       _InterlockedExchange64_xdata 0000000140005c78     MSVCRT:atomics.obj
+ 0002:00000c78       _InterlockedExchange_nf_xdata_end 0000000140005c78     MSVCRT:atomics.obj
+ 0002:00000c7c       _InterlockedExchange64_xdata_prolog 0000000140005c7c     MSVCRT:atomics.obj
+ 0002:00000c80       _InterlockedExchange64_acq_xdata 0000000140005c80     MSVCRT:atomics.obj
+ 0002:00000c80       _InterlockedExchange64_xdata_end 0000000140005c80     MSVCRT:atomics.obj
+ 0002:00000c84       _InterlockedExchange64_acq_xdata_prolog 0000000140005c84     MSVCRT:atomics.obj
+ 0002:00000c88       _InterlockedExchange64_acq_xdata_end 0000000140005c88     MSVCRT:atomics.obj
+ 0002:00000c88       _InterlockedExchange64_rel_xdata 0000000140005c88     MSVCRT:atomics.obj
+ 0002:00000c8c       _InterlockedExchange64_rel_xdata_prolog 0000000140005c8c     MSVCRT:atomics.obj
+ 0002:00000c90       _InterlockedExchange64_nf_xdata 0000000140005c90     MSVCRT:atomics.obj
+ 0002:00000c90       _InterlockedExchange64_rel_xdata_end 0000000140005c90     MSVCRT:atomics.obj
+ 0002:00000c94       _InterlockedExchange64_nf_xdata_prolog 0000000140005c94     MSVCRT:atomics.obj
+ 0002:00000c98       _InterlockedExchange64_nf_xdata_end 0000000140005c98     MSVCRT:atomics.obj
+ 0002:00000c98       _InterlockedExchangeAdd8_xdata 0000000140005c98     MSVCRT:atomics.obj
+ 0002:00000c9c       _InterlockedExchangeAdd8_xdata_prolog 0000000140005c9c     MSVCRT:atomics.obj
+ 0002:00000ca0       _InterlockedExchangeAdd8_acq_xdata 0000000140005ca0     MSVCRT:atomics.obj
+ 0002:00000ca0       _InterlockedExchangeAdd8_xdata_end 0000000140005ca0     MSVCRT:atomics.obj
+ 0002:00000ca4       _InterlockedExchangeAdd8_acq_xdata_prolog 0000000140005ca4     MSVCRT:atomics.obj
+ 0002:00000ca8       _InterlockedExchangeAdd8_acq_xdata_end 0000000140005ca8     MSVCRT:atomics.obj
+ 0002:00000ca8       _InterlockedExchangeAdd8_rel_xdata 0000000140005ca8     MSVCRT:atomics.obj
+ 0002:00000cac       _InterlockedExchangeAdd8_rel_xdata_prolog 0000000140005cac     MSVCRT:atomics.obj
+ 0002:00000cb0       _InterlockedExchangeAdd8_nf_xdata 0000000140005cb0     MSVCRT:atomics.obj
+ 0002:00000cb0       _InterlockedExchangeAdd8_rel_xdata_end 0000000140005cb0     MSVCRT:atomics.obj
+ 0002:00000cb4       _InterlockedExchangeAdd8_nf_xdata_prolog 0000000140005cb4     MSVCRT:atomics.obj
+ 0002:00000cb8       _InterlockedExchangeAdd16_xdata 0000000140005cb8     MSVCRT:atomics.obj
+ 0002:00000cb8       _InterlockedExchangeAdd8_nf_xdata_end 0000000140005cb8     MSVCRT:atomics.obj
+ 0002:00000cbc       _InterlockedExchangeAdd16_xdata_prolog 0000000140005cbc     MSVCRT:atomics.obj
+ 0002:00000cc0       _InterlockedExchangeAdd16_acq_xdata 0000000140005cc0     MSVCRT:atomics.obj
+ 0002:00000cc0       _InterlockedExchangeAdd16_xdata_end 0000000140005cc0     MSVCRT:atomics.obj
+ 0002:00000cc4       _InterlockedExchangeAdd16_acq_xdata_prolog 0000000140005cc4     MSVCRT:atomics.obj
+ 0002:00000cc8       _InterlockedExchangeAdd16_acq_xdata_end 0000000140005cc8     MSVCRT:atomics.obj
+ 0002:00000cc8       _InterlockedExchangeAdd16_rel_xdata 0000000140005cc8     MSVCRT:atomics.obj
+ 0002:00000ccc       _InterlockedExchangeAdd16_rel_xdata_prolog 0000000140005ccc     MSVCRT:atomics.obj
+ 0002:00000cd0       _InterlockedExchangeAdd16_nf_xdata 0000000140005cd0     MSVCRT:atomics.obj
+ 0002:00000cd0       _InterlockedExchangeAdd16_rel_xdata_end 0000000140005cd0     MSVCRT:atomics.obj
+ 0002:00000cd4       _InterlockedExchangeAdd16_nf_xdata_prolog 0000000140005cd4     MSVCRT:atomics.obj
+ 0002:00000cd8       _InterlockedExchangeAdd16_nf_xdata_end 0000000140005cd8     MSVCRT:atomics.obj
+ 0002:00000cd8       _InterlockedExchangeAdd_xdata 0000000140005cd8     MSVCRT:atomics.obj
+ 0002:00000cdc       _InterlockedExchangeAdd_xdata_prolog 0000000140005cdc     MSVCRT:atomics.obj
+ 0002:00000ce0       _InterlockedExchangeAdd_acq_xdata 0000000140005ce0     MSVCRT:atomics.obj
+ 0002:00000ce0       _InterlockedExchangeAdd_xdata_end 0000000140005ce0     MSVCRT:atomics.obj
+ 0002:00000ce4       _InterlockedExchangeAdd_acq_xdata_prolog 0000000140005ce4     MSVCRT:atomics.obj
+ 0002:00000ce8       _InterlockedExchangeAdd_acq_xdata_end 0000000140005ce8     MSVCRT:atomics.obj
+ 0002:00000ce8       _InterlockedExchangeAdd_rel_xdata 0000000140005ce8     MSVCRT:atomics.obj
+ 0002:00000cec       _InterlockedExchangeAdd_rel_xdata_prolog 0000000140005cec     MSVCRT:atomics.obj
+ 0002:00000cf0       _InterlockedExchangeAdd_nf_xdata 0000000140005cf0     MSVCRT:atomics.obj
+ 0002:00000cf0       _InterlockedExchangeAdd_rel_xdata_end 0000000140005cf0     MSVCRT:atomics.obj
+ 0002:00000cf4       _InterlockedExchangeAdd_nf_xdata_prolog 0000000140005cf4     MSVCRT:atomics.obj
+ 0002:00000cf8       _InterlockedExchangeAdd64_xdata 0000000140005cf8     MSVCRT:atomics.obj
+ 0002:00000cf8       _InterlockedExchangeAdd_nf_xdata_end 0000000140005cf8     MSVCRT:atomics.obj
+ 0002:00000cfc       _InterlockedExchangeAdd64_xdata_prolog 0000000140005cfc     MSVCRT:atomics.obj
+ 0002:00000d00       _InterlockedExchangeAdd64_acq_xdata 0000000140005d00     MSVCRT:atomics.obj
+ 0002:00000d00       _InterlockedExchangeAdd64_xdata_end 0000000140005d00     MSVCRT:atomics.obj
+ 0002:00000d04       _InterlockedExchangeAdd64_acq_xdata_prolog 0000000140005d04     MSVCRT:atomics.obj
+ 0002:00000d08       _InterlockedExchangeAdd64_acq_xdata_end 0000000140005d08     MSVCRT:atomics.obj
+ 0002:00000d08       _InterlockedExchangeAdd64_rel_xdata 0000000140005d08     MSVCRT:atomics.obj
+ 0002:00000d0c       _InterlockedExchangeAdd64_rel_xdata_prolog 0000000140005d0c     MSVCRT:atomics.obj
+ 0002:00000d10       _InterlockedExchangeAdd64_nf_xdata 0000000140005d10     MSVCRT:atomics.obj
+ 0002:00000d10       _InterlockedExchangeAdd64_rel_xdata_end 0000000140005d10     MSVCRT:atomics.obj
+ 0002:00000d14       _InterlockedExchangeAdd64_nf_xdata_prolog 0000000140005d14     MSVCRT:atomics.obj
+ 0002:00000d18       _InterlockedExchangeAdd64_nf_xdata_end 0000000140005d18     MSVCRT:atomics.obj
+ 0002:00000d18       _InterlockedIncrement16_xdata 0000000140005d18     MSVCRT:atomics.obj
+ 0002:00000d1c       _InterlockedIncrement16_xdata_prolog 0000000140005d1c     MSVCRT:atomics.obj
+ 0002:00000d20       _InterlockedIncrement16_acq_xdata 0000000140005d20     MSVCRT:atomics.obj
+ 0002:00000d20       _InterlockedIncrement16_xdata_end 0000000140005d20     MSVCRT:atomics.obj
+ 0002:00000d24       _InterlockedIncrement16_acq_xdata_prolog 0000000140005d24     MSVCRT:atomics.obj
+ 0002:00000d28       _InterlockedIncrement16_acq_xdata_end 0000000140005d28     MSVCRT:atomics.obj
+ 0002:00000d28       _InterlockedIncrement16_rel_xdata 0000000140005d28     MSVCRT:atomics.obj
+ 0002:00000d2c       _InterlockedIncrement16_rel_xdata_prolog 0000000140005d2c     MSVCRT:atomics.obj
+ 0002:00000d30       _InterlockedIncrement16_nf_xdata 0000000140005d30     MSVCRT:atomics.obj
+ 0002:00000d30       _InterlockedIncrement16_rel_xdata_end 0000000140005d30     MSVCRT:atomics.obj
+ 0002:00000d34       _InterlockedIncrement16_nf_xdata_prolog 0000000140005d34     MSVCRT:atomics.obj
+ 0002:00000d38       _InterlockedIncrement16_nf_xdata_end 0000000140005d38     MSVCRT:atomics.obj
+ 0002:00000d38       _InterlockedIncrement_xdata 0000000140005d38     MSVCRT:atomics.obj
+ 0002:00000d3c       _InterlockedIncrement_xdata_prolog 0000000140005d3c     MSVCRT:atomics.obj
+ 0002:00000d40       _InterlockedIncrement_acq_xdata 0000000140005d40     MSVCRT:atomics.obj
+ 0002:00000d40       _InterlockedIncrement_xdata_end 0000000140005d40     MSVCRT:atomics.obj
+ 0002:00000d44       _InterlockedIncrement_acq_xdata_prolog 0000000140005d44     MSVCRT:atomics.obj
+ 0002:00000d48       _InterlockedIncrement_acq_xdata_end 0000000140005d48     MSVCRT:atomics.obj
+ 0002:00000d48       _InterlockedIncrement_rel_xdata 0000000140005d48     MSVCRT:atomics.obj
+ 0002:00000d4c       _InterlockedIncrement_rel_xdata_prolog 0000000140005d4c     MSVCRT:atomics.obj
+ 0002:00000d50       _InterlockedIncrement_nf_xdata 0000000140005d50     MSVCRT:atomics.obj
+ 0002:00000d50       _InterlockedIncrement_rel_xdata_end 0000000140005d50     MSVCRT:atomics.obj
+ 0002:00000d54       _InterlockedIncrement_nf_xdata_prolog 0000000140005d54     MSVCRT:atomics.obj
+ 0002:00000d58       _InterlockedIncrement64_xdata 0000000140005d58     MSVCRT:atomics.obj
+ 0002:00000d58       _InterlockedIncrement_nf_xdata_end 0000000140005d58     MSVCRT:atomics.obj
+ 0002:00000d5c       _InterlockedIncrement64_xdata_prolog 0000000140005d5c     MSVCRT:atomics.obj
+ 0002:00000d60       _InterlockedIncrement64_acq_xdata 0000000140005d60     MSVCRT:atomics.obj
+ 0002:00000d60       _InterlockedIncrement64_xdata_end 0000000140005d60     MSVCRT:atomics.obj
+ 0002:00000d64       _InterlockedIncrement64_acq_xdata_prolog 0000000140005d64     MSVCRT:atomics.obj
+ 0002:00000d68       _InterlockedIncrement64_acq_xdata_end 0000000140005d68     MSVCRT:atomics.obj
+ 0002:00000d68       _InterlockedIncrement64_rel_xdata 0000000140005d68     MSVCRT:atomics.obj
+ 0002:00000d6c       _InterlockedIncrement64_rel_xdata_prolog 0000000140005d6c     MSVCRT:atomics.obj
+ 0002:00000d70       _InterlockedIncrement64_nf_xdata 0000000140005d70     MSVCRT:atomics.obj
+ 0002:00000d70       _InterlockedIncrement64_rel_xdata_end 0000000140005d70     MSVCRT:atomics.obj
+ 0002:00000d74       _InterlockedIncrement64_nf_xdata_prolog 0000000140005d74     MSVCRT:atomics.obj
+ 0002:00000d78       _InterlockedIncrement64_nf_xdata_end 0000000140005d78     MSVCRT:atomics.obj
+ 0002:00000d78       _InterlockedOr8_xdata      0000000140005d78     MSVCRT:atomics.obj
+ 0002:00000d7c       _InterlockedOr8_xdata_prolog 0000000140005d7c     MSVCRT:atomics.obj
+ 0002:00000d80       _InterlockedOr8_acq_xdata  0000000140005d80     MSVCRT:atomics.obj
+ 0002:00000d80       _InterlockedOr8_xdata_end  0000000140005d80     MSVCRT:atomics.obj
+ 0002:00000d84       _InterlockedOr8_acq_xdata_prolog 0000000140005d84     MSVCRT:atomics.obj
+ 0002:00000d88       _InterlockedOr8_acq_xdata_end 0000000140005d88     MSVCRT:atomics.obj
+ 0002:00000d88       _InterlockedOr8_rel_xdata  0000000140005d88     MSVCRT:atomics.obj
+ 0002:00000d8c       _InterlockedOr8_rel_xdata_prolog 0000000140005d8c     MSVCRT:atomics.obj
+ 0002:00000d90       _InterlockedOr8_nf_xdata   0000000140005d90     MSVCRT:atomics.obj
+ 0002:00000d90       _InterlockedOr8_rel_xdata_end 0000000140005d90     MSVCRT:atomics.obj
+ 0002:00000d94       _InterlockedOr8_nf_xdata_prolog 0000000140005d94     MSVCRT:atomics.obj
+ 0002:00000d98       _InterlockedOr16_xdata     0000000140005d98     MSVCRT:atomics.obj
+ 0002:00000d98       _InterlockedOr8_nf_xdata_end 0000000140005d98     MSVCRT:atomics.obj
+ 0002:00000d9c       _InterlockedOr16_xdata_prolog 0000000140005d9c     MSVCRT:atomics.obj
+ 0002:00000da0       _InterlockedOr16_acq_xdata 0000000140005da0     MSVCRT:atomics.obj
+ 0002:00000da0       _InterlockedOr16_xdata_end 0000000140005da0     MSVCRT:atomics.obj
+ 0002:00000da4       _InterlockedOr16_acq_xdata_prolog 0000000140005da4     MSVCRT:atomics.obj
+ 0002:00000da8       _InterlockedOr16_acq_xdata_end 0000000140005da8     MSVCRT:atomics.obj
+ 0002:00000da8       _InterlockedOr16_rel_xdata 0000000140005da8     MSVCRT:atomics.obj
+ 0002:00000dac       _InterlockedOr16_rel_xdata_prolog 0000000140005dac     MSVCRT:atomics.obj
+ 0002:00000db0       _InterlockedOr16_nf_xdata  0000000140005db0     MSVCRT:atomics.obj
+ 0002:00000db0       _InterlockedOr16_rel_xdata_end 0000000140005db0     MSVCRT:atomics.obj
+ 0002:00000db4       _InterlockedOr16_nf_xdata_prolog 0000000140005db4     MSVCRT:atomics.obj
+ 0002:00000db8       _InterlockedOr16_nf_xdata_end 0000000140005db8     MSVCRT:atomics.obj
+ 0002:00000db8       _InterlockedOr_xdata       0000000140005db8     MSVCRT:atomics.obj
+ 0002:00000dbc       _InterlockedOr_xdata_prolog 0000000140005dbc     MSVCRT:atomics.obj
+ 0002:00000dc0       _InterlockedOr_acq_xdata   0000000140005dc0     MSVCRT:atomics.obj
+ 0002:00000dc0       _InterlockedOr_xdata_end   0000000140005dc0     MSVCRT:atomics.obj
+ 0002:00000dc4       _InterlockedOr_acq_xdata_prolog 0000000140005dc4     MSVCRT:atomics.obj
+ 0002:00000dc8       _InterlockedOr_acq_xdata_end 0000000140005dc8     MSVCRT:atomics.obj
+ 0002:00000dc8       _InterlockedOr_rel_xdata   0000000140005dc8     MSVCRT:atomics.obj
+ 0002:00000dcc       _InterlockedOr_rel_xdata_prolog 0000000140005dcc     MSVCRT:atomics.obj
+ 0002:00000dd0       _InterlockedOr_nf_xdata    0000000140005dd0     MSVCRT:atomics.obj
+ 0002:00000dd0       _InterlockedOr_rel_xdata_end 0000000140005dd0     MSVCRT:atomics.obj
+ 0002:00000dd4       _InterlockedOr_nf_xdata_prolog 0000000140005dd4     MSVCRT:atomics.obj
+ 0002:00000dd8       _InterlockedOr64_xdata     0000000140005dd8     MSVCRT:atomics.obj
+ 0002:00000dd8       _InterlockedOr_nf_xdata_end 0000000140005dd8     MSVCRT:atomics.obj
+ 0002:00000ddc       _InterlockedOr64_xdata_prolog 0000000140005ddc     MSVCRT:atomics.obj
+ 0002:00000de0       _InterlockedOr64_acq_xdata 0000000140005de0     MSVCRT:atomics.obj
+ 0002:00000de0       _InterlockedOr64_xdata_end 0000000140005de0     MSVCRT:atomics.obj
+ 0002:00000de4       _InterlockedOr64_acq_xdata_prolog 0000000140005de4     MSVCRT:atomics.obj
+ 0002:00000de8       _InterlockedOr64_acq_xdata_end 0000000140005de8     MSVCRT:atomics.obj
+ 0002:00000de8       _InterlockedOr64_rel_xdata 0000000140005de8     MSVCRT:atomics.obj
+ 0002:00000dec       _InterlockedOr64_rel_xdata_prolog 0000000140005dec     MSVCRT:atomics.obj
+ 0002:00000df0       _InterlockedOr64_nf_xdata  0000000140005df0     MSVCRT:atomics.obj
+ 0002:00000df0       _InterlockedOr64_rel_xdata_end 0000000140005df0     MSVCRT:atomics.obj
+ 0002:00000df4       _InterlockedOr64_nf_xdata_prolog 0000000140005df4     MSVCRT:atomics.obj
+ 0002:00000df8       _InterlockedOr64_nf_xdata_end 0000000140005df8     MSVCRT:atomics.obj
+ 0002:00000df8       _InterlockedXor8_xdata     0000000140005df8     MSVCRT:atomics.obj
+ 0002:00000dfc       _InterlockedXor8_xdata_prolog 0000000140005dfc     MSVCRT:atomics.obj
+ 0002:00000e00       _InterlockedXor8_acq_xdata 0000000140005e00     MSVCRT:atomics.obj
+ 0002:00000e00       _InterlockedXor8_xdata_end 0000000140005e00     MSVCRT:atomics.obj
+ 0002:00000e04       _InterlockedXor8_acq_xdata_prolog 0000000140005e04     MSVCRT:atomics.obj
+ 0002:00000e08       _InterlockedXor8_acq_xdata_end 0000000140005e08     MSVCRT:atomics.obj
+ 0002:00000e08       _InterlockedXor8_rel_xdata 0000000140005e08     MSVCRT:atomics.obj
+ 0002:00000e0c       _InterlockedXor8_rel_xdata_prolog 0000000140005e0c     MSVCRT:atomics.obj
+ 0002:00000e10       _InterlockedXor8_nf_xdata  0000000140005e10     MSVCRT:atomics.obj
+ 0002:00000e10       _InterlockedXor8_rel_xdata_end 0000000140005e10     MSVCRT:atomics.obj
+ 0002:00000e14       _InterlockedXor8_nf_xdata_prolog 0000000140005e14     MSVCRT:atomics.obj
+ 0002:00000e18       _InterlockedXor16_xdata    0000000140005e18     MSVCRT:atomics.obj
+ 0002:00000e18       _InterlockedXor8_nf_xdata_end 0000000140005e18     MSVCRT:atomics.obj
+ 0002:00000e1c       _InterlockedXor16_xdata_prolog 0000000140005e1c     MSVCRT:atomics.obj
+ 0002:00000e20       _InterlockedXor16_acq_xdata 0000000140005e20     MSVCRT:atomics.obj
+ 0002:00000e20       _InterlockedXor16_xdata_end 0000000140005e20     MSVCRT:atomics.obj
+ 0002:00000e24       _InterlockedXor16_acq_xdata_prolog 0000000140005e24     MSVCRT:atomics.obj
+ 0002:00000e28       _InterlockedXor16_acq_xdata_end 0000000140005e28     MSVCRT:atomics.obj
+ 0002:00000e28       _InterlockedXor16_rel_xdata 0000000140005e28     MSVCRT:atomics.obj
+ 0002:00000e2c       _InterlockedXor16_rel_xdata_prolog 0000000140005e2c     MSVCRT:atomics.obj
+ 0002:00000e30       _InterlockedXor16_nf_xdata 0000000140005e30     MSVCRT:atomics.obj
+ 0002:00000e30       _InterlockedXor16_rel_xdata_end 0000000140005e30     MSVCRT:atomics.obj
+ 0002:00000e34       _InterlockedXor16_nf_xdata_prolog 0000000140005e34     MSVCRT:atomics.obj
+ 0002:00000e38       _InterlockedXor16_nf_xdata_end 0000000140005e38     MSVCRT:atomics.obj
+ 0002:00000e38       _InterlockedXor_xdata      0000000140005e38     MSVCRT:atomics.obj
+ 0002:00000e3c       _InterlockedXor_xdata_prolog 0000000140005e3c     MSVCRT:atomics.obj
+ 0002:00000e40       _InterlockedXor_acq_xdata  0000000140005e40     MSVCRT:atomics.obj
+ 0002:00000e40       _InterlockedXor_xdata_end  0000000140005e40     MSVCRT:atomics.obj
+ 0002:00000e44       _InterlockedXor_acq_xdata_prolog 0000000140005e44     MSVCRT:atomics.obj
+ 0002:00000e48       _InterlockedXor_acq_xdata_end 0000000140005e48     MSVCRT:atomics.obj
+ 0002:00000e48       _InterlockedXor_rel_xdata  0000000140005e48     MSVCRT:atomics.obj
+ 0002:00000e4c       _InterlockedXor_rel_xdata_prolog 0000000140005e4c     MSVCRT:atomics.obj
+ 0002:00000e50       _InterlockedXor_nf_xdata   0000000140005e50     MSVCRT:atomics.obj
+ 0002:00000e50       _InterlockedXor_rel_xdata_end 0000000140005e50     MSVCRT:atomics.obj
+ 0002:00000e54       _InterlockedXor_nf_xdata_prolog 0000000140005e54     MSVCRT:atomics.obj
+ 0002:00000e58       _InterlockedXor64_xdata    0000000140005e58     MSVCRT:atomics.obj
+ 0002:00000e58       _InterlockedXor_nf_xdata_end 0000000140005e58     MSVCRT:atomics.obj
+ 0002:00000e5c       _InterlockedXor64_xdata_prolog 0000000140005e5c     MSVCRT:atomics.obj
+ 0002:00000e60       _InterlockedXor64_acq_xdata 0000000140005e60     MSVCRT:atomics.obj
+ 0002:00000e60       _InterlockedXor64_xdata_end 0000000140005e60     MSVCRT:atomics.obj
+ 0002:00000e64       _InterlockedXor64_acq_xdata_prolog 0000000140005e64     MSVCRT:atomics.obj
+ 0002:00000e68       _InterlockedXor64_acq_xdata_end 0000000140005e68     MSVCRT:atomics.obj
+ 0002:00000e68       _InterlockedXor64_rel_xdata 0000000140005e68     MSVCRT:atomics.obj
+ 0002:00000e6c       _InterlockedXor64_rel_xdata_prolog 0000000140005e6c     MSVCRT:atomics.obj
+ 0002:00000e70       _InterlockedXor64_nf_xdata 0000000140005e70     MSVCRT:atomics.obj
+ 0002:00000e70       _InterlockedXor64_rel_xdata_end 0000000140005e70     MSVCRT:atomics.obj
+ 0002:00000e74       _InterlockedXor64_nf_xdata_prolog 0000000140005e74     MSVCRT:atomics.obj
+ 0002:00000e78       _InterlockedXor64_nf_xdata_end 0000000140005e78     MSVCRT:atomics.obj
+ 0002:00000e78       _interlockedbittestandreset_xdata 0000000140005e78     MSVCRT:atomics.obj
+ 0002:00000e7c       _interlockedbittestandreset_xdata_prolog 0000000140005e7c     MSVCRT:atomics.obj
+ 0002:00000e80       _interlockedbittestandreset_acq_xdata 0000000140005e80     MSVCRT:atomics.obj
+ 0002:00000e80       _interlockedbittestandreset_xdata_end 0000000140005e80     MSVCRT:atomics.obj
+ 0002:00000e84       _interlockedbittestandreset_acq_xdata_prolog 0000000140005e84     MSVCRT:atomics.obj
+ 0002:00000e88       _interlockedbittestandreset_acq_xdata_end 0000000140005e88     MSVCRT:atomics.obj
+ 0002:00000e88       _interlockedbittestandreset_rel_xdata 0000000140005e88     MSVCRT:atomics.obj
+ 0002:00000e8c       _interlockedbittestandreset_rel_xdata_prolog 0000000140005e8c     MSVCRT:atomics.obj
+ 0002:00000e90       _interlockedbittestandreset_nf_xdata 0000000140005e90     MSVCRT:atomics.obj
+ 0002:00000e90       _interlockedbittestandreset_rel_xdata_end 0000000140005e90     MSVCRT:atomics.obj
+ 0002:00000e94       _interlockedbittestandreset_nf_xdata_prolog 0000000140005e94     MSVCRT:atomics.obj
+ 0002:00000e98       _interlockedbittestandreset64_xdata 0000000140005e98     MSVCRT:atomics.obj
+ 0002:00000e98       _interlockedbittestandreset_nf_xdata_end 0000000140005e98     MSVCRT:atomics.obj
+ 0002:00000e9c       _interlockedbittestandreset64_xdata_prolog 0000000140005e9c     MSVCRT:atomics.obj
+ 0002:00000ea0       _interlockedbittestandreset64_acq_xdata 0000000140005ea0     MSVCRT:atomics.obj
+ 0002:00000ea0       _interlockedbittestandreset64_xdata_end 0000000140005ea0     MSVCRT:atomics.obj
+ 0002:00000ea4       _interlockedbittestandreset64_acq_xdata_prolog 0000000140005ea4     MSVCRT:atomics.obj
+ 0002:00000ea8       _interlockedbittestandreset64_acq_xdata_end 0000000140005ea8     MSVCRT:atomics.obj
+ 0002:00000ea8       _interlockedbittestandreset64_rel_xdata 0000000140005ea8     MSVCRT:atomics.obj
+ 0002:00000eac       _interlockedbittestandreset64_rel_xdata_prolog 0000000140005eac     MSVCRT:atomics.obj
+ 0002:00000eb0       _interlockedbittestandreset64_nf_xdata 0000000140005eb0     MSVCRT:atomics.obj
+ 0002:00000eb0       _interlockedbittestandreset64_rel_xdata_end 0000000140005eb0     MSVCRT:atomics.obj
+ 0002:00000eb4       _interlockedbittestandreset64_nf_xdata_prolog 0000000140005eb4     MSVCRT:atomics.obj
+ 0002:00000eb8       _interlockedbittestandreset64_nf_xdata_end 0000000140005eb8     MSVCRT:atomics.obj
+ 0002:00000eb8       _interlockedbittestandset_xdata 0000000140005eb8     MSVCRT:atomics.obj
+ 0002:00000ebc       _interlockedbittestandset_xdata_prolog 0000000140005ebc     MSVCRT:atomics.obj
+ 0002:00000ec0       _interlockedbittestandset_acq_xdata 0000000140005ec0     MSVCRT:atomics.obj
+ 0002:00000ec0       _interlockedbittestandset_xdata_end 0000000140005ec0     MSVCRT:atomics.obj
+ 0002:00000ec4       _interlockedbittestandset_acq_xdata_prolog 0000000140005ec4     MSVCRT:atomics.obj
+ 0002:00000ec8       _interlockedbittestandset_acq_xdata_end 0000000140005ec8     MSVCRT:atomics.obj
+ 0002:00000ec8       _interlockedbittestandset_rel_xdata 0000000140005ec8     MSVCRT:atomics.obj
+ 0002:00000ecc       _interlockedbittestandset_rel_xdata_prolog 0000000140005ecc     MSVCRT:atomics.obj
+ 0002:00000ed0       _interlockedbittestandset_nf_xdata 0000000140005ed0     MSVCRT:atomics.obj
+ 0002:00000ed0       _interlockedbittestandset_rel_xdata_end 0000000140005ed0     MSVCRT:atomics.obj
+ 0002:00000ed4       _interlockedbittestandset_nf_xdata_prolog 0000000140005ed4     MSVCRT:atomics.obj
+ 0002:00000ed8       _interlockedbittestandset64_xdata 0000000140005ed8     MSVCRT:atomics.obj
+ 0002:00000ed8       _interlockedbittestandset_nf_xdata_end 0000000140005ed8     MSVCRT:atomics.obj
+ 0002:00000edc       _interlockedbittestandset64_xdata_prolog 0000000140005edc     MSVCRT:atomics.obj
+ 0002:00000ee0       _interlockedbittestandset64_acq_xdata 0000000140005ee0     MSVCRT:atomics.obj
+ 0002:00000ee0       _interlockedbittestandset64_xdata_end 0000000140005ee0     MSVCRT:atomics.obj
+ 0002:00000ee4       _interlockedbittestandset64_acq_xdata_prolog 0000000140005ee4     MSVCRT:atomics.obj
+ 0002:00000ee8       _interlockedbittestandset64_acq_xdata_end 0000000140005ee8     MSVCRT:atomics.obj
+ 0002:00000ee8       _interlockedbittestandset64_rel_xdata 0000000140005ee8     MSVCRT:atomics.obj
+ 0002:00000eec       _interlockedbittestandset64_rel_xdata_prolog 0000000140005eec     MSVCRT:atomics.obj
+ 0002:00000ef0       _interlockedbittestandset64_nf_xdata 0000000140005ef0     MSVCRT:atomics.obj
+ 0002:00000ef0       _interlockedbittestandset64_rel_xdata_end 0000000140005ef0     MSVCRT:atomics.obj
+ 0002:00000ef4       _interlockedbittestandset64_nf_xdata_prolog 0000000140005ef4     MSVCRT:atomics.obj
+ 0002:00000ef8       _InterlockedDetectSupportEH_xdata 0000000140005ef8     MSVCRT:atomics.obj
+ 0002:00000ef8       _interlockedbittestandset64_nf_xdata_end 0000000140005ef8     MSVCRT:atomics.obj
+ 0002:00000efc       _InterlockedDetectSupportEH_xdata_prolog 0000000140005efc     MSVCRT:atomics.obj
+ 0002:00000f00       _InterlockedDetectSupportEH_xdata_end 0000000140005f00     MSVCRT:atomics.obj
+ 0002:00000f00       _InterlockedDetectSupport_xdata 0000000140005f00     MSVCRT:atomics.obj
+ 0002:00000f04       _InterlockedDetectSupport_xdata_prolog 0000000140005f04     MSVCRT:atomics.obj
+ 0002:00000f08       _InterlockedDetectSupport_xdata_end 0000000140005f08     MSVCRT:atomics.obj
+ 0002:00000f10       _guard_dispatch_icall_nop_xdata 0000000140005f10     MSVCRT:guard_dispatch.obj
+ 0002:00000f14       _guard_dispatch_icall_nop_xdata_prolog 0000000140005f14     MSVCRT:guard_dispatch.obj
+ 0002:00000f18       _guard_dispatch_icall_nop_xdata_end 0000000140005f18     MSVCRT:guard_dispatch.obj
+ 0002:0000122c       .idata$6                   000000014000622c     kernel32:KERNEL32.dll
+ 0002:000012a6       .idata$6                   00000001400062a6     vcruntime:VCRUNTIME140.dll
+ 0002:000014aa       .idata$6                   00000001400064aa     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000014cc       .idata$6                   00000001400064cc     ucrt:api-ms-win-crt-math-l1-1-0.dll
+ 0002:000014ec       .idata$6                   00000001400064ec     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:0000150c       .idata$6                   000000014000650c     ucrt:api-ms-win-crt-locale-l1-1-0.dll
+ 0002:0000152e       .idata$6                   000000014000652e     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0003:00000114       ?is_initialized_as_dll@@3_NA 0000000140007114     MSVCRT:utility.obj
+ 0003:00000120       ?module_local_atexit_table@@3U_onexit_table_t@@A 0000000140007120     MSVCRT:utility.obj
+ 0003:00000138       ?module_local_at_quick_exit_table@@3U_onexit_table_t@@A 0000000140007138     MSVCRT:utility.obj
+ 0003:00000150       ?module_local_atexit_table_initialized@@3_NA 0000000140007150     MSVCRT:utility.obj

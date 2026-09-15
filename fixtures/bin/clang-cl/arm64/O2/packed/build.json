@@ -1,0 +1,46 @@
+{
+  "fixture": "packed",
+  "toolchain": "clang-cl",
+  "arch": "arm64",
+  "opt": "O2",
+  "host": "Windows AMD64",
+  "tools": {
+    "clang-cl --version": "clang version 20.1.8",
+    "lld-link --version": "LLD 20.1.8"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang-cl",
+        "/nologo",
+        "--target=aarch64-pc-windows-msvc",
+        "/std:c++17",
+        "/TP",
+        "/Z7",
+        "/O2",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/c",
+        "layout/packed.cpp",
+        "/Fofixtures/bin/clang-cl/arm64/O2/packed/packed.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "lld-link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/OPT:REF",
+        "/OPT:ICF",
+        "/MAP:fixtures/bin/clang-cl/arm64/O2/packed/packed.map",
+        "/PDB:fixtures/bin/clang-cl/arm64/O2/packed/packed.pdb",
+        "/OUT:fixtures/bin/clang-cl/arm64/O2/packed/packed.exe",
+        "fixtures/bin/clang-cl/arm64/O2/packed/packed.obj"
+      ]
+    }
+  ]
+}
