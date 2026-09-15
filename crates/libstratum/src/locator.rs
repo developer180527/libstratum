@@ -48,11 +48,20 @@ impl FsLocator {
         self
     }
 
+    /// Applies prefix maps to a recorded absolute path. The comparison is textual, with `/` and `\`
+    /// treated alike, because recorded paths come from other machines and operating systems.
     fn remap(&self, path: &Path) -> Vec<PathBuf> {
+        let recorded = path.to_string_lossy().replace('\\', "/");
         let mut out: Vec<PathBuf> = self
             .prefix_maps
             .iter()
-            .filter_map(|(from, to)| path.strip_prefix(from).ok().map(|rest| to.join(rest)))
+            .filter_map(|(from, to)| {
+                let from = from.to_string_lossy().replace('\\', "/");
+                let rest = recorded.strip_prefix(from.trim_end_matches('/'))?;
+                // The prefix must end at a component boundary.
+                let rest = if rest.is_empty() { rest } else { rest.strip_prefix('/')? };
+                Some(rest.split('/').filter(|c| !c.is_empty()).fold(to.clone(), |acc, c| acc.join(c)))
+            })
             .collect();
         out.push(path.to_path_buf());
         out
@@ -62,7 +71,7 @@ impl FsLocator {
     /// binary's directory and the search directories.
     fn candidates(&self, recorded: &Path, image_dir: Option<&Path>) -> Vec<PathBuf> {
         let mut out = Vec::new();
-        if recorded.is_absolute() {
+        if is_recorded_absolute(recorded) {
             out.extend(self.remap(recorded));
         } else if let Some(dir) = image_dir {
             out.push(dir.join(recorded));
@@ -73,6 +82,16 @@ impl FsLocator {
         }
         out
     }
+}
+
+/// Whether a recorded path is absolute on *any* platform: Unix (`/x`), Windows drive (`C:\x`, `C:/x`)
+/// or UNC (`\\server\share`). `Path::is_absolute` only knows the host's rules, and recorded paths
+/// come from build machines running other operating systems.
+fn is_recorded_absolute(path: &Path) -> bool {
+    let s = path.to_string_lossy();
+    let b = s.as_bytes();
+    let drive = b.len() >= 3 && b[0].is_ascii_alphabetic() && b[1] == b':' && matches!(b[2], b'/' | b'\\');
+    s.starts_with('/') || s.starts_with('\\') || drive
 }
 
 /// File name of a recorded path, accepting both `/` and `\` separators: PDB paths recorded on
@@ -232,6 +251,32 @@ mod tests {
         // {1B72224D-37B8-1792-2820-0ED8994498B2} stored little-endian in Data1-3.
         let guid = [0x4D, 0x22, 0x72, 0x1B, 0xB8, 0x37, 0x92, 0x17, 0x28, 0x20, 0x0E, 0xD8, 0x99, 0x44, 0x98, 0xB2];
         assert_eq!(guid_hex(&guid), "1B72224D37B8179228200ED8994498B2");
+    }
+
+    #[test]
+    fn recorded_paths_are_absolute_regardless_of_host() {
+        for absolute in ["/build/out/a.o", r"D:\a\repo\game.pdb", "C:/src/x.o", r"\\server\share\x.pdb"] {
+            assert!(is_recorded_absolute(Path::new(absolute)), "{absolute}");
+        }
+        for relative in ["a.o", "objects/a.o", r"objects\a.o", "C:relative"] {
+            assert!(!is_recorded_absolute(Path::new(relative)), "{relative}");
+        }
+    }
+
+    #[test]
+    fn prefix_maps_match_either_separator_style() {
+        let locator =
+            FsLocator::default().prefix_map("/build/checkout", "/local/src").prefix_map(r"D:\a\repo", "/mnt/repo");
+        assert_eq!(
+            locator.remap(Path::new("/build/checkout/obj/a.o"))[0],
+            Path::new("/local/src").join("obj").join("a.o")
+        );
+        assert_eq!(
+            locator.remap(Path::new(r"D:\a\repo\out\game.pdb"))[0],
+            Path::new("/mnt/repo").join("out").join("game.pdb")
+        );
+        // A prefix only matches at a component boundary.
+        assert_eq!(locator.remap(Path::new("/build/checkout2/a.o")).len(), 1);
     }
 
     #[test]

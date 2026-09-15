@@ -75,11 +75,14 @@ fn windows_pdb_path_resolves_next_to_exe_on_any_host() {
 fn symbol_store_layout() {
     let exe = fixtures().join("clang-cl/arm64/O2/packed/packed.exe");
     let session = libstratum::open_path(&libstratum::default_engine(), &exe).unwrap();
-    let Some(DebugLocation::Pdb { path, guid, age }) =
+    let Some(DebugLocation::Pdb { guid, age, .. }) =
         session.image().debug_locations().into_iter().find(|l| matches!(l, DebugLocation::Pdb { .. }))
     else {
         panic!("RSDS location")
     };
+    // The recorded RSDS path is the CI runner's checkout, which exists when tests run on that runner.
+    // Use a recorded path that exists nowhere, so only the store can satisfy the lookup.
+    let path = PathBuf::from(r"Z:\nonexistent-build-machine\out\packed.pdb");
 
     // The exe alone in a directory: not found without a store.
     let scratch = Scratch::new("store");
