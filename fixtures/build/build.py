@@ -246,12 +246,13 @@ class Msvc(Toolchain):
 
     def compile(self, src, obj, arch, opt):
         std = ["/std:c++17", "/TP"] if is_cpp(src) else ["/std:c11", "/TC"]
-        return ["cl", "/nologo", *std, "/Zi", MSVC_OPT_FLAGS[opt], "/Gy", "/GR-", "/EHs-c-",
+        # /MD links the CRT dynamically so PDBs and maps describe the fixture, not the whole static CRT.
+        return ["cl", "/nologo", *std, "/Zi", MSVC_OPT_FLAGS[opt], "/MD", "/Gy", "/GR-", "/EHs-c-",
                 f"/Fd{obj.with_suffix('.compile.pdb')}", "/c", src, f"/Fo{obj}"]
 
     def link(self, objs, out, arch, opt, cpp):
         opt_link = ["/OPT:REF", "/OPT:ICF"] if opt == "O2" else []
-        return [["link", "/nologo", "/DEBUG:FULL", *opt_link, f"/MAP:{out.with_suffix('.map')}",
+        return [["link", "/nologo", "/DEBUG:FULL", "/INCREMENTAL:NO", *opt_link, f"/MAP:{out.with_suffix('.map')}",
                  f"/PDB:{out.with_suffix('.pdb')}", f"/OUT:{out}", *map(str, objs)]]
 
 
@@ -263,12 +264,12 @@ class ClangCl(Msvc):
 
     def compile(self, src, obj, arch, opt):
         std = ["/std:c++17", "/TP"] if is_cpp(src) else ["/TC"]
-        return ["clang-cl", "/nologo", f"--target={self.TARGET[arch]}", *std, "/Z7", MSVC_OPT_FLAGS[opt], "/Gy",
+        return ["clang-cl", "/nologo", f"--target={self.TARGET[arch]}", *std, "/Z7", MSVC_OPT_FLAGS[opt], "/MD", "/Gy",
                 "/GR-", "/c", src, f"/Fo{obj}"]
 
     def link(self, objs, out, arch, opt, cpp):
         opt_link = ["/OPT:REF", "/OPT:ICF"] if opt == "O2" else []
-        return [["lld-link", "/nologo", "/DEBUG:FULL", *opt_link, f"/MAP:{out.with_suffix('.map')}",
+        return [["lld-link", "/nologo", "/DEBUG:FULL", "/INCREMENTAL:NO", *opt_link, f"/MAP:{out.with_suffix('.map')}",
                  f"/PDB:{out.with_suffix('.pdb')}", f"/OUT:{out}", *map(str, objs)]]
 
 
@@ -293,6 +294,12 @@ def run(cmd: list[str], env: dict[str, str], log: list[dict], dry_run: bool, cwd
         raise SystemExit(f"command failed ({result.returncode}): {' '.join(cmd)}")
 
 
+def portable(arg: str) -> str:
+    """Records paths relative to the repo with forward slashes, independent of host and checkout."""
+    arg = arg.replace(str(FIXTURES) + os.sep, "fixtures/").replace(str(FIXTURES), "fixtures")
+    return arg.replace("\\", "/") if "fixtures" in arg else arg
+
+
 def relative(path: Path) -> str:
     return "fixtures/" + path.relative_to(FIXTURES).as_posix()
 
@@ -302,7 +309,8 @@ def tool_versions(tc: Toolchain) -> dict[str, str]:
     for cmd in tc.version_cmds:
         try:
             out = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-            versions[" ".join(cmd)] = (out.stdout or out.stderr).strip().splitlines()[0]
+            text = (out.stderr + "\n" + out.stdout).strip().splitlines()
+            versions[" ".join(cmd)] = next((line for line in text if "ersion" in line), text[0])
         except (OSError, subprocess.SubprocessError, IndexError):
             versions[" ".join(cmd)] = "unavailable"
     return versions
@@ -339,7 +347,7 @@ def build(tc: Toolchain, fixture: dict, arch: str, opt: str, dry_run: bool) -> N
             "tools": tool_versions(tc),
             # Paths are made relative so records don't depend on the checkout location.
             "commands": [
-                {"cwd": relative(e["cwd"]), "argv": [a.replace(str(FIXTURES) + os.sep, "fixtures/") for a in e["cmd"]]}
+                {"cwd": relative(e["cwd"]), "argv": [portable(a) for a in e["cmd"]]}
                 for e in log
             ],
         }
