@@ -1,0 +1,43 @@
+{
+  "fixture": "templates",
+  "toolchain": "linux-clang",
+  "arch": "aarch64",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "clang --version": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld --version": "Debian LLD 19.1.7 (compatible with GNU linkers)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=aarch64-linux-gnu",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/templates.cpp",
+        "-o",
+        "fixtures/bin/linux-clang/aarch64/O2/templates/templates.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=aarch64-linux-gnu",
+        "-fuse-ld=lld",
+        "fixtures/bin/linux-clang/aarch64/O2/templates/templates.o",
+        "-o",
+        "fixtures/bin/linux-clang/aarch64/O2/templates/templates",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-clang/aarch64/O2/templates/templates.map"
+      ]
+    }
+  ]
+}

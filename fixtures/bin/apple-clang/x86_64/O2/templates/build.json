@@ -1,0 +1,55 @@
+{
+  "fixture": "templates",
+  "toolchain": "apple-clang",
+  "arch": "x86_64",
+  "opt": "O2",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "@(#)PROGRAM:ld PROJECT:ld-27037.1"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/templates.cpp",
+        "-o",
+        "fixtures/bin/apple-clang/x86_64/O2/templates/templates.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/x86_64/O2/templates",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "templates.o",
+        "-o",
+        "templates",
+        "-Wl,-map,templates.map",
+        "-Wl,-oso_prefix,."
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/x86_64/O2/templates",
+      "argv": [
+        "dsymutil",
+        "templates",
+        "-o",
+        "templates.dSYM"
+      ]
+    }
+  ]
+}

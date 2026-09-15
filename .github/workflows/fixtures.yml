@@ -1,0 +1,50 @@
+# Builds fixture binaries on each Tier 1 host and uploads them as artifacts.
+# Outputs are reviewed and committed by a maintainer; CI never rebuilds committed fixtures.
+name: fixtures
+
+on:
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 fixtures/build/build.py --toolchain apple-clang
+      - uses: actions/upload-artifact@v7
+        with:
+          name: fixtures-apple-clang
+          path: fixtures/bin/apple-clang
+
+  linux-and-embedded:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [linux-clang, linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc]
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker build -t libstratum-fixtures -f fixtures/build/Dockerfile.linux fixtures/build
+      - run: docker run --rm -v "$PWD":/work libstratum-fixtures python3 fixtures/build/build.py --toolchain ${{ matrix.toolchain }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: fixtures-${{ matrix.toolchain }}
+          path: fixtures/bin/${{ matrix.toolchain }}
+
+  windows:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [msvc, clang-cl]
+        arch: [x64, arm64]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{ matrix.arch == 'x64' && 'x64' || 'amd64_arm64' }}
+      - run: python fixtures/build/build.py --toolchain ${{ matrix.toolchain }} --arch ${{ matrix.arch }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: fixtures-${{ matrix.toolchain }}-${{ matrix.arch }}
+          path: fixtures/bin/${{ matrix.toolchain }}

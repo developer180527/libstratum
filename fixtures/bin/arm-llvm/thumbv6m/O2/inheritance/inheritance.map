@@ -1,0 +1,98 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 __stack_top = ORIGIN ( RAM ) + LENGTH ( RAM )
+ 8000000  8000000        8     4 .isr_vector
+ 8000000  8000000        8     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.isr_vector)
+ 8000000  8000000        8     1                 vector_table
+ 8000008  8000008       98     4 .text
+ 8000008  8000008        2     2         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.text._ZN11PolymorphicD2Ev)
+ 8000008  8000008        0     1                 $t
+ 8000009  8000009        2     1                 Polymorphic::~Polymorphic()
+ 800000c  800000c       38     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.text.main)
+ 800000c  800000c        0     1                 $t
+ 800000d  800000d       38     1                 main
+ 8000034  8000034        0     1                 $d
+ 8000044  8000044        c     2         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.text._ZN7DerivedD0Ev)
+ 8000044  8000044        0     1                 $t
+ 8000045  8000045        c     1                 Derived::~Derived()
+ 8000050  8000050        4     2         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.text._ZNK7Derived2idEv)
+ 8000050  8000050        0     1                 $t
+ 8000051  8000051        4     1                 Derived::id() const
+ 8000054  8000054       3c     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.text._GLOBAL__sub_I_inheritance.cpp)
+ 8000054  8000054        0     1                 $t
+ 8000055  8000055       3c     1                 _GLOBAL__sub_I_inheritance.cpp
+ 8000078  8000078        0     1                 $d
+ 8000090  8000090        4     2         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.text.__cxa_atexit)
+ 8000090  8000090        0     1                 $t
+ 8000091  8000091        4     1                 __cxa_atexit
+ 8000094  8000094        2     2         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.text._ZdlPvj)
+ 8000094  8000094        0     1                 $t
+ 8000095  8000095        2     1                 operator delete(void*, unsigned int)
+ 8000096  8000096        a     2         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.text.reset_handler)
+ 8000096  8000096        0     1                 $t
+ 8000097  8000097        a     1                 reset_handler
+ 80000a0  80000a0       2c     4 .rodata
+ 80000a0  80000a0       14     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.rodata._ZTV7Derived)
+ 80000a0  80000a0       14     1                 vtable for Derived
+ 80000b4  80000b4       18     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.rodata._ZTV7Diamond)
+ 80000b4  80000b4       18     1                 vtable for Diamond
+ 80000cc  80000cc       10     4 .ARM.exidx
+ 80000cc  80000cc       10     4         <internal>:(.ARM.exidx)
+ 80000dc  80000dc       24     4 .note.gnu.build-id
+ 80000dc  80000dc       24     4         <internal>:(.note.gnu.build-id)
+20000000 20000000       54     8 .bss
+20000000 20000000        4     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.bss.g_with_empty_base)
+20000000 20000000        4     1                 g_with_empty_base
+20000008 20000008       18     8         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.bss.g_multiple)
+20000008 20000008       18     1                 g_multiple
+20000020 20000020       18     8         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.bss.g_derived)
+20000020 20000020       18     1                 g_derived
+20000038 20000038       18     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.bss.g_diamond)
+20000038 20000038       18     1                 g_diamond
+20000050 20000050        4     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.bss.__dso_handle)
+20000050 20000050        4     1                 __dso_handle
+20000054 20000054        4     4 .init_array
+20000054 20000054        4     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.init_array)
+       0        0      1d0     1 .debug_loclists
+       0        0       58     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_loclists)
+      58       58      178     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_loclists)
+       0        0      34f     1 .debug_abbrev
+       0        0      1eb     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_abbrev)
+     1eb      1eb       f4     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_abbrev)
+     2df      2df       70     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.debug_abbrev)
+       0        0      4d1     1 .debug_info
+       0        0      307     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_info)
+     307      307      175     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_info)
+     47c      47c       55     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.debug_info)
+       0        0       46     1 .debug_rnglists
+       0        0       20     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_rnglists)
+      20       20       26     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_rnglists)
+       0        0      160     1 .debug_str_offsets
+       0        0       dc     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_str_offsets)
+      dc       dc       64     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_str_offsets)
+     140      140       20     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.debug_str_offsets)
+       0        0      337     1 .debug_str
+       0        0      337     1         <internal>:(.debug_str)
+       0        0       6c     1 .debug_addr
+       0        0       34     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_addr)
+      34       34       28     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_addr)
+      5c       5c       10     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.debug_addr)
+       0        0       3e     1 .comment
+       0        0       3e     1         <internal>:(.comment)
+       0        0       45     1 .ARM.attributes
+       0        0       45     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.ARM.attributes)
+       0        0      15c     4 .debug_frame
+       0        0       88     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_frame)
+      88       88       a4     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_frame)
+     12c      12c       30     4         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.debug_frame)
+       0        0      295     1 .debug_line
+       0        0       ce     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o:(.debug_line)
+      ce       ce      170     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o:(.debug_line)
+     23e      23e       57     1         /work/fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o:(.debug_line)
+       0        0       5b     1 .debug_line_str
+       0        0       5b     1         <internal>:(.debug_line_str)
+       0        0      1f0     4 .symtab
+       0        0      1f0     4         <internal>:(.symtab)
+       0        0      10a     1 .shstrtab
+       0        0      10a     1         <internal>:(.shstrtab)
+       0        0      134     1 .strtab
+       0        0      134     1         <internal>:(.strtab)

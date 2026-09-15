@@ -1,0 +1,74 @@
+{
+  "fixture": "odr_conflict",
+  "toolchain": "apple-clang",
+  "arch": "x86_64",
+  "opt": "O0",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "@(#)PROGRAM:ld PROJECT:ld-27037.1"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/odr_conflict/a.cpp",
+        "-o",
+        "fixtures/bin/apple-clang/x86_64/O0/odr_conflict/a.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/odr_conflict/b.cpp",
+        "-o",
+        "fixtures/bin/apple-clang/x86_64/O0/odr_conflict/b.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/x86_64/O0/odr_conflict",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "a.o",
+        "b.o",
+        "-o",
+        "odr_conflict",
+        "-Wl,-map,odr_conflict.map",
+        "-Wl,-oso_prefix,."
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/x86_64/O0/odr_conflict",
+      "argv": [
+        "dsymutil",
+        "odr_conflict",
+        "-o",
+        "odr_conflict.dSYM"
+      ]
+    }
+  ]
+}

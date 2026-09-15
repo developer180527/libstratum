@@ -1,0 +1,47 @@
+# Fixture corpus manifest (docs/06-testing.md).
+# Each fixture is built for every toolchain/arch/opt combination in its group's matrix.
+
+[groups.layout]
+# M2 abstraction proof: every layout fixture must exist on all Tier 1 platforms.
+opts = ["O0", "O2"]
+toolchains = ["apple-clang", "linux-clang", "linux-gcc", "arm-none-eabi-gcc", "arm-llvm", "riscv-gcc", "msvc", "clang-cl"]
+
+[[fixtures]]
+name = "padding"
+group = "layout"
+sources = ["layout/padding.cpp"]
+
+[[fixtures]]
+name = "bitfields"
+group = "layout"
+sources = ["layout/bitfields.cpp"]
+
+[[fixtures]]
+name = "inheritance"
+group = "layout"
+sources = ["layout/inheritance.cpp"]
+
+[[fixtures]]
+name = "anonymous"
+group = "layout"
+sources = ["layout/anonymous.cpp"]
+
+[[fixtures]]
+name = "packed"
+group = "layout"
+sources = ["layout/packed.cpp"]
+
+[[fixtures]]
+name = "templates"
+group = "layout"
+sources = ["layout/templates.cpp"]
+
+[[fixtures]]
+name = "c_types"
+group = "layout"
+sources = ["layout/c_types.c"]
+
+[[fixtures]]
+name = "odr_conflict"
+group = "layout"
+sources = ["layout/odr_conflict/a.cpp", "layout/odr_conflict/b.cpp"]

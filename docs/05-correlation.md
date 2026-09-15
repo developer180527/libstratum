@@ -59,6 +59,11 @@ For every debug source and unit: offset, `DW_AT_name`, `DW_AT_comp_dir`, `DW_AT_
 2. Enrich with evidence: lld `--print-icf-sections` output or map data (if provided); DWARF subprograms whose ranges point at the same address; tombstoned DWARF for folded-away functions.
 3. **Attribution:** `shared = size`, `candidates = all`. Per-symbol size reports show `size` with a `folded_with` list, and totals count it once.
 
+**Verified rules (M0 spike S8):**
+- lld: folded functions keep symbol-table aliases at the representative address, and their DWARF subprograms are tombstoned (`low_pc = 0`), **exactly like garbage-collected functions**. So: tombstone + live alias → `Folded`; tombstone + no symbol → `DiscardedByLinker`.
+- GCC `-fipa-icf`: merged static functions keep both symbols at one address, but their DWARF subprograms have **no `low_pc` at all**. The merge is visible only through the symbol table.
+- ld-prime folds non-external functions only; lld `--icf=all` also folds externals; GCC `-O2` didn't merge externals.
+
 **Limits:** compiler-internal merging (GCC `-fipa-icf`, LLVM MergeFunctions) can leave a single symbol, or a thunk, so no fold is visible in the symbol table. Documented as undetectable without extra evidence.
 
 ## 5. Instantiations and duplicates

@@ -1,0 +1,3 @@
+fixtures/bin/** binary
+fixtures/bin/**/build.json text
+*.map text

@@ -1,0 +1,206 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+                              /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o (__aeabi_d2iz)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .text._Z14config_scale_av
+                0x00000000       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text.memset   0x00000000       0x14 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text.memcpy   0x00000000       0x14 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text.__cxa_pure_virtual
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text.__aeabi_atexit
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text.__cxa_atexit
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text._ZdlPv   0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text._ZdlPvj  0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .bss.__dso_handle
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_info    0x00000000      0x206 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_abbrev  0x00000000      0x13a /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_loclists
+                0x00000000       0xe9 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_aranges
+                0x00000000       0x50 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_rnglists
+                0x00000000       0x37 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_line    0x00000000      0x14e /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_str     0x00000000      0x19e /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .comment       0x00000000       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .debug_frame   0x00000000       0x80 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .ARM.attributes
+                0x00000000       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00100000         xr
+RAM              0x20000000         0x00030000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/support.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a
+                0x20030000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000        0x8
+ *(.isr_vector)
+ .isr_vector    0x08000000        0x8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+                0x08000000                vector_table
+
+.text           0x08000008       0x8c
+ *(.text .text.*)
+ .text.startup.main
+                0x08000008       0x1c /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+                0x08000008                main
+ .text._Z14config_scale_bv
+                0x08000024       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+                0x08000024                config_scale_b()
+ .text.reset_handler
+                0x0800003c        0x8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+                0x0800003c                reset_handler
+ .text          0x08000044       0x50 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+                0x08000044                __fixdfsi
+                0x08000044                __aeabi_d2iz
+
+.glue_7         0x08000094        0x0
+ .glue_7        0x08000094        0x0 linker stubs
+
+.glue_7t        0x08000094        0x0
+ .glue_7t       0x08000094        0x0 linker stubs
+
+.vfp11_veneer   0x08000094        0x0
+ .vfp11_veneer  0x08000094        0x0 linker stubs
+
+.v4_bx          0x08000094        0x0
+ .v4_bx         0x08000094        0x0 linker stubs
+
+.iplt           0x08000094        0x0
+ .iplt          0x08000094        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+
+.rodata
+ *(.rodata .rodata.*)
+
+.note.gnu.build-id
+                0x08000094       0x24
+ .note.gnu.build-id
+                0x08000094       0x24 linker stubs
+
+.rel.dyn        0x080000b8        0x0
+ .rel.iplt      0x080000b8        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+
+.ARM.exidx
+ *(.ARM.exidx*)
+
+.data
+ *(.data .data.*)
+
+.igot.plt       0x20000000        0x0 load address 0x080000b8
+ .igot.plt      0x20000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+
+.bss            0x20000000       0x30 load address 0x080000b8
+ *(.bss .bss.* COMMON)
+ .bss.g_config_a
+                0x20000000       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+                0x20000000                g_config_a
+ .bss.g_config_b
+                0x20000020       0x10 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+                0x20000020                g_config_b
+
+.noinit
+ *(.noinit .noinit.*)
+OUTPUT(/work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/odr_conflict elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x29d
+ .debug_info    0x00000000      0x123 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .debug_info    0x00000123       0x9d /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_info    0x000001c0       0xa1 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .debug_info    0x00000261       0x3c /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.debug_abbrev   0x00000000      0x282
+ .debug_abbrev  0x00000000      0x107 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .debug_abbrev  0x00000107       0xa3 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_abbrev  0x000001aa       0xb0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .debug_abbrev  0x0000025a       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.debug_aranges  0x00000000       0x88
+ .debug_aranges
+                0x00000000       0x28 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .debug_aranges
+                0x00000028       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_aranges
+                0x00000048       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .debug_aranges
+                0x00000068       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.debug_rnglists
+                0x00000000       0x4b
+ .debug_rnglists
+                0x00000000       0x25 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .debug_rnglists
+                0x00000025       0x13 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_rnglists
+                0x00000038       0x13 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+
+.debug_line     0x00000000      0x1bb
+ .debug_line    0x00000000       0x95 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .debug_line    0x00000095       0x68 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_line    0x000000fd       0x5c /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .debug_line    0x00000159       0x62 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.debug_str      0x00000000      0x33f
+ .debug_str     0x00000000      0x33f /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+                                0x17b (size before relaxing)
+ .debug_str     0x0000033f      0x13c /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_str     0x0000033f      0x107 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .debug_str     0x0000033f       0xbc /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .comment       0x00000026       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+
+.ARM.attributes
+                0x00000000       0x34
+ .ARM.attributes
+                0x00000000       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .ARM.attributes
+                0x00000034       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .ARM.attributes
+                0x00000068       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .ARM.attributes
+                0x0000009c       0x22 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.debug_frame    0x00000000       0xb4
+ .debug_frame   0x00000000       0x40 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/a.o
+ .debug_frame   0x00000040       0x28 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/b.o
+ .debug_frame   0x00000068       0x28 /work/fixtures/bin/arm-none-eabi-gcc/thumbv8m/O2/odr_conflict/vectors.o
+ .debug_frame   0x00000090       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)
+
+.debug_line_str
+                0x00000000       0x96
+ .debug_line_str
+                0x00000000       0x96 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a(_arm_fixdfsi.o)

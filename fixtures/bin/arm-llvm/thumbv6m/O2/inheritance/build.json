@@ -1,0 +1,97 @@
+{
+  "fixture": "inheritance",
+  "toolchain": "arm-llvm",
+  "arch": "thumbv6m",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "clang --version": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld --version": "Debian LLD 19.1.7 (compatible with GNU linkers)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=thumbv6m-none-eabi",
+        "-mcpu=cortex-m0plus",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/inheritance.cpp",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=thumbv6m-none-eabi",
+        "-mcpu=cortex-m0plus",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "../build/embedded/support.cpp",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "--target=thumbv6m-none-eabi",
+        "-mcpu=cortex-m0plus",
+        "-mfloat-abi=soft",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "../build/embedded/vectors.c",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "ld.lld",
+        "-T",
+        "fixtures/build/embedded/cortex-m.ld",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.o",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/support.o",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/vectors.o",
+        "/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance",
+        "--gc-sections",
+        "--build-id",
+        "-Map=fixtures/bin/arm-llvm/thumbv6m/O2/inheritance/inheritance.map"
+      ]
+    }
+  ]
+}

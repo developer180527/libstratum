@@ -1,0 +1,22 @@
+# Path: odr_conflict
+# Arch: arm64
+# Object files:
+[  0] linker synthesized
+[  1] a.o
+[  2] b.o
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libc++.tbd
+[  4] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd
+# Sections:
+# Address	Size    	Segment	Section
+0x1000003F8	0x00000070	__TEXT	__text
+0x100000468	0x00000060	__TEXT	__unwind_info
+0x100004000	0x00000030	__DATA	__common
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x1000003F8	0x0000001C	[  1] __Z14config_scale_av
+0x100000414	0x00000038	[  1] _main
+0x10000044C	0x0000001C	[  2] __Z14config_scale_bv
+0x100000468	0x00000060	[  0] compact unwind info
+0x100004000	0x00000020	[  1] _g_config_a
+0x100004020	0x00000010	[  2] _g_config_b

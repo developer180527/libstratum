@@ -1,0 +1,40 @@
+{
+  "fixture": "templates",
+  "toolchain": "linux-gcc",
+  "arch": "aarch64",
+  "opt": "O0",
+  "host": "Linux x86_64",
+  "tools": {
+    "x86_64-linux-gnu-gcc --version": "x86_64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0",
+    "aarch64-linux-gnu-gcc --version": "aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "aarch64-linux-gnu-g++",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/templates.cpp",
+        "-o",
+        "fixtures/bin/linux-gcc/aarch64/O0/templates/templates.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "aarch64-linux-gnu-g++",
+        "fixtures/bin/linux-gcc/aarch64/O0/templates/templates.o",
+        "-o",
+        "fixtures/bin/linux-gcc/aarch64/O0/templates/templates",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-gcc/aarch64/O0/templates/templates.map"
+      ]
+    }
+  ]
+}

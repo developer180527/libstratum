@@ -1,0 +1,45 @@
+# Path: inheritance
+# Arch: x86_64
+# Object files:
+[  0] linker synthesized
+[  1] inheritance.o
+[  2] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libc++.tbd
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd
+# Sections:
+# Address	Size    	Segment	Section
+0x1000005E0	0x0000006B	__TEXT	__text
+0x10000064C	0x00000006	__TEXT	__stubs
+0x100000652	0x00000036	__TEXT	__const
+0x100000688	0x00000058	__TEXT	__unwind_info
+0x100001000	0x00000118	__DATA_CONST	__const
+0x100001118	0x00000008	__DATA_CONST	__got
+0x100002000	0x00000048	__DATA	__data
+0x100002048	0x00000020	__DATA	__common
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x1000005E0	0x00000010	[  1] __ZN7DerivedD1Ev
+0x1000005F0	0x00000040	[  1] _main
+0x100000630	0x00000010	[  1] __ZN7DerivedD0Ev
+0x100000640	0x0000000B	[  1] __ZNK7Derived2idEv
+0x10000064C	0x00000006	[  2] __ZdlPv.stub
+0x100000652	0x00000009	[  1] __ZTS7Derived
+0x10000065B	0x0000000E	[  1] __ZTS11Polymorphic
+0x100000669	0x00000007	[  1] __ZTS5VLeft
+0x100000670	0x00000007	[  1] __ZTS5VBase
+0x100000677	0x00000008	[  1] __ZTS6VRight
+0x10000067F	0x00000009	[  1] __ZTS7Diamond
+0x100000688	0x00000058	[  0] compact unwind info
+0x100001000	0x00000028	[  1] __ZTV7Derived
+0x100001028	0x00000018	[  1] __ZTI7Derived
+0x100001040	0x00000010	[  1] __ZTI11Polymorphic
+0x100001050	0x00000030	[  1] __ZTV7Diamond
+0x100001080	0x00000028	[  1] __ZTI5VLeft
+0x1000010A8	0x00000010	[  1] __ZTI5VBase
+0x1000010B8	0x00000028	[  1] __ZTI6VRight
+0x1000010E0	0x00000038	[  1] __ZTI7Diamond
+0x100001118	0x00000008	[  2] __ZdlPv.got
+0x100002000	0x00000020	[  1] _g_derived
+0x100002020	0x00000028	[  1] _g_diamond
+0x100002048	0x00000008	[  1] _g_with_empty_base
+0x100002050	0x00000018	[  1] _g_multiple

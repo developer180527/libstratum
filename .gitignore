@@ -1,5 +1,30 @@
+# Rust
 /target
 **/*.rs.bk
+
+# OS / editors
 .DS_Store
-# fixture build scratch (committed outputs live in fixtures/bin)
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# Local logs
+*.log
+
+# Fixture build scratch
 /fixtures/build/out/
+
+# Fixture intermediates. Committed fixtures keep: binaries, linker maps, build.json, and debug-info
+# companions (dSYM, PDB, .dwo/.dwp). Object files are kept only for Mach-O, where the binary's
+# debug map points into them (docs/04-formats-and-toolchains.md §3).
+/fixtures/bin/**/*.o
+!/fixtures/bin/apple-clang/**/*.o
+/fixtures/bin/**/*.obj
+/fixtures/bin/**/*.compile.pdb
+/fixtures/bin/**/*.ilk
+/fixtures/bin/**/*.exp
+/fixtures/bin/**/*.lib

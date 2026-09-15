@@ -1,0 +1,96 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 __stack_top = ORIGIN ( RAM ) + LENGTH ( RAM )
+ 8000000  8000000        8     4 .isr_vector
+ 8000000  8000000        8     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.isr_vector)
+ 8000000  8000000        8     1                 vector_table
+ 8000008  8000008       aa     4 .text
+ 8000008  8000008        2     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.text._ZN11PolymorphicD2Ev)
+ 8000008  8000008        0     1                 $t
+ 8000009  8000009        2     1                 Polymorphic::~Polymorphic()
+ 800000c  800000c       3e     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.text.main)
+ 800000c  800000c        0     1                 $t
+ 800000d  800000d       3e     1                 main
+ 800004c  800004c        6     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.text._ZN7DerivedD0Ev)
+ 800004c  800004c        0     1                 $t
+ 800004d  800004d        6     1                 Derived::~Derived()
+ 8000054  8000054        4     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.text._ZNK7Derived2idEv)
+ 8000054  8000054        0     1                 $t
+ 8000055  8000055        4     1                 Derived::id() const
+ 8000058  8000058       48     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.text._GLOBAL__sub_I_inheritance.cpp)
+ 8000058  8000058        0     1                 $t
+ 8000059  8000059       48     1                 _GLOBAL__sub_I_inheritance.cpp
+ 80000a0  80000a0        4     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.text.__cxa_atexit)
+ 80000a0  80000a0        0     1                 $t
+ 80000a1  80000a1        4     1                 __cxa_atexit
+ 80000a4  80000a4        2     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.text._ZdlPvj)
+ 80000a4  80000a4        0     1                 $t
+ 80000a5  80000a5        2     1                 operator delete(void*, unsigned int)
+ 80000a8  80000a8        a     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.text.reset_handler)
+ 80000a8  80000a8        0     1                 $t
+ 80000a9  80000a9        a     1                 reset_handler
+ 80000b4  80000b4       2c     4 .rodata
+ 80000b4  80000b4       14     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.rodata._ZTV7Derived)
+ 80000b4  80000b4       14     1                 vtable for Derived
+ 80000c8  80000c8       18     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.rodata._ZTV7Diamond)
+ 80000c8  80000c8       18     1                 vtable for Diamond
+ 80000e0  80000e0       10     4 .ARM.exidx
+ 80000e0  80000e0       10     4         <internal>:(.ARM.exidx)
+ 80000f0  80000f0       24     4 .note.gnu.build-id
+ 80000f0  80000f0       24     4         <internal>:(.note.gnu.build-id)
+20000000 20000000       54     8 .bss
+20000000 20000000        4     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.bss.g_with_empty_base)
+20000000 20000000        4     1                 g_with_empty_base
+20000008 20000008       18     8         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.bss.g_multiple)
+20000008 20000008       18     1                 g_multiple
+20000020 20000020       18     8         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.bss.g_derived)
+20000020 20000020       18     1                 g_derived
+20000038 20000038       18     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.bss.g_diamond)
+20000038 20000038       18     1                 g_diamond
+20000050 20000050        4     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.bss.__dso_handle)
+20000050 20000050        4     1                 __dso_handle
+20000054 20000054        4     4 .init_array
+20000054 20000054        4     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.init_array)
+       0        0      198     1 .debug_loclists
+       0        0       44     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_loclists)
+      44       44      154     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_loclists)
+       0        0      34f     1 .debug_abbrev
+       0        0      1eb     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_abbrev)
+     1eb      1eb       f4     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_abbrev)
+     2df      2df       70     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.debug_abbrev)
+       0        0      4d2     1 .debug_info
+       0        0      308     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_info)
+     308      308      175     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_info)
+     47d      47d       55     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.debug_info)
+       0        0       47     1 .debug_rnglists
+       0        0       20     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_rnglists)
+      20       20       27     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_rnglists)
+       0        0      160     1 .debug_str_offsets
+       0        0       dc     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_str_offsets)
+      dc       dc       64     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_str_offsets)
+     140      140       20     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.debug_str_offsets)
+       0        0      337     1 .debug_str
+       0        0      337     1         <internal>:(.debug_str)
+       0        0       6c     1 .debug_addr
+       0        0       34     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_addr)
+      34       34       28     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_addr)
+      5c       5c       10     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.debug_addr)
+       0        0       3e     1 .comment
+       0        0       3e     1         <internal>:(.comment)
+       0        0       44     1 .ARM.attributes
+       0        0       44     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.ARM.attributes)
+       0        0      14c     4 .debug_frame
+       0        0       7c     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_frame)
+      7c       7c       a0     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_frame)
+     11c      11c       30     4         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.debug_frame)
+       0        0      299     1 .debug_line
+       0        0       cd     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/inheritance.o:(.debug_line)
+      cd       cd      175     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/support.o:(.debug_line)
+     242      242       57     1         /work/fixtures/bin/arm-llvm/thumbv8m/O2/inheritance/vectors.o:(.debug_line)
+       0        0       5b     1 .debug_line_str
+       0        0       5b     1         <internal>:(.debug_line_str)
+       0        0      1d0     4 .symtab
+       0        0      1d0     4         <internal>:(.symtab)
+       0        0      10a     1 .shstrtab
+       0        0      10a     1         <internal>:(.shstrtab)
+       0        0      12e     1 .strtab
+       0        0      12e     1         <internal>:(.strtab)

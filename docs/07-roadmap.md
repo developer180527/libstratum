@@ -7,10 +7,13 @@
 ## Phase 0: Design (current)
 - [x] Prior art, toolchain research, local verification (macOS)
 - [x] Architecture, data model, algorithms, testing, suite, embedded, platforms
-- [ ] Resolve open questions Q1, Q2, Q3, Q4, Q14, Q15 ([08](08-decisions.md#open-questions))
+- [x] Resolve Q1–Q5 (Q14, Q15 pending M0 Windows work) ([08](08-decisions.md#open-questions))
 - [ ] Freeze doc-level shapes of the SPI (`BinaryFormat`, `Image`, `DebugInfoBackend`, `DebugReader`, `ArtifactProvider`) and the neutral IR
 
 ## M0: Foundations and verification spikes
+
+**Progress (2026-09-15):** workspace scaffold ✅ · CI workflow ✅ · fixture driver (`fixtures/build/build.py`, all 8 toolchains defined) ✅ · Docker image and fixtures workflow ✅ · `layout/` fixtures built for apple-clang ✅ · spikes S1–S6 ✅ · Linux/embedded fixtures (176 builds on the Debian server) and S8–S10 ✅ · MSVC/clang-cl fixtures and S7 ⏳ (Windows). Report: [spikes/m0-report.md](spikes/m0-report.md).
+
 - Cargo workspace with all backend crates (empty, compiling); dependency-rule check in CI
 - **CI runners:** macOS (Apple Clang), Linux (Docker: Clang, GCC, arm-none-eabi, RISC-V toolchains), **Windows (MSVC, clang-cl)**
 - Fixture build system per platform, pinned toolchains, committed outputs

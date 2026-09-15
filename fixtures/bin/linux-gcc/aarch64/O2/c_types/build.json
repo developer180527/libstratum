@@ -1,0 +1,40 @@
+{
+  "fixture": "c_types",
+  "toolchain": "linux-gcc",
+  "arch": "aarch64",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "x86_64-linux-gnu-gcc --version": "x86_64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0",
+    "aarch64-linux-gnu-gcc --version": "aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "aarch64-linux-gnu-gcc",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/c_types.c",
+        "-o",
+        "fixtures/bin/linux-gcc/aarch64/O2/c_types/c_types.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "aarch64-linux-gnu-gcc",
+        "fixtures/bin/linux-gcc/aarch64/O2/c_types/c_types.o",
+        "-o",
+        "fixtures/bin/linux-gcc/aarch64/O2/c_types/c_types",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-gcc/aarch64/O2/c_types/c_types.map"
+      ]
+    }
+  ]
+}

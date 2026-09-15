@@ -1,0 +1,68 @@
+# Path: inheritance
+# Arch: arm64
+# Object files:
+[  0] linker synthesized
+[  1] inheritance.o
+[  2] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libc++.tbd
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd
+[  4] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/system/libsystem_c.tbd
+# Sections:
+# Address	Size    	Segment	Section
+0x1000005D0	0x0000033C	__TEXT	__text
+0x10000090C	0x00000018	__TEXT	__stubs
+0x100000924	0x00000004	__TEXT	__init_offsets
+0x100000928	0x00000036	__TEXT	__const
+0x100000960	0x00000078	__TEXT	__unwind_info
+0x100004000	0x00000190	__DATA_CONST	__const
+0x100004190	0x00000010	__DATA_CONST	__got
+0x100008000	0x00000068	__DATA	__common
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x100000000	0x00000000	[  0] ___dso_handle
+0x1000005D0	0x0000002C	[  1] __ZN7DerivedC1Ev
+0x1000005FC	0x0000002C	[  1] __ZN7DerivedD1Ev
+0x100000628	0x00000068	[  1] __ZN7DiamondC1Ev
+0x100000690	0x0000006C	[  1] _main
+0x1000006FC	0x0000003C	[  1] __ZN7DerivedC2Ev
+0x100000738	0x00000024	[  1] __ZN11PolymorphicC2Ev
+0x10000075C	0x00000030	[  1] __ZN7DerivedD0Ev
+0x10000078C	0x00000014	[  1] __ZNK7Derived2idEv
+0x1000007A0	0x0000002C	[  1] __ZN11PolymorphicD1Ev
+0x1000007CC	0x00000030	[  1] __ZN11PolymorphicD0Ev
+0x1000007FC	0x00000014	[  1] __ZNK11Polymorphic2idEv
+0x100000810	0x00000014	[  1] __ZN11PolymorphicD2Ev
+0x100000824	0x0000002C	[  1] __ZN7DerivedD2Ev
+0x100000850	0x00000024	[  1] __ZN5VLeftC2Ev
+0x100000874	0x00000024	[  1] __ZN6VRightC2Ev
+0x100000898	0x00000040	[  1] ___cxx_global_var_init
+0x1000008D8	0x0000001C	[  1] ___cxx_global_var_init.1
+0x1000008F4	0x00000018	[  1] __GLOBAL__sub_I_inheritance.cpp
+0x10000090C	0x0000000C	[  2] __ZdlPv.stub
+0x100000918	0x0000000C	[  4] ___cxa_atexit.stub
+0x100000924	0x00000004	[  0] init-offset
+0x100000928	0x00000009	[  1] __ZTS7Derived
+0x100000931	0x0000000E	[  1] __ZTS11Polymorphic
+0x10000093F	0x00000007	[  1] __ZTS5VLeft
+0x100000946	0x00000007	[  1] __ZTS5VBase
+0x10000094D	0x00000008	[  1] __ZTS6VRight
+0x100000955	0x00000009	[  1] __ZTS7Diamond
+0x100000960	0x00000078	[  0] compact unwind info
+0x100004000	0x00000028	[  1] __ZTV7Derived
+0x100004028	0x00000018	[  1] __ZTI7Derived
+0x100004040	0x00000010	[  1] __ZTI11Polymorphic
+0x100004050	0x00000028	[  1] __ZTV11Polymorphic
+0x100004078	0x00000030	[  1] __ZTV7Diamond
+0x1000040A8	0x00000020	[  1] __ZTT7Diamond
+0x1000040C8	0x00000018	[  1] __ZTC7Diamond0_5VLeft
+0x1000040E0	0x00000028	[  1] __ZTI5VLeft
+0x100004108	0x00000010	[  1] __ZTI5VBase
+0x100004118	0x00000018	[  1] __ZTC7Diamond16_6VRight
+0x100004130	0x00000028	[  1] __ZTI6VRight
+0x100004158	0x00000038	[  1] __ZTI7Diamond
+0x100004190	0x00000008	[  4] ___cxa_atexit.got
+0x100004198	0x00000008	[  2] __ZdlPv.got
+0x100008000	0x00000008	[  1] _g_with_empty_base
+0x100008008	0x00000018	[  1] _g_multiple
+0x100008020	0x00000020	[  1] _g_derived
+0x100008040	0x00000028	[  1] _g_diamond

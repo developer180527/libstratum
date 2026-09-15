@@ -1,0 +1,40 @@
+{
+  "fixture": "inheritance",
+  "toolchain": "linux-gcc",
+  "arch": "aarch64",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "x86_64-linux-gnu-gcc --version": "x86_64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0",
+    "aarch64-linux-gnu-gcc --version": "aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "aarch64-linux-gnu-g++",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/inheritance.cpp",
+        "-o",
+        "fixtures/bin/linux-gcc/aarch64/O2/inheritance/inheritance.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "aarch64-linux-gnu-g++",
+        "fixtures/bin/linux-gcc/aarch64/O2/inheritance/inheritance.o",
+        "-o",
+        "fixtures/bin/linux-gcc/aarch64/O2/inheritance/inheritance",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-gcc/aarch64/O2/inheritance/inheritance.map"
+      ]
+    }
+  ]
+}

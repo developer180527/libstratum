@@ -1,0 +1,55 @@
+{
+  "fixture": "anonymous",
+  "toolchain": "apple-clang",
+  "arch": "arm64",
+  "opt": "O2",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "@(#)PROGRAM:ld PROJECT:ld-27037.1"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/anonymous.cpp",
+        "-o",
+        "fixtures/bin/apple-clang/arm64/O2/anonymous/anonymous.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/arm64/O2/anonymous",
+      "argv": [
+        "clang++",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "anonymous.o",
+        "-o",
+        "anonymous",
+        "-Wl,-map,anonymous.map",
+        "-Wl,-oso_prefix,."
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/arm64/O2/anonymous",
+      "argv": [
+        "dsymutil",
+        "anonymous",
+        "-o",
+        "anonymous.dSYM"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,731 @@
+
+Merging program properties
+
+Removed property 0xc0000002 to merge /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o (not found) and /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o (0x3)
+Removed property 0xc0000002 to merge /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o (not found) and /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o (0x3)
+
+As-needed library included to satisfy reference by file (symbol)
+
+libstdc++.so.6                /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o (vtable for __cxxabiv1::__vmi_class_type_info@@CXXABI_1.3)
+libc.so.6                     /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o (__cxa_atexit@@GLIBC_2.2.5)
+
+Discarded input sections
+
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ .group         0x0000000000000000       0x14 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000       0x24 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000       0x14 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+LOAD /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libstdc++.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libm.so.6
+LOAD /lib/x86_64-linux-gnu/libmvec.so.1
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libc.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libc.so.6
+LOAD /usr/lib/x86_64-linux-gnu/libc_nonshared.a
+LOAD /lib64/ld-linux-x86-64.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libgcc_s.so.1
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x0))
+                0x0000000000000350                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.property
+                0x0000000000000350       0x20
+ .note.gnu.property
+                0x0000000000000350       0x20 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.note.gnu.build-id
+                0x0000000000000370       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x0000000000000370       0x24 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.interp         0x0000000000000394       0x1c
+ *(.interp)
+ .interp        0x0000000000000394       0x1c /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000003b0       0x24
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000003b0       0x24 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.dynsym         0x00000000000003d8      0x108
+ *(.dynsym)
+ .dynsym        0x00000000000003d8      0x108 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.dynstr         0x00000000000004e0      0x13d
+ *(.dynstr)
+ .dynstr        0x00000000000004e0      0x13d /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.gnu.version    0x000000000000061e       0x16
+ *(.gnu.version)
+ .gnu.version   0x000000000000061e       0x16 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.gnu.version_d  0x0000000000000638        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000000638        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.gnu.version_r  0x0000000000000638       0x60
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000000638       0x60 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.rela.dyn       0x0000000000000698      0x3f0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ .rela.text._ZN11PolymorphicD2Ev
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.text._ZN11PolymorphicC2Ev
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.text._ZN7DerivedC2Ev
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.text._ZN7DiamondC1Ev
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.text._ZN7DerivedD2Ev
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.text._Z41__static_initialization_and_destruction_0v
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.ro
+                0x0000000000000698        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.local
+                0x0000000000000698       0x18 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local._ZTV7Diamond
+                0x00000000000006b0       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local._ZTT7Diamond
+                0x00000000000006e0       0x60 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local._ZTC7Diamond0_5VLeft
+                0x0000000000000740       0x18 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local._ZTC7Diamond16_6VRight
+                0x0000000000000758       0x18 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local._ZTV7Derived
+                0x0000000000000770       0x60 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro.local._ZTV11Polymorphic
+                0x00000000000007d0       0x60 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro._ZTI7Diamond
+                0x0000000000000830       0x60 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro._ZTI6VRight
+                0x0000000000000890       0x48 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro._ZTI5VLeft
+                0x00000000000008d8       0x48 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro._ZTI7Derived
+                0x0000000000000920       0x48 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro._ZTI11Polymorphic
+                0x0000000000000968       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.data.rel.ro._ZTI5VBase
+                0x0000000000000998       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x00000000000009c8       0x78 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ .rela.bss      0x0000000000000a40        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+ *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+ *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000000a40        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.fini_array
+                0x0000000000000a40       0x18 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .rela.init_array
+                0x0000000000000a58       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.rela.plt       0x0000000000000a88       0x30
+ *(.rela.plt)
+ .rela.plt      0x0000000000000a88       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.rela.iplt)
+
+.relr.dyn
+ *(.relr.dyn)
+                0x0000000000001000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+
+.init           0x0000000000001000       0x17
+ *(SORT_NONE(.init))
+ .init          0x0000000000001000       0x12 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+                0x0000000000001000                _init
+ .init          0x0000000000001012        0x5 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+
+.plt            0x0000000000001020       0x30
+ *(.plt)
+ .plt           0x0000000000001020       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000001030                __cxa_atexit@@GLIBC_2.2.5
+                0x0000000000001040                operator delete(void*, unsigned long)@@CXXABI_1.3.9
+ *(.iplt)
+
+.plt.got        0x0000000000001050        0x8
+ *(.plt.got)
+ .plt.got       0x0000000000001050        0x8 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000001050                __cxa_finalize@@GLIBC_2.2.5
+
+.plt.sec
+ *(.plt.sec)
+
+.text           0x0000000000001060      0x318
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000001060       0x22 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000001060                _start
+ .text          0x0000000000001082        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+ *fill*         0x0000000000001082        0xe 
+ .text          0x0000000000001090       0xb9 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ .text          0x0000000000001149        0x0 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ *fill*         0x0000000000001149        0x1 
+ .text._ZN11PolymorphicD2Ev
+                0x000000000000114a       0x19 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x000000000000114a                Polymorphic::~Polymorphic()
+                0x000000000000114a                Polymorphic::~Polymorphic()
+ *fill*         0x0000000000001163        0x1 
+ .text._ZN11PolymorphicD0Ev
+                0x0000000000001164       0x2b /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000001164                Polymorphic::~Polymorphic()
+ *fill*         0x000000000000118f        0x1 
+ .text._ZNK11Polymorphic2idEv
+                0x0000000000001190        0xf /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000001190                Polymorphic::id() const
+ *fill*         0x000000000000119f        0x1 
+ .text._ZNK7Derived2idEv
+                0x00000000000011a0        0xf /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x00000000000011a0                Derived::id() const
+ *fill*         0x00000000000011af        0x1 
+ .text._ZN11PolymorphicC2Ev
+                0x00000000000011b0       0x19 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x00000000000011b0                Polymorphic::Polymorphic()
+                0x00000000000011b0                Polymorphic::Polymorphic()
+ *fill*         0x00000000000011c9        0x1 
+ .text._ZN7DerivedC2Ev
+                0x00000000000011ca       0x29 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x00000000000011ca                Derived::Derived()
+                0x00000000000011ca                Derived::Derived()
+ *fill*         0x00000000000011f3        0x1 
+ .text._ZN5VLeftC2Ev
+                0x00000000000011f4       0x1d /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x00000000000011f4                VLeft::VLeft()
+ *fill*         0x0000000000001211        0x1 
+ .text._ZN6VRightC2Ev
+                0x0000000000001212       0x1d /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000001212                VRight::VRight()
+ *fill*         0x000000000000122f        0x1 
+ .text._ZN7DiamondC1Ev
+                0x0000000000001230       0x5c /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000001230                Diamond::Diamond()
+ .text.main     0x000000000000128c       0x44 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x000000000000128c                main
+ .text._ZN7DerivedD2Ev
+                0x00000000000012d0       0x29 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x00000000000012d0                Derived::~Derived()
+                0x00000000000012d0                Derived::~Derived()
+ *fill*         0x00000000000012f9        0x1 
+ .text._ZN7DerivedD0Ev
+                0x00000000000012fa       0x2b /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x00000000000012fa                Derived::~Derived()
+ .text._Z41__static_initialization_and_destruction_0v
+                0x0000000000001325       0x48 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .text._GLOBAL__sub_I_g_with_empty_base
+                0x000000000000136d        0xb /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .text          0x0000000000001378        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+ .text          0x0000000000001378        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+ *(.gnu.warning)
+
+.fini           0x0000000000001378        0x9
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000001378        0x4 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+                0x0000000000001378                _fini
+ .fini          0x000000000000137c        0x5 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+                0x0000000000002000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+                0x0000000000002000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
+
+.rodata         0x0000000000002000       0x4d
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x0000000000002000        0x4 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000002000                _IO_stdin_used
+ *fill*         0x0000000000002004        0x4 
+ .rodata._ZTS7Diamond
+                0x0000000000002008        0x9 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000002008                typeinfo name for Diamond
+ *fill*         0x0000000000002011        0x7 
+ .rodata._ZTS6VRight
+                0x0000000000002018        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000002018                typeinfo name for VRight
+ .rodata._ZTS5VLeft
+                0x0000000000002020        0x7 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000002020                typeinfo name for VLeft
+ *fill*         0x0000000000002027        0x1 
+ .rodata._ZTS7Derived
+                0x0000000000002028        0x9 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000002028                typeinfo name for Derived
+ *fill*         0x0000000000002031        0x7 
+ .rodata._ZTS11Polymorphic
+                0x0000000000002038        0xe /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000002038                typeinfo name for Polymorphic
+ .rodata._ZTS5VBase
+                0x0000000000002046        0x7 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000002046                typeinfo name for VBase
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000002050       0x94
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000002050       0x94 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000002050                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000020e8      0x24c
+ *(.eh_frame)
+ .eh_frame      0x00000000000020e8       0x30 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                                         0x2c (size before relaxing)
+ *fill*         0x0000000000002118        0x0 
+ .eh_frame      0x0000000000002118       0x40 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .eh_frame      0x0000000000002158       0x18 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                                         0x30 (size before relaxing)
+ .eh_frame      0x0000000000002170      0x1c0 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                                        0x1d8 (size before relaxing)
+ .eh_frame      0x0000000000002330        0x4 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+ *(.eh_frame.*)
+
+.sframe         0x0000000000002334        0x0
+ *(.sframe)
+ .sframe        0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .sframe        0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.note.build-id
+ *(.note.build-id)
+
+.note.GNU-stack
+                0x0000000000002334        0x0
+ *(.note.GNU-stack)
+ .note.GNU-stack
+                0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .note.GNU-stack
+                0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000002334        0x0 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .note.GNU-stack
+                0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+ .note.GNU-stack
+                0x0000000000002334        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+
+.note.gnu-property
+ *(.note.gnu-property)
+
+.note.ABI-tag   0x0000000000002334       0x20
+ *(.note.ABI-tag)
+ .note.ABI-tag  0x0000000000002334       0x20 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+
+.note.package
+ *(.note.package)
+
+.note.dlopen
+ *(.note.dlopen)
+
+.note.netbsd.ident
+ *(.note.netbsd.ident)
+
+.note.openbsd.ident
+ *(.note.openbsd.ident)
+                0x0000000000003c28                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x0000000000003c28        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000000003c28        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x0000000000003c28       0x10
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000003c28        0x8 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ .init_array    0x0000000000003c30        0x8 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x0000000000003c38        0x8
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000003c38        0x8 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000003c40      0x190
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local._ZTV7Diamond
+                0x0000000000003c40       0x30 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003c40                vtable for Diamond
+ .data.rel.ro.local._ZTT7Diamond
+                0x0000000000003c70       0x20 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003c70                VTT for Diamond
+ .data.rel.ro.local._ZTC7Diamond0_5VLeft
+                0x0000000000003c90       0x18 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003c90                construction vtable for VLeft-in-Diamond
+ .data.rel.ro.local._ZTC7Diamond16_6VRight
+                0x0000000000003ca8       0x18 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003ca8                construction vtable for VRight-in-Diamond
+ .data.rel.ro.local._ZTV7Derived
+                0x0000000000003cc0       0x28 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003cc0                vtable for Derived
+ .data.rel.ro.local._ZTV11Polymorphic
+                0x0000000000003ce8       0x28 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003ce8                vtable for Polymorphic
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000003d10        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .data.rel.ro._ZTI7Diamond
+                0x0000000000003d10       0x38 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003d10                typeinfo for Diamond
+ .data.rel.ro._ZTI6VRight
+                0x0000000000003d48       0x28 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003d48                typeinfo for VRight
+ .data.rel.ro._ZTI5VLeft
+                0x0000000000003d70       0x28 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003d70                typeinfo for VLeft
+ .data.rel.ro._ZTI7Derived
+                0x0000000000003d98       0x18 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003d98                typeinfo for Derived
+ .data.rel.ro._ZTI11Polymorphic
+                0x0000000000003db0       0x10 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003db0                typeinfo for Polymorphic
+ .data.rel.ro._ZTI5VBase
+                0x0000000000003dc0       0x10 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000003dc0                typeinfo for VBase
+
+.dynamic        0x0000000000003dd0      0x1f0
+ *(.dynamic)
+ .dynamic       0x0000000000003dd0      0x1f0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000003dd0                _DYNAMIC
+
+.got            0x0000000000003fc0       0x28
+ *(.got)
+ .got           0x0000000000003fc0       0x28 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.igot)
+                0x0000000000003fe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
+
+.got.plt        0x0000000000003fe8       0x28
+ *(.got.plt)
+ .got.plt       0x0000000000003fe8       0x28 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000003fe8                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+
+.data           0x0000000000004010       0x10
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000004010        0x4 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+                0x0000000000004010                data_start
+                0x0000000000004010                __data_start
+ .data          0x0000000000004014        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000004014        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ *fill*         0x0000000000004014        0x4 
+ .data.rel.local
+                0x0000000000004018        0x8 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+                0x0000000000004018                __dso_handle
+ .data          0x0000000000004020        0x0 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .data          0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+ .data          0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+
+.tm_clone_table
+                0x0000000000004020        0x0
+ .tm_clone_table
+                0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ .tm_clone_table
+                0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+
+.data1
+ *(.data1)
+                0x0000000000004020                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000004020                . = ALIGN (ALIGNOF (NEXT_SECTION))
+                0x0000000000004020                __bss_start = .
+
+.bss            0x0000000000004020       0x88
+ *(.dynbss)
+ .dynbss        0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o
+ .bss           0x0000000000004020        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o
+ .bss           0x0000000000004020        0x1 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+ .bss           0x0000000000004021        0x0 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ *fill*         0x0000000000004021        0x3 
+ .bss.g_with_empty_base
+                0x0000000000004024        0x4 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000004024                g_with_empty_base
+ *fill*         0x0000000000004028        0x8 
+ .bss.g_multiple
+                0x0000000000004030       0x18 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000004030                g_multiple
+ *fill*         0x0000000000004048       0x18 
+ .bss.g_derived
+                0x0000000000004060       0x20 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000004060                g_derived
+ .bss.g_diamond
+                0x0000000000004080       0x28 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                0x0000000000004080                g_diamond
+ .bss           0x00000000000040a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+ .bss           0x00000000000040a8        0x0 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+ *(COMMON)
+                0x00000000000040a8                . = ALIGN ((. != 0x0)?0x8:0x1)
+
+.lbss
+ *(.dynlbss)
+ *(.lbss .lbss.* .gnu.linkonce.lb.*)
+ *(LARGE_COMMON)
+                0x00000000000040a8                . = ALIGN (0x8)
+                0x00000000000040a8                . = SEGMENT_START ("ldata-segment", .)
+
+.lrodata
+ *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+
+.ldata          0x00000000000060a8        0x0
+ *(.ldata .ldata.* .gnu.linkonce.l.*)
+                0x00000000000060a8                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x00000000000060a8                . = ALIGN (0x8)
+                0x00000000000040a8                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x00000000000060a8                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x1f
+ *(.comment)
+ .comment       0x0000000000000000       0x1f /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o
+                                         0x20 (size before relaxing)
+ .comment       0x000000000000001f       0x20 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+ .comment       0x000000000000001f       0x20 /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x100
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000      0x100 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000      0x8c3
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0x8c3 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+
+.debug_abbrev   0x0000000000000000      0x25a
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x25a /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+
+.debug_line     0x0000000000000000      0x1df
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x1df /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000      0x3fd
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x3fd /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                                        0x443 (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x0000000000000000       0x20
+ *(.debug_line_str)
+ .debug_line_str
+                0x0000000000000000       0x20 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+                                         0x42 (size before relaxing)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x0000000000000000       0x99
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x0000000000000000       0x99 /work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+ *(.gnu_object_only)
+OUTPUT(/work/fixtures/bin/linux-gcc/x86_64/O0/inheritance/inheritance elf64-x86-64)

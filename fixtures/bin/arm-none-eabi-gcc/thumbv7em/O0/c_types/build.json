@@ -1,0 +1,102 @@
+{
+  "fixture": "c_types",
+  "toolchain": "arm-none-eabi-gcc",
+  "arch": "thumbv7em",
+  "opt": "O0",
+  "host": "Linux x86_64",
+  "tools": {
+    "arm-none-eabi-gcc --version": "arm-none-eabi-gcc (15:14.2.rel1-1) 14.2.1 20241119"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-gcc",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-std=c11",
+        "-g",
+        "-O0",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/c_types.c",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/c_types.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-g++",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "../build/embedded/support.cpp",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/support.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-gcc",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-std=c11",
+        "-g",
+        "-O0",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "../build/embedded/vectors.c",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/vectors.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-g++",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-mfloat-abi=hard",
+        "-mfpu=fpv4-sp-d16",
+        "-nostdlib",
+        "-T",
+        "fixtures/build/embedded/cortex-m.ld",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/c_types.o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/support.o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/vectors.o",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/c_types",
+        "-Wl,--gc-sections",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/arm-none-eabi-gcc/thumbv7em/O0/c_types/c_types.map",
+        "-lgcc"
+      ]
+    }
+  ]
+}

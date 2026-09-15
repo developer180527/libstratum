@@ -1,0 +1,55 @@
+{
+  "fixture": "padding",
+  "toolchain": "apple-clang",
+  "arch": "x86_64",
+  "opt": "O0",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "@(#)PROGRAM:ld PROJECT:ld-27037.1"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/padding.cpp",
+        "-o",
+        "fixtures/bin/apple-clang/x86_64/O0/padding/padding.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/x86_64/O0/padding",
+      "argv": [
+        "clang++",
+        "-arch",
+        "x86_64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "padding.o",
+        "-o",
+        "padding",
+        "-Wl,-map,padding.map",
+        "-Wl,-oso_prefix,."
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/x86_64/O0/padding",
+      "argv": [
+        "dsymutil",
+        "padding",
+        "-o",
+        "padding.dSYM"
+      ]
+    }
+  ]
+}

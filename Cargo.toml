@@ -8,7 +8,7 @@ edition = "2024"
 # MSRV tracks gimli (docs/08-decisions.md Q2).
 rust-version = "1.88"
 license = "MIT"
-repository = "https://github.com/OWNER/libstratum"
+repository = "https://github.com/developer180527/libstratum"
 publish = false
 
 [workspace.dependencies]

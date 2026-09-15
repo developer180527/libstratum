@@ -1,0 +1,57 @@
+{
+  "fixture": "odr_conflict",
+  "toolchain": "linux-gcc",
+  "arch": "x86_64",
+  "opt": "O0",
+  "host": "Linux x86_64",
+  "tools": {
+    "x86_64-linux-gnu-gcc --version": "x86_64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0",
+    "aarch64-linux-gnu-gcc --version": "aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "x86_64-linux-gnu-g++",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/odr_conflict/a.cpp",
+        "-o",
+        "fixtures/bin/linux-gcc/x86_64/O0/odr_conflict/a.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "x86_64-linux-gnu-g++",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/odr_conflict/b.cpp",
+        "-o",
+        "fixtures/bin/linux-gcc/x86_64/O0/odr_conflict/b.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "x86_64-linux-gnu-g++",
+        "fixtures/bin/linux-gcc/x86_64/O0/odr_conflict/a.o",
+        "fixtures/bin/linux-gcc/x86_64/O0/odr_conflict/b.o",
+        "-o",
+        "fixtures/bin/linux-gcc/x86_64/O0/odr_conflict/odr_conflict",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/linux-gcc/x86_64/O0/odr_conflict/odr_conflict.map"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+# Linux and embedded fixture toolchains (docs/06-testing.md §2).
+# Pin the base image by digest after the first successful build, and record the digest
+# in fixtures/build/TOOLCHAINS.md so fixture rebuilds are reproducible.
+FROM debian:trixie-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3 \
+        clang lld llvm \
+        gcc g++ \
+        gcc-aarch64-linux-gnu g++-aarch64-linux-gnu libc6-dev-arm64-cross \
+        gcc-x86-64-linux-gnu g++-x86-64-linux-gnu \
+        gcc-arm-none-eabi libnewlib-arm-none-eabi \
+        gcc-riscv64-unknown-elf \
+        dwarves \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
+# Usage (from the repo root):
+#   docker build -t libstratum-fixtures -f fixtures/build/Dockerfile.linux fixtures/build
+#   docker run --rm -v "$PWD":/work libstratum-fixtures python3 fixtures/build/build.py --toolchain linux-clang

@@ -12,7 +12,17 @@ golden/     expected libstratum-model JSON for each bin/ entry
 Binaries change only when someone deliberately re-runs the build scripts, so golden diffs show real
 toolchain differences, never incidental CI noise.
 
-Status: directory layout only. Build scripts and the first `layout/` fixtures are milestone M0.
+Status (M0): `layout/` fixtures built for apple-clang, linux-clang, linux-gcc, arm-none-eabi-gcc, arm-llvm
+and riscv-gcc (208 builds; versions in [build/TOOLCHAINS.md](build/TOOLCHAINS.md)). Windows (msvc, clang-cl)
+is pending the Windows session.
+
+```bash
+python3 fixtures/build/build.py --list
+```
+
+```bash
+python3 fixtures/build/build.py --toolchain apple-clang
+```
 
 ## Local macOS note
 

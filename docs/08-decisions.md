@@ -122,8 +122,8 @@ To change an accepted decision, add a new ADR that supersedes it. Don't edit his
 
 | # | Question | Needed by | Leaning |
 |---|---|---|---|
-| Q1 | Depend on `addr2line` directly, or vendor or adapt its logic to fit our `DebugSource` + `AddressMap` abstraction? | M4 (spike in M0) | Depend if it accepts custom loaders; otherwise adapt |
-| Q2 | Minimum supported Rust version (MSRV)? `gimli` currently requires 1.88 | M0 | Track gimli's MSRV; local toolchain is 1.94 |
+| Q1 | ~~Reuse `addr2line`?~~ **Resolved (M0 S5):** it has no line→address or function/inline-tree iteration, so inline trees and line tables are built on `gimli` directly; `addr2line` becomes a dev-dependency test oracle | — | Resolved |
+| Q2 | ~~MSRV~~: **1.88**, tracking gimli (set in the scaffold) | — | Resolved |
 | Q3 | ~~License~~: **MIT** (decided 2026-09-15). All planned dependencies (gimli, object, ms-pdb/pdb2, cpp_demangle, msvc-demangler) are MIT-compatible | — | Resolved |
 | Q4 | Crate names (checked 2026-09-15): `stratum` and `libstratum-core` are **taken** (Stratum V2 Bitcoin mining protocol, actively published); many `nexus-stratum-*` UI crates exist. **Free:** `libstratum`, `libstratum-core`, `libstratum-model`, `libstratum-cli`, `libstratum-model`, `libstratum-cli`, `libstratum-format-elf`, `libstratum-debug-pdb`. Homebrew `stratum` formula: free | — | **Resolved:** `libstratum-*` prefix for every crate, CLI binary `stratum` |
 | Q5 | ~~Facade name~~: **`libstratum`**; all crates use the `libstratum-*` prefix; the future CLI binary is named `stratum` (decided 2026-09-15) | — | Resolved |

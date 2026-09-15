@@ -1,0 +1,96 @@
+{
+  "fixture": "inheritance",
+  "toolchain": "riscv-gcc",
+  "arch": "rv32imac",
+  "opt": "O0",
+  "host": "Linux x86_64",
+  "tools": {
+    "riscv64-unknown-elf-gcc --version": "riscv64-unknown-elf-gcc (14.2.0+19) 14.2.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "riscv64-unknown-elf-g++",
+        "-march=rv32imac",
+        "-mabi=ilp32",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/inheritance.cpp",
+        "-o",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/inheritance.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "riscv64-unknown-elf-g++",
+        "-march=rv32imac",
+        "-mabi=ilp32",
+        "-std=c++17",
+        "-g",
+        "-O0",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "../build/embedded/support.cpp",
+        "-o",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/support.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "riscv64-unknown-elf-gcc",
+        "-march=rv32imac",
+        "-mabi=ilp32",
+        "-std=c11",
+        "-g",
+        "-O0",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "../build/embedded/vectors.c",
+        "-o",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/vectors.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "riscv64-unknown-elf-g++",
+        "-march=rv32imac",
+        "-mabi=ilp32",
+        "-nostdlib",
+        "-T",
+        "fixtures/build/embedded/riscv.ld",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/inheritance.o",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/support.o",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/vectors.o",
+        "-o",
+        "fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/inheritance",
+        "-Wl,--gc-sections",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/riscv-gcc/rv32imac/O0/inheritance/inheritance.map",
+        "-lgcc"
+      ]
+    }
+  ]
+}

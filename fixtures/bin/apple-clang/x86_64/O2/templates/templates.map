@@ -1,0 +1,21 @@
+# Path: templates
+# Arch: x86_64
+# Object files:
+[  0] linker synthesized
+[  1] templates.o
+[  2] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libc++.tbd
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd
+# Sections:
+# Address	Size    	Segment	Section
+0x100000410	0x0000001F	__TEXT	__text
+0x100000430	0x00000058	__TEXT	__unwind_info
+0x100001000	0x00000034	__DATA	__common
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x100000410	0x0000001F	[  1] _main
+0x100000430	0x00000058	[  0] compact unwind info
+0x100001000	0x00000010	[  1] _g_pair_char_double
+0x100001010	0x00000010	[  1] _g_pair_double_char
+0x100001020	0x00000008	[  1] _g_small_array
+0x100001028	0x0000000C	[  1] _g_nested_pair

@@ -1,0 +1,121 @@
+{
+  "fixture": "odr_conflict",
+  "toolchain": "arm-llvm",
+  "arch": "thumbv8m",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "clang --version": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld --version": "Debian LLD 19.1.7 (compatible with GNU linkers)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=thumbv8m.main-none-eabi",
+        "-mcpu=cortex-m33",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/odr_conflict/a.cpp",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/a.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=thumbv8m.main-none-eabi",
+        "-mcpu=cortex-m33",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/odr_conflict/b.cpp",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/b.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "--target=thumbv8m.main-none-eabi",
+        "-mcpu=cortex-m33",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "../build/embedded/support.cpp",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/support.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang",
+        "--target=thumbv8m.main-none-eabi",
+        "-mcpu=cortex-m33",
+        "-mfloat-abi=soft",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-fno-builtin",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "../build/embedded/vectors.c",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/vectors.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "ld.lld",
+        "-T",
+        "fixtures/build/embedded/cortex-m.ld",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/a.o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/b.o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/support.o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/vectors.o",
+        "/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main/nofp/libgcc.a",
+        "-o",
+        "fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/odr_conflict",
+        "--gc-sections",
+        "--build-id",
+        "-Map=fixtures/bin/arm-llvm/thumbv8m/O2/odr_conflict/odr_conflict.map"
+      ]
+    }
+  ]
+}

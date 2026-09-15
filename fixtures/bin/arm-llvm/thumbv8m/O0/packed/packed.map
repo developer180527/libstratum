@@ -1,0 +1,61 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 __stack_top = ORIGIN ( RAM ) + LENGTH ( RAM )
+ 8000000  8000000        8     4 .isr_vector
+ 8000000  8000000        8     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.isr_vector)
+ 8000000  8000000        8     1                 vector_table
+ 8000008  8000008       30     4 .text
+ 8000008  8000008       24     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.text.main)
+ 8000008  8000008        0     1                 $t
+ 8000009  8000009       24     1                 main
+ 800002c  800002c        c     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.text.reset_handler)
+ 800002c  800002c        0     1                 $t
+ 800002d  800002d        c     1                 reset_handler
+ 8000038  8000038       10     4 .ARM.exidx
+ 8000038  8000038       10     4         <internal>:(.ARM.exidx)
+ 8000048  8000048       24     4 .note.gnu.build-id
+ 8000048  8000048       24     4         <internal>:(.note.gnu.build-id)
+20000000 20000000       10     2 .bss
+20000000 20000000        7     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.bss.g_wire_header)
+20000000 20000000        7     1                 g_wire_header
+20000008 20000008        8     2         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.bss.g_pack2)
+20000008 20000008        8     1                 g_pack2
+       0        0      1a7     1 .debug_abbrev
+       0        0       6a     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.debug_abbrev)
+      6a       6a       cf     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_abbrev)
+     139      139       6e     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.debug_abbrev)
+       0        0      283     1 .debug_info
+       0        0       a3     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.debug_info)
+      a3       a3      18b     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_info)
+     22e      22e       55     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.debug_info)
+       0        0       d8     1 .debug_str_offsets
+       0        0       54     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.debug_str_offsets)
+      54       54       64     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_str_offsets)
+      b8       b8       20     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.debug_str_offsets)
+       0        0      1a6     1 .debug_str
+       0        0      1a6     1         <internal>:(.debug_str)
+       0        0       4c     1 .debug_addr
+       0        0       14     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.debug_addr)
+      14       14       28     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_addr)
+      3c       3c       10     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.debug_addr)
+       0        0       3e     1 .comment
+       0        0       3e     1         <internal>:(.comment)
+       0        0       44     1 .ARM.attributes
+       0        0       44     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.ARM.attributes)
+       0        0       f4     4 .debug_frame
+       0        0       28     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.debug_frame)
+      28       28       9c     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_frame)
+      c4       c4       30     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.debug_frame)
+       0        0      1e8     1 .debug_line
+       0        0       63     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/packed.o:(.debug_line)
+      63       63      12c     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_line)
+     18f      18f       59     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/vectors.o:(.debug_line)
+       0        0       4e     1 .debug_line_str
+       0        0       4e     1         <internal>:(.debug_line_str)
+       0        0       26     1 .debug_rnglists
+       0        0       26     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/packed/support.o:(.debug_rnglists)
+       0        0       c0     4 .symtab
+       0        0       c0     4         <internal>:(.symtab)
+       0        0       e6     1 .shstrtab
+       0        0       e6     1         <internal>:(.shstrtab)
+       0        0       6a     1 .strtab
+       0        0       6a     1         <internal>:(.strtab)

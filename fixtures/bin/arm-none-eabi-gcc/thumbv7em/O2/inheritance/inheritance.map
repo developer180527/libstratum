@@ -1,0 +1,195 @@
+
+Discarded input sections
+
+ .group         0x00000000        0x8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .group         0x00000000       0x10 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .group         0x00000000        0xc /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .group         0x00000000       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .text._ZNK7Derived2idEv
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .text._ZN7DerivedD2Ev
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .text._ZN7DerivedD0Ev
+                0x00000000       0x10 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .text.startup._GLOBAL__sub_I_g_with_empty_base
+                0x00000000       0x38 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .init_array    0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .rodata._ZTV7Derived
+                0x00000000       0x14 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .rodata._ZTC7Diamond8_6VRight
+                0x00000000        0xc /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .rodata._ZTC7Diamond0_5VLeft
+                0x00000000        0xc /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .rodata._ZTT7Diamond
+                0x00000000       0x10 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .rodata._ZTV7Diamond
+                0x00000000       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .bss.g_derived
+                0x00000000       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text.memset   0x00000000       0x14 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text.memcpy   0x00000000       0x14 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text.__cxa_pure_virtual
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text.__aeabi_atexit
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text.__cxa_atexit
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text._ZdlPv   0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text._ZdlPvj  0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .bss.__dso_handle
+                0x00000000        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_info    0x00000000      0x206 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_abbrev  0x00000000      0x13a /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_loclists
+                0x00000000       0xfb /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_aranges
+                0x00000000       0x50 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_rnglists
+                0x00000000       0x37 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_line    0x00000000      0x14c /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_str     0x00000000      0x1aa /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .comment       0x00000000       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .debug_frame   0x00000000       0x80 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .ARM.attributes
+                0x00000000       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+ .text          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+ .data          0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+ .bss           0x00000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00100000         xr
+RAM              0x20000000         0x00030000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/support.o
+LOAD /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/libgcc.a
+                0x20030000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000        0x8
+ *(.isr_vector)
+ .isr_vector    0x08000000        0x8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+                0x08000000                vector_table
+
+.text           0x08000008       0x28
+ *(.text .text.*)
+ .text.startup.main
+                0x08000008       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+                0x08000008                main
+ .text.reset_handler
+                0x08000028        0x8 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+                0x08000028                reset_handler
+
+.glue_7         0x08000030        0x0
+ .glue_7        0x08000030        0x0 linker stubs
+
+.glue_7t        0x08000030        0x0
+ .glue_7t       0x08000030        0x0 linker stubs
+
+.vfp11_veneer   0x08000030        0x0
+ .vfp11_veneer  0x08000030        0x0 linker stubs
+
+.v4_bx          0x08000030        0x0
+ .v4_bx         0x08000030        0x0 linker stubs
+
+.iplt           0x08000030        0x0
+ .iplt          0x08000030        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+
+.rodata
+ *(.rodata .rodata.*)
+
+.note.gnu.build-id
+                0x08000030       0x24
+ .note.gnu.build-id
+                0x08000030       0x24 linker stubs
+
+.rel.dyn        0x08000054        0x0
+ .rel.iplt      0x08000054        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+
+.ARM.exidx
+ *(.ARM.exidx*)
+
+.data
+ *(.data .data.*)
+
+.igot.plt       0x20000000        0x0 load address 0x08000054
+ .igot.plt      0x20000000        0x0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+
+.bss            0x20000000       0x34 load address 0x08000054
+ *(.bss .bss.* COMMON)
+ .bss.g_diamond
+                0x20000000       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+                0x20000000                g_diamond
+ .bss.g_multiple
+                0x20000018       0x18 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+                0x20000018                g_multiple
+ .bss.g_with_empty_base
+                0x20000030        0x4 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+                0x20000030                g_with_empty_base
+
+.noinit
+ *(.noinit .noinit.*)
+OUTPUT(/work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0xa60
+ .debug_info    0x00000000      0x9bf /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .debug_info    0x000009bf       0xa1 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.debug_abbrev   0x00000000      0x3c2
+ .debug_abbrev  0x00000000      0x312 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .debug_abbrev  0x00000312       0xb0 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.debug_loclists
+                0x00000000       0xce
+ .debug_loclists
+                0x00000000       0xce /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+
+.debug_aranges  0x00000000       0x60
+ .debug_aranges
+                0x00000000       0x40 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .debug_aranges
+                0x00000040       0x20 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.debug_rnglists
+                0x00000000       0x59
+ .debug_rnglists
+                0x00000000       0x46 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .debug_rnglists
+                0x00000046       0x13 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.debug_line     0x00000000      0x1b2
+ .debug_line    0x00000000      0x156 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .debug_line    0x00000156       0x5c /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.debug_str      0x00000000      0x59d
+ .debug_str     0x00000000      0x59d /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+                                0x4f4 (size before relaxing)
+ .debug_str     0x0000059d      0x113 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.ARM.attributes
+                0x00000000       0x34
+ .ARM.attributes
+                0x00000000       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .ARM.attributes
+                0x00000034       0x34 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o
+
+.debug_frame    0x00000000       0x98
+ .debug_frame   0x00000000       0x70 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/inheritance.o
+ .debug_frame   0x00000070       0x28 /work/fixtures/bin/arm-none-eabi-gcc/thumbv7em/O2/inheritance/vectors.o

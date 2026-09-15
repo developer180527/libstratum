@@ -1,0 +1,100 @@
+{
+  "fixture": "inheritance",
+  "toolchain": "arm-none-eabi-gcc",
+  "arch": "thumbv6m",
+  "opt": "O2",
+  "host": "Linux x86_64",
+  "tools": {
+    "arm-none-eabi-gcc --version": "arm-none-eabi-gcc (15:14.2.rel1-1) 14.2.1 20241119"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-g++",
+        "-mcpu=cortex-m0plus",
+        "-mthumb",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "layout/inheritance.cpp",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/inheritance.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-g++",
+        "-mcpu=cortex-m0plus",
+        "-mthumb",
+        "-mfloat-abi=soft",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fno-rtti",
+        "-fno-threadsafe-statics",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "../build/embedded/support.cpp",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/support.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-gcc",
+        "-mcpu=cortex-m0plus",
+        "-mthumb",
+        "-mfloat-abi=soft",
+        "-std=c11",
+        "-g",
+        "-O2",
+        "-ffreestanding",
+        "-fno-exceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-ffile-prefix-map=fixtures/src=.",
+        "-c",
+        "../build/embedded/vectors.c",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/vectors.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "arm-none-eabi-g++",
+        "-mcpu=cortex-m0plus",
+        "-mthumb",
+        "-mfloat-abi=soft",
+        "-nostdlib",
+        "-T",
+        "fixtures/build/embedded/cortex-m.ld",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/inheritance.o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/support.o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/vectors.o",
+        "-o",
+        "fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/inheritance",
+        "-Wl,--gc-sections",
+        "-Wl,--build-id",
+        "-Wl,-Map,fixtures/bin/arm-none-eabi-gcc/thumbv6m/O2/inheritance/inheritance.map",
+        "-lgcc"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 __stack_top = ORIGIN ( RAM ) + LENGTH ( RAM )
+ 8000000  8000000        8     4 .isr_vector
+ 8000000  8000000        8     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.isr_vector)
+ 8000000  8000000        8     1                 vector_table
+ 8000008  8000008       4c     4 .text
+ 8000008  8000008       3e     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.text.main)
+ 8000008  8000008        0     1                 $t
+ 8000009  8000009       3e     1                 main
+ 8000048  8000048        c     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.text.reset_handler)
+ 8000048  8000048        0     1                 $t
+ 8000049  8000049        c     1                 reset_handler
+ 8000054  8000054       10     4 .ARM.exidx
+ 8000054  8000054       10     4         <internal>:(.ARM.exidx)
+ 8000064  8000064       24     4 .note.gnu.build-id
+ 8000064  8000064       24     4         <internal>:(.note.gnu.build-id)
+20000000 20000000       44    16 .bss
+20000000 20000000        8     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.bss.g_variant)
+20000000 20000000        8     1                 g_variant
+20000008 20000008       10     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.bss.g_outer)
+20000008 20000008       10     1                 g_outer
+20000020 20000020       20    16         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.bss.g_aligned)
+20000020 20000020       20     1                 g_aligned
+20000040 20000040        4     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.bss.g_holder)
+20000040 20000040        4     1                 g_holder
+       0        0      1fd     1 .debug_abbrev
+       0        0       c0     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.debug_abbrev)
+      c0       c0       cf     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_abbrev)
+     18f      18f       6e     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.debug_abbrev)
+       0        0      317     1 .debug_info
+       0        0      137     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.debug_info)
+     137      137      18b     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_info)
+     2c2      2c2       55     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.debug_info)
+       0        0      110     1 .debug_str_offsets
+       0        0       8c     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.debug_str_offsets)
+      8c       8c       64     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_str_offsets)
+      f0       f0       20     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.debug_str_offsets)
+       0        0      1f5     1 .debug_str
+       0        0      1f5     1         <internal>:(.debug_str)
+       0        0       54     1 .debug_addr
+       0        0       1c     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.debug_addr)
+      1c       1c       28     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_addr)
+      44       44       10     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.debug_addr)
+       0        0       3e     1 .comment
+       0        0       3e     1         <internal>:(.comment)
+       0        0       44     1 .ARM.attributes
+       0        0       44     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.ARM.attributes)
+       0        0       f4     4 .debug_frame
+       0        0       28     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.debug_frame)
+      28       28       9c     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_frame)
+      c4       c4       30     4         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.debug_frame)
+       0        0      1f4     1 .debug_line
+       0        0       6f     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/anonymous.o:(.debug_line)
+      6f       6f      12c     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_line)
+     19b      19b       59     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/vectors.o:(.debug_line)
+       0        0       51     1 .debug_line_str
+       0        0       51     1         <internal>:(.debug_line_str)
+       0        0       26     1 .debug_rnglists
+       0        0       26     1         /work/fixtures/bin/arm-llvm/thumbv8m/O0/anonymous/support.o:(.debug_rnglists)
+       0        0       e0     4 .symtab
+       0        0       e0     4         <internal>:(.symtab)
+       0        0       e6     1 .shstrtab
+       0        0       e6     1         <internal>:(.shstrtab)
+       0        0       7c     1 .strtab
+       0        0       7c     1         <internal>:(.strtab)

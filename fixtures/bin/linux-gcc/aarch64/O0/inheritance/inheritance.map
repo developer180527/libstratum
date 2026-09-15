@@ -1,0 +1,690 @@
+
+Merging program properties
+
+Updated property 0xc0000000 (0x3) to merge /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o (0x3) and /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o (0x7)
+Removed property 0xc0000000 to merge /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o (0x3) and /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o (not found)
+Removed property 0xc0000000 to merge /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o (not found) and /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o (0x3)
+Removed property 0xc0000000 to merge /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o (not found) and /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o (0x7)
+
+As-needed library included to satisfy reference by file (symbol)
+
+libstdc++.so.6                /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o (vtable for __cxxabiv1::__class_type_info@@CXXABI_1.3)
+libc.so.6                     /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o (__cxa_atexit@@GLIBC_2.17)
+
+Discarded input sections
+
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ .group         0x0000000000000000       0x14 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000       0x24 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000       0x14 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0xc /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .group         0x0000000000000000        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+ .note.gnu.property
+                0x0000000000000000       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+LOAD /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libstdc++.so
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/libm.so
+START GROUP
+LOAD /usr/aarch64-linux-gnu/lib/libm.so.6
+LOAD /usr/aarch64-linux-gnu/lib/libmvec.so.1
+END GROUP
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/libgcc_s.so.1
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libgcc.a
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/libc.so
+START GROUP
+LOAD /usr/aarch64-linux-gnu/lib/libc.so.6
+LOAD /usr/aarch64-linux-gnu/lib/libc_nonshared.a
+LOAD /usr/aarch64-linux-gnu/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/libgcc_s.so.1
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/libgcc.a
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+LOAD /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x0))
+                0x0000000000000270                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+                0x0000000000000270       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x0000000000000270       0x24 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.interp         0x0000000000000294       0x1b
+ *(.interp)
+ .interp        0x0000000000000294       0x1b /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000002b0       0x1c
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000002b0       0x1c /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.dynsym         0x00000000000002d0      0x150
+ *(.dynsym)
+ .dynsym        0x00000000000002d0      0x150 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.dynstr         0x0000000000000420      0x142
+ *(.dynstr)
+ .dynstr        0x0000000000000420      0x142 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.gnu.version    0x0000000000000562       0x1c
+ *(.gnu.version)
+ .gnu.version   0x0000000000000562       0x1c /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.gnu.version_d  0x0000000000000580        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000000580        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.gnu.version_r  0x0000000000000580       0x60
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000000580       0x60 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.rela.dyn       0x00000000000005e0      0x3f0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.ro
+                0x00000000000005e0        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.local
+                0x00000000000005e0       0x18 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro.local._ZTV7Diamond
+                0x00000000000005f8       0x30 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro.local._ZTT7Diamond
+                0x0000000000000628       0x60 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro.local._ZTC7Diamond0_5VLeft
+                0x0000000000000688       0x18 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro.local._ZTC7Diamond16_6VRight
+                0x00000000000006a0       0x18 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro.local._ZTV7Derived
+                0x00000000000006b8       0x60 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro.local._ZTV11Polymorphic
+                0x0000000000000718       0x60 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro._ZTI7Diamond
+                0x0000000000000778       0x60 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro._ZTI6VRight
+                0x00000000000007d8       0x48 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro._ZTI5VLeft
+                0x0000000000000820       0x48 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro._ZTI7Derived
+                0x0000000000000868       0x48 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro._ZTI11Polymorphic
+                0x00000000000008b0       0x30 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.data.rel.ro._ZTI5VBase
+                0x00000000000008e0       0x30 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000000910       0x78 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ .rela.bss      0x0000000000000988        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000000988        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.fini_array
+                0x0000000000000988       0x18 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .rela.init_array
+                0x00000000000009a0       0x30 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.rela.plt       0x00000000000009d0       0x90
+ *(.rela.plt)
+ .rela.plt      0x00000000000009d0       0x90 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.rela.iplt)
+
+.relr.dyn
+ *(.relr.dyn)
+
+.init           0x0000000000000a60       0x1c
+ *(SORT_NONE(.init))
+ .init          0x0000000000000a60       0x10 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+                0x0000000000000a60                _init
+ .init          0x0000000000000a70        0xc /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+
+.plt            0x0000000000000a80       0x80
+ *(.plt)
+ .plt           0x0000000000000a80       0x80 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.iplt)
+
+.text           0x0000000000000b00      0x3c8
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000000b00       0x34 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+                0x0000000000000b00                _start
+ .text          0x0000000000000b34       0x14 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+ *fill*         0x0000000000000b48       0x18 1f2003d5
+ .text          0x0000000000000b60       0xc8 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ .text          0x0000000000000c28        0x0 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .text._ZN11PolymorphicD2Ev
+                0x0000000000000c28       0x24 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000c28                Polymorphic::~Polymorphic()
+                0x0000000000000c28                Polymorphic::~Polymorphic()
+ .text._ZN11PolymorphicD0Ev
+                0x0000000000000c4c       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000c4c                Polymorphic::~Polymorphic()
+ .text._ZNK11Polymorphic2idEv
+                0x0000000000000c74       0x14 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000c74                Polymorphic::id() const
+ .text._ZNK7Derived2idEv
+                0x0000000000000c88       0x14 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000c88                Derived::id() const
+ .text._ZN11PolymorphicC2Ev
+                0x0000000000000c9c       0x24 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000c9c                Polymorphic::Polymorphic()
+                0x0000000000000c9c                Polymorphic::Polymorphic()
+ .text._ZN7DerivedC2Ev
+                0x0000000000000cc0       0x30 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000cc0                Derived::Derived()
+                0x0000000000000cc0                Derived::Derived()
+ .text._ZN5VLeftC2Ev
+                0x0000000000000cf0       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000cf0                VLeft::VLeft()
+ .text._ZN6VRightC2Ev
+                0x0000000000000d18       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000d18                VRight::VRight()
+ .text._ZN7DiamondC1Ev
+                0x0000000000000d40       0x6c /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000d40                Diamond::Diamond()
+ .text.main     0x0000000000000dac       0x68 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000dac                main
+ .text._ZN7DerivedD2Ev
+                0x0000000000000e14       0x30 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000e14                Derived::~Derived()
+                0x0000000000000e14                Derived::~Derived()
+ .text._ZN7DerivedD0Ev
+                0x0000000000000e44       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000e44                Derived::~Derived()
+ .text._Z41__static_initialization_and_destruction_0v
+                0x0000000000000e6c       0x48 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .text._GLOBAL__sub_I_g_with_empty_base
+                0x0000000000000eb4       0x14 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .text          0x0000000000000ec8        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+ .text          0x0000000000000ec8        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x0000000000000ec8       0x18
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000000ec8        0xc /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+                0x0000000000000ec8                _fini
+ .fini          0x0000000000000ed4        0xc /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x0000000000000ee0       0x4f
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x0000000000000ee0        0x4 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+                0x0000000000000ee0                _IO_stdin_used
+ *fill*         0x0000000000000ee4        0x4 
+ .rodata._ZTS7Diamond
+                0x0000000000000ee8        0x9 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000ee8                typeinfo name for Diamond
+ *fill*         0x0000000000000ef1        0x7 
+ .rodata._ZTS6VRight
+                0x0000000000000ef8        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000ef8                typeinfo name for VRight
+ .rodata._ZTS5VLeft
+                0x0000000000000f00        0x7 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000f00                typeinfo name for VLeft
+ *fill*         0x0000000000000f07        0x1 
+ .rodata._ZTS7Derived
+                0x0000000000000f08        0x9 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000f08                typeinfo name for Derived
+ *fill*         0x0000000000000f11        0x7 
+ .rodata._ZTS11Polymorphic
+                0x0000000000000f18        0xe /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000f18                typeinfo name for Polymorphic
+ *fill*         0x0000000000000f26        0x2 
+ .rodata._ZTS5VBase
+                0x0000000000000f28        0x7 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000000f28                typeinfo name for VBase
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000000f30       0xa4
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000000f30       0xa4 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+                0x0000000000000f30                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000000fd8      0x224
+ *(.eh_frame)
+ .eh_frame      0x0000000000000fd8       0x28 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .eh_frame      0x0000000000001000       0x68 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x0000000000001068      0x190 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                                        0x1a8 (size before relaxing)
+ .eh_frame      0x00000000000011f8        0x4 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.note.build-id
+ *(.note.build-id)
+
+.note.GNU-stack
+                0x00000000000011fc        0x0
+ *(.note.GNU-stack)
+ .note.GNU-stack
+                0x00000000000011fc        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .note.GNU-stack
+                0x00000000000011fc        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+ .note.GNU-stack
+                0x00000000000011fc        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ .note.GNU-stack
+                0x00000000000011fc        0x0 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .note.GNU-stack
+                0x00000000000011fc        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+ .note.GNU-stack
+                0x00000000000011fc        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+
+.note.gnu-property
+ *(.note.gnu-property)
+
+.note.ABI-tag   0x00000000000011fc       0x20
+ *(.note.ABI-tag)
+ .note.ABI-tag  0x00000000000011fc       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.note.package   0x000000000000121c       0x74
+ *(.note.package)
+ .note.package  0x000000000000121c       0x74 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+
+.note.dlopen
+ *(.note.dlopen)
+
+.note.netbsd.ident
+ *(.note.netbsd.ident)
+
+.note.openbsd.ident
+ *(.note.openbsd.ident)
+                0x000000000001fc20                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x000000000001fc20        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x000000000001fc20        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x000000000001fc20       0x10
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x000000000001fc20        0x8 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ .init_array    0x000000000001fc28        0x8 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x000000000001fc30        0x8
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x000000000001fc30        0x8 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x000000000001fc38      0x190
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local._ZTV7Diamond
+                0x000000000001fc38       0x30 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fc38                vtable for Diamond
+ .data.rel.ro.local._ZTT7Diamond
+                0x000000000001fc68       0x20 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fc68                VTT for Diamond
+ .data.rel.ro.local._ZTC7Diamond0_5VLeft
+                0x000000000001fc88       0x18 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fc88                construction vtable for VLeft-in-Diamond
+ .data.rel.ro.local._ZTC7Diamond16_6VRight
+                0x000000000001fca0       0x18 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fca0                construction vtable for VRight-in-Diamond
+ .data.rel.ro.local._ZTV7Derived
+                0x000000000001fcb8       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fcb8                vtable for Derived
+ .data.rel.ro.local._ZTV11Polymorphic
+                0x000000000001fce0       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fce0                vtable for Polymorphic
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x000000000001fd08        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .data.rel.ro._ZTI7Diamond
+                0x000000000001fd08       0x38 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fd08                typeinfo for Diamond
+ .data.rel.ro._ZTI6VRight
+                0x000000000001fd40       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fd40                typeinfo for VRight
+ .data.rel.ro._ZTI5VLeft
+                0x000000000001fd68       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fd68                typeinfo for VLeft
+ .data.rel.ro._ZTI7Derived
+                0x000000000001fd90       0x18 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fd90                typeinfo for Derived
+ .data.rel.ro._ZTI11Polymorphic
+                0x000000000001fda8       0x10 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fda8                typeinfo for Polymorphic
+ .data.rel.ro._ZTI5VBase
+                0x000000000001fdb8       0x10 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x000000000001fdb8                typeinfo for VBase
+
+.dynamic        0x000000000001fdc8      0x1f0
+ *(.dynamic)
+ .dynamic       0x000000000001fdc8      0x1f0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+                0x000000000001fdc8                _DYNAMIC
+
+.got            0x000000000001ffb8       0x30
+ *(.got)
+ .got           0x000000000001ffb8       0x30 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+                0x000000000001ffb8                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x000000000001ffe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x000000000001ffe8       0x48
+ *(.got.plt)
+ .got.plt       0x000000000001ffe8       0x48 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.igot.plt)
+
+.data           0x0000000000020030       0x10
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000020030        0x4 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+                0x0000000000020030                data_start
+                0x0000000000020030                __data_start
+ .data          0x0000000000020034        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+ .data          0x0000000000020034        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ *fill*         0x0000000000020034        0x4 
+ .data.rel.local
+                0x0000000000020038        0x8 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+                0x0000000000020038                __dso_handle
+ .data          0x0000000000020040        0x0 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .data          0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+ .data          0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+
+.tm_clone_table
+                0x0000000000020040        0x0
+ .tm_clone_table
+                0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ .tm_clone_table
+                0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+
+.data1
+ *(.data1)
+                0x0000000000020040                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000020040                . = ALIGN (ALIGNOF (NEXT_SECTION))
+                0x0000000000020040                __bss_start = .
+                0x0000000000020040                __bss_start__ = .
+
+.bss            0x0000000000020040       0x70
+ *(.dynbss)
+ .dynbss        0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/Scrt1.o
+ .bss           0x0000000000020040        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crti.o
+ .bss           0x0000000000020040        0x1 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+ .bss           0x0000000000020041        0x0 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ *fill*         0x0000000000020041        0x7 
+ .bss.g_with_empty_base
+                0x0000000000020048        0x4 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000020048                g_with_empty_base
+ *fill*         0x000000000002004c        0x4 
+ .bss.g_multiple
+                0x0000000000020050       0x18 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000020050                g_multiple
+ .bss.g_derived
+                0x0000000000020068       0x20 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000020068                g_derived
+ .bss.g_diamond
+                0x0000000000020088       0x28 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                0x0000000000020088                g_diamond
+ .bss           0x00000000000200b0        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+ .bss           0x00000000000200b0        0x0 /usr/lib/gcc-cross/aarch64-linux-gnu/14/../../../../aarch64-linux-gnu/lib/../lib/crtn.o
+ *(COMMON)
+                0x00000000000200b0                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x00000000000200b0                _bss_end__ = .
+                0x00000000000200b0                __bss_end__ = .
+                0x00000000000200b0                . = ALIGN (0x8)
+                0x00000000000200b0                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000000200b0                . = ALIGN (0x8)
+                0x00000000000200b0                __end__ = .
+                0x00000000000200b0                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x00000000000200b0                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x1f
+ *(.comment)
+ .comment       0x0000000000000000       0x1f /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtbeginS.o
+                                         0x20 (size before relaxing)
+ .comment       0x000000000000001f       0x20 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+ .comment       0x000000000000001f       0x20 /usr/lib/gcc-cross/aarch64-linux-gnu/14/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x100
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000      0x100 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000      0x8c3
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0x8c3 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+
+.debug_abbrev   0x0000000000000000      0x25a
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x25a /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+
+.debug_line     0x0000000000000000      0x1da
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x1da /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000      0x3fb
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x3fb /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                                        0x441 (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x0000000000000000       0x20
+ *(.debug_line_str)
+ .debug_line_str
+                0x0000000000000000       0x20 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+                                         0x42 (size before relaxing)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x0000000000000000       0x99
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x0000000000000000       0x99 /work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+ *(.gnu_object_only)
+OUTPUT(/work/fixtures/bin/linux-gcc/aarch64/O0/inheritance/inheritance elf64-littleaarch64)
+LOAD linker stubs
