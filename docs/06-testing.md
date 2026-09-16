@@ -56,6 +56,7 @@ Not every fixture runs every combination; `fixtures.toml` declares the toolchain
 | Golden | Query outputs over the fixture corpus | `insta` JSON snapshots; review changes with `cargo insta review` |
 | Cross-check | `fixtures/crosscheck/crosscheck.py` (Docker image) compares every golden layout with `llvm-dwarfdump`, `pahole` and `llvm-pdbutil`. Also compare with reference tools where they overlap: `dwarfdump`/`llvm-dwarfdump`, `pahole`, `llvm-pdbutil`, `/d1reportSingleClassLayout` (layouts); `addr2line -i`, `atos`, `llvm-symbolizer` (inline frames, including PDB); `nm`/maps/`arm-none-eabi-size` (symbols, sizes) | Scripts in `fixtures/crosscheck/`, run by `.github/workflows/crosscheck.yml`: nightly, on demand, and on any pull request touching `fixtures/` |
 | Robustness | Truncated or corrupt inputs never panic | `cargo fuzz` targets for probe/open, DWARF unit walk, map parsers |
+| Host sweep | Every binary the host ships opens or is refused with a diagnostic — never a panic, abort or hang. Covers shapes no fixture has (resource-only and managed PEs, 32-bit PE32, stripped and prelinked ELF, universal Mach-O) and is our only real-world PE coverage | `scripts/sweep.py`, run by `.github/workflows/sweep.yml` on all three hosted runners: weekly, on demand, and on any pull request touching the sweep |
 | API contract | JSON Schemas generated from `libstratum-model` match the committed `schemas/`; semver checks | `schemars`, `cargo-semver-checks` |
 | Performance | See §4 | `criterion` |
 

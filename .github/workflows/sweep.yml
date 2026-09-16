@@ -1,0 +1,40 @@
+# Opens every binary each hosted runner ships and fails if any input crashes or hangs
+# (scripts/sweep.py, docs/06-testing.md §3). This is the only coverage we have of real-world
+# PE: there is no Windows host to sweep by hand, and the fixture corpus is all our own output.
+#
+# Not part of `ci`: it costs a few minutes per runner and its corpus changes only when GitHub
+# updates the images, so it runs weekly, on demand, and when the sweep itself changes.
+name: sweep
+
+on:
+  schedule:
+    # Mondays, 04:00 UTC.
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      max_files:
+        description: "Cap on files per runner (0 = no cap)"
+        required: false
+        default: "4000"
+  pull_request:
+    paths:
+      - scripts/sweep.py
+      - .github/workflows/sweep.yml
+
+jobs:
+  sweep:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - run: rustup toolchain install
+      - run: cargo build --examples -p libstratum
+      - name: Sweep the host's own binaries
+        shell: bash
+        run: |
+          python_bin=python3
+          [ "${{ runner.os }}" = "Windows" ] && python_bin=python
+          "$python_bin" scripts/sweep.py --max-files "${{ github.event.inputs.max_files || '4000' }}"
