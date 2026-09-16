@@ -1,0 +1,164 @@
+{
+  "CharAndBits": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 1,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/overlap.cpp",
+          "line": 18
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": null,
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "(anonymous union)"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "tail",
+            "offset_bits": 8,
+            "size_bits": 8,
+            "type_name": "unsigned char"
+          }
+        ],
+        "name": "CharAndBits",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 2,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "CharAndBits"
+  },
+  "EmptyAndChar": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 1,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/overlap.cpp",
+          "line": 28
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "e",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "Nothing"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "c",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "char"
+          }
+        ],
+        "name": "EmptyAndChar",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 1,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "EmptyAndChar"
+  },
+  "TinyUnion": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 1,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "layout/overlap.cpp",
+          "line": 10
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": "tag",
+            "offset_bits": 0,
+            "size_bits": 8,
+            "type_name": "unsigned char"
+          },
+          {
+            "align_bytes": 1,
+            "kind": "field",
+            "name": null,
+            "offset_bits": 8,
+            "size_bits": 8,
+            "type_name": "(anonymous union)"
+          }
+        ],
+        "name": "TinyUnion",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 2,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "TinyUnion"
+  }
+}

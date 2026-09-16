@@ -141,9 +141,7 @@ fn fixture_types_have_expected_layouts_on_every_toolchain() {
                 }
 
                 // Declared but never defined: reported as a declaration, not as "no such type".
-                // Windows builds of `opaque` come from the fixtures workflow (pending until it runs).
-                let opaque_dir = fixtures().join(toolchain).join(arch).join(opt).join("opaque");
-                if opaque_dir.is_dir() {
+                {
                     let s = open("opaque");
                     let opaque = s.struct_layout("Opaque").unwrap();
                     assert!(opaque.matches.is_empty(), "{}", label("opaque", "Opaque"));
@@ -154,20 +152,12 @@ fn fixture_types_have_expected_layouts_on_every_toolchain() {
                         opaque.not_found_reason
                     );
                     assert_eq!(one(&s, "opaque", "Defined").size_bytes, 4);
-                } else {
-                    assert!(
-                        matches!(*toolchain, "msvc" | "clang-cl"),
-                        "{}: opaque fixture missing",
-                        label("opaque", "")
-                    );
                 }
 
                 // Storage shared at the smallest sizes (reviewer check): PDBs flatten anonymous unions, so
                 // their members overlap and must be noted even when they're a single byte; DWARF keeps the
                 // union as one member. An empty [[no_unique_address]] member sharing an address is not noted.
-                // Non-Apple builds of `overlap` come from the fixtures workflow (pending until it runs).
-                let overlap_dir = fixtures().join(toolchain).join(arch).join(opt).join("overlap");
-                if overlap_dir.is_dir() {
+                {
                     let s = open("overlap");
                     let pdb = matches!(*toolchain, "msvc" | "clang-cl");
                     let shares = |layout: &libstratum::model::TypeLayout, names: &str| {
@@ -186,8 +176,6 @@ fn fixture_types_have_expected_layouts_on_every_toolchain() {
                         label("overlap", "EmptyAndChar"),
                         empty.notes
                     );
-                } else {
-                    assert_ne!(*toolchain, "apple-clang", "{}: overlap fixture missing", label("overlap", ""));
                 }
 
                 checked += 1;

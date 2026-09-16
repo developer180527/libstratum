@@ -104,8 +104,8 @@ External review of M2, all addressed:
    checked against brute force over every permutation (2000 random member mixes).
 2. **Shared-storage detection** no longer uses a `> 1 byte` shortcut. It uses the real invariant (non-empty data members
    with intersecting bit ranges); backends report empty member types. New fixture `layout/overlap.cpp`
-   (`union { char; char; }`, char vs bitfield, empty `[[no_unique_address]]` member). Non-Apple builds of it come from the
-   fixtures workflow.
+   (`union { char; char; }`, char vs bitfield, empty `[[no_unique_address]]` member), built on all 10 toolchains; the
+   MSVC and clang-cl PDBs confirm single-byte flattened unions are now noted and the empty member is not.
 3. **Q4** contradicted itself after a crate rename (`stratum-core`, taken, had become `libstratum-core`); corrected and
    re-verified against crates.io.
 4. **README** says plainly that no end-user program exists yet and only the layout lens works.

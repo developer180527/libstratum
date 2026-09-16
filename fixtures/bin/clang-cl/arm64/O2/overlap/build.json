@@ -1,0 +1,46 @@
+{
+  "fixture": "overlap",
+  "toolchain": "clang-cl",
+  "arch": "arm64",
+  "opt": "O2",
+  "host": "Windows AMD64",
+  "tools": {
+    "clang-cl --version": "clang version 20.1.8",
+    "lld-link --version": "LLD 20.1.8"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang-cl",
+        "/nologo",
+        "--target=aarch64-pc-windows-msvc",
+        "/std:c++17",
+        "/TP",
+        "/Z7",
+        "/O2",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/c",
+        "layout/overlap.cpp",
+        "/Fofixtures/bin/clang-cl/arm64/O2/overlap/overlap.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "lld-link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/OPT:REF",
+        "/OPT:ICF",
+        "/MAP:fixtures/bin/clang-cl/arm64/O2/overlap/overlap.map",
+        "/PDB:fixtures/bin/clang-cl/arm64/O2/overlap/overlap.pdb",
+        "/OUT:fixtures/bin/clang-cl/arm64/O2/overlap/overlap.exe",
+        "fixtures/bin/clang-cl/arm64/O2/overlap/overlap.obj"
+      ]
+    }
+  ]
+}
