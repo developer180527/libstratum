@@ -329,7 +329,50 @@ impl DwarfReader {
             offset_bits: offset_bytes * 8,
             size_bits: size_bytes * 8,
             align_bytes: ty.as_ref().and_then(|t| self.type_align(unit, t, 0)),
+            empty_type: ty.as_ref().is_some_and(|t| self.type_is_empty(unit, t, 0)),
         })
+    }
+
+    /// Whether a type has no data: a class/struct without non-static data members, vtable pointer or
+    /// virtual bases, whose bases are all empty too (followed through typedefs and cv-qualifiers).
+    fn type_is_empty(&self, unit: usize, value: &AttributeValue<R>, depth: usize) -> bool {
+        if depth > Self::MAX_DEPTH {
+            return false;
+        }
+        let Some((unit, die)) = self.resolve(unit, value) else { return false };
+        match die.tag() {
+            constants::DW_TAG_typedef | constants::DW_TAG_const_type | constants::DW_TAG_volatile_type => {
+                die.attr_value(constants::DW_AT_type).is_some_and(|t| self.type_is_empty(unit, &t, depth + 1))
+            }
+            constants::DW_TAG_structure_type | constants::DW_TAG_class_type => {
+                if flag(&die, constants::DW_AT_declaration) {
+                    return false;
+                }
+                let Ok(mut tree) = self.unit_ref(unit).entries_tree(Some(die.offset())) else { return false };
+                let Ok(root) = tree.root() else { return false };
+                let mut children = root.children();
+                while let Ok(Some(child)) = children.next() {
+                    let e = child.entry();
+                    match e.tag() {
+                        constants::DW_TAG_member if !flag(e, constants::DW_AT_declaration) => return false,
+                        constants::DW_TAG_inheritance => {
+                            let is_virtual = e.attr_value(constants::DW_AT_virtuality).is_some_and(|v| {
+                                !matches!(v, AttributeValue::Virtuality(constants::DW_VIRTUALITY_none))
+                            });
+                            let base_empty = e
+                                .attr_value(constants::DW_AT_type)
+                                .is_some_and(|t| self.type_is_empty(unit, &t, depth + 1));
+                            if is_virtual || !base_empty {
+                                return false;
+                            }
+                        }
+                        _ => {}
+                    }
+                }
+                true
+            }
+            _ => false,
+        }
     }
 
     fn decl(&self, unit: usize, die: &gimli::DebuggingInformationEntry<R>) -> Option<SourceLoc> {

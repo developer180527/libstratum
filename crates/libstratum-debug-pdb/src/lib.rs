@@ -190,6 +190,31 @@ impl TypeContext<'_, '_> {
         }
     }
 
+    /// Whether a type has no data: a class without data members, vfptr or virtual bases, whose bases
+    /// are empty too (followed through cv-modifiers and forward references).
+    fn is_empty(&self, index: TypeIndex, depth: usize) -> bool {
+        if depth > MAX_DEPTH {
+            return false;
+        }
+        let fields = match self.data(index) {
+            Some(TypeData::Modifier(m)) => return self.is_empty(m.underlying_type, depth + 1),
+            Some(TypeData::Class(c)) if c.properties.forward_reference() => {
+                match self.definitions.get(c.name.to_string().as_ref()) {
+                    Some((_, fields)) => *fields,
+                    None => return false,
+                }
+            }
+            Some(TypeData::Class(c)) => c.fields,
+            _ => return false,
+        };
+        let Some(fields) = fields else { return true };
+        self.fields(fields).iter().all(|field| match field {
+            TypeData::Member(_) | TypeData::VirtualFunctionTablePointer(_) | TypeData::VirtualBaseClass(_) => false,
+            TypeData::BaseClass(b) => self.is_empty(b.base_class, depth + 1),
+            _ => true,
+        })
+    }
+
     fn aggregate_align(&self, fields: TypeIndex, depth: usize) -> Option<u64> {
         let mut align = 1u64;
         for field in self.fields(fields) {
@@ -403,6 +428,7 @@ impl DebugReader for PdbReader {
                                 offset_bits: m.offset * 8,
                                 size_bits: context.size(m.field_type, 0).unwrap_or(0) * 8,
                                 align_bytes: context.align(m.field_type, 0),
+                                empty_type: context.is_empty(m.field_type, 0),
                             }),
                         }
                     }

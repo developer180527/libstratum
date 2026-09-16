@@ -61,3 +61,8 @@ sources = ["layout/opaque.c"]
 name = "thinlto"
 group = "debugmap"
 sources = ["debugmap/thinlto.cpp", "debugmap/thinlto_b.cpp"]
+
+[[fixtures]]
+name = "overlap"
+group = "layout"
+sources = ["layout/overlap.cpp"]

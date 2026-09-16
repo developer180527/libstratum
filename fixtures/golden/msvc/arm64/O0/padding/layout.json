@@ -108,6 +108,7 @@
         "size_bytes": 1,
         "suggestion": {
           "caveats": [
+            "smallest size reachable by reordering these members, given the member alignments shown",
             "changes the type's ABI and any serialized representation",
             "consider access locality: fields used together should stay close"
           ],
@@ -191,6 +192,7 @@
         "size_bytes": 24,
         "suggestion": {
           "caveats": [
+            "smallest size reachable by reordering these members, given the member alignments shown",
             "changes the type's ABI and any serialized representation",
             "consider access locality: fields used together should stay close"
           ],

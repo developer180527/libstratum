@@ -18,6 +18,7 @@ const TYPES: &[(&str, &[&str])] = &[
     ("c_types", &["Point", "Number", "Message"]),
     ("odr_conflict", &["Config"]),
     ("opaque", &["Opaque", "Defined"]),
+    ("overlap", &["TinyUnion", "CharAndBits", "EmptyAndChar"]),
 ];
 
 #[test]

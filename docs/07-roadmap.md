@@ -96,6 +96,36 @@ Findings:
 
 **Exit:** the same C++ fixture yields equivalent layout goldens on MSVC/PDB, Clang/ELF, GCC/ELF, Apple Clang/Mach-O and Cortex-M, and cross-checks agree (`llvm-pdbutil`, `/d1reportSingleClassLayout`, `dwarfdump`, `pahole`). **If the IR leaks PDB- or DWARF-specific concepts here, stop and fix the IR before M3.**
 
+## Review follow-ups (2026-09-17)
+
+External review of M2, all addressed:
+1. **Reorder suggestions** now carry a proof of minimality (doc comment on `suggest_reorder`), check its preconditions at
+   runtime (no suggestion if they fail), keep flexible array members last, state the guarantee in the caveats, and are
+   checked against brute force over every permutation (2000 random member mixes).
+2. **Shared-storage detection** no longer uses a `> 1 byte` shortcut. It uses the real invariant (non-empty data members
+   with intersecting bit ranges); backends report empty member types. New fixture `layout/overlap.cpp`
+   (`union { char; char; }`, char vs bitfield, empty `[[no_unique_address]]` member). Non-Apple builds of it come from the
+   fixtures workflow.
+3. **Q4** contradicted itself after a crate rename (`stratum-core`, taken, had become `libstratum-core`); corrected and
+   re-verified against crates.io.
+4. **README** says plainly that no end-user program exists yet and only the layout lens works.
+5. **Known limitations** are tracked below; best-effort numbers for virtual-base types are open question Q16.
+
+## Known limitations
+
+Limits of what is implemented, stated so no answer reads as more certain than it is. Each links to the milestone or
+open question that addresses it.
+
+| Area | Limitation | Tracked by |
+|---|---|---|
+| Layout: virtual inheritance | Types with virtual bases anywhere in their hierarchy report members only: **no holes, padding or reorder suggestion**, because hidden subobjects and MSVC's implicit vbptr occupy bytes no member record describes. Correct but not actionable for such types | Q16 |
+| Layout: reorder suggestions | Proven minimal only under their stated preconditions (power-of-two alignments, sizes that are multiples of alignment, no bitfields, not packed). Member alignments come from the debug info when recorded, otherwise from type sizes | `libstratum_core::layout::suggest_reorder` docs |
+| Layout: flattened anonymous unions | PDBs don't record anonymous unions; the lens notes non-empty members whose storage overlaps (any size, bitfields included) but can't restore the grouping | M2 findings |
+| Layout: type units | With `-fdebug-types-section`, the linker keeps one definition per type *name*, so ODR conflicts are invisible in that binary | M2 findings |
+| Correlation, elimination | Not implemented. "This line was eliminated" claims need the `-O0` reference-build comparison | M4, Q9 |
+| Symbols, sizes, regions | Not implemented | M3 |
+| Distribution | No CLI or binary release; library API only, unpublished | ADR-0020 |
+
 ## M3: Symbols, sections, sizes, memory regions
 - Symbol sources: ELF symtab, Mach-O nlist + map sizes, PDB publics/procs (PE)
 - Summaries across VM/file/load, grouped `region > section > unit > symbol`, with utilization

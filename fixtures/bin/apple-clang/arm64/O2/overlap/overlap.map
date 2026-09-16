@@ -1,0 +1,20 @@
+# Path: overlap
+# Arch: arm64
+# Object files:
+[  0] linker synthesized
+[  1] overlap.o
+[  2] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libc++.tbd
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd
+# Sections:
+# Address	Size    	Segment	Section
+0x1000003F8	0x00000024	__TEXT	__text
+0x10000041C	0x00000058	__TEXT	__unwind_info
+0x100004000	0x00000005	__DATA	__common
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x1000003F8	0x00000024	[  1] _main
+0x10000041C	0x00000058	[  0] compact unwind info
+0x100004000	0x00000002	[  1] _g_tiny
+0x100004002	0x00000002	[  1] _g_char_and_bits
+0x100004004	0x00000001	[  1] _g_empty_and_char

@@ -41,9 +41,21 @@ For every debug source and unit: offset, `DW_AT_name`, `DW_AT_comp_dir`, `DW_AT_
 5. **Compute holes:** walk sorted entries in bits; gaps become `Hole { offset, size }`; `size*8 − end_of_last` is tail padding. Bitfield storage units are handled per pahole's model.
 6. **Alignment:** `DW_AT_alignment` if present (emitted for explicit `alignas`); otherwise the max member alignment, recursively, from base types (`Evidence::Computed`).
 7. **Cache lines:** mark boundaries every `cacheline` bytes (default 64) and list which members straddle a boundary.
-8. **Reorder suggestion:** a stable sort by (alignment desc, size desc), keeping bitfield runs together. Bases, vptr and virtual bases are never moved. Recompute size with ABI rules; suggest only if smaller. Caveats are always attached ("changes ABI/serialization", "check access locality").
+8. **Reorder suggestion:** decreasing alignment, then decreasing size; a flexible array member stays last. Offered only
+   when it shrinks the type and its preconditions hold (power-of-two alignments, sizes that are multiples of alignment,
+   plain fields, not packed). Under those preconditions the order is **provably minimal** over all orderings: any order
+   needs at least `round_up(Σ size, struct alignment)`, and in decreasing-alignment order every running offset is
+   already aligned, so no padding is inserted (proof in `libstratum_core::layout::suggest_reorder`, checked against
+   brute force over all permutations). Bases, vptr and virtual bases are never moved. Caveats are always attached.
 
 **Limits:** layouts reflect what *this* build (flags, target, `#ifdef`s) produced. No debug info → no layout. Types never used by the program aren't emitted by Clang at all.
+
+
+**Members sharing storage.** In a struct, two *non-empty* data members (fields or bitfields) whose bit ranges intersect
+get a note: that's an anonymous union flattened by the debug format (PDBs never record the union). Members whose type
+is empty are excluded because `[[no_unique_address]]` lets them share an address by design; bitfields in one storage unit
+occupy disjoint bits. No size threshold is involved: `union { char a; char b; }` is detected
+(fixture `layout/overlap.cpp`).
 
 ## 3. Sections, symbols, summaries
 

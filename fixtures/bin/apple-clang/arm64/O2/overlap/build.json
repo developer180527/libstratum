@@ -1,0 +1,55 @@
+{
+  "fixture": "overlap",
+  "toolchain": "apple-clang",
+  "arch": "arm64",
+  "opt": "O2",
+  "host": "Darwin arm64",
+  "tools": {
+    "clang --version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "ld -v": "LTO support using: LLVM version 21.0.0 (static support for 30, runtime is 30)"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "clang++",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-std=c++17",
+        "-g",
+        "-O2",
+        "-ffile-compilation-dir=.",
+        "-c",
+        "layout/overlap.cpp",
+        "-o",
+        "fixtures/bin/apple-clang/arm64/O2/overlap/overlap.o"
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/arm64/O2/overlap",
+      "argv": [
+        "clang++",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "overlap.o",
+        "-o",
+        "overlap",
+        "-Wl,-map,overlap.map",
+        "-Wl,-oso_prefix,."
+      ]
+    },
+    {
+      "cwd": "fixtures/bin/apple-clang/arm64/O2/overlap",
+      "argv": [
+        "dsymutil",
+        "overlap",
+        "-o",
+        "overlap.dSYM"
+      ]
+    }
+  ]
+}

@@ -267,6 +267,9 @@ pub enum RawLayoutEntry {
         offset_bits: u64,
         size_bits: u64,
         align_bytes: Option<u64>,
+        /// The member's type has no data (an empty class). Such members legitimately share an
+        /// address with others (`[[no_unique_address]]`, empty-base-like placement).
+        empty_type: bool,
     },
     Bitfield {
         name: Option<String>,

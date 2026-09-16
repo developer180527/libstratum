@@ -10,10 +10,20 @@ answers from the compiler's and linker's own output instead of guesses.
 - **Extensible:** container formats and debug-info formats are plugins that translate into one neutral model
 - **Honest:** answers carry evidence and diagnostics; ambiguity (inlining, folding, elimination) is explicit
 
-> Status: **M2 complete; M3 next.** ELF, Mach-O and PE binaries open with identity, sections and symbols;
-> struct layouts come from DWARF and PDB on every Tier 1 platform, cross-checked against `llvm-dwarfdump`,
-> `llvm-pdbutil` and `pahole`. Next: symbols, sizes and memory regions. See
-> [docs/07-roadmap.md](docs/07-roadmap.md).
+> Status: **pre-release library, not yet usable as a tool.** Milestone M2 (struct layouts) is complete for
+> development: ELF, Mach-O and PE binaries open with identity, sections and symbols, and struct layouts come
+> from DWARF and PDB on every Tier 1 platform, cross-checked against `llvm-dwarfdump`, `llvm-pdbutil` and
+> `pahole`. Next: symbols, sizes and memory regions. See [docs/07-roadmap.md](docs/07-roadmap.md).
+
+### What exists today, and what doesn't
+
+- **There is no end-user program yet.** No CLI, no binary release, nothing a person without a Rust toolchain can
+  run. Everything is reached through the Rust API (`libstratum` crate), `cargo test`, and the development
+  `examples/`. The CLI (`stratum`) comes after validation on real code ([ADR-0020](docs/08-decisions.md#adr-0020-delivery-sequence-library--real-code-validation--cli)).
+- **Nothing is published** to crates.io; the API and serialized model can still change without notice.
+- **Only the layout lens works.** Source ↔ binary correlation, inline chains, elimination claims, symbol sizes and
+  memory-region budgets are designed but not implemented (M3–M4). Don't rely on any such answers yet.
+- Known limitations of what *does* work are tracked in [docs/07-roadmap.md § Known limitations](docs/07-roadmap.md#known-limitations).
 
 ## Workspace
 

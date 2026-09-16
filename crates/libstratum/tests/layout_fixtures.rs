@@ -162,6 +162,34 @@ fn fixture_types_have_expected_layouts_on_every_toolchain() {
                     );
                 }
 
+                // Storage shared at the smallest sizes (reviewer check): PDBs flatten anonymous unions, so
+                // their members overlap and must be noted even when they're a single byte; DWARF keeps the
+                // union as one member. An empty [[no_unique_address]] member sharing an address is not noted.
+                // Non-Apple builds of `overlap` come from the fixtures workflow (pending until it runs).
+                let overlap_dir = fixtures().join(toolchain).join(arch).join(opt).join("overlap");
+                if overlap_dir.is_dir() {
+                    let s = open("overlap");
+                    let pdb = matches!(*toolchain, "msvc" | "clang-cl");
+                    let shares = |layout: &libstratum::model::TypeLayout, names: &str| {
+                        layout.notes.iter().any(|n| n.contains("share storage") && n.contains(names))
+                    };
+                    let tiny = one(&s, "overlap", "TinyUnion");
+                    assert_eq!(tiny.size_bytes, 2, "{}", label("overlap", "TinyUnion"));
+                    assert_eq!(shares(&tiny, "a, b"), pdb, "{}: {:?}", label("overlap", "TinyUnion"), tiny.notes);
+                    let bits = one(&s, "overlap", "CharAndBits");
+                    assert_eq!(bits.size_bytes, 2, "{}", label("overlap", "CharAndBits"));
+                    assert_eq!(shares(&bits, "c, bits"), pdb, "{}: {:?}", label("overlap", "CharAndBits"), bits.notes);
+                    let empty = one(&s, "overlap", "EmptyAndChar");
+                    assert!(
+                        !empty.notes.iter().any(|n| n.contains("share storage")),
+                        "{}: {:?}",
+                        label("overlap", "EmptyAndChar"),
+                        empty.notes
+                    );
+                } else {
+                    assert_ne!(*toolchain, "apple-clang", "{}: overlap fixture missing", label("overlap", ""));
+                }
+
                 checked += 1;
             }
         }
