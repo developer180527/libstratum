@@ -1,0 +1,45 @@
+{
+  "fixture": "opaque",
+  "toolchain": "msvc",
+  "arch": "arm64",
+  "opt": "O0",
+  "host": "Windows AMD64",
+  "tools": {
+    "cl": "Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for ARM64",
+    "link": "Microsoft (R) Incremental Linker Version 14.51.36256.0"
+  },
+  "commands": [
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "cl",
+        "/nologo",
+        "/std:c11",
+        "/TC",
+        "/Zi",
+        "/Od",
+        "/MD",
+        "/Gy",
+        "/GR-",
+        "/EHs-c-",
+        "/Fdfixtures/bin/msvc/arm64/O0/opaque/opaque.compile.pdb",
+        "/c",
+        "layout/opaque.c",
+        "/Fofixtures/bin/msvc/arm64/O0/opaque/opaque.obj"
+      ]
+    },
+    {
+      "cwd": "fixtures/src",
+      "argv": [
+        "link",
+        "/nologo",
+        "/DEBUG:FULL",
+        "/INCREMENTAL:NO",
+        "/MAP:fixtures/bin/msvc/arm64/O0/opaque/opaque.map",
+        "/PDB:fixtures/bin/msvc/arm64/O0/opaque/opaque.pdb",
+        "/OUT:fixtures/bin/msvc/arm64/O0/opaque/opaque.exe",
+        "fixtures/bin/msvc/arm64/O0/opaque/opaque.obj"
+      ]
+    }
+  ]
+}

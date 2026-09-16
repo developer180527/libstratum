@@ -13,8 +13,8 @@ Binaries change only when someone deliberately re-runs the build scripts, so gol
 toolchain differences, never incidental CI noise.
 
 Status: `layout/` fixtures built for 10 toolchains (apple-clang, linux-clang, linux-clang-types5, linux-clang-types4,
-linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc, msvc, clang-cl): 334 builds, versions in
-[build/TOOLCHAINS.md](build/TOOLCHAINS.md). Windows builds of `opaque` are pending the fixtures workflow.
+linux-gcc, arm-none-eabi-gcc, arm-llvm, riscv-gcc, msvc, clang-cl): 342 builds, versions in
+[build/TOOLCHAINS.md](build/TOOLCHAINS.md).
 
 `debugmap/` covers Mach-O debug-map shapes the layout corpus can't express, on macOS only: `thinlto`
 (`apple-clang-lto`, 2 builds) links bitcode inputs, so ld writes an N_OSO with the `n_strx == 0` "no name"

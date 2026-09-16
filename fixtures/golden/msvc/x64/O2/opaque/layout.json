@@ -1,0 +1,54 @@
+{
+  "Defined": {
+    "diagnostics": [],
+    "matches": [
+      {
+        "alignment_bytes": 4,
+        "cacheline": {
+          "boundaries": [],
+          "cacheline_bytes": 64,
+          "straddling": []
+        },
+        "decl": {
+          "column": null,
+          "file": "D:/a/libstratum/libstratum/fixtures/src/layout/opaque.c",
+          "line": 6
+        },
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "alignment = max(member alignment); offsets rounded up"
+            }
+          }
+        ],
+        "holes": [],
+        "kind": "struct",
+        "members": [
+          {
+            "align_bytes": 4,
+            "kind": "field",
+            "name": "x",
+            "offset_bits": 0,
+            "size_bits": 32,
+            "type_name": "int"
+          }
+        ],
+        "name": "Defined",
+        "notes": [],
+        "packed": false,
+        "padding_bits": 0,
+        "size_bytes": 4,
+        "suggestion": null,
+        "tail_padding_bits": 0
+      }
+    ],
+    "not_found_reason": null,
+    "query": "Defined"
+  },
+  "Opaque": {
+    "diagnostics": [],
+    "matches": [],
+    "not_found_reason": "only declarations were found: the definition is in code built without debug info, or the compiler omitted it (Clang on Linux emits some class definitions only where their vtable is; -fstandalone-debug emits them everywhere)",
+    "query": "Opaque"
+  }
+}

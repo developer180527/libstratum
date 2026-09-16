@@ -69,8 +69,8 @@ bases, vfptr, `LF_UDT_SRC_LINE` declarations; GUID/age identity) ✅ · core lay
 cache lines, reorder suggestions, ODR conflicts, declaration-only reasons, overlap and virtual-base notes, deterministic
 order) ✅ · cross-toolchain name and source-path normalization ✅ · same ABI facts asserted on every fixture (38
 toolchain × arch × opt combinations) ✅ · 334 goldens ✅ · **reference cross-checks** (`fixtures/crosscheck`):
-`llvm-dwarfdump` 836/836, `llvm-pdbutil` 216/216, `pahole` 564/564 (+4 documented pahole type-unit limits) ✅.
-Pending data: Windows builds of the new `opaque` fixture (run the fixtures workflow, then raise the golden count to 342).
+`llvm-dwarfdump` 836/836, `llvm-pdbutil` 216/216, `pahole` 564/564 (+4 documented pahole type-unit limits) ✅ ·
+342 goldens on all 10 toolchains, Windows builds included (fixtures workflow run 35038121759) ✅.
 
 Findings:
 - GCC spells integer types out in DWARF names (`SmallArray<short int, 3>`), MSVC uses `__int64`-style names and

@@ -75,8 +75,8 @@ fn layouts_match_goldens() {
         }
         compared += 1;
     }
-    // 334 today; 342 once the Windows `opaque` builds from the fixtures workflow are committed.
-    assert!(compared >= 334, "expected every fixture binary to be compared, got {compared}");
+    // Every committed fixture binary, across all 10 toolchains.
+    assert!(compared >= 342, "expected every fixture binary to be compared, got {compared}");
     assert!(
         mismatches.is_empty(),
         "golden mismatches (rerun with STRATUM_BLESS=1 and review the diff):\n{}",
