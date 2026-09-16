@@ -143,7 +143,14 @@ impl Engine {
         let debug = self.open_debug_info(image.as_ref(), &context, &mut diagnostics);
 
         Ok(Session {
-            inner: Arc::new(SessionInner { languages: self.plugins.languages.clone(), image, debug, diagnostics }),
+            inner: Arc::new(SessionInner {
+                languages: self.plugins.languages.clone(),
+                demanglers: self.plugins.demanglers.clone(),
+                symbol_table: std::sync::OnceLock::new(),
+                image,
+                debug,
+                diagnostics,
+            }),
         })
     }
 
@@ -239,6 +246,8 @@ fn diag(severity: Severity, code: DiagCode, message: String, subject: Option<Str
 #[derive(Debug)]
 struct SessionInner {
     languages: Vec<Arc<dyn LanguageSupport>>,
+    demanglers: Vec<Arc<dyn Demangler>>,
+    symbol_table: std::sync::OnceLock<(Vec<libstratum_model::SymbolEntry>, Vec<Diagnostic>)>,
     image: Box<dyn Image>,
     debug: Vec<Box<dyn DebugReader>>,
     diagnostics: Vec<Diagnostic>,
@@ -365,6 +374,36 @@ impl Session {
             None
         };
         Ok(LayoutResult { query: name.into(), matches, not_found_reason, diagnostics })
+    }
+
+    fn symbol_table(&self) -> &(Vec<libstratum_model::SymbolEntry>, Vec<Diagnostic>) {
+        self.inner.symbol_table.get_or_init(|| {
+            crate::symbols::build(&crate::symbols::SymbolContext {
+                image: self.inner.image.as_ref(),
+                debug: &self.inner.debug,
+                demanglers: &self.inner.demanglers,
+                languages: &self.inner.languages,
+            })
+        })
+    }
+
+    /// Symbols matching `filter`, in address order, with sizes and their evidence (docs/12 §4).
+    pub fn symbols(&self, filter: &libstratum_model::SymbolFilter) -> Vec<libstratum_model::SymbolEntry> {
+        let (table, _) = self.symbol_table();
+        table
+            .iter()
+            .filter(|e| crate::symbols::matches(e, filter, &self.inner.demanglers, &self.inner.languages))
+            .cloned()
+            .collect()
+    }
+
+    /// Every symbol named `name` (raw, demangled, or normalized). Overloads and locals are not collapsed.
+    pub fn by_symbol(&self, name: &str) -> libstratum_model::SymbolResult {
+        let (table, diagnostics) = self.symbol_table();
+        let filter = libstratum_model::SymbolFilter { name: Some(name.to_owned()), ..Default::default() };
+        let mut result = crate::symbols::result(name, table, &filter, &self.inner.demanglers, &self.inner.languages);
+        result.diagnostics.extend(diagnostics.iter().cloned());
+        result
     }
 
     /// Which lenses can answer for this binary (ADR-0014).

@@ -122,6 +122,20 @@ To change an accepted decision, add a new ADR that supersedes it. Don't edit his
 **Decision:** `libstratum::open_path` reads the file into memory (`FileSource`). `MmapSource` and `open_path_mmap` exist behind the `mmap` feature, with the `unsafe` block isolated and documented. Hosts that control their files (CI, batch tools) can opt in. The core only sees `ByteSource`, so the choice never reaches plugins.
 **Consequences:** Higher peak memory for very large inputs by default; revisit with benchmarks in M5 (e.g. map only debug companions that the host marks immutable).
 
+## ADR-0022: Ownership of overlapping symbol intervals in size attribution
+**Status:** Accepted 2026-09-17 (see [12 §3](12-m3-symbols-sizes.md#3-byte-attribution-the-invariant))
+**Decision:** identical intervals form one alias group that owns the bytes once (`shared`); a symbol nested inside a larger one is reported with its own size but the outermost symbol owns the bytes; partial overlaps are malformed — the earlier-starting symbol owns the overlap and a `symbol-overlap` diagnostic is emitted. Gaps are named unattributed rows.
+**Consequences:** totals are independent of scan order (unlike Bloaty's first-label-wins) and every byte is counted exactly once.
+
+## ADR-0023: Link maps attach explicitly
+**Status:** Accepted 2026-09-17 (see [12 §5](12-m3-symbols-sizes.md#5-link-maps-and-memory-regions))
+**Decision:** `Session::attach_link_map(source)` only; the facade's `find_link_map(image_path)` finds `<image>.map` for frontends that opt in; `open_path` never attaches implicitly. Attached maps are checked against the image and rejected on mismatch.
+**Consequences:** a stale map beside a rebuilt binary can't silently corrupt sizes; frontends (CLI) decide the convenience policy.
+
+## ADR-0024: Instantiation groups — DWARF in M3, PDB in M4
+**Status:** Accepted 2026-09-17
+**Decision:** instantiation grouping uses demangled short names plus DWARF declaration locations in M3; the PDB variant, which needs procedure/module records, lands with M4.
+
 ---
 
 ## Open questions

@@ -274,3 +274,64 @@ pub struct ReorderSuggestion {
     pub saved_bytes: u64,
     pub caveats: Vec<String>,
 }
+
+// ---------------------------------------------------------------------------------------------
+// Symbols (docs/12-m3-symbols-sizes.md §2)
+// ---------------------------------------------------------------------------------------------
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+#[non_exhaustive]
+pub enum SymbolKind {
+    Function,
+    Object,
+    Tls,
+    Label,
+    Unknown,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum Binding {
+    Global,
+    Local,
+    Weak,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SymbolEntry {
+    /// Name as recorded (mangled). PDB procedures without a public symbol carry their undecorated name.
+    pub raw_name: String,
+    pub demangled: Option<String>,
+    pub kind: SymbolKind,
+    pub binding: Binding,
+    pub section: Option<SectionKey>,
+    /// Absolute address; Thumb bit cleared.
+    pub address: u64,
+    pub size: Option<u64>,
+    /// Where the size came from: symbol table, debug info, link map, or a labeled heuristic.
+    pub size_evidence: Option<Evidence>,
+    /// Other symbols with the identical (section, address, size).
+    pub aliases: Vec<String>,
+    /// The alias group contains distinct functions (identical code folding).
+    pub folded: bool,
+    /// Compile unit or PDB module that defined the symbol, when known.
+    pub unit: Option<String>,
+}
+
+/// Which symbols to list. Empty filter = all symbols.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SymbolFilter {
+    /// Exact match against the raw, demangled, or language-normalized demangled name.
+    pub name: Option<String>,
+    pub kind: Option<SymbolKind>,
+    /// Section name, e.g. `.text` or `__text`.
+    pub section: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SymbolResult {
+    pub query: String,
+    pub matches: Vec<SymbolEntry>,
+    pub diagnostics: Vec<Diagnostic>,
+}

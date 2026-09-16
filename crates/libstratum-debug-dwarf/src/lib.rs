@@ -52,7 +52,10 @@ impl DebugInfoBackend for Dwarf {
                     DebugLocation::MachOObject { .. } => BinaryId::None,
                     _ => companion.binary_id(),
                 };
-                DwarfReader::load(companion.as_ref(), id)?
+                let mut reader = DwarfReader::load(companion.as_ref(), id)?;
+                // Debug-map objects hold pre-link addresses until the debug map is applied (M4).
+                reader.final_addresses = !matches!(location, DebugLocation::MachOObject { .. });
+                reader
             }
         };
         Ok(Box::new(reader))
@@ -86,6 +89,8 @@ pub struct DwarfReader {
     address_size: u8,
     endian: Endian,
     binary_id: BinaryId,
+    /// Addresses in this DWARF are final image addresses (false for unrelocated debug-map objects).
+    final_addresses: bool,
     /// Qualified name → definitions (and names seen only as declarations). Built on the first type query.
     type_index: OnceLock<Result<TypeIndex, String>>,
 }
@@ -147,6 +152,7 @@ impl DwarfReader {
             address_size: image.address_size(),
             endian: image.endian(),
             binary_id,
+            final_addresses: true,
             type_index: OnceLock::new(),
         })
     }
@@ -662,8 +668,92 @@ impl DebugReader for DwarfReader {
         Ok(out)
     }
 
-    fn functions(&self, _unit: UnitId) -> Result<Vec<FunctionInfo>, SpiError> {
-        Err(SpiError::Unimplemented("functions (M4)"))
+    fn functions(&self, unit: UnitId) -> Result<Vec<FunctionInfo>, SpiError> {
+        if !self.final_addresses {
+            return Err(SpiError::Unimplemented("function addresses in debug-map objects (M4)"));
+        }
+        let index = unit.0 as usize;
+        if index >= self.units.len() {
+            return Ok(Vec::new());
+        }
+        let unit_ref = self.unit_ref(index);
+        let mut cursor = unit_ref.entries();
+        let mut out = Vec::new();
+        while let Some(entry) = cursor.next_dfs().map_err(gimli_err)? {
+            if entry.tag() != constants::DW_TAG_subprogram || flag(entry, constants::DW_AT_declaration) {
+                continue;
+            }
+            let mut ranges = Vec::new();
+            let mut iter = unit_ref.die_ranges(entry).map_err(gimli_err)?;
+            while let Some(range) = iter.next().map_err(gimli_err)? {
+                // Discarded or folded-away functions keep tombstoned addresses (M0 S8).
+                if range.begin == 0 || range.begin >= u64::MAX - 1 || range.end <= range.begin {
+                    continue;
+                }
+                ranges.push(libstratum_core::ir::AddrRange { start: range.begin, size: range.end - range.begin });
+            }
+            if ranges.is_empty() {
+                continue;
+            }
+            let linkage_name = entry
+                .attr_value(constants::DW_AT_linkage_name)
+                .or_else(|| entry.attr_value(constants::DW_AT_MIPS_linkage_name))
+                .and_then(|v| unit_ref.attr_string(v).ok())
+                .and_then(|n| n.to_string_lossy().ok().map(Cow::into_owned));
+            out.push(FunctionInfo {
+                reference: libstratum_core::ir::DebugRef { unit: Some(unit), key: entry.offset().0 as u64 },
+                name: self.name_of(index, entry).unwrap_or_default(),
+                linkage_name,
+                ranges,
+                decl: self.decl(index, entry),
+            });
+        }
+        Ok(out)
+    }
+
+    fn variables(&self) -> Result<Vec<libstratum_core::ir::VariableInfo>, SpiError> {
+        if !self.final_addresses {
+            return Err(SpiError::Unimplemented("variable addresses in debug-map objects (M4)"));
+        }
+        let mut out = Vec::new();
+        for index in 0..self.units.len() {
+            let unit_ref = self.unit_ref(index);
+            let mut cursor = unit_ref.entries();
+            while let Some(entry) = cursor.next_dfs().map_err(gimli_err)? {
+                if entry.tag() != constants::DW_TAG_variable || flag(entry, constants::DW_AT_declaration) {
+                    continue;
+                }
+                // Only statically allocated variables: a location that is exactly `DW_OP_addr <address>`.
+                let Some(expr) = entry.attr(constants::DW_AT_location).and_then(|a| a.exprloc_value()) else {
+                    continue;
+                };
+                let mut reader = expr.0;
+                if reader.read_u8().ok() != Some(constants::DW_OP_addr.0) {
+                    continue;
+                }
+                let address = match self.address_size {
+                    8 => reader.read_u64().ok(),
+                    4 => reader.read_u32().ok().map(u64::from),
+                    _ => None,
+                };
+                let Some(address) = address.filter(|&a| a != 0 && reader.is_empty()) else { continue };
+                let Some(size) = entry.attr_value(constants::DW_AT_type).and_then(|t| self.type_size(index, &t, 0))
+                else {
+                    continue;
+                };
+                let linkage_name = entry
+                    .attr_value(constants::DW_AT_linkage_name)
+                    .and_then(|v| unit_ref.attr_string(v).ok())
+                    .and_then(|n| n.to_string_lossy().ok().map(Cow::into_owned));
+                out.push(libstratum_core::ir::VariableInfo {
+                    name: self.name_of(index, entry).unwrap_or_default(),
+                    linkage_name,
+                    address,
+                    size,
+                });
+            }
+        }
+        Ok(out)
     }
 
     fn inline_trees(&self, _unit: UnitId) -> Result<Vec<InlineTree>, SpiError> {

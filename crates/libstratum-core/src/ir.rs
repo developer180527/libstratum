@@ -299,6 +299,15 @@ pub struct FunctionInfo {
     pub decl: Option<SourceLoc>,
 }
 
+/// A statically allocated variable with a known address and type size.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct VariableInfo {
+    pub name: String,
+    pub linkage_name: Option<String>,
+    pub address: u64,
+    pub size: u64,
+}
+
 /// Inlining tree for one concrete function (DWARF inlined subroutines, PDB `S_INLINESITE`).
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct InlineNode {

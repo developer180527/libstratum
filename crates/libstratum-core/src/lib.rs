@@ -12,6 +12,7 @@ pub mod host;
 pub mod ir;
 pub mod layout;
 pub mod spi;
+mod symbols;
 
 pub use cancel::CancelToken;
 pub use engine::{Engine, EngineBuilder, Input, Session};

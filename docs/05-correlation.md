@@ -62,7 +62,7 @@ occupy disjoint bits. No size threshold is involved: `union { char a; char b; }`
 1. Base map from segments + sections, with VM and file extents (Bloaty's idea). Every file byte and every VM byte belongs to exactly one section or is `unattributed` (headers, padding, load commands).
 2. Symbol sizes:
    - ELF: `st_size`. Zero-size symbols are labels; they are assigned to the enclosing sized symbol.
-   - Mach-O: nlist has no size. Precedence: link map size → DWARF subprogram `high_pc − low_pc` → distance to the next symbol in the same section (`Evidence::Heuristic`).
+   - Mach-O: nlist has no size. Precedence: DWARF subprogram `high_pc − low_pc` (exact) → link map size (an ld-prime *atom* size, which includes trailing alignment padding; see [12 §4](12-m3-symbols-sizes.md#4-symbol-sizes-and-evidence)) → distance to the next symbol in the same section (`Evidence::Heuristic`).
 3. Summary rows group by the requested dimensions. **Invariant:** `sum(rows) + unattributed == total`, per space, and folded bytes are counted once.
 
 ## 4. Identical code folding (ICF)

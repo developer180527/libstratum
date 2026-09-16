@@ -19,6 +19,7 @@ This folder is the design record. It is written *before* code on purpose: the de
 | 09 | [The stratum suite](09-suite.md) | One engine, many lenses; artifact providers; capabilities; agent evaluation |
 | 10 | [Embedded systems](10-embedded.md) | Flash/RAM regions, Thumb, fault decoding, stack, SVD |
 | — | [M0 spike report](spikes/m0-report.md) | Verified toolchain behavior from M0 |
+| 12 | [M3 design: symbols, sizes, regions](12-m3-symbols-sizes.md) | Symbol/summary model, byte attribution invariant, link maps, regions, folds |
 | 11 | [Platforms](11-platforms.md) | Platform matrix, Windows (PE/PDB/MSVC) in depth, debug-info-neutral IR, updated crate map |
 
 ## Fixed constraints (agreed)

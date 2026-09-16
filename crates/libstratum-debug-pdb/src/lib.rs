@@ -35,7 +35,7 @@ impl DebugInfoBackend for Pdb {
     ) -> Result<Box<dyn DebugReader>, SpiError> {
         let source = context.locate(location)?.ok_or_else(|| SpiError::NotFound(format!("{location:?} not found")))?;
         let bytes: Arc<[u8]> = Arc::from(source.bytes()?);
-        let reader = PdbReader { bytes, address_size: image.address_size() };
+        let reader = PdbReader { bytes, address_size: image.address_size(), image_base: image.image_base() };
         // Validate eagerly so a corrupt or mismatched file is reported at open.
         let _ = reader.identity()?;
         Ok(Box::new(reader))
@@ -51,6 +51,8 @@ fn pdb_err(err: pdb2::Error) -> SpiError {
 pub struct PdbReader {
     bytes: Arc<[u8]>,
     address_size: u8,
+    /// PDB addresses are section offsets → RVAs; IR addresses are absolute (image base + RVA).
+    image_base: u64,
 }
 
 impl std::fmt::Debug for PdbReader {
@@ -360,6 +362,123 @@ impl DebugReader for PdbReader {
 
     fn unit_for_address(&self, _address: u64) -> Result<Option<UnitId>, SpiError> {
         Err(SpiError::Unimplemented("address → module (M4)"))
+    }
+
+    /// Global and static data records (`S_GDATA32`/`S_LDATA32`) with type sizes.
+    fn variables(&self) -> Result<Vec<libstratum_core::ir::VariableInfo>, SpiError> {
+        let mut pdb = self.parser()?;
+        let address_map = pdb.address_map().map_err(pdb_err)?;
+        let info = pdb.type_information().map_err(pdb_err)?;
+        let mut finder = info.finder();
+        let mut iter = info.iter();
+        let mut definitions: HashMap<String, (u64, Option<TypeIndex>)> = HashMap::new();
+        while let Some(item) = iter.next().map_err(pdb_err)? {
+            finder.update(&iter);
+            match item.parse() {
+                Ok(TypeData::Class(c)) if !c.properties.forward_reference() => {
+                    definitions.entry(c.name.to_string().into_owned()).or_insert((c.size, c.fields));
+                }
+                Ok(TypeData::Union(u)) if !u.properties.forward_reference() => {
+                    definitions.entry(u.name.to_string().into_owned()).or_insert((u.size, Some(u.fields)));
+                }
+                _ => {}
+            }
+        }
+        let context = TypeContext { finder: &finder, definitions: &definitions, address_size: self.address_size };
+
+        let mut out = Vec::new();
+        let mut push = |data: pdb2::DataSymbol<'_>| {
+            let Some(rva) = data.offset.to_rva(&address_map) else { return };
+            let Some(size) = context.size(data.type_index, 0) else { return };
+            out.push(libstratum_core::ir::VariableInfo {
+                name: data.name.to_string().into_owned(),
+                linkage_name: None,
+                address: self.image_base + u64::from(rva.0),
+                size,
+            });
+        };
+        let globals = pdb.global_symbols().map_err(pdb_err)?;
+        let mut symbols = globals.iter();
+        while let Some(symbol) = symbols.next().map_err(pdb_err)? {
+            if let Ok(pdb2::SymbolData::Data(data)) = symbol.parse() {
+                push(data);
+            }
+        }
+        Ok(out)
+    }
+
+    /// Linked PE images carry no symbol table: publics give names and addresses; procedure records
+    /// give function sizes (and name static functions that have no public symbol).
+    fn symbols(&self) -> Result<Option<Vec<libstratum_core::ir::Symbol>>, SpiError> {
+        use libstratum_core::ir::{Binding, SectionId, Symbol, SymbolId, SymbolKind};
+
+        let mut pdb = self.parser()?;
+        let address_map = pdb.address_map().map_err(pdb_err)?;
+        let va = |offset: pdb2::PdbInternalSectionOffset| {
+            offset.to_rva(&address_map).map(|rva| self.image_base + u64::from(rva.0))
+        };
+
+        // Procedure sizes and names by (section, offset).
+        let mut procedures: HashMap<(u16, u32), (String, u32, bool)> = HashMap::new();
+        let dbi = pdb.debug_information().map_err(pdb_err)?;
+        let mut modules = dbi.modules().map_err(pdb_err)?;
+        let mut module_list = Vec::new();
+        while let Some(module) = modules.next().map_err(pdb_err)? {
+            module_list.push(module);
+        }
+        for module in &module_list {
+            let Some(info) = pdb.module_info(module).map_err(pdb_err)? else { continue };
+            let mut symbols = info.symbols().map_err(pdb_err)?;
+            while let Some(symbol) = symbols.next().map_err(pdb_err)? {
+                if let Ok(pdb2::SymbolData::Procedure(p)) = symbol.parse() {
+                    procedures.entry((p.offset.section, p.offset.offset)).or_insert((
+                        p.name.to_string().into_owned(),
+                        p.len,
+                        p.global,
+                    ));
+                }
+            }
+        }
+
+        let mut out: Vec<Symbol> = Vec::new();
+        let mut covered = std::collections::HashSet::new();
+        let globals = pdb.global_symbols().map_err(pdb_err)?;
+        let mut iter = globals.iter();
+        while let Some(symbol) = iter.next().map_err(pdb_err)? {
+            let Ok(pdb2::SymbolData::Public(p)) = symbol.parse() else { continue };
+            let Some(address) = va(p.offset) else { continue };
+            let key = (p.offset.section, p.offset.offset);
+            let procedure = procedures.get(&key);
+            covered.insert(key);
+            out.push(Symbol {
+                id: SymbolId(out.len() as u32),
+                raw_name: p.name.to_string().into_owned(),
+                address,
+                size: procedure.map(|(_, len, _)| u64::from(*len)).filter(|&n| n > 0),
+                kind: if p.function || p.code { SymbolKind::Function } else { SymbolKind::Object },
+                binding: Binding::Global,
+                section: Some(SectionId(u32::from(p.offset.section))),
+                is_thumb: false,
+            });
+        }
+        // Static functions have procedure records but no public symbol.
+        let mut statics: Vec<_> = procedures.iter().filter(|(key, _)| !covered.contains(*key)).collect();
+        statics.sort_by_key(|(key, _)| **key);
+        for ((section, offset), (name, len, global)) in statics {
+            let offset_record = pdb2::PdbInternalSectionOffset { section: *section, offset: *offset };
+            let Some(address) = va(offset_record) else { continue };
+            out.push(Symbol {
+                id: SymbolId(out.len() as u32),
+                raw_name: name.clone(),
+                address,
+                size: Some(u64::from(*len)).filter(|&n| n > 0),
+                kind: SymbolKind::Function,
+                binding: if *global { Binding::Global } else { Binding::Local },
+                section: Some(SectionId(u32::from(*section))),
+                is_thumb: false,
+            });
+        }
+        Ok(Some(out))
     }
 
     fn find_types(&self, matches: &dyn Fn(&str) -> bool) -> Result<Vec<RawLayout>, SpiError> {

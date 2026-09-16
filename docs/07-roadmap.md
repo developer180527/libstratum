@@ -123,7 +123,7 @@ open question that addresses it.
 | Layout: flattened anonymous unions | PDBs don't record anonymous unions; the lens notes non-empty members whose storage overlaps (any size, bitfields included) but can't restore the grouping | M2 findings |
 | Layout: type units | With `-fdebug-types-section`, the linker keeps one definition per type *name*, so ODR conflicts are invisible in that binary | M2 findings |
 | Correlation, elimination | Not implemented. "This line was eliminated" claims need the `-O0` reference-build comparison | M4, Q9 |
-| Symbols, sizes, regions | Not implemented | M3 |
+| Symbols, sizes, regions | Symbols with sizes and evidence work (slice 1). Summaries, link maps, regions, ICF and instantiation groups are not implemented. Mach-O binaries without DWARF (e.g. ThinLTO with no kept LTO object) get heuristic sizes until a map is attached | M3, docs/12 §9 |
 | Distribution | No CLI or binary release; library API only, unpublished | ADR-0020 |
 
 ## M3: Symbols, sections, sizes, memory regions
@@ -133,6 +133,15 @@ open question that addresses it.
 - Map parsers: GNU ld (incl. `Memory Configuration`), lld, ld-prime, MSVC `/MAP`; linker-script `MEMORY` parser
 
 **Exit:** summary invariants hold everywhere; embedded flash/RAM numbers match `arm-none-eabi-size` and the map.
+
+**Progress (design: [12](12-m3-symbols-sizes.md)):**
+- [x] Slice 1: `Session::symbols` / `by_symbol` with sizes and evidence (ELF symtab; Mach-O DWARF subprogram ranges
+  and `DW_OP_addr` variables; PDB publics, procedure lengths and data records), alias groups. Verified on all 382
+  fixture binaries: 212 sizes vs ld-prime maps, 22 538 addresses vs MSVC/lld-link `/MAP`
+- [ ] Slice 2: section summary, attribution invariant, Berkeley totals
+- [ ] Slice 3: map parsers, `attach_link_map`, memory regions
+- [ ] Slice 4: unit dimension
+- [ ] Slice 5: ICF and instantiation groups, `sizes/` fixtures, cross-checks, goldens
 
 ## M4: Correlation lens
 - DWARF: line tables, inline trees, split DWARF, OSO address translation, tombstones

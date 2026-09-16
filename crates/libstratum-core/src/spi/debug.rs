@@ -4,7 +4,7 @@ use crate::error::SpiError;
 use crate::host::DebugOpenContext;
 use crate::ir::{
     AddrRange, BinaryId, DebugLocation, DiscardEvidence, FunctionInfo, InlineTree, LineTable, RawLayout, Symbol,
-    UnitId, UnitInfo,
+    UnitId, UnitInfo, VariableInfo,
 };
 use crate::spi::Image;
 
@@ -43,6 +43,11 @@ pub trait DebugReader: Send + Sync + Debug {
     fn inline_trees(&self, unit: UnitId) -> Result<Vec<InlineTree>, SpiError>;
     fn line_table(&self, unit: UnitId) -> Result<LineTable, SpiError>;
     fn discarded_functions(&self, unit: UnitId) -> Result<Vec<DiscardEvidence>, SpiError>;
+
+    /// Statically allocated variables with final addresses and type sizes (sizes data symbols).
+    fn variables(&self) -> Result<Vec<VariableInfo>, SpiError> {
+        Err(SpiError::Unimplemented("variables"))
+    }
 
     /// Symbols for formats whose image has none (PE). `None` if not applicable.
     fn symbols(&self) -> Result<Option<Vec<Symbol>>, SpiError> {
