@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Cross-checks libstratum's committed layout goldens against independent reference tools.
+"""Cross-checks libstratum's committed goldens against independent reference tools.
 
     llvm-dwarfdump  ELF binaries and Mach-O dSYMs (LLVM's DWARF reader)
     pahole          ELF binaries (dwarves: an independent DWARF implementation)
     llvm-pdbutil    PDB files (LLVM's PDB reader)
+    GNU size        ELF binaries (binutils, Berkeley format; the per-target build for cross targets)
 
-For every type in every golden, compares the size and the offsets (in bits) of named fields and
-bitfields. Run inside the fixtures Docker image, from the repository root:
+Layouts (layout.json): for every type, compares the size and the offsets (in bits) of named fields
+and bitfields. Summaries (summary.json): compares Berkeley text/data/bss totals. Run inside the fixtures Docker image, from the repository root:
 
     docker run --rm -v "$PWD":/work -w /work libstratum-fixtures python3 fixtures/crosscheck/crosscheck.py
 """
@@ -22,7 +23,29 @@ from pathlib import Path
 
 # A reference tool that isn't installed makes every comparison against it count as "skipped", so the
 # run would report agreement on nothing and still exit 0. Check up front instead.
-REQUIRED_TOOLS = ("llvm-dwarfdump", "llvm-pdbutil", "pahole")
+REQUIRED_TOOLS = ("llvm-dwarfdump", "llvm-pdbutil", "pahole", "size", "arm-none-eabi-size", "riscv64-unknown-elf-size",
+                  "aarch64-linux-gnu-size")
+
+# GNU size per ELF toolchain/arch directory: host binutils for x86-64, the cross binutils otherwise.
+def gnu_size_tool(toolchain: str, arch: str) -> str | None:
+    if toolchain in ("msvc", "clang-cl") or toolchain.startswith("apple-clang"):
+        return None
+    if toolchain in ("arm-none-eabi-gcc", "arm-llvm"):
+        return "arm-none-eabi-size"
+    if toolchain == "riscv-gcc":
+        return "riscv64-unknown-elf-size"
+    return "aarch64-linux-gnu-size" if arch in ("aarch64", "arm64") else "size"
+
+
+def gnu_size(tool: str, path: Path) -> dict[str, int] | None:
+    text = run([tool, "-B", "-d", str(path)])
+    if text is None:
+        return None
+    lines = text.strip().splitlines()
+    if len(lines) < 2:
+        return None
+    text_, data, bss = (int(v) for v in lines[1].split()[:3])
+    return {"text": text_, "data": data, "bss": bss}
 
 ROOT = Path(__file__).resolve().parent.parent
 GOLDEN = ROOT / "golden"
@@ -201,7 +224,7 @@ KNOWN_PAHOLE_LIMITS = {
 def main() -> int:
     if missing := [t for t in REQUIRED_TOOLS if shutil.which(t) is None]:
         print(f"missing reference tools: {', '.join(missing)}", file=sys.stderr)
-        print("run inside the fixtures image (fixtures/README.md), which pins all three", file=sys.stderr)
+        print("run inside the fixtures image (fixtures/README.md), which pins them all", file=sys.stderr)
         return 2
 
     stats = defaultdict(lambda: {"agree": 0, "disagree": 0, "skipped": 0})
@@ -251,6 +274,22 @@ def main() -> int:
                     else:
                         stats["pahole"]["disagree"] += 1
                         problems.append(f"pahole: {rel} {layout['name']}: libstratum {want} vs {got}")
+
+    for golden in sorted(GOLDEN.rglob("summary.json")):
+        rel = golden.parent.relative_to(GOLDEN)
+        toolchain, arch, fixture = rel.parts[0], rel.parts[1], rel.parts[-1]
+        tool = gnu_size_tool(toolchain, arch)
+        if tool is None:
+            continue
+        want = json.loads(golden.read_text())["berkeley"]
+        got = gnu_size(tool, BIN / rel / fixture)
+        if got is None:
+            stats["size"]["skipped"] += 1
+        elif got == want:
+            stats["size"]["agree"] += 1
+        else:
+            stats["size"]["disagree"] += 1
+            problems.append(f"{tool}: {rel}: libstratum {want} vs {got}")
 
     for tool, s in sorted(stats.items()):
         known = f"  known tool limits {s['known-limit']}" if s.get("known-limit") else ""

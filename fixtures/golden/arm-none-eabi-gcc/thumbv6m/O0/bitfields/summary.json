@@ -1,0 +1,350 @@
+{
+  "berkeley": {
+    "bss": 20,
+    "data": 0,
+    "text": 90
+  },
+  "sections": {
+    "diagnostics": [],
+    "dimensions": [
+      "section"
+    ],
+    "rows": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".ARM.attributes"
+        ],
+        "size": {
+          "file": 44,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".bss"
+        ],
+        "size": {
+          "file": 0,
+          "load": 0,
+          "vm": 20
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".comment"
+        ],
+        "size": {
+          "file": 38,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_abbrev"
+        ],
+        "size": {
+          "file": 361,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_aranges"
+        ],
+        "size": {
+          "file": 64,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_frame"
+        ],
+        "size": {
+          "file": 88,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_info"
+        ],
+        "size": {
+          "file": 474,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_line"
+        ],
+        "size": {
+          "file": 161,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_rnglists"
+        ],
+        "size": {
+          "file": 38,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_str"
+        ],
+        "size": {
+          "file": 641,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".isr_vector"
+        ],
+        "size": {
+          "file": 8,
+          "load": 8,
+          "vm": 8
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".note.gnu.build-id"
+        ],
+        "size": {
+          "file": 36,
+          "load": 36,
+          "vm": 36
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".shstrtab"
+        ],
+        "size": {
+          "file": 187,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".strtab"
+        ],
+        "size": {
+          "file": 99,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".symtab"
+        ],
+        "size": {
+          "file": 448,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".text"
+        ],
+        "size": {
+          "file": 46,
+          "load": 46,
+          "vm": 46
+        }
+      }
+    ],
+    "shared": {
+      "file": 0,
+      "load": 0,
+      "vm": 0
+    },
+    "total": {
+      "file": 68956,
+      "load": 92,
+      "vm": 112
+    },
+    "unattributed": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[alignment]"
+        ],
+        "size": {
+          "file": 65393,
+          "load": 2,
+          "vm": 2
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[headers]"
+        ],
+        "size": {
+          "file": 148,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[non-section]"
+        ],
+        "size": {
+          "file": 682,
+          "load": 0,
+          "vm": 0
+        }
+      }
+    ]
+  }
+}

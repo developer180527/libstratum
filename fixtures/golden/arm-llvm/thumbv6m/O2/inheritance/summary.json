@@ -1,0 +1,452 @@
+{
+  "berkeley": {
+    "bss": 84,
+    "data": 4,
+    "text": 256
+  },
+  "sections": {
+    "diagnostics": [],
+    "dimensions": [
+      "section"
+    ],
+    "rows": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".ARM.attributes"
+        ],
+        "size": {
+          "file": 69,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".ARM.exidx"
+        ],
+        "size": {
+          "file": 16,
+          "load": 16,
+          "vm": 16
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".bss"
+        ],
+        "size": {
+          "file": 0,
+          "load": 0,
+          "vm": 84
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".comment"
+        ],
+        "size": {
+          "file": 62,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_abbrev"
+        ],
+        "size": {
+          "file": 847,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_addr"
+        ],
+        "size": {
+          "file": 108,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_frame"
+        ],
+        "size": {
+          "file": 348,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_info"
+        ],
+        "size": {
+          "file": 1233,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_line"
+        ],
+        "size": {
+          "file": 661,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_line_str"
+        ],
+        "size": {
+          "file": 91,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_loclists"
+        ],
+        "size": {
+          "file": 464,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_rnglists"
+        ],
+        "size": {
+          "file": 70,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_str"
+        ],
+        "size": {
+          "file": 823,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".debug_str_offsets"
+        ],
+        "size": {
+          "file": 352,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".init_array"
+        ],
+        "size": {
+          "file": 4,
+          "load": 4,
+          "vm": 4
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".isr_vector"
+        ],
+        "size": {
+          "file": 8,
+          "load": 8,
+          "vm": 8
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".note.gnu.build-id"
+        ],
+        "size": {
+          "file": 36,
+          "load": 36,
+          "vm": 36
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".rodata"
+        ],
+        "size": {
+          "file": 44,
+          "load": 44,
+          "vm": 44
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".shstrtab"
+        ],
+        "size": {
+          "file": 266,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".strtab"
+        ],
+        "size": {
+          "file": 308,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".symtab"
+        ],
+        "size": {
+          "file": 496,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".text"
+        ],
+        "size": {
+          "file": 152,
+          "load": 152,
+          "vm": 152
+        }
+      }
+    ],
+    "shared": {
+      "file": 0,
+      "load": 0,
+      "vm": 0
+    },
+    "total": {
+      "file": 138280,
+      "load": 344,
+      "vm": 344
+    },
+    "unattributed": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[alignment]"
+        ],
+        "size": {
+          "file": 130592,
+          "load": 84,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[headers]"
+        ],
+        "size": {
+          "file": 308,
+          "load": 0,
+          "vm": 0
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[non-section]"
+        ],
+        "size": {
+          "file": 922,
+          "load": 0,
+          "vm": 0
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "berkeley": {
+    "bss": 32,
+    "data": 360,
+    "text": 255
+  },
+  "sections": {
+    "diagnostics": [],
+    "dimensions": [
+      "section"
+    ],
+    "rows": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__DATA,__common"
+        ],
+        "size": {
+          "file": 0,
+          "load": 0,
+          "vm": 32
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__DATA,__data"
+        ],
+        "size": {
+          "file": 72,
+          "load": 72,
+          "vm": 72
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__DATA_CONST,__const"
+        ],
+        "size": {
+          "file": 280,
+          "load": 280,
+          "vm": 280
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__DATA_CONST,__got"
+        ],
+        "size": {
+          "file": 8,
+          "load": 8,
+          "vm": 8
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__TEXT,__const"
+        ],
+        "size": {
+          "file": 54,
+          "load": 54,
+          "vm": 54
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__TEXT,__stubs"
+        ],
+        "size": {
+          "file": 6,
+          "load": 6,
+          "vm": 6
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__TEXT,__text"
+        ],
+        "size": {
+          "file": 107,
+          "load": 107,
+          "vm": 107
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__TEXT,__unwind_info"
+        ],
+        "size": {
+          "file": 88,
+          "load": 88,
+          "vm": 88
+        }
+      }
+    ],
+    "shared": {
+      "file": 0,
+      "load": 0,
+      "vm": 0
+    },
+    "total": {
+      "file": 14696,
+      "load": 12288,
+      "vm": 16384
+    },
+    "unattributed": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "segment without sections"
+            }
+          }
+        ],
+        "path": [
+          "[__LINKEDIT]"
+        ],
+        "size": {
+          "file": 2408,
+          "load": 0,
+          "vm": 4096
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[alignment]"
+        ],
+        "size": {
+          "file": 10241,
+          "load": 10241,
+          "vm": 10209
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[headers]"
+        ],
+        "size": {
+          "file": 1432,
+          "load": 1432,
+          "vm": 1432
+        }
+      }
+    ]
+  }
+}

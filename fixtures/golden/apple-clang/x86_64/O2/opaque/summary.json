@@ -1,0 +1,129 @@
+{
+  "berkeley": {
+    "bss": 16,
+    "data": 0,
+    "text": 121
+  },
+  "sections": {
+    "diagnostics": [],
+    "dimensions": [
+      "section"
+    ],
+    "rows": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__DATA,__common"
+        ],
+        "size": {
+          "file": 0,
+          "load": 0,
+          "vm": 16
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__TEXT,__text"
+        ],
+        "size": {
+          "file": 33,
+          "load": 33,
+          "vm": 33
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          "__TEXT,__unwind_info"
+        ],
+        "size": {
+          "file": 88,
+          "load": 88,
+          "vm": 88
+        }
+      }
+    ],
+    "shared": {
+      "file": 0,
+      "load": 0,
+      "vm": 0
+    },
+    "total": {
+      "file": 4560,
+      "load": 4096,
+      "vm": 12288
+    },
+    "unattributed": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "segment without sections"
+            }
+          }
+        ],
+        "path": [
+          "[__LINKEDIT]"
+        ],
+        "size": {
+          "file": 464,
+          "load": 0,
+          "vm": 4096
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[alignment]"
+        ],
+        "size": {
+          "file": 3063,
+          "load": 3063,
+          "vm": 7143
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[headers]"
+        ],
+        "size": {
+          "file": 912,
+          "load": 912,
+          "vm": 912
+        }
+      }
+    ]
+  }
+}

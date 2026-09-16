@@ -1,0 +1,146 @@
+{
+  "berkeley": {
+    "bss": 0,
+    "data": 432,
+    "text": 6900
+  },
+  "sections": {
+    "diagnostics": [],
+    "dimensions": [
+      "section"
+    ],
+    "rows": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".data"
+        ],
+        "size": {
+          "file": 512,
+          "load": 432,
+          "vm": 432
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".pdata"
+        ],
+        "size": {
+          "file": 512,
+          "load": 300,
+          "vm": 300
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".rdata"
+        ],
+        "size": {
+          "file": 3584,
+          "load": 3444,
+          "vm": 3444
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".reloc"
+        ],
+        "size": {
+          "file": 512,
+          "load": 44,
+          "vm": 44
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "section headers"
+            }
+          }
+        ],
+        "path": [
+          ".text"
+        ],
+        "size": {
+          "file": 3584,
+          "load": 3112,
+          "vm": 3112
+        }
+      }
+    ],
+    "shared": {
+      "file": 9,
+      "load": 9,
+      "vm": 9
+    },
+    "total": {
+      "file": 9728,
+      "load": 8356,
+      "vm": 24576
+    },
+    "unattributed": [
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[alignment]"
+        ],
+        "size": {
+          "file": 0,
+          "load": 0,
+          "vm": 16220
+        }
+      },
+      {
+        "evidence": [
+          {
+            "Computed": {
+              "rule": "bytes no section covers"
+            }
+          }
+        ],
+        "path": [
+          "[headers]"
+        ],
+        "size": {
+          "file": 1024,
+          "load": 1024,
+          "vm": 1024
+        }
+      }
+    ]
+  }
+}

@@ -11,7 +11,7 @@ use std::sync::Arc;
 use libstratum_core::SpiError;
 use libstratum_core::host::ByteSource;
 use libstratum_core::ir::{
-    AddrRange, Arch, BinaryId, DebugLocation, Endian, Extent, Section, SectionId, SectionKind, Segment, Symbol,
+    Access, AddrRange, Arch, BinaryId, DebugLocation, Endian, Extent, Section, SectionId, SectionKind, Segment, Symbol,
 };
 use libstratum_core::spi::{BinaryFormat, Image, OpenOptions, ProbeResult};
 use object::pe;
@@ -72,6 +72,8 @@ pub struct PeImage {
     address_size: u8,
     image_base: u64,
     binary_id: BinaryId,
+    headers_size: u64,
+    segments: Vec<Segment>,
     sections: Vec<Section>,
     debug_locations: Vec<DebugLocation>,
 }
@@ -88,6 +90,29 @@ fn parse<H: ImageNtHeaders>(data: &[u8], source: Arc<dyn ByteSource>) -> Result<
     };
     let address_size = if headers.is_type_64() { 8 } else { 4 };
     let image_base = headers.optional_header().image_base();
+    let size_of_image = u64::from(headers.optional_header().size_of_image());
+    let size_of_headers = u64::from(headers.optional_header().size_of_headers());
+    let read_only = Access { read: true, write: false, execute: false };
+    // PE has no segments; model the loader's view: one mapping of `SizeOfImage` bytes, and the
+    // headers, which are stored in the file and mapped at the image base.
+    let segments = vec![
+        Segment {
+            name: None,
+            extent: Extent { vm: Some(AddrRange { start: image_base, size: size_of_image }), file: None, load: None },
+            access: read_only,
+            flags: 0,
+        },
+        Segment {
+            name: None,
+            extent: Extent {
+                vm: Some(AddrRange { start: image_base, size: size_of_headers.min(size_of_image) }),
+                file: Some(AddrRange { start: 0, size: size_of_headers }),
+                load: Some(AddrRange { start: image_base, size: size_of_headers.min(size_of_image) }),
+            },
+            access: read_only,
+            flags: 0,
+        },
+    ];
 
     let mut sections = Vec::new();
     for section in file.sections() {
@@ -116,6 +141,11 @@ fn parse<H: ImageNtHeaders>(data: &[u8], source: Arc<dyn ByteSource>) -> Result<
                 // (raw data is padded to FileAlignment).
                 load: file_extent.map(|_| AddrRange { start: va, size: raw_size.min(virtual_size) }),
             },
+            access: Access {
+                read: flags.contains(pe::IMAGE_SCN_MEM_READ),
+                write: flags.contains(pe::IMAGE_SCN_MEM_WRITE),
+                execute: flags.contains(pe::IMAGE_SCN_MEM_EXECUTE),
+            },
             name,
             flags: u64::from(flags.0),
         });
@@ -139,7 +169,17 @@ fn parse<H: ImageNtHeaders>(data: &[u8], source: Arc<dyn ByteSource>) -> Result<
         None => BinaryId::None,
     };
 
-    Ok(PeImage { source, arch, address_size, image_base, binary_id, sections, debug_locations })
+    Ok(PeImage {
+        source,
+        arch,
+        address_size,
+        image_base,
+        binary_id,
+        headers_size: size_of_headers,
+        segments,
+        sections,
+        debug_locations,
+    })
 }
 
 fn classify_section(name: &str, flags: pe::SectionFlags) -> SectionKind {
@@ -192,8 +232,12 @@ impl Image for PeImage {
         self.binary_id.clone()
     }
 
+    fn headers_size(&self) -> u64 {
+        self.headers_size
+    }
+
     fn segments(&self) -> &[Segment] {
-        &[]
+        &self.segments
     }
 
     fn sections(&self) -> &[Section] {

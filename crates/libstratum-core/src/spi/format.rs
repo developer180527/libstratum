@@ -44,6 +44,15 @@ pub trait Image: Send + Sync + Debug {
         0
     }
     fn binary_id(&self) -> BinaryId;
+    /// Length of this image inside the input, when it isn't the whole input (a universal Mach-O slice).
+    fn file_size(&self) -> Option<u64> {
+        None
+    }
+    /// Bytes of container headers at file offset 0: ELF header and program headers, Mach-O header and
+    /// load commands, PE `SizeOfHeaders`. 0 when unknown.
+    fn headers_size(&self) -> u64 {
+        0
+    }
     fn segments(&self) -> &[Segment];
     fn sections(&self) -> &[Section];
     /// Container symbols. Empty for linked PE images (symbols come from the PDB).

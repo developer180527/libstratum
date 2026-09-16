@@ -10,8 +10,8 @@ use libstratum_arch::{is_mapping_symbol, split_thumb_bit};
 use libstratum_core::SpiError;
 use libstratum_core::host::ByteSource;
 use libstratum_core::ir::{
-    AddrRange, Arch, BinaryId, Binding, DebugLocation, Endian, Extent, Section, SectionId, SectionKind, Segment,
-    Symbol, SymbolId, SymbolKind,
+    Access, AddrRange, Arch, BinaryId, Binding, DebugLocation, Endian, Extent, Section, SectionId, SectionKind,
+    Segment, Symbol, SymbolId, SymbolKind,
 };
 use libstratum_core::spi::{BinaryFormat, Image, OpenOptions, ProbeResult};
 use object::elf;
@@ -55,6 +55,7 @@ pub struct ElfImage {
     endian: Endian,
     address_size: u8,
     binary_id: BinaryId,
+    headers_size: u64,
     segments: Vec<Segment>,
     sections: Vec<Section>,
     symbols: Vec<Symbol>,
@@ -75,6 +76,13 @@ fn parse<H: FileHeader<Endian = Endianness>>(data: &[u8], source: Arc<dyn ByteSo
     let header = file.elf_header();
     let address_size = if header.is_class_64() { 8 } else { 4 };
     let arch = map_arch(header.e_machine(endian), address_size);
+    let phoff: u64 = header.e_phoff(endian).into();
+    let program_headers_end = u64::from(header.e_phnum(endian))
+        .checked_mul(u64::from(header.e_phentsize(endian)))
+        .and_then(|n| n.checked_add(phoff))
+        .filter(|_| phoff > 0)
+        .unwrap_or(0);
+    let headers_size = u64::from(header.e_ehsize(endian)).max(program_headers_end);
 
     // Segments. Load extent = initialized bytes stored at the load address (p_paddr, p_filesz);
     // for MCUs that's flash, for hosted images it equals the file-backed part of the mapping.
@@ -94,6 +102,14 @@ fn parse<H: FileHeader<Endian = Endianness>>(data: &[u8], source: Arc<dyn ByteSo
                     vm: loadable.then_some(AddrRange { start: vaddr, size: memsz }),
                     file: (filesz > 0).then_some(AddrRange { start: offset, size: filesz }),
                     load: (loadable && filesz > 0).then_some(AddrRange { start: paddr, size: filesz }),
+                },
+                access: {
+                    let f = ph.p_flags(endian);
+                    Access {
+                        read: loadable && f.contains(elf::PF_R),
+                        write: loadable && f.contains(elf::PF_W),
+                        execute: loadable && f.contains(elf::PF_X),
+                    }
                 },
                 flags: (u64::from(ph.p_type(endian).0) << 32) | u64::from(ph.p_flags(endian).0),
             }
@@ -141,6 +157,11 @@ fn parse<H: FileHeader<Endian = Endianness>>(data: &[u8], source: Arc<dyn ByteSo
                 vm: if alloc { range(addr, size) } else { None },
                 file: if nobits || sh_type == elf::SHT_NULL { None } else { range(offset, size) },
                 load,
+            },
+            access: Access {
+                read: alloc,
+                write: alloc && flags.contains(elf::SHF_WRITE),
+                execute: alloc && flags.contains(elf::SHF_EXECINSTR),
             },
             name,
             flags: flags.0,
@@ -232,7 +253,18 @@ fn parse<H: FileHeader<Endian = Endianness>>(data: &[u8], source: Arc<dyn ByteSo
         Endianness::Little => Endian::Little,
         Endianness::Big => Endian::Big,
     };
-    Ok(ElfImage { source, arch, endian, address_size, binary_id, segments, sections, symbols, debug_locations })
+    Ok(ElfImage {
+        source,
+        arch,
+        endian,
+        address_size,
+        binary_id,
+        headers_size,
+        segments,
+        sections,
+        symbols,
+        debug_locations,
+    })
 }
 
 fn map_arch(machine: elf::Machine, address_size: u8) -> Arch {
@@ -264,6 +296,8 @@ fn classify_section(name: &str, sh_type: elf::SectionType, flags: elf::SectionFl
         SectionKind::Tls
     } else if flags.contains(elf::SHF_EXECINSTR) {
         SectionKind::Code
+    } else if flags.contains(elf::SHF_MERGE) {
+        SectionKind::Literals
     } else if sh_type == elf::SHT_NOBITS {
         SectionKind::ZeroInit
     } else if flags.contains(elf::SHF_WRITE) {
@@ -292,6 +326,10 @@ impl Image for ElfImage {
 
     fn binary_id(&self) -> BinaryId {
         self.binary_id.clone()
+    }
+
+    fn headers_size(&self) -> u64 {
+        self.headers_size
     }
 
     fn segments(&self) -> &[Segment] {

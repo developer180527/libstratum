@@ -108,6 +108,10 @@ pub enum DiagCode {
     MapParseError,
     MapImageMismatch,
     Unimplemented,
+    /// Two sections claim the same bytes without one containing the other.
+    SectionOverlap,
+    /// Two sized symbols claim the same bytes without one containing the other.
+    SymbolOverlap,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -334,4 +338,50 @@ pub struct SymbolResult {
     pub query: String,
     pub matches: Vec<SymbolEntry>,
     pub diagnostics: Vec<Diagnostic>,
+}
+
+// ---------------------------------------------------------------------------------------------
+// Summaries (docs/12-m3-symbols-sizes.md §2–3)
+// ---------------------------------------------------------------------------------------------
+
+/// A grouping key for summary rows. Rows have one path element per requested dimension.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+#[non_exhaustive]
+pub enum Dimension {
+    /// `.text`, or `__TEXT,__text` on Mach-O.
+    Section,
+    /// The symbol (or alias group) owning the bytes, demangled when possible.
+    Symbol,
+}
+
+/// How an image's bytes are spent. In each address space, `Σ rows + Σ unattributed == total`.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Summary {
+    pub dimensions: Vec<Dimension>,
+    /// VM: bytes mapped at run time. File: the input's length. Load: initialized bytes stored at load addresses.
+    pub total: Size,
+    pub rows: Vec<SummaryRow>,
+    /// Bytes the requested dimensions can't attribute, named by kind: `[headers]`, `[alignment]`,
+    /// `[non-section]`, a section-less segment such as `[__LINKEDIT]`, or `[no symbol]` inside a section.
+    pub unattributed: Vec<SummaryRow>,
+    /// Bytes owned by alias groups (aliases, folded functions); counted once in `rows`.
+    pub shared: Size,
+    pub diagnostics: Vec<Diagnostic>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SummaryRow {
+    pub path: Vec<String>,
+    pub size: Size,
+    pub evidence: Vec<Evidence>,
+}
+
+/// Totals compatible with Berkeley `size` (docs/12 §5): allocated sections only.
+/// `text`: not writable, or executable. `data`: writable with file contents. `bss`: writable without.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct BerkeleySizes {
+    pub text: u64,
+    pub data: u64,
+    pub bss: u64,
 }

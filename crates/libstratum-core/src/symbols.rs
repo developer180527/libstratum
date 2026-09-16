@@ -67,6 +67,8 @@ pub(crate) fn build(ctx: &SymbolContext<'_>) -> (Vec<SymbolEntry>, Vec<Diagnosti
     }
 
     // 4. Labeled heuristic: distance to the next distinct symbol address in the same section, never past its end.
+    //    Not in literal pools: the linker merges their contents and drops most labels (a `__cstring` label
+    //    would otherwise swallow every string up to the next surviving one).
     let mut by_section: BTreeMap<SectionId, Vec<u64>> = BTreeMap::new();
     for (symbol, ..) in &entries {
         if let Some(section) = symbol.section {
@@ -86,6 +88,9 @@ pub(crate) fn build(ctx: &SymbolContext<'_>) -> (Vec<SymbolEntry>, Vec<Diagnosti
             continue;
         };
         let Some(vm) = section.extent.vm else { continue };
+        if section.kind == ir::SectionKind::Literals {
+            continue;
+        }
         let next = by_section[&section_id].iter().copied().find(|&a| a > symbol.address).unwrap_or(vm.end());
         let end = next.min(vm.end());
         if end > symbol.address {

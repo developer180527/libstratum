@@ -11,8 +11,8 @@ use std::sync::Arc;
 use libstratum_core::SpiError;
 use libstratum_core::host::ByteSource;
 use libstratum_core::ir::{
-    AddrRange, Arch, BinaryId, Binding, DebugLocation, Endian, Extent, Section, SectionId, SectionKind, Segment,
-    Symbol, SymbolId, SymbolKind,
+    Access, AddrRange, Arch, BinaryId, Binding, DebugLocation, Endian, Extent, Section, SectionId, SectionKind,
+    Segment, Symbol, SymbolId, SymbolKind,
 };
 use libstratum_core::spi::{BinaryFormat, Image, OpenOptions, ProbeResult};
 use object::Endianness;
@@ -125,6 +125,8 @@ pub struct MachOImage {
     endian: Endian,
     address_size: u8,
     binary_id: BinaryId,
+    slice_size: u64,
+    headers_size: u64,
     segments: Vec<Segment>,
     sections: Vec<Section>,
     symbols: Vec<Symbol>,
@@ -141,6 +143,8 @@ fn parse<H: MachHeader<Endian = Endianness>>(
     let header = file.macho_header();
     let arch = map_cpu(header.cputype(endian));
     let address_size = if header.is_type_64() { 8 } else { 4 };
+    let headers_size = std::mem::size_of::<H>() as u64 + u64::from(header.sizeofcmds(endian));
+    let slice_size = data.len() as u64;
 
     let mut segments = Vec::new();
     let mut sections = Vec::new();
@@ -232,7 +236,20 @@ fn parse<H: MachHeader<Endian = Endianness>>(
     }
 
     let endian = if header.is_big_endian() { Endian::Big } else { Endian::Little };
-    Ok(MachOImage { source, base, arch, endian, address_size, binary_id, segments, sections, symbols, debug_locations })
+    Ok(MachOImage {
+        source,
+        base,
+        arch,
+        endian,
+        address_size,
+        binary_id,
+        slice_size,
+        headers_size,
+        segments,
+        sections,
+        symbols,
+        debug_locations,
+    })
 }
 
 fn push_segment<S: object::read::macho::Segment<Endian = Endianness>>(
@@ -250,6 +267,12 @@ fn push_segment<S: object::read::macho::Segment<Endian = Endianness>>(
     let filesize: u64 = segment.filesize(endian).into();
     *has_dwarf_segment |= segname == "__DWARF";
     let is_linkedit = segname == "__LINKEDIT";
+    let initprot = segment.initprot(endian);
+    let access = Access {
+        read: initprot.contains(macho::VM_PROT_READ),
+        write: initprot.contains(macho::VM_PROT_WRITE),
+        execute: initprot.contains(macho::VM_PROT_EXECUTE),
+    };
     segments.push(Segment {
         extent: Extent {
             vm: (vmsize > 0 && segname != "__DWARF").then_some(AddrRange { start: vmaddr, size: vmsize }),
@@ -258,7 +281,8 @@ fn push_segment<S: object::read::macho::Segment<Endian = Endianness>>(
             load: (filesize > 0 && vmsize > 0 && !is_linkedit && segname != "__DWARF")
                 .then_some(AddrRange { start: vmaddr, size: filesize.min(vmsize) }),
         },
-        flags: u64::from(segment.initprot(endian).0),
+        access,
+        flags: u64::from(initprot.0),
         name: Some(segname.clone()),
     });
 
@@ -284,6 +308,11 @@ fn push_segment<S: object::read::macho::Segment<Endian = Endianness>>(
             SectionKind::Code
         } else if zerofill {
             SectionKind::ZeroInit
+        } else if matches!(
+            typ,
+            macho::S_CSTRING_LITERALS | macho::S_4BYTE_LITERALS | macho::S_8BYTE_LITERALS | macho::S_16BYTE_LITERALS
+        ) {
+            SectionKind::Literals
         } else if segname == "__TEXT" || segname == "__DATA_CONST" {
             SectionKind::ReadOnlyData
         } else {
@@ -300,6 +329,7 @@ fn push_segment<S: object::read::macho::Segment<Endian = Endianness>>(
                 file,
                 load: (!debug && file.is_some()).then_some(AddrRange { start: addr, size }),
             },
+            access: if debug { Access::default() } else { access },
             flags: u64::from(flags.0),
         });
     }
@@ -325,6 +355,14 @@ impl Image for MachOImage {
 
     fn binary_id(&self) -> BinaryId {
         self.binary_id.clone()
+    }
+
+    fn file_size(&self) -> Option<u64> {
+        (self.base != 0).then_some(self.slice_size)
+    }
+
+    fn headers_size(&self) -> u64 {
+        self.headers_size
     }
 
     fn segments(&self) -> &[Segment] {

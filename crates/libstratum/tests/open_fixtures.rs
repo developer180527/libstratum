@@ -61,8 +61,18 @@ fn fuzz_regressions_do_not_panic() {
                         let _ = image.section_data(section.id);
                     }
                     let _ = session.info();
+                    let _ = session.symbols(&Default::default());
+                    let _ = session.berkeley_sizes();
                 }));
                 assert!(result.is_ok(), "{}: panic after open", path.display());
+                // `summary` isolates panics itself and reports them as `Internal`.
+                let summary =
+                    session.summary(&[libstratum::model::Dimension::Section, libstratum::model::Dimension::Symbol]);
+                assert!(
+                    !matches!(summary, Err(libstratum::QueryError::Internal(_))),
+                    "{}: {summary:?}",
+                    path.display()
+                );
             }
             Err(libstratum::OpenError::Internal(message)) => panic!("{}: {message}", path.display()),
             Err(_) => {}

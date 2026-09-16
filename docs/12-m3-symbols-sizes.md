@@ -83,6 +83,23 @@ Per address space (VM, file, load), independently:
 3. **Invariant, tested on every fixture:** `Σ rows + Σ unattributed == total` in each space, and folded bytes appear
    exactly once.
 
+**As implemented (slice 2, ✅ verified on all 382 fixture binaries and the game engine):**
+- **Universe per space** = union of segment and section extents; file space = the whole input (the slice, for a
+  universal Mach-O). A mapping with **no access** (Mach-O `__PAGEZERO`) reserves address space but occupies none, so
+  it's excluded from VM totals — on the engine's `engine_player` the VM total then equals the sum of the real
+  segments reported by `size -m`.
+- **PE** has no segments; the plugin models the loader's view: one `SizeOfImage` mapping plus the headers
+  (`SizeOfHeaders`, stored and mapped at the image base).
+- **Gap names:** `[headers]` covers exactly the container headers (`Image::headers_size`: ELF header + program
+  headers, Mach-O header + load commands, PE `SizeOfHeaders`); the padding after them is `[alignment]`. Section-less
+  named segments are reported by name (`[__LINKEDIT]`). File bytes after the last section and outside every segment
+  (ELF section header table, PE certificates/overlay) are `[non-section]`.
+- **`.tbss`** is a TLS template that ELF places at the address of the following section; it yields to overlapping
+  sections silently. Any other section overlap is a `section-overlap` warning (none on the corpus).
+- Rows with `[Section, Symbol]` sum per section to the `[Section]` row: in-section bytes no symbol covers are
+  `[section, "[no symbol]"]` unattributed rows. Symbol rows carry the symbols' size evidence.
+- TLS symbols are excluded: their values are offsets into the TLS block, not addresses.
+
 Rationale for ADR-0022: Bloaty's "first label wins" makes totals depend on scan order. Outermost-owns is order
 independent, matches how nested symbols arise (sub-labels, `$t`/`$d`-style markers, sized local labels in assembly),
 and keeps inner symbols visible with their own sizes.
@@ -100,6 +117,11 @@ alignment padding up to the next atom (`_g_outer`: 16-byte type, 24-byte atom be
 aligned; a 75-byte x86-64 `main` is an 80-byte atom). DWARF is therefore the exact size and ranks first; a map size
 is used only when no debug info covers the symbol, and summaries (slice 2) must not double-count that padding as
 symbol bytes. On Windows, PDB publics match `/MAP` `Rva+Base` for all 22 538 compared symbols.
+
+**Literal pools (slice 2 finding, engine):** in sections the linker deduplicates (Mach-O `__cstring`, `__literal4/8/16`;
+ELF `SHF_MERGE`, IR `SectionKind::Literals`), labels don't delimit objects and most are dropped, so no heuristic
+size is inferred there: a `__cstring` label in the engine's release player otherwise "owned" 95 KB of unrelated
+strings. Those bytes are `[no symbol]`.
 
 A heuristic size never crosses a section end, never swallows the next symbol, and is never used for totals when a
 non-heuristic source exists for the same bytes.
@@ -129,7 +151,9 @@ sample); a mismatch is a `map-image-mismatch` error and the map is ignored.
 **`size`-compatible totals:** `text` = allocated sections without write permission (code, rodata, vectors, exidx),
 `data` = allocated, writable, with file contents, `bss` = allocated without file contents. This is the Berkeley rule
 of GNU `size` 📚 — **verified in M3** by comparing with `arm-none-eabi-size` / `size` in the Docker cross-check on
-every ELF fixture before it's relied on.
+every ELF fixture before it's relied on. Access comes from the format (ELF `SHF_WRITE`/`SHF_EXECINSTR`, Mach-O segment
+`initprot`, PE section characteristics). On Mach-O the same rule reproduces `size -m`'s per-segment totals
+(✅ engine release player: text 3 906 004 = `__TEXT`, data = `__DATA_CONST` + initialized `__DATA`, bss = zero-fill).
 
 ## 6. Folds (ICF) and instantiations
 

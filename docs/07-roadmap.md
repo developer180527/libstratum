@@ -123,7 +123,7 @@ open question that addresses it.
 | Layout: flattened anonymous unions | PDBs don't record anonymous unions; the lens notes non-empty members whose storage overlaps (any size, bitfields included) but can't restore the grouping | M2 findings |
 | Layout: type units | With `-fdebug-types-section`, the linker keeps one definition per type *name*, so ODR conflicts are invisible in that binary | M2 findings |
 | Correlation, elimination | Not implemented. "This line was eliminated" claims need the `-O0` reference-build comparison | M4, Q9 |
-| Symbols, sizes, regions | Symbols with sizes and evidence work (slice 1). Summaries, link maps, regions, ICF and instantiation groups are not implemented. Mach-O binaries without DWARF (e.g. ThinLTO with no kept LTO object) get heuristic sizes until a map is attached | M3, docs/12 §9 |
+| Symbols, sizes, regions | Symbols with sizes and evidence (slice 1) and section/symbol summaries with Berkeley totals (slice 2) work. Link maps, regions, units, ICF classification and instantiation groups are not implemented. Mach-O binaries without DWARF (e.g. ThinLTO with no kept LTO object) get heuristic sizes until a map is attached | M3, docs/12 §9 |
 | Distribution | No CLI or binary release; library API only, unpublished | ADR-0020 |
 
 ## M3: Symbols, sections, sizes, memory regions
@@ -138,7 +138,9 @@ open question that addresses it.
 - [x] Slice 1: `Session::symbols` / `by_symbol` with sizes and evidence (ELF symtab; Mach-O DWARF subprogram ranges
   and `DW_OP_addr` variables; PDB publics, procedure lengths and data records), alias groups. Verified on all 382
   fixture binaries: 212 sizes vs ld-prime maps, 22 538 addresses vs MSVC/lld-link `/MAP`
-- [ ] Slice 2: section summary, attribution invariant, Berkeley totals
+- [x] Slice 2: `Session::summary([Section, Symbol])` and `berkeley_sizes()`; invariant tested on every fixture binary
+  in VM, file and load space; `summary.json` goldens; Berkeley totals cross-checked against GNU `size` for ELF
+  (`fixtures/crosscheck`). Validated on the game engine (below)
 - [ ] Slice 3: map parsers, `attach_link_map`, memory regions
 - [ ] Slice 4: unit dimension
 - [ ] Slice 5: ICF and instantiation groups, `sizes/` fixtures, cross-checks, goldens
@@ -151,9 +153,20 @@ open question that addresses it.
 
 **Exit:** inline and elimination goldens on every Tier 1 platform; cross-checks against `llvm-symbolizer`, `atos`, `addr2line -i`.
 
+### M3 validation on the game engine (macOS arm64, 2026-09-17)
+- Release `engine_player` (6.7 MB, no debug info): section sizes, VM total and Berkeley totals equal Apple `size -m`.
+  Symbol sizes are next-symbol heuristics (labeled); checked by hand where it matters: `elog::g_slots` = 4096 × 232-byte
+  `Slot` = 950 272 bytes, exactly.
+- **Finding for the engine:** `elog::g_slots` is all zeros but lives in `__DATA,__data`, costing 950 KB of file size.
+  It's a C++17 `inline` variable, i.e. a weak definition, and Apple's toolchain puts weak zero-initialized globals in
+  `__data`; the same array as a plain global goes to zero-fill `__common` (✅ reproduced with a minimal program).
+- Debug `editor` (38 MB): no dSYM, DWARF in 610 debug-map objects, so all 95 613 sizes are heuristics until debug-map
+  address translation (M4). Opening the session loads every object eagerly: 2.5 s, 570 MB RSS → lazy loading in M5.
+
 ## M5: Snapshots, diff, cache, performance
 - `Snapshot`, `diff` (layout and size, cross-toolchain names)
 - `CacheStore`, content-hash keys (image + PDB/dSYM/.dwo)
+- Lazy debug-map object loading (the engine's debug editor opens 610 objects eagerly: 2.5 s, 570 MB)
 - Benchmarks: multi-GB PDB (e.g. the game engine or Chromium), LLVM debug build, firmware images
 - `Request`/`Response` dispatcher, generated JSON Schemas, `cargo-semver-checks` baseline
 

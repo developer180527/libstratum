@@ -74,6 +74,9 @@ pub struct SymbolId(pub u32);
 pub enum SectionKind {
     Code,
     ReadOnlyData,
+    /// Literal pools the linker deduplicates (Mach-O `__cstring`/`__literal8`, ELF `SHF_MERGE`):
+    /// symbols inside don't delimit objects, so no size is inferred from symbol distances.
+    Literals,
     Data,
     ZeroInit,
     Tls,
@@ -85,11 +88,28 @@ pub enum SectionKind {
     Other,
 }
 
+/// Run-time access permissions, format-neutral (ELF `p_flags`/`sh_flags`, Mach-O `initprot`,
+/// PE section characteristics). A mapping with no access (Mach-O `__PAGEZERO`) reserves address
+/// space without occupying memory.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+pub struct Access {
+    pub read: bool,
+    pub write: bool,
+    pub execute: bool,
+}
+
+impl Access {
+    pub fn is_none(&self) -> bool {
+        !(self.read || self.write || self.execute)
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Segment {
     /// `None` for ELF program headers (unnamed).
     pub name: Option<String>,
     pub extent: Extent,
+    pub access: Access,
     /// Format-specific flags, preserved raw.
     pub flags: u64,
 }
@@ -102,6 +122,8 @@ pub struct Section {
     pub name: String,
     pub kind: SectionKind,
     pub extent: Extent,
+    /// Access at run time; all false for sections that aren't mapped.
+    pub access: Access,
     pub flags: u64,
 }
 

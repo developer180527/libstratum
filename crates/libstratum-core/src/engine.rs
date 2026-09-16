@@ -148,6 +148,7 @@ impl Engine {
                 demanglers: self.plugins.demanglers.clone(),
                 symbol_table: std::sync::OnceLock::new(),
                 image,
+                file_size: bytes.len() as u64,
                 debug,
                 diagnostics,
             }),
@@ -249,6 +250,8 @@ struct SessionInner {
     demanglers: Vec<Arc<dyn Demangler>>,
     symbol_table: std::sync::OnceLock<(Vec<libstratum_model::SymbolEntry>, Vec<Diagnostic>)>,
     image: Box<dyn Image>,
+    /// Length of the input, the file-space total.
+    file_size: u64,
     debug: Vec<Box<dyn DebugReader>>,
     diagnostics: Vec<Diagnostic>,
 }
@@ -404,6 +407,25 @@ impl Session {
         let mut result = crate::symbols::result(name, table, &filter, &self.inner.demanglers, &self.inner.languages);
         result.diagnostics.extend(diagnostics.iter().cloned());
         result
+    }
+
+    /// How the image's bytes are spent, grouped by `dimensions` (docs/12 §3). In every address space
+    /// `Σ rows + Σ unattributed == total`; alias groups own their bytes once.
+    pub fn summary(
+        &self,
+        dimensions: &[libstratum_model::Dimension],
+    ) -> Result<libstratum_model::Summary, crate::QueryError> {
+        let (table, _) = self.symbol_table();
+        catch_unwind(AssertUnwindSafe(|| {
+            let image = self.inner.image.as_ref();
+            crate::summary::build(image, image.file_size().unwrap_or(self.inner.file_size), table, dimensions)
+        }))
+        .map_err(|_| crate::QueryError::Internal("panic while summarizing".into()))
+    }
+
+    /// Totals compatible with Berkeley `size`: text, data, bss over allocated sections.
+    pub fn berkeley_sizes(&self) -> libstratum_model::BerkeleySizes {
+        crate::summary::berkeley(self.inner.image.as_ref())
     }
 
     /// Which lenses can answer for this binary (ADR-0014).
